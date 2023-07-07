@@ -60,6 +60,16 @@
 
 body {
   font-family: 'Noto Serif TC', serif;
+  
+ }
+ main{
   padding-left:5rem ;
   padding-right: 5rem;
+ }
+
+ @media screen and (max-width:700px) {
+  main{
+    padding-left:2rem ;
+    padding-right: 2rem;
+   }
  }
