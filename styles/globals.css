@@ -1,0 +1,68 @@
+:root {
+  /* -background-color- */
+  --bgc1:#132811;
+  --bgc2: #52796F;
+  --bgc3:#D4E9E2;
+  --bgc4:#F2DF7D;
+  --bgc5:#666666;
+  --bgc6:#c2c2c2c2;
+  --bgc7:#eeeeee;
+  --bgc8:#6cace0;
+  --bgc9:#b9cac5;
+
+   /* -color- */
+  --color1:#132811;
+  --color2: #52796F;
+  --color3:#D4E9E2;
+  --color4:#F2DF7D;
+  --color5:#666666;
+  --color6:#c2c2c2c2;
+  --color7:#eeeeee;
+  --color8:#6cace0;
+  --color9:#b9cac5;
+
+
+/* -font-size- */
+  /* -forPC- */
+  --txp16:16px;
+  --txp20:20px;
+  --txp24:24px;
+  --txp28:28px;
+  --txp32:32px;
+  --txp34:34px;
+  --txp40:40px;
+  /* -for iphone- */
+  --txi14:14px;
+  --txi16:16px;
+  --txi20:20px;
+  --txi24:24px;
+  --txi28:26px;
+  --txi32:28px;
+  --txi38:38px;
+  
+
+  /* -letter-specing- */
+  --Lp1:2px;
+
+  /*-border-radius- */
+  --BR1:5px;
+  --BR2:15px;
+
+}
+/*-google font-*/
+@import 'https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&display=swap';
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Serif TC', serif;
+ 
+ }
+ main{
+  padding-left:5rem ;
+  padding-right: 5rem;
+ }

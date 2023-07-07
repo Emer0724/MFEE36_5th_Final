@@ -1,0 +1,146 @@
+// 檔案位置: styles/global.scss
+// 變數覆蓋用 (Variable overrides)
+// 全站配色 colors
+$primary:#132811;
+$secondary: #52796F;
+$success:#D4E9E2;
+$danger:#dc2525;
+$warning:#9A774E;
+$info:#b9cac5;
+
+
+// 按鈕圓角邊 button radius
+$border-radius: 0em;
+$border-radius-sm: 5px;
+$border-radius-lg: 15px;
+
+// ↑↑↑  變數覆蓋(Variable overrides) 要寫在這行"上面"  ↑↑↑
+// 導入所有 bootstrap 樣式
+@import '~bootstrap/scss/bootstrap';
+// ↓↓↓  其它客製樣式要寫在這行的"下面" ↓↓↓
+.color-bg-1{
+  background-color: #132811
+  }
+  .color-bg-2{
+    background-color: #52796F
+    }
+  .color-bg-3{
+      background-color: #D4E9E2
+      }
+  .color-bg-3{
+        background-color: #9A774E
+        }
+  .color-bg-4{
+          background-color: #F2DF7D
+          } 
+  .color-bg-5{
+            background-color: #666666
+            }
+  .color-bg-6{
+    background-color:#c2c2c2c2
+  }
+  .color-bg-7{
+    background-color:#eeeeee
+  } 
+  .color-bg-8{
+    background-color:#6cace0
+  } 
+  .color-bg-9{
+    background-color: #b9cac5;
+  }
+  
+  .color-tx-1{
+    color: #132811
+    }
+  .color-tx-2{
+      color: #52796F
+      }
+  .color-tx-3{
+        color: #D4E9E2
+        }
+  .color-tx-3{
+          color: #9A774E
+          }
+  .color-tx-4{
+            color: #F2DF7D
+            } 
+  .color-tx-5{
+              color: #666666
+              }
+  .color-tx-6{
+      color:#c2c2c2c2
+    }
+  .color-tx-7{
+      color:#eeeeee
+    }
+  .color-tx-8{
+      color:#6cace0
+    }  
+  .color-tx-9{
+      color: #b9cac5;
+    } 
+
+  .texti-14px{
+    font-size: 14px
+  }
+  .texti-20px{
+    font-size: 20px
+  }
+  .texti-24px{
+    font-size: 24px
+  }
+  .texti-26px{
+    font-size: 26px
+  }
+  .texti-28px{
+    font-size: 28px
+  }
+  .texti-38px{
+    font-size: 38px
+  }
+  .textp-40px{
+    font-size: 40px
+  }
+  .textp-34px{
+    font-size: 34px
+  }
+  .textp-32px{
+    font-size: 32px
+  }
+  .textp-28px{
+    font-size: 28px
+  }
+  .textp-24px{
+    font-size: 24px
+  }
+  .textp-20px{
+    font-size: 20px
+  }
+  .textp-16px{
+    font-size: 16px
+  }
+
+  
+  .letter-spacing{
+    letter-spacing:2px
+  }   
+  .border-radius-5px{
+    border-radius: 5px
+  }
+  .border-radius-15px{
+    border-radius: 15px
+  }
+       
+
+// google Noto Sans TC 字體
+@import 'https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&display=swap';
+
+// 定義中文字體用
+body {
+ font-family: 'Noto Serif TC', serif;
+ 
+}
+main{
+  padding-left:5rem ;
+  padding-right: 5rem;
+ }
