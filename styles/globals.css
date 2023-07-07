@@ -39,7 +39,6 @@
   --txi28:26px;
   --txi32:28px;
   --txi38:38px;
-  /*test
   
 
   /* -letter-specing- */
@@ -61,9 +60,6 @@
 
 body {
   font-family: 'Noto Serif TC', serif;
- 
- }
- main{
   padding-left:5rem ;
   padding-right: 5rem;
  }
