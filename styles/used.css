@@ -1,7 +1,19 @@
-@media screen and (max-width:700px) {
+@media screen and (max-width: 767.98px) {
     .used-display-member{
       margin-top: 30px;
       border-top: 1px solid black;
       border-left: none !important
      }
+     .used-usededit-member-1{
+      padding-top: 30px;
+      border-top: 1px solid black;
+      border-left: none !important
+     }
+     .used-usededit-member-2{
+      margin-top: 30px;
+      margin-bottom: 30px;
+      
+     }
+     
    }
+

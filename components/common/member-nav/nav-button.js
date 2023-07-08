@@ -7,7 +7,7 @@ export default function NavButton({id,info,url,router1}) {
   //預設分頁
   const pageRouter=useRouter()
 const page=pageRouter.pathname.includes(router1)
-console.log(pageRouter)
+// console.log(pageRouter)
   return (
     <>
       <Link href={url} className={styles.mnav_a }>

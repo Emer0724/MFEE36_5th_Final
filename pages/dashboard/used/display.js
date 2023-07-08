@@ -26,7 +26,7 @@ export default function Display() {
 
       <div className="container-fliuid mt-3 ">
         <div className="row">
-          <div className="col-12  col-lg-6">
+          <div className="col-12  col-lg-6 d-flex align-items-center ">
             <div className="d-flex flex-column align-items-center w-100   ">
               {/* book-serch */}
               <div className="my-3 d-flex ">
@@ -64,6 +64,7 @@ export default function Display() {
                   出版社: {book.publish}
                 </h6>
               </div>
+              {/*---book-serch  end*/ }
             </div>
           </div>
           <div className="col-12 col-lg-6 border-start border-black used-display-member ">
