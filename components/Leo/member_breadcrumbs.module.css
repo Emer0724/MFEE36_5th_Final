@@ -1,0 +1,27 @@
+.crumbs_box{
+    margin: 0px,30px;
+    display: flex;
+    justify-content: center;
+}
+.crumbs_none{
+    font-size: 20px;
+    width: 125px;
+    height: 30px;
+    font-weight: bolder;
+}
+
+.crumbs_border{
+    font-size: 20px;
+    margin-left:20px;
+    width: 141px;
+    height: 30px;
+    border-left: 1px solid black;
+    padding-left: 15px;
+    font-weight: bolder;
+}
+.selected{
+    color:#000000;
+}
+.unselected{
+    color:#D9D9D9;
+}
