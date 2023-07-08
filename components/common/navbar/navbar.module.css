@@ -1,11 +1,8 @@
 .HeaderNavbar{
    display: flex;   
-   justify-content: center;
+   justify-content: space-around;
+   align-items: center;
    padding-top: 10px;
-}
-.NavbarLogo{
-    display: flex;
-    padding: 0 100px 0 50px;
 }
 .NavbarRoute{
     display: flex;
@@ -16,11 +13,12 @@
     flex-direction: column;
     justify-content: center;
     margin:0 70px;
-    padding:0 5px;
+    transition: all 0.5s ease-in;
 }
-.NavBarIcon{
-    padding-top: 20px;
+.navlinkdiv:hover{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
 .navlink1{
     text-decoration: none;
     color: #132811;
@@ -39,10 +37,6 @@
 }
 .navlink2{
     text-decoration: none;
-    margin-right: 30px;
-}
-.logoimg{
-    margin-right: 150px;
 }
 @media screen {
     

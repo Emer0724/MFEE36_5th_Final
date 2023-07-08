@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import Trash from "@/assets/Nav_Image/trashcan.svg"
 import styles from "@/components/Cart_component/cart/cart_small/Cart_PLBody.module.css"
+import fake from "@/assets/Cart_Image/fake.svg"
 
 export default function CartPLbody() {
     const Imglist = []
@@ -37,7 +38,7 @@ export default function CartPLbody() {
     {product.map((v,i)=>{
         return(
         <tr key={i}>
-            <td className={styles.ProdeuctBlock}>{v.img}{v.Productname}</td>
+            <td className={styles.ProdeuctBlock}><Image src={fake}/>{v.Productname}</td>
             <td className={styles.ProdeuctBlock}>{v.ISBN}</td>
             <td className={styles.ProdeuctBlock}>{v.price}</td>
             <div className={styles.CountBlock}>

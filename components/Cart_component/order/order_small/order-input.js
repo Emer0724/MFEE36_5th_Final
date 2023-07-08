@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function OrderInput() {
+export default function OrderInput({labelcontent,type}) {
   return (
     <>
-        <label></label>
-        <input/>
+        <label >{labelcontent}</label>
+        <input type={type} />
     </>
   )
 }

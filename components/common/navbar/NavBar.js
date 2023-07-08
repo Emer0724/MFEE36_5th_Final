@@ -15,27 +15,21 @@ export default function NavBar1() {
   return (
     <div >
       <div className={styles.HeaderNavbar}>
-        <div className={styles.NavbarLogo}>
           <Link href="#" className={styles.logoimg}><Image src={logo} width={100} height={75}/></Link>
-          <div className={styles.NavbarRoute}>
-              {NavctName.map((v,i)=>{
-                  const v2 = NavEnName[i]
-                  return(
-                      <div className={styles.navlinkdiv} key={i}>
-                          <Link href="#" className={styles.navlink1}>{v}</Link>
-                          <p className={styles.linktext} >{v2}</p>
-                      </div>
-                  )})}
-            </div>
-        </div>
-        <div className={styles.NavBarIcon}>
-            {NavIcon.map((v,i)=>{
+          {NavctName.map((v,i)=>{
+              const v2 = NavEnName[i]
               return(
-                  <Link href="#" className={styles.navlink2} key={i}>
-                    <Image src={v} width={40} height={30}/>
-                  </Link>
+                  <div className={styles.navlinkdiv} key={i}>
+                      <Link href="#" className={styles.navlink1}>{v}</Link>
+                      <p className={styles.linktext} >{v2}</p>
+                  </div>
+              )})}
+          {NavIcon.map((v,i)=>{
+            return(
+                <Link href="#" className={styles.navlink2} key={i}>
+                  <Image src={v} width={60} height={40}/>
+                </Link>
             )})}
-          </div>
       </div>
    </div>
   )
