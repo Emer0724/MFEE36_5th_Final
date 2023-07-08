@@ -1,0 +1,49 @@
+.HeaderNavbar{
+   display: flex;   
+   justify-content: center;
+   padding-top: 10px;
+}
+.NavbarLogo{
+    display: flex;
+    padding: 0 100px 0 50px;
+}
+.NavbarRoute{
+    display: flex;
+    list-style: none;
+}
+.navlinkdiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin:0 70px;
+    padding:0 5px;
+}
+.NavBarIcon{
+    padding-top: 20px;
+}
+.navlink1{
+    text-decoration: none;
+    color: #132811;
+    font-size: var(--txp28);
+    font-weight: bolder;
+    line-height:60px;
+    letter-spacing: 2px;
+}
+.linktext{
+    color:#666666;
+    font-size: var(--txp16);
+    font-weight: bolder;
+    opacity: 0.4;
+    text-align: center;
+    margin: 0;
+}
+.navlink2{
+    text-decoration: none;
+    margin-right: 30px;
+}
+.logoimg{
+    margin-right: 150px;
+}
+@media screen {
+    
+}

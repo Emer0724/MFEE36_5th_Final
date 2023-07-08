@@ -1,0 +1,22 @@
+.RebookContain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:60px 0;
+}
+.RebookBlock{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:60px 0;
+}
+.Rebooklist{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.RebookBook{
+    margin: 30px;
+}

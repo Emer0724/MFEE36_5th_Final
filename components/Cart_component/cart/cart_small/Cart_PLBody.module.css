@@ -1,0 +1,27 @@
+.CountBlock{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.Countcut{
+    text-align: center;
+    border: 1px solid black;
+    width: 30px;
+    background-color: var(--bgc7);
+
+}
+.Countvalue{
+    text-align: center;
+    border: 1px solid black;
+    width: 60px;
+
+}
+.Countplus{
+    text-align: center;
+    border: 1px solid black;
+    width: 30px;
+    background-color: var(--bgc7);
+}
+.ProdeuctBlock{
+    text-align: center;
+}
