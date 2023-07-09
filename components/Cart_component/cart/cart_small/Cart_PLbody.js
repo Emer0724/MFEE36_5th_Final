@@ -1,11 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import Trash from "@/assets/Nav_Image/trashcan.svg"
 import styles from "@/components/Cart_component/cart/cart_small/Cart_PLBody.module.css"
 import fake from "@/assets/Cart_Image/fake.svg"
 
 export default function CartPLbody() {
-    const Imglist = []
+
+
+const [cut , setcut] = useState('Countcut')
+
+const Countcut = {
+  textAlign: "center",
+  border: "1px solid black",
+  width:"30px",
+  backgroundColor: "var(--bgc7)"
+}
+
     const product = [
       {Productname:"書不起",
         ISBN:98997203,

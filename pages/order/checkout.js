@@ -1,16 +1,24 @@
 import CartTitle from '@/components/Cart_component/Cart_title'
-import OrderForm from '@/components/Cart_component/order/order_form'
+import OrderInput from '@/components/Cart_component/order/order_small/order-input'
 import OrderState from '@/components/Cart_component/order/order_state'
+import DeepButton from '@/components/common/CBtn/DeepgreenBtn'
 import NavBar1 from '@/components/common/navbar/NavBar'
 import React from 'react'
+import complete from "@/pages/order/complete"
 
-export default function checkout() {
+export default function OrderCheckout() {
   return (
     <>
-        <NavBar1/>
-        <OrderState/>
-        <CartTitle titlecontent={"選擇喜歡的寄送方式和付款方式吧"}/>
-        <OrderForm/>
+      <NavBar1/>
+      <OrderState/>
+      <CartTitle />
+      <div>
+        <OrderInput labelcontent={"卡號"} type={"number"} />
+        <OrderInput labelcontent={"日期"} type={"date"} />
+        <OrderInput labelcontent={"安全碼"} type={"number"} />
+      </div>
+      <div></div>
+       <DeepButton DeepButtoncontent={"完成付款"} route={{complete}}/>
     </>
   )
 }
