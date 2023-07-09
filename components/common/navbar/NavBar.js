@@ -24,12 +24,14 @@ export default function NavBar1() {
                       <p className={styles.linktext} >{v2}</p>
                   </div>
               )})}
-          {NavIcon.map((v,i)=>{
-            return(
-                <Link href="#" className={styles.navlink2} key={i}>
-                  <Image src={v} width={60} height={40}/>
-                </Link>
-            )})}
+          <div>
+            {NavIcon.map((v,i)=>{
+              return(
+                  <Link href="#" className={styles.navlink2} key={i}>
+                    <Image src={v} width={60} height={40}/>
+                  </Link>
+              )})}
+          </div>
       </div>
    </div>
   )

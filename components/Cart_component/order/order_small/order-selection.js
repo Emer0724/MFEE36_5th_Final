@@ -1,0 +1,26 @@
+import React from 'react'
+const blockstyle = {
+    display:"flex",
+    flexDirection: "column",
+    justifyContent:"space-around",
+    alignItems:"center",
+    marginBottom:"100px",
+}
+const selectstyle = {
+    width:"350px",
+    height:"60px",
+    borderRadius:"8px",
+    border:"1px solid #52796F"
+}
+
+export default function OrderFormrderSelect({selectmethod,option1,option2}) {
+  return (
+      <div style={blockstyle}>
+        <label>{selectmethod}</label>
+        <select style={selectstyle}>
+            <option>{option1}</option>
+            <option>{option2}</option>
+        </select>
+      </div>
+  )
+}

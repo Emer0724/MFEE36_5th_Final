@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin:0 70px;
+    margin:auto;
     transition: all 0.5s ease-in;
 }
 .navlinkdiv:hover{
@@ -37,6 +37,7 @@
 }
 .navlink2{
     text-decoration: none;
+    margin:auto
 }
 @media screen {
     
