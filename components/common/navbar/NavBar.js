@@ -13,17 +13,22 @@ export default function NavBar1() {
     const NavIcon =[Searchicon,Carticon,Membericon]
 
   return (
-    <div >
+    <div>
       <div className={styles.HeaderNavbar}>
           <Link href="#" className={styles.logoimg}><Image src={logo} width={100} height={75}/></Link>
-          {NavctName.map((v,i)=>{
-              const v2 = NavEnName[i]
-              return(
-                  <div className={styles.navlinkdiv} key={i}>
-                      <Link href="#" className={styles.navlink1}>{v}</Link>
-                      <p className={styles.linktext} >{v2}</p>
-                  </div>
-              )})}
+          <div className={styles.logoname}>
+            <h3 >BOOK書易</h3>
+          </div>
+          <div className={styles.NavbarRoute}>
+            {NavctName.map((v,i)=>{
+                const v2 = NavEnName[i]
+                return(
+                    <div className={styles.navlinkdiv} key={i}>
+                        <Link href="#" className={styles.navlink1}>{v}</Link>
+                        <p className={styles.linktext} >{v2}</p>
+                    </div>
+                )})}
+            </div>
           <div className={styles.Icongroup}>
             {NavIcon.map((v,i)=>{
               return( 

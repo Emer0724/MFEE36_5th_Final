@@ -31,3 +31,9 @@
 .OrderStateArrow{
     padding: 0 21px 53px 21px;
 }
+@media (max-width: 400px){
+.OrderStateContain{
+        display: none;
+    }
+    
+}

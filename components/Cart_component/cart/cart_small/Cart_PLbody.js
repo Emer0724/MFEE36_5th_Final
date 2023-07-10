@@ -4,16 +4,23 @@ import Trash from "@/assets/Nav_Image/trashcan.svg"
 import styles from "@/components/Cart_component/cart/cart_small/Cart_PLBody.module.css"
 import fake from "@/assets/Cart_Image/fake.svg"
 
-export default function CartPLbody() {
+export default function CartPLbody({display1,display2}) {
 
 
-const [cut , setcut] = useState('Countcut')
 
 const Countcut = {
   textAlign: "center",
   border: "1px solid black",
   width:"30px",
-  backgroundColor: "var(--bgc7)"
+  backgroundColor: "var(--bgc7)",
+  display:{display1}
+}
+const Countplus = {
+  textAlign: "center",
+  border: "1px solid black",
+  width:"30px",
+  backgroundColor: "var(--bgc7)",
+  display:{display2}
 }
 
     const product = [
@@ -47,15 +54,16 @@ const Countcut = {
     <tbody>
     {product.map((v,i)=>{
         return(
-        <tr key={i}>
+        <tr key={i} className={styles.Prodeucttr}>
             <td className={styles.ProdeuctBlock}><Image src={fake}/>{v.Productname}</td>
             <td className={styles.ProdeuctBlock}>{v.ISBN}</td>
             <td className={styles.ProdeuctBlock}>{v.price}</td>
-            <div className={styles.CountBlock}>
-                <div className={styles.Countcut}>-</div>
-                <div className={styles.Countvalue}>{v.count}</div>
-                <div className={styles.Countplus}>+</div>
-              </div>
+            <td><div className={styles.CountBlock}>
+                  <div style={Countcut}>-</div>
+                  <div className={styles.Countvalue}>{v.count}</div>
+                  <div style={Countplus}>+</div>
+                </div>
+            </td>
             <td className={styles.ProdeuctBlock}>{v.price*v.count}</td>
             <td className={styles.ProdeuctBlock}><Image src={Trash} width={40} height={40}/></td>
         </tr>)

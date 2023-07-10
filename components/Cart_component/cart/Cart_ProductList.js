@@ -3,12 +3,13 @@ import Table from 'react-bootstrap/Table';
 import CartPLhead from './cart_small/Cart_PLhead';
 import CartPLbody from './cart_small/Cart_PLbody';
 
-export default function CurtProduct() {
+export default function CurtProduct({PLbodydisplay}) {
+
   return (
   <>
     <Table>
        <CartPLhead/>
-       <CartPLbody/>
+       <CartPLbody display1={PLbodydisplay} display2={PLbodydisplay}/>
     </Table>
   </>
   )

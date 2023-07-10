@@ -21,7 +21,7 @@ export default function OrderInput({labelcontent,type}) {
     <>
       <div style={blockstyle}>
         <label >{labelcontent}</label>
-        <input type={type}style={inputstyle} />
+        <input type={type} style={inputstyle} required/>
       </div>
     </>
   )

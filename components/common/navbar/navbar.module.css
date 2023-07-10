@@ -2,19 +2,23 @@
    width: 100%;
    height:100%;
    display: flex;   
-   justify-content: space-around;
    align-items: center;
+   justify-content: space-around;
    padding-top: 10px;
+}
+.logoname{
+    display: none;
 }
 .NavbarRoute{
     display: flex;
     list-style: none;
+    width: 60%;
 }
 .navlinkdiv{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100%;
+    width: 40%;
    height:100%;
     transition: all 0.5s ease-in;
 }
@@ -45,7 +49,7 @@
   
 }
 .Icongroup{  
-    width: 100%;
+    width: 10%;
     height:100%;
     display: flex;
     justify-content: center;
@@ -53,5 +57,11 @@
     
 }
 @media(max-width:400px){
-    
+    .navlinkdiv{
+        display: none;
+    }
+    .logoname{
+        display: block;
+        font-size: var(--txi16);
+    }
 }

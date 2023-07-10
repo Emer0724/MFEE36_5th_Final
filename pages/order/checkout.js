@@ -4,7 +4,6 @@ import OrderState from '@/components/Cart_component/order/order_state'
 import DeepButton from '@/components/common/CBtn/DeepgreenBtn'
 import NavBar1 from '@/components/common/navbar/NavBar'
 import React from 'react'
-import complete from "@/pages/order/complete"
 
 export default function OrderCheckout() {
   return (
@@ -13,12 +12,12 @@ export default function OrderCheckout() {
       <OrderState/>
       <CartTitle />
       <div>
-        <OrderInput labelcontent={"卡號"} type={"number"} />
-        <OrderInput labelcontent={"日期"} type={"date"} />
+        <OrderInput labelcontent={"卡號"} type={"number"}/>
+        <OrderInput labelcontent={"日期"} type={"number"} />
         <OrderInput labelcontent={"安全碼"} type={"number"} />
       </div>
-      <div></div>
        <DeepButton DeepButtoncontent={"完成付款"} />
+
     </>
   )
 }

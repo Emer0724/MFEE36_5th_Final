@@ -1,5 +1,4 @@
 import DeepButton from '@/components/common/CBtn/DeepgreenBtn'
-import { max } from 'lodash'
 import React from 'react'
 const style1 = {
   display:"flex",
