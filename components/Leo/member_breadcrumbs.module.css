@@ -7,7 +7,7 @@
     font-size: 20px;
     width: 125px;
     height: 30px;
-    font-weight: bolder;
+    font-weight: bold;
 }
 
 .crumbs_border{
@@ -17,7 +17,7 @@
     height: 30px;
     border-left: 1px solid black;
     padding-left: 15px;
-    font-weight: bolder;
+    font-weight: bold;
 }
 .selected{
     color:#000000;

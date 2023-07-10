@@ -38,12 +38,12 @@
     
 }
 .detail_name{
-    
+    font-weight: bold;
     font-size: 40px;
     color: #000000;
 }
 .detail_nickname{
-    
+    font-weight: bold;
     font-size: 40px;
     color: #6f6f6f;
     
