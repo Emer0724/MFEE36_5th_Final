@@ -5,6 +5,7 @@ const blockstyle = {
   justifyContent:"space-around",
   alignItems:"center",
   marginBottom:"100px",
+  
 }
 const inputstyle = {
   width:"350px",

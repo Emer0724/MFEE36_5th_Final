@@ -21,10 +21,10 @@ export default function OrderIcon({}) {
                 <div className={styles.OrderStateblock}>
                   <div className={styles.OrderStateDiv}>
                     <div className={styles.OrderStateCircle}>
-                      <Image key={i} src={v} width={30} height={30}/>
+                      <Image key={i} src={v} width={60} height={60}/>
                     </div>
                     <div className={styles.OrderStateText}>
-                        <p>{v2}</p>
+                        <h3>{v2}</h3>
                     </div>
                   </div>
                   <div className={styles.OrderStateArrow}>
@@ -36,10 +36,10 @@ export default function OrderIcon({}) {
                 return(
                 <div className={styles.OrderStateDiv}>
                   <div className={styles.OrderStateCircle}>
-                    <Image key={i} src={v} width={30} height={30}/>
+                    <Image key={i} src={v} width={60} height={60}/>
                   </div>
                   <div className={styles.OrderStateText}>
-                      <p>{v2}</p>
+                      <h3>{v2}</h3>
                   </div>
                 </div>
               )}

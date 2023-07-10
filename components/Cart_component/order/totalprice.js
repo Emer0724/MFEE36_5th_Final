@@ -9,7 +9,8 @@ const style1 = {
   borderRadius:"8px",
   width:"500px",
   height:"550px",
-  padding:"20px"
+  padding:"20px",
+  border:"1px solid #52796F"
 }
 const style2 = {
   display:"flex",

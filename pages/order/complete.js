@@ -18,14 +18,14 @@ const style2 = {
 }
 
 export default function complete() {
-    const waterlist = Math.floor(Math.random*(1000000-1)+1)
+    const waterlist = Math.floor(Math.random()*(9999999-1000000))+1000000
   return (
     <>
         <NavBar1/>
         <OrderState/>
         <div style={style2}>
             <CartTitle titlecontent={"訂單已完成 等候5-7個工作天幫您送達 感謝您的支持"}/>
-            <CartTitle titlecontent={`#${waterlist}`}/>
+            <CartTitle titlecontent={`訂單編號#${waterlist}`}/>
             <div style={style1}>
                 <DeepButton DeepButtoncontent={"訂單查詢"}/>
                 <DeepButton DeepButtoncontent={"返回商城"}/>

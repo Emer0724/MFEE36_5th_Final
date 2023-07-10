@@ -21,10 +21,12 @@
 }
 .OrderStateText{
     font-size: var(--txp16);
+    color: var(--color2);
 }
 .OrderStateblock{
     display: flex;
     align-items: center;
+    margin-right: 10px;
 }
 .OrderStateArrow{
     padding: 0 21px 53px 21px;
