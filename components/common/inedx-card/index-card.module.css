@@ -1,0 +1,63 @@
+.card_text{
+    width: 150px;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    padding-top:10px ;
+    border-top: 1px dashed var(--bgc5);
+    margin-top: 10px;
+  
+}
+.card_text_sm{
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 2px;
+    color: var(--bgc5) ;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.card_text_dot{
+color: var(--bgc5) ;
+}
+.card_all{
+    padding: 15px;
+    width: 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 3px 4px 4px 0px rgba(0, 0, 0, 0.10);
+    border-radius: 15px;
+    background-color: white;
+
+}
+.card_text_sm_thin{
+    width: 24px;
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 2px;
+    color: var(--bgc5) ;
+    
+}
+.card_text_sm_thin_1{
+    width: 24px;
+    font-size: 8px;
+    text-align: center;
+    letter-spacing: 2px;
+    color: var(--bgc5) ;
+    margin-top: 10px;
+    
+}
+.card_all_thin{
+    width:58px;
+    padding: 10px 15px;
+    box-shadow: 3px 4px 4px 0px rgba(0, 0, 0, 0.10);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    background-color: white;
+
+}

@@ -1,3 +1,71 @@
+.used-index-img{
+  width: 400px;
+  height: 500px;
+  background:url('/used-img/used-img.jpg');
+  background-size: cover;
+}
+.used-index-big-text{
+  width: 70px;
+  line-height:100px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.used-index-icon{
+  width: 130px;
+  height:  130px;
+}
+.used-index-circle{
+  width:300px;height:300px; /*正圓形，所以寬與高都設一樣*/
+
+border-radius:999em;
+
+border:3px solid white;
+position: relative;
+
+}
+.used-index-circle-number{
+  color: var(--color4);
+font-size: 96px;
+font-weight: 600;
+position: absolute;
+top: 70px;
+left: 10px;
+}
+.used-index-circle-img{
+  position: absolute;
+top: 20px;
+left: 80px;
+
+}
+.used-index-circle-text1{
+  position: absolute;
+  top: 170px;
+  left: 80px;
+}
+.used-index-circle-text2{
+  position: absolute;
+  width: 190px;
+  top:220px;
+  left: 60px;
+ text-align: center;
+}
+
+.used-index-Accordion-pre{
+  white-space: pre-line;
+}
+.used-accordion-item{
+  border-bottom:2px solid black ;
+}
+.index_index_hidden{
+width: 100vw;
+overflow: hidden;
+/* white-space: nowrap; */
+overflow-x: auto;
+height: 100%;
+}
+
+
+
 @media screen and (max-width: 767.98px) {
     .used-display-member{
       margin-top: 30px;

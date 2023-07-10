@@ -2,7 +2,6 @@ import React from 'react'
 import { useState } from 'react'
 import MemberNav from '@/components/common/member-nav/member-nav'
 
-
 const books = {
   ISBN: 9789861371955,
   book_name: '被討厭的勇氣：自我啟發之父「阿德勒」的教導',
@@ -49,7 +48,7 @@ export default function Display() {
                 style={{
                   width: 190,
                   height: 190,
-                  background: `url('/img/${book.img}')`,
+                  background: `url('/used-img/${book.img}')`,
                   backgroundSize: 'contain',
                 }}
               ></div>
@@ -64,12 +63,12 @@ export default function Display() {
                   出版社: {book.publish}
                 </h6>
               </div>
-              {/*---book-serch  end*/ }
+              {/*---book-serch  end*/}
             </div>
           </div>
           <div className="col-12 col-lg-6 border-start border-black used-display-member ">
             <div className="d-flex justify-content-center   ">
-              <div  >
+              <div>
                 {/* //member-info */}
                 <div className="d-flex flex-column w-100   ">
                   <div className="textp-20px fw-bold letter-spacing mb-5 mt-3  ">
