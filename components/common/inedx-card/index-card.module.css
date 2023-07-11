@@ -61,3 +61,31 @@ color: var(--bgc5) ;
     background-color: white;
 
 }
+.card_all_thin_tilt{
+    width:58px;
+    padding: 10px 15px;
+    box-shadow: 3px 4px 4px 0px rgba(0, 0, 0, 0.10);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    background-color: white;
+    transform:rotate(-20deg)
+
+}
+.card_all:hover{
+    transition:all 1s;  
+    transform: translate(0px, 5px); 
+}
+.card_all_thin:hover{
+    transition:all 1s;  
+    transform: translate(0px, 5px);
+}
+.card_all_thin_tilt:hover{
+    transform:rotate(0deg);
+    transform: translate(40px, 5px);
+    transition:all 1s
+}
+.index_book_card_text{
+    text-decoration: none;
+}

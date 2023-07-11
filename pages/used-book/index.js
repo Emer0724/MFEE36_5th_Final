@@ -18,15 +18,15 @@ export default function UsedBook() {
         <Navbar />
         <div className="container-fliud">
           {/* section1 */}
-          <div className="d-flex justify-content-center ">
-            <div className="d-flex ">
+          <div className="d-flex justify-content-center used-index-rwd-section1 ">
+            <div className="d-flex used-index-rwd-section1-text  ">
               <div className="used-index-img"></div>
               <div className="textp-40px fw-bold used-index-big-text color-tx-3  ">
                 關於二手書
               </div>
             </div>
-            <div className="w-50 mx-5 px-5  d-flex flex-column justify-content-center">
-              <div className="d-flex  w-100 border-bottom border-dark-subtle border-5 ">
+            <div className="w-50 mx-5 px-5  d-flex flex-column justify-content-center used-index-rwd-section1-item ">
+              <div className="d-flex  w-100 border-bottom border-dark-subtle border-5  used-index-rwd-section1-svg">
                 <Image src={book_1} className="used-index-icon" alt="book_1" />
                 <div className="d-flex flex-column justify-content-center mx-5 w-100">
                   <div className="textp-32px fw-bold letter-spacing">
@@ -43,7 +43,7 @@ export default function UsedBook() {
                   </div>
                 </div>
               </div>
-              <div className="d-flex  w-100 border-bottom border-dark-subtle border-5 mt-3 ">
+              <div className="d-flex  w-100 border-bottom border-dark-subtle border-5 mt-3 used-index-rwd-section1-svg ">
                 <Image src={book_2} className="used-index-icon " alt="book_2" />
                 <div className="d-flex flex-column justify-content-center mx-5 w-100">
                   <div className="textp-32px fw-bold letter-spacing">
@@ -61,7 +61,7 @@ export default function UsedBook() {
                   </div>
                 </div>
               </div>
-              <div className="d-flex  w-100 border-bottom border-dark-subtle border-5 mt-3 ">
+              <div className="d-flex  w-100 border-bottom border-dark-subtle border-5 mt-3 used-index-rwd-section1-svg">
                 <Image
                   src={book_3}
                   className="used-index-icon"
@@ -97,10 +97,12 @@ export default function UsedBook() {
           >
             簡易流程，幫舊書找新歸宿
           </div>
-          <div className="w-100 d-flex justify-content-center color-bg-6 py-5">
-            <div className="d-flex   justify-content-around w-75">
+          <div className="container-fliuid  color-bg-6 d-flex justify-content-center">
+            <div className="row d-flex justify-content-center">
+              {/* <div className=" w-100 d-flex justify-content-center color-bg-6 py-5"> */}
+              {/* <div className="d-flex   justify-content-around w-75"> */}
               {/*circle*/}
-              <div className="used-index-circle">
+              <div className="col-6 col-lg-3 used-index-circle mx-5 my-5">
                 <div className="used-index-circle-number">1</div>
                 <Image
                   alt="expertise.png"
@@ -118,7 +120,7 @@ export default function UsedBook() {
               </div>
               {/*circle---end*/}
               {/*circle*/}
-              <div className="used-index-circle">
+              <div className=" col-6 col-lg-3 used-index-circle mx-5 my-5">
                 <div className="used-index-circle-number">2</div>
                 <Image
                   alt="bar-code.png"
@@ -136,7 +138,7 @@ export default function UsedBook() {
               </div>
               {/*circle---end*/}
               {/*circle*/}
-              <div className="used-index-circle">
+              <div className=" col-6 col-lg-3 used-index-circle mx-5 my-5">
                 <div className="used-index-circle-number">3</div>
                 <Image
                   alt="close.png"
@@ -154,7 +156,7 @@ export default function UsedBook() {
               </div>
               {/*circle---end*/}
               {/*circle*/}
-              <div className="used-index-circle">
+              <div className=" col-6 col-lg-3 used-index-circle mx-5 my-5">
                 <div className="used-index-circle-number">4</div>
                 <Image
                   alt="success.png"
@@ -171,18 +173,20 @@ export default function UsedBook() {
                 </div>
               </div>
               {/*circle---end*/}
+              {/* </div> //這裡 */}
+              {/* </div>// */}
             </div>
           </div>
           {/*section2----end*/}
           {/*section3*/}
           <div
-            className="textp-28px fw-bold color-tx-5 ms-5 my-5 py-5 px-5 text-center"
+            className="textp-28px fw-bold color-tx-5 mx-5 my-5 py-5 px-5 text-center"
             id="process"
           >
             二手書疑難雜症看這裡
           </div>
           {/*手風琴*/}
-          <div className="w-100 d-flex justify-content-around mb-5">
+          <div className="w-100 d-flex justify-content-center mb-5">
             <div
               className="accordion accordion-flush w-75"
               id="accordionFlushExample"

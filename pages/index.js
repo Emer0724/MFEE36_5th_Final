@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import BigCard from '@/components/common/inedx-card/big-card'
 import ThinCard from '@/components/common/inedx-card/thin-card'
+import ThinCardTilt from '@/components/common/inedx-card/thin-card-tilt'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
 
@@ -19,11 +20,9 @@ export default function Home() {
       </Head>
       <div className="color-bg-7">
         <Navbar />
-        <div className="d-flex align-items-end w-100    ">
-          <div
-            className="index_index_hidden d-flex align-items-end"
-            style={{ width: '3000px' }}
-          >
+        {/* section1 */}
+        <div>
+          <div className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4 ">
             <BigCard />
             <ThinCard />
             <BigCard />
@@ -31,17 +30,49 @@ export default function Home() {
             <BigCard />
             <ThinCard />
             <BigCard />
-            <ThinCard />
+            <ThinCardTilt />
             <BigCard />
             <ThinCard />
             <BigCard />
             <ThinCard />
             <BigCard />
             <ThinCard />
+            <BigCard />
+            <ThinCardTilt />
+          </div>
+          <div className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4">
+            <BigCard />
+            <ThinCard />
+            <BigCard />
+            <ThinCard />
+            <BigCard />
+            <ThinCard />
+            <BigCard />
+            <ThinCardTilt />
+            <BigCard />
+            <ThinCard />
+            <BigCard />
+            <ThinCard />
+            <BigCard />
+            <ThinCardTilt />
             <BigCard />
             <ThinCard />
           </div>
         </div>
+        {/* section1---end */}
+        {/* section2 */}
+        <div className="d-flex justify-content-center ">
+          <div className="index_index_mask ">
+            <div className="index_index_circle">
+              <div className="index_index_circle_text">
+                讓塵封的 <br />
+                書再次被翻閱
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* section2---end */}
+
         <Footer />
       </div>
     </>
