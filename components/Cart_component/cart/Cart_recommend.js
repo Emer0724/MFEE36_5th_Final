@@ -5,7 +5,7 @@ import styles from "@/components/Cart_component/Cart/REBook.module.css"
 export default function Recommend() {
     const Rebook = ["黃衣國王","藍衣國王","紅衣主教","綠帽達人"]
   return (
-    <div>
+    <div className={styles.RebookDiv}>
       <div className={styles.RebookContain}>
           <h2>底下有喜歡的都可以一起買喔</h2>
      </div>

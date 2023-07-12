@@ -1,15 +1,91 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Table from 'react-bootstrap/Table';
-import CartPLhead from './cart_small/Cart_PLhead';
-import CartPLbody from './cart_small/Cart_PLbody';
+import Image from 'next/image'
+import Trash from "@/assets/Nav_Image/trashcan.svg"
+import styles from "@/components/Cart_component/cart/CartProductlist.module.css"
+import fake from "@/assets/Cart_Image/fake.svg"
 
-export default function CurtProduct({PLbodydisplay}) {
 
+
+export default function CurtProduct({display1}) {
+
+
+
+  const Countcut = {
+    textAlign: "center",
+    border: "1px solid black",
+    width:"10%",
+    backgroundColor: "var(--bgc7)",
+    display:display1
+  }
+  const Countplus = {
+    textAlign: "center",
+    border: "1px solid black",
+    width:"10%",
+    backgroundColor: "var(--bgc7)",
+    display:display1
+  }
+
+  const PLheader = ["產品","ISBN","價格","數量","小計","刪除"]
+  
+  
+const product = [
+        {Productname:"書不起",
+          ISBN:98997203,
+          img:123,
+          price:199,
+          count:1,
+        },
+       {  Productname:"書不起1",
+          ISBN:98997203,
+          img:123,
+          price:199,
+          count:1,
+        } ,
+        {Productname:"書不起2",
+          ISBN:98997203,
+          img:123,
+          price:199,
+          count:1,
+        },
+        {
+          Productname:"書不起3",
+          ISBN:98997203,
+          img:123,
+          price:199,
+          count:1,
+      }
+    ]
   return (
   <>
-    <Table>
-       <CartPLhead/>
-       <CartPLbody display1={PLbodydisplay} display2={PLbodydisplay}/>
+    <Table className={styles.tablecontain}>
+      <thead>
+        <tr>
+          {PLheader.map((v,i)=>{
+          return(   
+              <th key={i}  style={{textAlign: 'center'}}>{v}</th>
+              )
+          })}
+          </tr>  
+      </thead> 
+      <tbody>
+    {product.map((v,i)=>{
+        return(
+        <tr key={i} className={styles.Prodeucttr}>
+            <td className={styles.ProdeuctBlock}><Image src={fake} alt='icon'/>{v.Productname}</td>
+            <td className={styles.ProdeuctBlock}>{v.ISBN}</td>
+            <td className={styles.ProdeuctBlock}>{v.price}</td>
+            <td><div className={styles.CountBlock}>
+                  <button style={Countcut} className={styles.Countcut}>-</button>
+                  <div className={styles.Countvalue}>{v.count}</div>
+                  <button style={Countplus} className={styles.Countplus}>+</button>
+                </div>
+            </td>
+            <td className={styles.ProdeuctBlock}>{v.price*v.count}</td>
+            <td className={styles.ProdeuctBlock}><Image src={Trash} width={40} height={40} alt='icon'/></td>
+        </tr>)
+    })}
+    </tbody>
     </Table>
   </>
   )

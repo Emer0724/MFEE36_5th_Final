@@ -6,6 +6,9 @@ const blockstyle = {
     alignItems:"center",
     marginBottom:"100px",
 }
+const labelstyle = {
+  fontSize:"20px"
+}
 const selectstyle = {
     width:"350px",
     height:"60px",
@@ -16,7 +19,7 @@ const selectstyle = {
 export default function OrderFormrderSelect({selectmethod,option1,option2}) {
   return (
       <div style={blockstyle}>
-        <label>{selectmethod}</label>
+        <label style={labelstyle}>{selectmethod}</label>
         <select style={selectstyle}>
             <option>{option1}</option>
             <option>{option2}</option>

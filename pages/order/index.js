@@ -19,7 +19,7 @@ export default function checkout() {
         <CartTitle titlecontent={"選擇喜歡的寄送方式和付款方式吧"}/>
         <div style={checkoutcontain}>
           <OrderForm/>
-          <OrderTotalPrice btncontent={"下一步，確認商品"}/>
+          <OrderTotalPrice btncontent={"下一步，確認商品"} border1={"1px solid #52796F"}/>
         </div>
           
     </>

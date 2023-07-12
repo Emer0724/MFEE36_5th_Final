@@ -1,6 +1,8 @@
+.header{
+    width: 100%;
+    height:100%;
+}
 .HeaderNavbar{
-   width: 100%;
-   height:100%;
    display: flex;   
    align-items: center;
    justify-content: space-around;
@@ -33,8 +35,9 @@
     font-size: var(--txp28);
     font-weight: bolder;
     line-height:60px;
-    letter-spacing: 2px;
+    letter-spacing: 8px;
 }
+    
 .linktext{
     color:#666666;
     font-size: var(--txp16);
@@ -42,7 +45,9 @@
     opacity: 0.4;
     text-align: center;
     margin: 0;
+   
 }
+
 .navlink2{
     text-decoration: none;
     margin:auto;
@@ -57,11 +62,19 @@
     
 }
 @media(max-width:400px){
-    .navlinkdiv{
+    .HeaderNavbar{
+        display: flex;   
+        align-items: center;
+        justify-content: space-between;
+     }
+    .NavbarRoute{
         display: none;
     }
     .logoname{
         display: block;
         font-size: var(--txi16);
+        color: var(--color2);
+        font-weight:900;
+        margin-right:80px;
     }
 }

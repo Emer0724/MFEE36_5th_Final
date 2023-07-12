@@ -10,7 +10,7 @@ export default function OrderCheckout() {
     <>
       <NavBar1/>
       <OrderState/>
-      <CartTitle />
+      <CartTitle titlecontent={"付款完成後，就大功告成啦"} />
       <div>
         <OrderInput labelcontent={"卡號"} type={"number"}/>
         <OrderInput labelcontent={"日期"} type={"number"} />

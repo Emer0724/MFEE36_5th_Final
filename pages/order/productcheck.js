@@ -17,7 +17,7 @@ export default function productcheck() {
         <NavBar1/>
         <OrderState/>
         <CartTitle titlecontent={"再次確認商品後，前往付款吧"}/>
-        <CurtProduct PLbodydisplay={"none"}/>
+        <CurtProduct display1={"none"}/>
         <div style={style1}>
           <OrderTotalPrice btncontent={"下一步，前往付款"}/>
         </div>

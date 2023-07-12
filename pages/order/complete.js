@@ -18,7 +18,9 @@ const style2 = {
 }
 
 export default function complete() {
-    const waterlist = Math.floor(Math.random()*(9999999-1000000))+1000000
+    // const waterlist = Math.floor(Math.random()*(9999999-1000000)+1000000)
+    const random = Math.random()
+    const waterlist = Math.floor(random+1000000)
   return (
     <>
         <NavBar1/>
@@ -31,7 +33,6 @@ export default function complete() {
                 <DeepButton DeepButtoncontent={"返回商城"}/>
             </div>
         </div>
-        
     </>
   )
 }

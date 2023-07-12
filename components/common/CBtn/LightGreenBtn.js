@@ -10,10 +10,10 @@ const buttonStyle1 = {
   color: "#52796F",
 };
 
-export default function LightButton({ lightbtncontent, route }) {
+export default function LightButton({ lightbtncontent, route,props }) {
   return (
     <Link href={{route}}>
-      <button style={buttonStyle1}>{lightbtncontent}</button>
+      <button style={buttonStyle1} onClick={props}>{lightbtncontent}</button>
     </Link>
   );
 }

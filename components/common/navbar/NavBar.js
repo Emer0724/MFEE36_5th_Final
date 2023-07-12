@@ -13,11 +13,11 @@ export default function NavBar1() {
     const NavIcon =[Searchicon,Carticon,Membericon]
 
   return (
-    <div>
+    <div className={styles.Header}>
       <div className={styles.HeaderNavbar}>
-          <Link href="#" className={styles.logoimg}><Image src={logo} width={100} height={75}/></Link>
+          <Link href="#" className={styles.logoimg}><Image src={logo} width={150} height={100}  alt='icon'/></Link>
           <div className={styles.logoname}>
-            <h3 >BOOK書易</h3>
+            <h3>BOOK書易</h3>
           </div>
           <div className={styles.NavbarRoute}>
             {NavctName.map((v,i)=>{
@@ -33,7 +33,7 @@ export default function NavBar1() {
             {NavIcon.map((v,i)=>{
               return( 
                   <Link href="#" className={styles.navlink2} key={i}>
-                    <Image src={v} width={60} height={40}/>
+                    <Image src={v} width={60} height={40} alt='icon'/>
                   </Link>
               )})}
           </div>
