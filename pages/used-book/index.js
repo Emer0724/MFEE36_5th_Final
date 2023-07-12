@@ -108,8 +108,8 @@ export default function UsedBook() {
                   alt="expertise.png"
                   src="/used-img/expertise.png"
                   className="used-index-circle-img"
-                  width={155}
-                  height={155}
+                  width={150}
+                  height={150}
                 />
                 <div className="used-index-circle-text1 textp-32px letter-spacing fw-bold ">
                   會員認證
@@ -126,8 +126,8 @@ export default function UsedBook() {
                   alt="bar-code.png"
                   src="/used-img/bar-code.png"
                   className="used-index-circle-img"
-                  width={155}
-                  height={155}
+                  width={150}
+                  height={140}
                 />
                 <div className="used-index-circle-text1 textp-32px letter-spacing fw-bold ">
                   輸入ISBN
@@ -144,8 +144,8 @@ export default function UsedBook() {
                   alt="close.png"
                   src="/used-img/close.png"
                   className="used-index-circle-img"
-                  width={155}
-                  height={155}
+                  width={150}
+                  height={150}
                 />
                 <div className="used-index-circle-text1 textp-32px letter-spacing fw-bold ">
                   寄出二手書
@@ -162,8 +162,8 @@ export default function UsedBook() {
                   alt="success.png"
                   src="/used-img/success.png"
                   className="used-index-circle-img"
-                  width={155}
-                  height={155}
+                  width={150}
+                  height={150}
                 />
                 <div className="used-index-circle-text1 textp-32px letter-spacing fw-bold ">
                   兌換知音幣

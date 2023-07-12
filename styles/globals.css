@@ -9,6 +9,8 @@
   --bgc7:#eeeeee;
   --bgc8:#6cace0;
   --bgc9:#b9cac5;
+  --bgc10:#9A774E;
+  --bgc11:#84A98C;
 
    /* -color- */
   --color1:#132811;
@@ -20,6 +22,8 @@
   --color7:#eeeeee;
   --color8:#6cace0;
   --color9:#b9cac5;
+  --color10:#9A774E;
+  --color11:#84A98C;
 
 
 /* -font-size- */
@@ -50,16 +54,19 @@
 
 }
 /*-google font-*/
-@import 'https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&display=swap';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC&family=Roboto&display=swap');
+/* @import 'https://fonts.googleapis.com/css2?family=Roboto&display=swap'; */
 
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+
 }
 
 body {
-  font-family: 'Noto Serif TC', serif;
+  /* font-family: 'Noto Serif TC', serif; */
+  font-family:  'Noto Serif TC', serif,  sans-serif ,'Roboto'; 
   
  }
  main{

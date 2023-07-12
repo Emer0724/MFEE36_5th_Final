@@ -1,3 +1,4 @@
+'use client'
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
@@ -6,10 +7,26 @@ import ThinCard from '@/components/common/inedx-card/thin-card'
 import ThinCardTilt from '@/components/common/inedx-card/thin-card-tilt'
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
+import Link from 'next/link'
+import ReactPlayer from 'react-player/lazy'
+import { useEffect, useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const [myVideo, setMyVideo] = useState('')
+  useEffect(() => {
+    setMyVideo(
+      <ReactPlayer
+        playing={true}
+        volume={0}
+        width="100%"
+        height="100%"
+        url="/used-img/pexels-danik-prihodko-7430096 (1080p).mp4"
+        loop={true}
+      ></ReactPlayer>
+    )
+  }, [])
   return (
     <>
       <Head>
@@ -21,7 +38,7 @@ export default function Home() {
       <div className="color-bg-7">
         <Navbar />
         {/* section1 */}
-        <div>
+        <div className="container-fluid index-book-section">
           <div className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4 ">
             <BigCard />
             <ThinCard />
@@ -63,15 +80,52 @@ export default function Home() {
         {/* section2 */}
         <div className="d-flex justify-content-center ">
           <div className="index_index_mask ">
-            <div className="index_index_circle">
-              <div className="index_index_circle_text">
-                讓塵封的 <br />
-                書再次被翻閱
+            <Link href="/used-book">
+              <div className="index_index_circle">
+                <div className="index_index_circle_text">
+                  讓塵封的 <br />
+                  書再次被翻閱
+                </div>
+                <div className="index_index_circle_text-sm">
+                  關於二手書的二三事
+                </div>
+              </div>
+            </Link>
+          </div>
+        </div>
+        {/* section2---end */}
+        {/* section3 */}
+        <div className=" container-fluid py-5 ">
+          <div className="textp-40px color-tx-1 fw-bold text-center">
+            熱門書評
+          </div>
+        </div>
+        {/* section3---end */}
+        {/* section4 */}
+        <div className=" container-fluid py-5 ">
+          <div className="textp-40px color-tx-1 fw-bold text-center">
+            熱門作品
+          </div>
+        </div>
+        {/* section4---end */}
+        {/* section5 */}
+        <div className=" container-fluid py-5 d-flex  ">
+          <div className="index-index-video-container">
+            <div className="index-index-video">
+              {myVideo}
+              <div className="index-index-video-card"></div>
+              <div className="index-index-video-text d-flex flex-column justify-content-center align-items-center">
+                <div className=" textp-40px">關於我們</div>
+                <div>Book書易-延續書的意義</div>
+                <div>
+                  在Book思易，我們相信每本書都有其獨特的價值，我們專注於連結熱愛閱讀的人們。透過我們的網路二手書店平台，您可以輕鬆買賣書籍，更重要的是，我們提供交換服務，讓書本在閱讀愛好者之間流動。
+                  我們的平台擁有多元的書籍種類，從文學到科學，從歷史到藝術，滿足您的閱讀喜好和求知慾望。無論您是尋找絕版書，尋覓舊時回憶，或者是與其他書迷分享閱讀的喜悅，Book思易與您攜手同行，延續書的意義。加入我們的書友社群，一同享受閱讀的奇妙旅程
+                </div>
               </div>
             </div>
           </div>
         </div>
-        {/* section2---end */}
+        {/* section5---end */}
 
         <Footer />
       </div>

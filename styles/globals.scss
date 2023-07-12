@@ -132,17 +132,33 @@ $border-radius-lg: 15px;
   .border-radius-15px{
     border-radius: 15px
   }
-       
+ 
+  
+ /*-google font-*/
+@import 'https://fonts.googleapis.com/css2?family=Noto+Serif+TC&family=Roboto&display=swap';
+/* @import 'https://fonts.googleapis.com/css2?family=Roboto&display=swap'; */
 
-// google Noto Sans TC 字體
-@import 'https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&display=swap';
+// *{
+//   padding: 0;
+//   margin: 0;
+//   box-sizing: border-box;
+//   /* font-family: 'Noto Serif TC', serif,  sans-serif ,'Roboto';  */
+// }
 
-// 定義中文字體用
-body {
- font-family: 'Noto Serif TC', serif;
+// body {
+//   font-family: 'Noto Serif TC', serif;
+//   /* font-family:  'Noto Serif TC', serif,  sans-serif ,'Roboto';  */
+  
+//  }
+//  main{
+//   padding-left:5rem ;
+//   padding-right: 5rem;
+//  }
 
-}
-main{
-  padding-left:5rem ;
-  padding-right: 5rem;
- }
+//  @media screen and (max-width:700px) {
+//   main{
+//     padding-left:2rem ;
+//     padding-right: 2rem;
+//    }
+//  }
+

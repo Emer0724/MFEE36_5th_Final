@@ -84,7 +84,9 @@ color: var(--bgc5) ;
 .card_all_thin_tilt:hover{
     transform:rotate(0deg);
     transform: translate(40px, 5px);
-    transition:all 1s
+    transition:all 1s;
+   
+    
 }
 .index_book_card_text{
     text-decoration: none;
