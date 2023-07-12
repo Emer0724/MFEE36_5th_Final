@@ -1,0 +1,31 @@
+.tablecontain{
+    width: 50%;
+}
+.CountBlock{
+ display: flex;
+ justify-content: center;
+ 
+}
+
+.Countvalue{
+    text-align: center;
+    border: 1px solid black;
+    width: 60px;
+}
+
+.ProdeuctBlock{
+    text-align: center;
+   padding: 25px;
+}
+.Prodeucttr{
+    vertical-align: middle;
+}
+@media (max-width:400px) {
+    .Countcut{
+        width: 30%;
+    }
+    .Countplus{
+        width: 30%;
+    }
+    
+}
