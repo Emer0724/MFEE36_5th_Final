@@ -1,0 +1,24 @@
+.PopUpcontain{
+    max-width: 300px;
+    max-height:480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    box-shadow: 2px 2px 8px 1px rgba(0,0,0,.2);
+    margin:auto
+}
+.PopUpBtnGroup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.PopUpstyleh1{
+    color: var(--color2);
+    font-size: var(--txp28);
+}
+.PopUpstyleh2{
+    color: var(--color2);
+    font-size: var(--txp16);
+}

@@ -1,0 +1,80 @@
+.header{
+    width: 100%;
+    height:100%;
+}
+.HeaderNavbar{
+   display: flex;   
+   align-items: center;
+   justify-content: space-around;
+   padding-top: 10px;
+}
+.logoname{
+    display: none;
+}
+.NavbarRoute{
+    display: flex;
+    list-style: none;
+    width: 60%;
+}
+.navlinkdiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+   height:100%;
+    transition: all 0.5s ease-in;
+}
+.navlinkdiv:hover{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.navlink1{
+    text-decoration: none;
+    text-align: center;
+    color: #132811;
+    font-size: var(--txp28);
+    font-weight: bolder;
+    line-height:60px;
+    letter-spacing: 8px;
+}
+    
+.linktext{
+    color:#666666;
+    font-size: var(--txp16);
+    font-weight: bolder;
+    opacity: 0.4;
+    text-align: center;
+    margin: 0;
+   
+}
+
+.navlink2{
+    text-decoration: none;
+    margin:auto;
+  
+}
+.Icongroup{  
+    width: 10%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+@media(max-width:400px){
+    .HeaderNavbar{
+        display: flex;   
+        align-items: center;
+        justify-content: space-between;
+     }
+    .NavbarRoute{
+        display: none;
+    }
+    .logoname{
+        display: block;
+        font-size: var(--txi16);
+        color: var(--color2);
+        font-weight:900;
+        margin-right:80px;
+    }
+}

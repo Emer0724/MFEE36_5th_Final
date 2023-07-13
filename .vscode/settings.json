@@ -1,7 +1,7 @@
 {
     "workbench.colorCustomizations": {
-        "activityBar.background": "#332C2D",
-        "titleBar.activeBackground": "#483D3F",
+        "activityBar.background": "#00106b",
+        "titleBar.activeBackground": "#163ea5",
         "titleBar.activeForeground": "#FBFAFA"
     },
     // 啟用 emmet  

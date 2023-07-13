@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react'
 import Swiper from 'swiper'
 import { FreeMode, Pagination } from 'swiper/modules'
 
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [myVideo, setMyVideo] = useState('')
