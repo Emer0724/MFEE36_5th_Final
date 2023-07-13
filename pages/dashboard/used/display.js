@@ -23,7 +23,7 @@ export default function Display() {
     <>
       <MemberNav />
 
-      <div className="container-fliuid mt-3 ">
+      <div className="container-fliuid mt-3  ">
         <div className="row">
           <div className="col-12  col-lg-6 d-flex align-items-center ">
             <div className="d-flex flex-column align-items-center w-100   ">
@@ -107,6 +107,7 @@ export default function Display() {
           <button className="btn color-bg-2 color-tx-7 fw-bold border-radius-5px  letter-spacing">
             我要上架
           </button>
+          <div className="used_rwd_botton"></div>
         </div>
       </div>
     </>

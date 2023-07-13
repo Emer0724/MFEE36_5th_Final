@@ -121,8 +121,8 @@ video{
   top: 200px;
   left: 300px;
   z-index: 0.5;
-  opacity: 0.7;
-  box-shadow: 2px 2px 0.5 black;
+  opacity: 0.9;
+  box-shadow: -30px 30px 0 rgb(91, 91, 91);
 }
 .index-index-video-container{
   margin-left:20% ;
@@ -133,10 +133,23 @@ video{
   left: 300px;
   top: -200px;
   width: 900px;
-  background-color: aqua;
+  height: 400px;
+ 
+  
+}
+.index-index-video-text-sm{
+  text-indent: 2em;
+  line-height: 35px;
 }
 
+/* swiper */
 
+.swiper {
+  width: 100%;
+  height: 120%;
+}
+
+/* swiper */
 
 
 
@@ -191,6 +204,19 @@ video{
     .used-index-rwd-section1-svg{
       justify-content: center;
       align-items: center;
+    }
+    .used_rwd_botton{
+      height: 100px;
+    }
+    .used-index-icon{
+      width: 100px;
+      width: 100px;
+    }
+    .used-index-text1-big{
+      font-size:var(--txi24) ;
+    }
+    .used-index-text1-sm{
+      font-size:var(--txi16) ;
     }
      
    }

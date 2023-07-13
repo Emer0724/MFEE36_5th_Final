@@ -1,5 +1,6 @@
 import React from 'react'
-import Navbar from '@/components/layout/navbar'
+import NavBar1 from '@/components/common/navbar/NavBar'
+import UnderNavbar from '@/components/common/navbar/Under_navbar'
 import Footer from '@/components/layout/footer'
 import Image from 'next/image'
 import book_1 from '@/assets/used-svg/book_1.svg'
@@ -15,8 +16,8 @@ export default function UsedBook() {
           backgroundColor: '#EEEEEE',
         }}
       >
-        <Navbar />
-        <div className="container-fliud">
+        <NavBar1 />
+        <div className="container-fliud pt-5 mt-5">
           {/* section1 */}
           <div className="d-flex justify-content-center used-index-rwd-section1 ">
             <div className="d-flex used-index-rwd-section1-text  ">
@@ -28,15 +29,15 @@ export default function UsedBook() {
             <div className="w-50 mx-5 px-5  d-flex flex-column justify-content-center used-index-rwd-section1-item ">
               <div className="d-flex  w-100 border-bottom border-dark-subtle border-5  used-index-rwd-section1-svg">
                 <Image src={book_1} className="used-index-icon" alt="book_1" />
-                <div className="d-flex flex-column justify-content-center mx-5 w-100">
-                  <div className="textp-32px fw-bold letter-spacing">
+                <div className="d-flex flex-column justify-content-center mx-4 w-100">
+                  <div className="textp-32px fw-bold letter-spacing used-index-text1-big">
                     買二手書
                   </div>
-                  <div className="textp-20px fw-bold mt-1 letter-spacing">
+                  <div className="textp-20px fw-bold mt-1 letter-spacing used-index-text1-sm">
                     統一書況評級、管理，確認書的品質，請放心購買
                   </div>
 
-                  <div className="textp-16px fw-bold  mt-1 ms-auto letter-spacing ">
+                  <div className="textp-16px fw-bold  mt-1 ms-auto letter-spacing used-index-text1-sm ">
                     <Link href="#" className="color-tx-8">
                       進入商城
                     </Link>
@@ -45,15 +46,15 @@ export default function UsedBook() {
               </div>
               <div className="d-flex  w-100 border-bottom border-dark-subtle border-5 mt-3 used-index-rwd-section1-svg ">
                 <Image src={book_2} className="used-index-icon " alt="book_2" />
-                <div className="d-flex flex-column justify-content-center mx-5 w-100">
-                  <div className="textp-32px fw-bold letter-spacing">
+                <div className="d-flex flex-column justify-content-center mx-4 w-100">
+                  <div className="textp-32px fw-bold letter-spacing used-index-text1-big">
                     賣二手書
                   </div>
-                  <div className="textp-20px fw-bold mt-1 letter-spacing">
+                  <div className="textp-20px fw-bold mt-1 letter-spacing used-index-text1-sm">
                     簡易賣書流程，幫舊書找新家
                   </div>
 
-                  <div className="textp-16px fw-bold  mt-1 ms-auto letter-spacing ">
+                  <div className="textp-16px fw-bold  mt-1 ms-auto letter-spacing used-index-text1-sm ">
                     <Link href="#process" className="color-tx-8">
                       {' '}
                       看更多
@@ -67,15 +68,15 @@ export default function UsedBook() {
                   className="used-index-icon"
                   alt="book_3_test"
                 />
-                <div className="d-flex flex-column justify-content-center mx-5 w-100">
-                  <div className="textp-32px fw-bold letter-spacing">
+                <div className="d-flex flex-column justify-content-center mx-4 w-100">
+                  <div className="textp-32px fw-bold letter-spacing used-index-text1-big">
                     以書易書
                   </div>
-                  <div className="textp-20px fw-bold mt-1 letter-spacing">
+                  <div className="textp-20px fw-bold mt-1 letter-spacing used-index-text1-sm">
                     賣舊書換代幣，再購買書，一個書的循環。
                   </div>
 
-                  <div className="textp-16px fw-bold  mt-1 ms-auto letter-spacing ">
+                  <div className="textp-16px fw-bold  mt-1 ms-auto letter-spacing used-index-text1-sm ">
                     <Link href="#" className="color-tx-8">
                       看更多
                     </Link>
@@ -294,6 +295,8 @@ export default function UsedBook() {
             </div>
           </div>
         </div>
+        <div className="used_rwd_botton"></div>
+        <UnderNavbar />
         <Footer />
       </div>
     </>

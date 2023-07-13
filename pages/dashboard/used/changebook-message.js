@@ -11,7 +11,7 @@ const datas = [
     ISBN: 9789864016433,
     book_name: '作者不詳：推理作家的讀本 (上卷)(下卷）',
     book_state: 1,
-    price:'500'
+    price: '500',
   },
   { used_id: 2, ISBN: 9789577417039, book_name: '第三時效', book_state: 2 },
   {
@@ -19,14 +19,14 @@ const datas = [
     ISBN: 9786263565616,
     book_name: '二度遭到殺害的她',
     book_state: 3,
-    price:'500'
+    price: '500',
   },
   {
     used_id: 4,
     ISBN: 9786263565616,
     book_name: '二度遭到殺害的她',
     book_state: 4,
-    price:'500'
+    price: '500',
   },
 ]
 
@@ -62,7 +62,7 @@ export default function ChangebookMessage() {
           </thead>
           <tbody>
             {data.map((v, i) => {
-              const { used_id, ISBN, book_name, book_state,price } = v
+              const { used_id, ISBN, book_name, book_state, price } = v
               if (book_state === 1) {
                 //待確認
                 return (
@@ -86,7 +86,7 @@ export default function ChangebookMessage() {
                   />
                 )
               } else if (book_state === 3) {
-                 //退回
+                //退回
                 return (
                   <UsedTdReturn
                     key={used_id}
@@ -97,7 +97,7 @@ export default function ChangebookMessage() {
                   />
                 )
               } else if (book_state === 4) {
-                 //已兌換
+                //已兌換
                 return (
                   <UsedTdExchange
                     key={used_id}
@@ -112,6 +112,7 @@ export default function ChangebookMessage() {
             })}
           </tbody>
         </table>
+        <div className="used_rwd_botton"></div>
       </div>
     </>
   )

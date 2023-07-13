@@ -5,7 +5,7 @@ const book_info = {
   used_id: 18,
   ISBN: 9789861371955,
   book_name: '被討厭的勇氣：自我啟發之父「阿德勒」的教導',
-  status: '',
+  status: '良好',
   state: '2',
   price: '',
   img: 'getImage.webp',
@@ -41,7 +41,7 @@ export default function Usedid() {
               style={{
                 width: 200,
                 height: 200,
-                background: `url('/used-book/${bookInfo.img}')`,
+                background: `url('/used-img/${bookInfo.img}')`,
                 backgroundSize: 'contain',
               }}
             ></div>
@@ -106,6 +106,7 @@ export default function Usedid() {
           </div> */}
           </div>
         </div>
+        <div className="used_rwd_botton"></div>
       </div>
     </>
   )
