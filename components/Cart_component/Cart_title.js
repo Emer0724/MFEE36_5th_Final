@@ -7,10 +7,13 @@ const CartHeaderstyle1 = {
     letterSpacing:"2px",
     fontWeight:"bolder"
   }
+const CartHeader = {
+  width:"100%"
+  }
 
 export default function CartTitle({titlecontent}) {
   return (
-    <div>
+    <div style={CartHeader}>
         <h3 style={CartHeaderstyle1}>{titlecontent}</h3>
     </div>
   )

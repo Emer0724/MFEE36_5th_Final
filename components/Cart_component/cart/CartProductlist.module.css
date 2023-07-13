@@ -1,5 +1,8 @@
+.CProductlist1{
+    display: none;
+}
 .tablecontain{
-    width: 50%;
+    width: 100%;
 }
 .CountBlock{
  display: flex;
@@ -15,17 +18,59 @@
 
 .ProdeuctBlock{
     text-align: center;
+    font-size: var(--txi24);
    padding: 25px;
 }
 .Prodeucttr{
     vertical-align: middle;
 }
 @media (max-width:400px) {
+    .CProductlist1{
+        display: flex;
+        justify-content: space-around;
+        border-top: 1px solid black;
+        padding: 20px 0;
+        gap: 40px;
+    }
+    .CProductlist2{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        gap: 30px;
+       
+        
+    }
+    .CProductlist3{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+       
+    }
+
+    .tablecontain{
+        display: none;
+    }
     .Countcut{
+        text-align: center;
+        border: 1px solid black;
         width: 30%;
+        background-color: var(--bgc7);
+        
     }
     .Countplus{
+        text-align: center;
+        border: 1px solid black;
         width: 30%;
+        background-color: var(--bgc7);
+    }
+    .Clisttext{
+        font-size: var(--txi16);
+    }
+    .CPtotaltext{
+        text-align: end;
     }
     
 }

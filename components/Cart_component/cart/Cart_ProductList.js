@@ -81,12 +81,39 @@ const product = [
                   <button style={Countplus} className={styles.Countplus}>+</button>
                 </div>
             </td>
-            <td className={styles.ProdeuctBlock}>{v.price*v.count}</td>
+            <td className={styles.ProdeuctBlock}>${v.price*v.count}</td>
             <td className={styles.ProdeuctBlock}><Image src={Trash} width={40} height={40} alt='icon'/></td>
         </tr>)
     })}
     </tbody>
     </Table>
+    {product.map((v,i)=>{
+        return(
+          <div>
+            <div className={styles.CProductlist1} key={i}>
+              <div><Image src={fake} alt='icon' width={100} height={80}/></div>
+              <div className={styles.CProductlist2}>
+                <h6 className={styles.Clisttext}>{v.Productname}</h6>
+                <h6 className={styles.Clisttext}>{v.ISBN}</h6>
+                <div className={styles.CountBlock}>
+                    <button  className={styles.Countcut}>-</button>
+                    <div className={styles.Countvalue}>{v.count}</div>
+                    <button  className={styles.Countplus}>+</button>
+                </div>
+              </div>
+              <div className={styles.CProductlist3}>
+                <Image src={Trash} width={30} height={30} alt='icon'/>
+                
+              </div>
+            </div>
+            <div className={styles.CPtotaltext}>
+              <p >${v.price*v.count}</p>
+            </div>
+          </div>
+
+        )
+    })}
+   
   </>
   )
 }
