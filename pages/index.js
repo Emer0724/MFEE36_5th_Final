@@ -10,6 +10,8 @@ import Footer from '@/components/layout/footer'
 import Link from 'next/link'
 import ReactPlayer from 'react-player/lazy'
 import { useEffect, useState } from 'react'
+import Swiper from 'swiper'
+import { FreeMode, Pagination } from 'swiper/modules'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -39,7 +41,28 @@ export default function Home() {
         <Navbar />
         {/* section1 */}
         <div className="container-fluid index-book-section">
-          <div className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4 ">
+          <Swiper
+            slidesPerView={3}
+            spaceBetween={30}
+            freeMode={true}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[FreeMode, Pagination]}
+            className="mySwiper"
+          >
+            <SwiperSlide>Slide 1</SwiperSlide>
+            <SwiperSlide>Slide 2</SwiperSlide>
+            <SwiperSlide>Slide 3</SwiperSlide>
+            <SwiperSlide>Slide 4</SwiperSlide>
+            <SwiperSlide>Slide 5</SwiperSlide>
+            <SwiperSlide>Slide 6</SwiperSlide>
+            <SwiperSlide>Slide 7</SwiperSlide>
+            <SwiperSlide>Slide 8</SwiperSlide>
+            <SwiperSlide>Slide 9</SwiperSlide>
+          </Swiper>
+
+          {/* <div className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4 ">
             <BigCard />
             <ThinCard />
             <BigCard />
@@ -74,7 +97,7 @@ export default function Home() {
             <ThinCardTilt />
             <BigCard />
             <ThinCard />
-          </div>
+          </div> */}
         </div>
         {/* section1---end */}
         {/* section2 */}
