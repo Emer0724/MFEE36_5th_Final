@@ -11,6 +11,14 @@ import Footer from '@/components/layout/footer'
 import Link from 'next/link'
 import ReactPlayer from 'react-player/lazy'
 import { useEffect, useState } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { FreeMode, Pagination } from 'swiper/modules';
+import 'swiper/css/scrollbar';
+import { Scrollbar } from 'swiper/modules';
+
+
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -41,42 +49,117 @@ export default function Home() {
         <NavBar1 />
         {/* section1 */}
         <div className="container-fluid index-book-section">
-          <div className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4 ">
-            <BigCard />
-            <ThinCard />
-            <BigCard />
-            <ThinCard />
-            <BigCard />
-            <ThinCard />
-            <BigCard />
-            <BigCard />
-            <BigCard />
-            <ThinCard />
-            <BigCard />
-            <ThinCard />
-            <BigCard />
-            <BigCard />
+        <Swiper
+          //  scrollbar={{
+          //   hide: true,
+          // }}
+          modules={[Scrollbar]}
+          loop={true}
+          className="mySwiper"
+      >
+        <SwiperSlide><div className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4 ">
+        
             <BigCard />
             <ThinCardTilt />
-          </div>
-          <div className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4">
-            <BigCard />
-            <ThinCard />
-            <BigCard />
-            <ThinCard />
-            <BigCard />
-            <ThinCard />
-            <BigCard />
-            <ThinCard />
-            <BigCard />
-            <ThinCard />
-            <BigCard />
             <ThinCard />
             <BigCard />
             <ThinCardTilt />
             <BigCard />
+            <ThinCardTilt />
+            <BigCard />
+           
+          </div></SwiperSlide>
+          <SwiperSlide><div className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4 ">
+        
+        <BigCard />
+        <ThinCardTilt />
+        <ThinCard />
+        <BigCard />
+        <ThinCardTilt />
+        <BigCard />
+        <ThinCardTilt />
+        <BigCard />
+       
+      </div></SwiperSlide>
+      <SwiperSlide><div className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4 ">
+        
+        <BigCard />
+        <ThinCardTilt />
+        <ThinCard />
+        <BigCard />
+        <ThinCardTilt />
+        <BigCard />
+        <ThinCardTilt />
+        <BigCard />
+       
+      </div></SwiperSlide>
+
+      </Swiper>
+      <Swiper
+          //  scrollbar={{
+          //   hide: true,
+          // }}
+          modules={[Scrollbar]}
+          loop={true}
+          className="mySwiper"
+      >
+        <SwiperSlide><div className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4 ">
+        
+            <BigCard />
+            <ThinCardTilt />
             <ThinCard />
-          </div>
+            <BigCard />
+            <ThinCardTilt />
+            <BigCard />
+            <ThinCardTilt />
+            <BigCard />
+           
+          </div></SwiperSlide>
+          <SwiperSlide><div className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4 ">
+        
+        <BigCard />
+        <ThinCardTilt />
+        <ThinCard />
+        <BigCard />
+        <ThinCardTilt />
+        <BigCard />
+        <ThinCardTilt />
+        <BigCard />
+       
+      </div></SwiperSlide>
+      <SwiperSlide><div className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4 ">
+        
+        <BigCard />
+        <ThinCardTilt />
+        <ThinCard />
+        <BigCard />
+        <ThinCardTilt />
+        <BigCard />
+        <ThinCardTilt />
+        <BigCard />
+       
+      </div></SwiperSlide>
+
+      </Swiper>
+       
+          {/* <div className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4">
+            <BigCard />
+            <ThinCard />
+            <BigCard />
+            <ThinCard />
+            <BigCard />
+            <ThinCard />
+            <BigCard />
+            <ThinCard />
+            <BigCard />
+            <ThinCard />
+            <BigCard />
+            <ThinCard />
+            <BigCard />
+            <ThinCardTilt />
+            <BigCard />
+            <ThinCard />
+          </div> */}
         </div>
         {/* section1---end */}
         {/* section2 */}
