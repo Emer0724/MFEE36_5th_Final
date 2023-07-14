@@ -4,7 +4,9 @@
         "titleBar.activeBackground": "#2CB52C",
         "titleBar.activeForeground": "#F4FCF4"
     },
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "emmet.includeLanguages": {  
+        "javascript":"javascriptreact"
+       },
     "prettier.configPath": ".prettierrc.json",
     "editor.formatOnSave": false,
     "editor.codeActionsOnSave": [

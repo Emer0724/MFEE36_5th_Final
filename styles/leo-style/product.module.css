@@ -1,5 +1,25 @@
+
 .box {
-    width: 1920px;
-    height: 647px;
-    border: 10px solid green;
-  }
+  max-width: 1200px;
+  max-height:100%;
+  border: 1px solid green;
+  padding:30px 60px;
+  background-color: #F0F0F0;
+}
+.title{
+  color: #203027;
+  font-weight: bold;
+}
+.para{
+  color: #203027;
+  font-weight: bold;
+}
+.shadow{
+  box-shadow: 0px 6px 40px 40px rgba(0, 0, 0, 0.4);
+}
+.top{
+  display: flex;
+  justify-content: center;
+  width: 1920px ;
+  margin: 0 auto;
+}
