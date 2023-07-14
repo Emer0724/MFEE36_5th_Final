@@ -1,0 +1,10 @@
+.box{
+width: 1626px;
+height: 1404px;
+}
+.c_row{
+border-bottom: 10px solid #000000;
+border-color: rgba(0, 0, 0, 0.55);
+margin-top: 60px !important; 
+padding-bottom:5px ;
+}

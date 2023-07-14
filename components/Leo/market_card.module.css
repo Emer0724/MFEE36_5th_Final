@@ -1,0 +1,17 @@
+.card{
+    transition: transform 0.4s ease;
+}
+.card:hover{
+    height: 170px;
+    width: 340px;
+}
+.extra{
+    display: none;
+}
+.card:hover .extra {
+    display: block;
+    background-color: white;
+}
+.no{
+    border: 0px,none !important;
+}

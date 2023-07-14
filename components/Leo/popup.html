@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .image-container {
+  position: relative;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  cursor: pointer;
+}
+
+.image-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 348px;
+  height: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.image-popup img {
+  width: 100%;
+  height: auto;
+}
+
+.image-container:hover .image-overlay {
+  opacity: 1;
+}
+
+.image-container:hover .image-popup {
+  opacity: 1;
+  pointer-events: auto;
+}
+.s-img{
+  width: 170px;
+  height: 170px;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="./心流.webp" alt="Your Image" class="s-img">
+        <div class="image-overlay">
+          <div class="image-popup">
+            <img src="./心流.webp" alt="Your Image" class="b-img">
+            <h1>123</h1>
+          </div>
+        </div>
+      </div>
+      <script>
+        // 可選：點擊彈出視窗外的區域時關閉視窗
+document.addEventListener('click', function (event) {
+  const target = event.target;
+  const imageContainer = document.querySelector('.image-container');
+
+  if (!imageContainer.contains(target)) {
+    const imagePopup = document.querySelector('.image-popup');
+    imagePopup.style.opacity = 0;
+    imagePopup.style.pointerEvents = 'none';
+  }
+});
+
+      </script>
+</body>
+</html>
