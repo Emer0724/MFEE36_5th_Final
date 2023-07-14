@@ -1,7 +1,6 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 'use client'
 import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
 import BigCard from '@/components/common/inedx-card/big-card'
 import ThinCard from '@/components/common/inedx-card/thin-card'
 import ThinCardTilt from '@/components/common/inedx-card/thin-card-tilt'
@@ -10,19 +9,14 @@ import UnderNavbar from '@/components/common/navbar/Under_navbar'
 import Footer from '@/components/layout/footer'
 import Link from 'next/link'
 import ReactPlayer from 'react-player/lazy'
-import { useEffect, useState } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { FreeMode, Pagination } from 'swiper/modules';
-import 'swiper/css/scrollbar';
-import { Scrollbar } from 'swiper/modules';
-
-
+import { useEffect, useState, useRef } from 'react'
 
 // const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const refscrollLeftTOP = useRef(null)
+  const refscrollLeftDown = useRef(null)
+  //處理影片部分
   const [myVideo, setMyVideo] = useState('')
   useEffect(() => {
     setMyVideo(
@@ -36,6 +30,52 @@ export default function Home() {
       ></ReactPlayer>
     )
   }, [])
+  //書本拉bar
+  const [isDown, setIsDown] = useState(false)
+  const [startX, setStartX] = useState('')
+  const [scrollLeft, setScrollLeft] = useState('')
+  const MouseDown = (e) => {
+    setIsDown(true)
+
+    setStartX(e.pageX) // if the slider has the margin left then we should correct it
+    setScrollLeft(refscrollLeftTOP.current.scrollLeft)
+
+    console.log(startX)
+    console.log(refscrollLeftTOP.current.scrollLeft)
+  }
+  const Mouseleave = () => {
+    setIsDown(false)
+  }
+  const MouseUp = () => {
+    setIsDown(false)
+  }
+  const MouseMove = (e) => {
+    if (!isDown) return
+    const walk = (e.pageX - startX) * 2
+    refscrollLeftTOP.current.scrollLeft = scrollLeft - walk
+  }
+  const MouseDown1 = (e) => {
+    setIsDown(true)
+
+    setStartX(e.pageX) // if the slider has the margin left then we should correct it
+
+    setScrollLeft(refscrollLeftDown.current.scrollLeft)
+
+    console.log(startX)
+    console.log(refscrollLeftDown.current.scrollLeft)
+  }
+  const Mouseleave1 = () => {
+    setIsDown(false)
+  }
+  const MouseUp1 = () => {
+    setIsDown(false)
+  }
+  const MouseMove1 = (e) => {
+    if (!isDown) return
+    const walk = (e.pageX - startX) * 2
+
+    refscrollLeftDown.current.scrollLeft = scrollLeft - walk
+  }
 
   return (
     <>
@@ -49,117 +89,46 @@ export default function Home() {
         <NavBar1 />
         {/* section1 */}
         <div className="container-fluid index-book-section">
-        <Swiper
-          //  scrollbar={{
-          //   hide: true,
-          // }}
-          modules={[Scrollbar]}
-          loop={true}
-          className="mySwiper"
-      >
-        <SwiperSlide><div className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4 ">
-        
-            <BigCard />
-            <ThinCardTilt />
-            <ThinCard />
-            <BigCard />
-            <ThinCardTilt />
-            <BigCard />
-            <ThinCardTilt />
-            <BigCard />
-           
-          </div></SwiperSlide>
-          <SwiperSlide><div className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4 ">
-        
-        <BigCard />
-        <ThinCardTilt />
-        <ThinCard />
-        <BigCard />
-        <ThinCardTilt />
-        <BigCard />
-        <ThinCardTilt />
-        <BigCard />
-       
-      </div></SwiperSlide>
-      <SwiperSlide><div className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4 ">
-        
-        <BigCard />
-        <ThinCardTilt />
-        <ThinCard />
-        <BigCard />
-        <ThinCardTilt />
-        <BigCard />
-        <ThinCardTilt />
-        <BigCard />
-       
-      </div></SwiperSlide>
-
-      </Swiper>
-      <Swiper
-          //  scrollbar={{
-          //   hide: true,
-          // }}
-          modules={[Scrollbar]}
-          loop={true}
-          className="mySwiper"
-      >
-        <SwiperSlide><div className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4 ">
-        
-            <BigCard />
-            <ThinCardTilt />
-            <ThinCard />
-            <BigCard />
-            <ThinCardTilt />
-            <BigCard />
-            <ThinCardTilt />
-            <BigCard />
-           
-          </div></SwiperSlide>
-          <SwiperSlide><div className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4 ">
-        
-        <BigCard />
-        <ThinCardTilt />
-        <ThinCard />
-        <BigCard />
-        <ThinCardTilt />
-        <BigCard />
-        <ThinCardTilt />
-        <BigCard />
-       
-      </div></SwiperSlide>
-      <SwiperSlide><div className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4 ">
-        
-        <BigCard />
-        <ThinCardTilt />
-        <ThinCard />
-        <BigCard />
-        <ThinCardTilt />
-        <BigCard />
-        <ThinCardTilt />
-        <BigCard />
-       
-      </div></SwiperSlide>
-
-      </Swiper>
-       
-          {/* <div className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4">
-            <BigCard />
-            <ThinCard />
-            <BigCard />
-            <ThinCard />
-            <BigCard />
-            <ThinCard />
-            <BigCard />
-            <ThinCard />
-            <BigCard />
-            <ThinCard />
-            <BigCard />
-            <ThinCard />
-            <BigCard />
-            <ThinCardTilt />
-            <BigCard />
-            <ThinCard />
-          </div> */}
+          <div
+            className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4 "
+            onMouseDown={(e) => MouseDown(e)}
+            onMouseleave={() => Mouseleave()}
+            onMouseUp={() => MouseUp()}
+            onMouseMove={(e) => MouseMove(e)}
+            ref={refscrollLeftTOP}
+          >
+            {Array(20)
+              .fill(1)
+              .map((v, i) => {
+                if (i % 5 === 0) {
+                  return <ThinCardTilt key={i} />
+                } else if (i % 3 === 0) {
+                  return <ThinCard key={i} />
+                } else {
+                  return <BigCard key={i} />
+                }
+              })}
+          </div>
+          <div
+            className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4 "
+            onMouseDown={(e) => MouseDown1(e)}
+            onMouseleave={() => Mouseleave1()}
+            onMouseUp={() => MouseUp1()}
+            onMouseMove={(e) => MouseMove1(e)}
+            ref={refscrollLeftDown}
+          >
+            {Array(20)
+              .fill(1)
+              .map((v, i) => {
+                if (i % 5 === 0) {
+                  return <ThinCardTilt key={i} />
+                } else if (i % 3 === 0) {
+                  return <ThinCard key={i} />
+                } else {
+                  return <BigCard key={i} />
+                }
+              })}
+          </div>
         </div>
         {/* section1---end */}
         {/* section2 */}
@@ -205,7 +174,7 @@ export default function Home() {
                   Book書易-延續書的意義
                 </div>
                 <div className=" textp-20px pt-3 index-index-video-text-sm ">
-                  在Book思易，我們相信每本書都有其獨特的價值，我們專注於連結熱愛閱讀的人們。透過我們的網路二手書店平台，您可以輕鬆買賣書籍，更重要的是，我們提供交換服務，讓書本在閱讀愛好者之間流動。
+                  在Book書易，我們相信每本書都有其獨特的價值，我們專注於連結熱愛閱讀的人們。透過我們的網路二手書店平台，您可以輕鬆買賣書籍，更重要的是，我們提供交換服務，讓書本在閱讀愛好者之間流動。
                   我們的平台擁有多元的書籍種類，從文學到科學，從歷史到藝術，滿足您的閱讀喜好和求知慾望。無論您是尋找絕版書，尋覓舊時回憶，或者是與其他書迷分享閱讀的喜悅，Book思易與您攜手同行，延續書的意義。加入我們的書友社群，一同享受閱讀的奇妙旅程
                 </div>
               </div>

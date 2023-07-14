@@ -63,11 +63,12 @@ left: 80px;
 width: 100%;
 overflow: hidden;
 /* white-space: nowrap; */
-overflow-x: auto;
+overflow-x: hidden;
 height: 100%;
 box-shadow: inset 0 -100px 0  var(--color5);
 padding: 0px;
 margin: 0px;
+user-select: none;
 }
 .index_index_circle{
   width: 30vw;
@@ -78,12 +79,14 @@ margin: 0px;
   position: relative;
 }
 .index_index_circle_text{
+ 
   font-size: 80px;
   color: var(--color2);
   text-align: center;
   position: absolute;
-  top:100px;
-  left:40px
+  top:15%;
+  width: 100%;
+  /* left:40px */
 }
 
 .index_index_circle_text-sm{
@@ -91,9 +94,10 @@ margin: 0px;
   color: var(--color5);
   text-align: center;
   position: absolute;
-  top:400px;
-  left:110px;
+  top:70%;
+
   letter-spacing: 10px;
+  width: 100%;
   
 }
 .index-book-section{
@@ -101,10 +105,10 @@ margin: 0px;
   margin: 0;
 }
 video{
-  width: 750px !important;
+  width: 50% !important;
   border-radius: 25% 10%;
   position: relative;
-  left: 10px;
+  left: 1%;
 
   
 }
@@ -114,12 +118,12 @@ video{
 }
 .index-index-video-card{
   position: absolute;
-  width: 900px;
+  width: 50%;
   height: 422px;
   background-color: #fff;
   border-radius: 25% 10%;
-  top: 200px;
-  left: 300px;
+  top: 15%;
+  left: 30%;
   z-index: 0.5;
   opacity: 0.9;
   box-shadow: -30px 30px 0 rgb(91, 91, 91);
@@ -130,9 +134,9 @@ video{
 .index-index-video-text{
   position: relative;
   z-index: 1;
-  left: 300px;
-  top: -200px;
-  width: 900px;
+  left: 450px;
+   top: -300px; 
+  width: 50%;
   height: 400px;
  
   
@@ -141,15 +145,19 @@ video{
   text-indent: 2em;
   line-height: 35px;
 }
-
-/* swiper */
-
-.swiper {
+.index_index_mask {
   width: 100%;
-  height: 120%;
+  display: flex;
+  justify-content: center;
 }
 
-/* swiper */
+
+
+
+
+
+
+
 
 
 
@@ -218,6 +226,29 @@ video{
     .used-index-text1-sm{
       font-size:var(--txi16) ;
     }
-     
+    .index_index_circle_text{
+      font-size:52px ;
+    }
+    .index_index_circle{
+      width: 90vw;
+      height: 90vw;
+    }
+    .index_index_circle_text-sm{
+      font-size:20px ;
+    }
+    .video{
+      width: 90% !important;
+    }
+    .index-index-video{
+    /* display: flex;
+    justify-content: center; */
+    width: 100%;
+    margin-left: 0;
+    }
+    .index-index-video-container{
+      margin-left: 0;
+    }
+  
+    
    }
 
