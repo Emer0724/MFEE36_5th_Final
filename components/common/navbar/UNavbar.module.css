@@ -15,7 +15,6 @@
         display: flex;
         justify-content: space-around;
         align-content: center;
-        
     }
     .rowdiv{
        display: flex;
@@ -34,7 +33,7 @@
     }
     .bookcontain{
         width: 80px;
-     background-color: var(--bgc6);
-     border-radius: 50%;
+        background-color: var(--bgc6);
+        border-radius: 50%;
     }
 }

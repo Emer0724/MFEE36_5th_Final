@@ -23,7 +23,6 @@ export default function complete() {
     const waterlist = Math.floor(random+1000000)
   return (
     <>
-        <NavBar1/>
         <OrderState/>
         <div style={style2}>
             <CartTitle titlecontent={"訂單已完成 等候5-7個工作天幫您送達 感謝您的支持"}/>

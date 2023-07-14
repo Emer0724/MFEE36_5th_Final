@@ -14,7 +14,6 @@ const checkoutcontain = {
 export default function checkout() {
   return (
     <>
-        <NavBar1/>
         <OrderState/>
         <CartTitle titlecontent={"選擇喜歡的寄送方式和付款方式吧"}/>
         <div style={checkoutcontain}>

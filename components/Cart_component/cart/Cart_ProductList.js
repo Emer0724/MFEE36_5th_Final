@@ -89,7 +89,7 @@ const product = [
     </Table>
     {product.map((v,i)=>{
         return(
-          <div>
+          <div className={styles.CProductlist}>
             <div className={styles.CProductlist1} key={i}>
               <div><Image src={fake} alt='icon' width={100} height={80}/></div>
               <div className={styles.CProductlist2}>

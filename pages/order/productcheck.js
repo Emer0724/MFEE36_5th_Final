@@ -14,7 +14,6 @@ const style1 ={
 export default function productcheck() {
   return (
     <div>
-        <NavBar1/>
         <OrderState/>
         <CartTitle titlecontent={"再次確認商品後，前往付款吧"}/>
         <CurtProduct display1={"none"}/>

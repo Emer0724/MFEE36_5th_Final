@@ -8,7 +8,6 @@ import React from 'react'
 export default function OrderCheckout() {
   return (
     <>
-      <NavBar1/>
       <OrderState/>
       <CartTitle titlecontent={"付款完成後，就大功告成啦"} />
       <div>
