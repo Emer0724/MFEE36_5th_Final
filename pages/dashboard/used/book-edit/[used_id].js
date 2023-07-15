@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import MemberNav from '@/components/common/member-nav/member-nav'
-import UsedInfoExchange from '@/components/used/chk-msg/usedid/used-info-exchange'
+import UsedInfoExchange from '@/components/used/usedid/used-info-exchange'
 const book_info = {
   used_id: 18,
   ISBN: 9789861371955,

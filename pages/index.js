@@ -11,7 +11,7 @@ import Link from 'next/link'
 import ReactPlayer from 'react-player/lazy'
 import { useEffect, useState, useRef } from 'react'
 
-// const inter = Inter({ subsets: ['latin'] })
+
 
 export default function Home() {
   const refscrollLeftTOP = useRef(null)
@@ -25,56 +25,62 @@ export default function Home() {
         volume={0}
         width="100%"
         height="100%"
-        url="/used-img/pexels-danik-prihodko-7430096 (1080p).mp4"
+        url="/used-img/5th_viedo.mp4"
         loop={true}
       ></ReactPlayer>
     )
   }, [])
   //書本拉bar
-  const [isDown, setIsDown] = useState(false)
-  const [startX, setStartX] = useState('')
-  const [scrollLeft, setScrollLeft] = useState('')
+  //是否執行
+  const [isDown1, setIsDown1] = useState(false)
+  const [isDown2, setIsDown2] = useState(false)
+  //起始位置
+  const [startX1, setStartX1] = useState('')
+  const [startX2, setStartX2] = useState('')
+  //要拉的距離
+  const [scrollLeft1, setScrollLeft1] = useState('')
+  const [scrollLeft2, setScrollLeft2] = useState('')
   const MouseDown = (e) => {
-    setIsDown(true)
+    setIsDown1(true)
 
-    setStartX(e.pageX) // if the slider has the margin left then we should correct it
-    setScrollLeft(refscrollLeftTOP.current.scrollLeft)
+    setStartX1(e.pageX) // if the slider has the margin left then we should correct it
+    setScrollLeft1(refscrollLeftTOP.current.scrollLeft)
 
-    console.log(startX)
+    console.log(startX1)
     console.log(refscrollLeftTOP.current.scrollLeft)
   }
   const Mouseleave = () => {
-    setIsDown(false)
+    setIsDown1(false)
   }
   const MouseUp = () => {
-    setIsDown(false)
+    setIsDown1(false)
   }
   const MouseMove = (e) => {
-    if (!isDown) return
-    const walk = (e.pageX - startX) * 2
-    refscrollLeftTOP.current.scrollLeft = scrollLeft - walk
+    if (!isDown1) return
+    const walk = (e.pageX - startX1) * 2
+    refscrollLeftTOP.current.scrollLeft = scrollLeft1 - walk
   }
   const MouseDown1 = (e) => {
-    setIsDown(true)
+    setIsDown2(true)
 
-    setStartX(e.pageX) // if the slider has the margin left then we should correct it
+    setStartX2(e.pageX) // if the slider has the margin left then we should correct it
 
-    setScrollLeft(refscrollLeftDown.current.scrollLeft)
+    setScrollLeft2(refscrollLeftDown.current.scrollLeft)
 
-    console.log(startX)
+    console.log(startX2)
     console.log(refscrollLeftDown.current.scrollLeft)
   }
   const Mouseleave1 = () => {
-    setIsDown(false)
+    setIsDown2(false)
   }
   const MouseUp1 = () => {
-    setIsDown(false)
+    setIsDown2(false)
   }
   const MouseMove1 = (e) => {
-    if (!isDown) return
-    const walk = (e.pageX - startX) * 2
+    if (!isDown2) return
+    const walk = (e.pageX - startX2) * 2
 
-    refscrollLeftDown.current.scrollLeft = scrollLeft - walk
+    refscrollLeftDown.current.scrollLeft = scrollLeft2 - walk
   }
 
   return (
@@ -86,11 +92,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="color-bg-7">
-        <NavBar1 />
+        <NavBar1  />
         {/* section1 */}
-        <div className="container-fluid index-book-section">
+        <div className="container-fluid index-book-section mt-5 ">
           <div
-            className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4 "
+            className="index_index_hidden d-flex align-items-end  pb-4 mt-4 "
             onMouseDown={(e) => MouseDown(e)}
             onMouseleave={() => Mouseleave()}
             onMouseUp={() => MouseUp()}
@@ -110,7 +116,7 @@ export default function Home() {
               })}
           </div>
           <div
-            className="index_index_hidden d-flex align-items-end pt-5 pb-4 mt-4 "
+            className="index_index_hidden d-flex align-items-end  pb-4 mt-5 "
             onMouseDown={(e) => MouseDown1(e)}
             onMouseleave={() => Mouseleave1()}
             onMouseUp={() => MouseUp1()}
@@ -163,25 +169,31 @@ export default function Home() {
         </div>
         {/* section4---end */}
         {/* section5 */}
-        <div className=" container-fluid py-5 d-flex  ">
+        <div className=" textp-40px color-tx-1 fw-bold text-center " id='aboutUs'>關於我們</div>
+        <div className=" container-fluid py-5 d-flex  " >
+       
           <div className="index-index-video-container">
             <div className="index-index-video">
               {myVideo}
-              <div className="index-index-video-card"></div>
-              <div className="index-index-video-text d-flex flex-column justify-content-center align-items-center px-5 ">
-                <div className=" textp-40px fw-bold">關於我們</div>
-                <div className=" textp-28px my-2 fw-bold">
+              <div className="index-index-video-card">
+              <div className=" d-flex flex-column justify-content-center align-items-center px-5 ">
+               
+                <div className=" textp-28px my-2 fw-bold color-tx-7 index-index-video-text-md letter-spacing ">
                   Book書易-延續書的意義
                 </div>
-                <div className=" textp-20px pt-3 index-index-video-text-sm ">
+                <div className=" textp-20px pt-3 index-index-video-text-sm color-tx-7 letter-spacing ">
                   在Book書易，我們相信每本書都有其獨特的價值，我們專注於連結熱愛閱讀的人們。透過我們的網路二手書店平台，您可以輕鬆買賣書籍，更重要的是，我們提供交換服務，讓書本在閱讀愛好者之間流動。
-                  我們的平台擁有多元的書籍種類，從文學到科學，從歷史到藝術，滿足您的閱讀喜好和求知慾望。無論您是尋找絕版書，尋覓舊時回憶，或者是與其他書迷分享閱讀的喜悅，Book思易與您攜手同行，延續書的意義。加入我們的書友社群，一同享受閱讀的奇妙旅程
+                  我們的平台擁有多元的書籍種類，從文學到科學，從歷史到藝術，滿足您的閱讀喜好和求知慾望。無論您是尋找絕版書，尋覓舊時回憶，或者是與其他書迷分享閱讀的喜悅，Book書易與您攜手同行，延續書的意義。加入我們的書友社群，一同享受閱讀的奇妙旅程
                 </div>
               </div>
+              </div>
+
             </div>
           </div>
         </div>
         {/* section5---end */}
+        {/*補高度*/}
+        <div className="used_index_botton"></div>
         <div className="used_rwd_botton"></div>
         <UnderNavbar />
         <Footer />
