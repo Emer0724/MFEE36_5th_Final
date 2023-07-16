@@ -62,7 +62,8 @@
   overflow: hidden;
   /* white-space: nowrap; */
   overflow-x: hidden;
-  height: 100%;
+  height: calc((100vh - 210px) / 2);
+  min-height: 100%;
   box-shadow: inset 0 -100px 0 var(--color5);
   padding: 0px;
   margin: 0px;
@@ -102,34 +103,52 @@
   margin: 0;
 }
 video {
- width: 65% !important;
-  border-radius: 25% 10%;
+  width: 50% !important;
+  /* border-radius: 25% 10%; */
   position: relative;
   left: 5%;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 .index-index-video {
   position: relative;
-    width: 100%;
-    /* display: flex;
+  width: 100%;
+  height: 105%;
+  /* display: flex;
     justify-content: center; */
-    /* left: 3%; */
+  /* left: 3%; */
 }
 .index-index-video-card {
   position: absolute;
   width: 40%;
-  height: auto;
+  height: 100%;
   /* background-color: rgba(143, 142, 142, 0.5); */
-  border-radius: 25% 10%;
-  top: 15%;
+  /* border-radius: 25% 10%; */
+  top: 0%;
   right: 5%;
-  z-index: 0.5;
+  /* z-index: 0.5; */
   /* opacity: 0.9; */
   /* box-shadow: -30px 30px 0 rgb(91, 91, 91); */
   display: flex;
-  padding: 20px; 
-  box-shadow: 20px 20px 0 rgba(91, 91, 91,0.7);
-  background-color: #3c3e3c;
+  padding: 20px;
+  /* box-shadow: -20px 20px 0 rgb(91, 91, 91);  */
+  background-color: #c2c2c2;
+
+}
+
+.index-index-video-card::before{
+  content: '';
+  transform: skewX(-10deg);
+  transform-origin: bottom right;
+  position: absolute;
+  width: 100px; /* 设置伪元素的宽度 */
+  height: 100%; /* 设置伪元素的高度 */
+  top: 0; /* 设置伪元素的顶部位置 */
+  left:-100px; /* 设置伪元素的右侧位置 */
+  background-color: #c2c2c2; 
+  /* box-shadow: -20px 20px 0 rgb(91, 91, 91);  */
+  overflow: hidden;
+  z-index: 2/*设置伪元素的背景颜色，便于看到效果*/
+
 }
 .index-index-video-container {
   display: flex;
@@ -140,6 +159,7 @@ video {
   text-indent: 2em;
   line-height: 35px;
 }
+
 .index_index_mask {
   width: 100%;
   display: flex;
@@ -149,7 +169,6 @@ video {
   height: 300px;
 }
 
-
 @media screen and (max-width: 1700px) {
   .index_index_circle_text {
     font-size: calc(40vw / 7);
@@ -158,36 +177,30 @@ video {
     width: 40vw;
     height: 40vw;
   }
-  video {
-    width: 80% !important;
+  .index-index-video-text-sm {
+    font-size: 16px;
+    line-height: 25px;
   }
-  .index-index-video-container {
-    display: flex;
-    margin-left: 0px;
-    justify-content: center;
+  .index-index-video-text-md {
+    font-size: 28px;
   }
-  .index-index-video  {
-    position: relative;
-    width: 100%;
-    right:5%;
-    /* display: flex;
-    justify-content: center; */
-  }
-  .index-index-video div  {
- 
-    display: flex;
-    justify-content: center;
-  }
-  .index-index-video-card{
-    width: 60%;
-    right:10px;
-    top: 60%;
-    box-shadow: 20px 20px 0 rgba(91, 91, 91,0.7);
-    background-color: #3c3e3c;
-  
-  }
-}
 
+  /* video {
+    width: 80% !important;
+  } */
+
+  /* .index-index-video div {
+    display: flex;
+    justify-content: center;
+  }
+  .index-index-video-card {
+    width: 60%;
+    right: 10px;
+    top: 60%;
+    box-shadow: 20px 20px 0 rgba(91, 91, 91, 0.7);
+    background-color: #3c3e3c;
+  } */
+}
 
 @media screen and (max-width: 1300px) {
   .index_index_circle_text {
@@ -197,6 +210,36 @@ video {
     width: 50vw;
     height: 50vw;
   }
+  video {
+    width: 90% !important;
+  }
+  .index-index-video {
+    /* display: flex;
+    justify-content: center; */
+    width: 100%;
+    margin-left: 0;
+  }
+  .index-index-video-container {
+    margin-left: 0;
+  }
+  .index-index-video-card {
+    width: 90%;
+   
+   top: auto;
+    height: auto;
+    padding: 20px;
+  }
+
+  .index-index-video-card::before{
+    display: none;
+  }
+  .index-index-video-text-sm {
+    font-size: 20px;
+  }
+  .index-index-video-text-md {
+    font-size: 32px;
+  }
+
 }
 
 @media screen and (max-width: 767.98px) {
@@ -252,7 +295,6 @@ video {
   }
   .used-index-icon {
     width: 100px;
-    width: 100px;
   }
   .used-index-text1-big {
     font-size: var(--txi24);
@@ -270,34 +312,16 @@ video {
   .index_index_circle_text-sm {
     font-size: 28px;
   }
-  video {
-    width: 90% !important;
+
+  .used-insex-s3-dflex {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
   }
-  .index-index-video {
-    /* display: flex;
-    justify-content: center; */
-    width: 100%;
-    margin-left: 0;
+  .index-index-video-text-sm {
+    font-size: 16px;
   }
-  .index-index-video-container {
-    margin-left: 0;
-  }
-  .index-index-video-card{
-    width: 100%;
-    left: 5%;
-     top: 120%; 
-    box-shadow: 10px 10px 0 rgb(91, 91, 91);
-    padding: 5px; 
-  }
-  .index-index-video-text-sm{
-font-size: 14px;
-  }
-  .index-index-video-text-md{
+  .index-index-video-text-md {
     font-size: 20px;
   }
-  .index-index-video-text-lg{
-    font-size: 32px;
-  }
-  
-
 }

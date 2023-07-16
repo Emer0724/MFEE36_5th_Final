@@ -7,6 +7,7 @@ import book_1 from '@/assets/used-svg/book_1.svg'
 import book_2 from '@/assets/used-svg/book_2.svg'
 import book_3 from '@/assets/used-svg/book_3.svg'
 import Link from 'next/link'
+import coin from '@/assets/used-svg/coin.svg'
 
 export default function UsedBook() {
   return (
@@ -77,7 +78,7 @@ export default function UsedBook() {
                   </div>
 
                   <div className="textp-16px fw-bold  mt-1 ms-auto letter-spacing used-index-text1-sm ">
-                    <Link href="#" className="color-tx-8">
+                    <Link href="#exchange" className="color-tx-8">
                       看更多
                     </Link>
                   </div>
@@ -93,7 +94,7 @@ export default function UsedBook() {
           </div>
           {/* section2 */}
           <div
-            className="textp-28px fw-bold color-tx-5 py-5  text-center color-bg-6"
+            className="textp-28px fw-bold color-tx-5 py-5  text-center color-bg-6 letter-spacing"
             id="process"
           >
             簡易流程，幫舊書找新歸宿
@@ -103,7 +104,7 @@ export default function UsedBook() {
               {/* <div className=" w-100 d-flex justify-content-center color-bg-6 py-5"> */}
               {/* <div className="d-flex   justify-content-around w-75"> */}
               {/*circle*/}
-              <div className="col-6 col-lg-3 used-index-circle mx-5 my-5">
+              <div className="col-6 col-lg-3 used-index-circle mx-4 my-5">
                 <div className="used-index-circle-number">1</div>
                 <Image
                   alt="expertise.png"
@@ -121,7 +122,7 @@ export default function UsedBook() {
               </div>
               {/*circle---end*/}
               {/*circle*/}
-              <div className=" col-6 col-lg-3 used-index-circle mx-5 my-5">
+              <div className=" col-6 col-lg-3 used-index-circle mx-4 my-5">
                 <div className="used-index-circle-number">2</div>
                 <Image
                   alt="bar-code.png"
@@ -139,7 +140,7 @@ export default function UsedBook() {
               </div>
               {/*circle---end*/}
               {/*circle*/}
-              <div className=" col-6 col-lg-3 used-index-circle mx-5 my-5">
+              <div className=" col-6 col-lg-3 used-index-circle mx-4 my-5">
                 <div className="used-index-circle-number">3</div>
                 <Image
                   alt="close.png"
@@ -157,7 +158,7 @@ export default function UsedBook() {
               </div>
               {/*circle---end*/}
               {/*circle*/}
-              <div className=" col-6 col-lg-3 used-index-circle mx-5 my-5">
+              <div className=" col-6 col-lg-3 used-index-circle mx-4 my-5">
                 <div className="used-index-circle-number">4</div>
                 <Image
                   alt="success.png"
@@ -179,15 +180,40 @@ export default function UsedBook() {
             </div>
           </div>
           {/*section2----end*/}
-          {/*section3*/}
-          <div
-            className="textp-28px fw-bold color-tx-5 mx-5 my-5 py-5 px-5 text-center"
+           {/*section3*/}
+           <div  className='pb-5 ' style={{backgroundColor:'#dcdbdbc2'}} id='exchange'>
+          <div className='px-5'>
+          <div  className="textp-28px fw-bold color-tx-5 mx-5  py-5 px-5 text-center letter-spacing">知音幣是什麼可以吃嗎?</div>
+          <div className='d-flex justify-content-center  used-insex-s3-dflex ' >
+          <Image
+                  alt="coin"
+                  src={coin}
+                  
+                  width={300}
+                  height={300}
+                />
+          <div className='d-flex  flex-column justify-content-center ps-5 '>
+            <div className='textp-20px mb-2'>知音幣雖然不可以吃，但可以買書!</div>
+            <div className='textp-20px mb-2'>家裡沉積已久的書，賣給我們換取知書幣，再來換購其他二手書。</div>
+            <div className='textp-20px mb-2'>知音幣就是一個以書易書的媒介，一個拿舊書換舊書的概念。</div>
+            <div className='textp-20px mb-2'>讓家裡的舊書，再度被閱讀，產生一個書循環。</div>
+            <div className='textp-20px mb-2'>心動了嗎?趕快來賺取你得知音幣吧!!</div>
+          </div>
+          </div>
+          </div>
+          
+          </div>
+           {/*section3---end*/}
+          {/*section4*/}
+        <div className=' pb-5'>
+        <div
+            className="textp-28px fw-bold color-tx-5 mx-5 my-5 py-3 px-5 text-center  letter-spacing "
             id="process"
           >
             二手書疑難雜症看這裡
           </div>
           {/*手風琴*/}
-          <div className="w-100 d-flex justify-content-center mb-5">
+          <div className="w-100 d-flex justify-content-center  ">
             <div
               className="accordion accordion-flush w-75"
               id="accordionFlushExample"
@@ -295,7 +321,10 @@ export default function UsedBook() {
             </div>
           </div>
         </div>
-        <div className="used_rwd_botton"></div>
+        
+         
+        </div>
+        <div className="used_rwd_botton color-bg-6 "></div>
         <UnderNavbar />
         <Footer />
       </div>

@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import MemberNav from '@/components/common/member-nav/member-nav'
 import UsedInfoExchange from '@/components/used/usedid/used-info-exchange'
+import Link from 'next/link'
 const book_info = {
   used_id: 18,
   ISBN: 9789861371955,
   book_name: '被討厭的勇氣：自我啟發之父「阿德勒」的教導',
-  status: '良好',
+  status: '',
   state: '2',
-  price: '',
+  price: '456',
   img: 'getImage.webp',
   updated: '20230708',
   node: '',
@@ -86,15 +87,20 @@ export default function Usedid() {
                 </button>
               </div>
             ) : (
+              <>
               <div className="d-flex  w-100  justify-content-center my-5 ">
                 <button className="btn color-bg-10 color-tx-1 fw-bold border-radius-5px  letter-spacing me-5">
                   確定兌換
                 </button>
                 <button className="btn color-bg-10 color-tx-1 fw-bold border-radius-5px  letter-spacing">
-                  取消兌換
+                  放棄兌換
                 </button>
               </div>
+              <div>如對書況評級有問題，請聯絡客服</div>
+              </>
             )}
+            <div className='d-flex  justify-content-center w-100 '><Link href='/dashboard/used/changebook-message' className='mt-3 color-tx-8 me-5 ' >回二手書列表</Link></div>
+            
             {/* <div className='d-flex  w-100  justify-content-center my-5 ' >
              
              <button className="btn color-bg-10 color-tx-1 fw-bold border-radius-5px  letter-spacing me-5">
