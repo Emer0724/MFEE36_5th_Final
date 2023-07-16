@@ -1,0 +1,14 @@
+.checkoutcontain{
+    display:"flex";
+    justify-content:"space-around";
+    align-items:"center";
+  }
+@media (max-width>400px) {
+    .checkoutcontain {
+        display:"flex";
+        flex-direction:"column";
+        justify-content:"space-around";
+        align-items:"center";
+        margin-bottom: 100px;
+      }
+}

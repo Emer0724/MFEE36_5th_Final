@@ -9,7 +9,6 @@
  justify-content: center;
  
 }
-
 .Countvalue{
     text-align: center;
     border: 1px solid black;
@@ -25,6 +24,9 @@
     vertical-align: middle;
 }
 @media (max-width:400px) {
+    .CProductlist{
+        display: block;
+    }
     .CProductlist1{
         display: flex;
         justify-content: space-around;

@@ -14,6 +14,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 34px;
+    gap:50px;
     margin:62px 0;
 }
 .CartTotalCouponPrice{
@@ -21,41 +23,29 @@
 }
 .CartTotalTitle{
     font-size: 40px;
-}
-.CartTotalPriceItem1{
-    font-size: 34px;
-    padding-right: 40px;
-    
-}
-.CartTotalPriceItem2{
-    font-size: 34px;
-    padding-left: 40px;
+    font-family: 400;
 }
 .CartTotalCouponPrice{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.CartTotalCoupontext1{
+    gap: 60px;
     font-size: 34px;
-    padding-right: 40px;
-}
-.CartTotalCoupontext2{
-    font-size: 34px;
-    padding-left: 75px;
-}
-.CartTotalBtngroup{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 62px;
-}
-.CartTotalBtnUse{
-    margin-right: 40px;
-}
-.CartTotalBtnGet{
-    margin-left: 40px;
 }
 .CartTotalBtnNext{
-    margin-bottom: 62px;
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+    gap:30px
+}
+
+@media (max-width:400px) {
+    .CartTotalContain{
+        border-top: 1px solid black;
+    }
+    .CartTotalTitle{
+        font-size: var(--txi28);
+    }
+    
 }
