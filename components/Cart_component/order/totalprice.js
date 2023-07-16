@@ -4,17 +4,21 @@ import { useState,useEffect } from 'react'
 
 export default function OrderTotalPrice({btncontent,border1}) {
   const [windowWidth ,setWindowWidth] = useState(null)
-   useEffect(()=>{
-    const ResizeHandle=()=>{
-      setWindowWidth({
-        width:innerWidth
-      })
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
     }
-    window.addEventListener('resize',ResizeHandle);
-    return()=>{
-      window.removeEventListener('resize',ResizeHandle)
+    if (typeof window !== 'undefined') {
+      setWindowWidth(window.innerWidth)
+      window.addEventListener('resize', handleResize)
     }
-   },[])
+
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', handleResize)
+      }
+    }
+  }, [])
 
   const style1 = {
     display:"flex",
@@ -22,18 +26,18 @@ export default function OrderTotalPrice({btncontent,border1}) {
     justifyContent:"space-around",
     alignItems:"center",
     borderRadius:"8px",
-    width: windowWidth>500?"500px":"100%",
-    height:"550px",
+    width: windowWidth && windowWidth > 600 ? '500px' : '100%',
+    height: '550px',
     padding:"20px",
     border:border1,
+    marginBottom:"60px"
   }
   const style2 = {
     display:"flex",
     justifyContent:"space-around",
-    alignItems:"center"
+    alignItems:"center",
+    gap:"90px"
   }
-  const style3 = {marginRight:"40px"}
-  const style4 = {marginLeft:"40px"}
   
   
   const subprice =["商品金額","貨運費用","折價卷","總金額"]
@@ -45,8 +49,8 @@ export default function OrderTotalPrice({btncontent,border1}) {
               const v2 = price[i]
               return(
                 <div style={style2} key={i}>
-                    <h3 style={style3}>{v}</h3>
-                    <h4 style={style4}>${v2}</h4>
+                    <h3 >{v}</h3>
+                    <h4 >${v2}</h4>
               </div>
             )
           })}
