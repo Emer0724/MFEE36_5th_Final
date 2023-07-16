@@ -7,24 +7,36 @@ import fake from "@/assets/Cart_Image/fake.svg"
 
 
 
-export default function CurtProduct({display1}) {
+export default function CurtProduct({setDisplay}) {
 
-
-
+  const [display,setDisplay] = useState('block')
+  
   const Countcut = {
     textAlign: "center",
     border: "1px solid black",
     width:"10%",
     backgroundColor: "var(--bgc7)",
-    display:display1
+    display:display
   }
   const Countplus = {
     textAlign: "center",
     border: "1px solid black",
     width:"10%",
     backgroundColor: "var(--bgc7)",
-    display:display1
+    display:display
   }
+  const Countcut1={
+    textAlign: "center",
+    border: "1px solid black",
+    width:"30%",
+    backgroundColor: "var(--bgc7)",
+}
+  const Countplus1={
+  textAlign: "center",
+  border: "1px solid black",
+  width:"30%",
+  backgroundColor: "var(--bgc7)",
+}
 
   const PLheader = ["產品","ISBN","價格","數量","小計","刪除"]
   
@@ -82,7 +94,7 @@ const product = [
                 </div>
             </td>
             <td className={styles.ProdeuctBlock}>${v.price*v.count}</td>
-            <td className={styles.ProdeuctBlock}><Image src={Trash} width={40} height={40} alt='icon'/></td>
+            <td className={styles.ProdeuctBlock}><button className={styles.trashbtn}><Image src={Trash} width={40} height={40} alt='icon'/></button></td>
         </tr>)
     })}
     </tbody>
@@ -102,8 +114,7 @@ const product = [
                 </div>
               </div>
               <div className={styles.CProductlist3}>
-                <Image src={Trash} width={30} height={30} alt='icon'/>
-                
+                <button className={styles.trashbtn}><Image src={Trash} width={30} height={30} alt='icon'/></button>
               </div>
             </div>
             <div className={styles.CPtotaltext}>

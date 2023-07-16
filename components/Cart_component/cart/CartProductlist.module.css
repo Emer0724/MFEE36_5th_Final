@@ -18,19 +18,24 @@
 .ProdeuctBlock{
     text-align: center;
     font-size: var(--txi24);
-   padding: 25px;
+    padding: 25px;
 }
 .Prodeucttr{
     vertical-align: middle;
 }
+.trashbtn{
+    border-style: none;
+    border-radius: 50%;
+}
 @media (max-width:400px) {
     .CProductlist{
         display: block;
+        border-bottom: 1px solid black;
     }
     .CProductlist1{
         display: flex;
         justify-content: space-around;
-        border-top: 1px solid black;
+        
         padding: 20px 0;
         gap: 40px;
     }
@@ -55,19 +60,7 @@
     .tablecontain{
         display: none;
     }
-    .Countcut{
-        text-align: center;
-        border: 1px solid black;
-        width: 30%;
-        background-color: var(--bgc7);
-        
-    }
-    .Countplus{
-        text-align: center;
-        border: 1px solid black;
-        width: 30%;
-        background-color: var(--bgc7);
-    }
+  
     .Clisttext{
         font-size: var(--txi16);
     }
