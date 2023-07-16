@@ -1,0 +1,13 @@
+.title{
+    border-bottom: 1px solid black;
+    padding: 20PX;
+}
+.content{
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: pre-wrap;
+    margin-top: 20px;
+}
+.p{
+    margin-top: 50px;
+}
