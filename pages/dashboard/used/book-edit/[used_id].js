@@ -88,19 +88,26 @@ export default function Usedid() {
               </div>
             ) : (
               <>
-              <div className="d-flex  w-100  justify-content-center my-5 ">
-                <button className="btn color-bg-10 color-tx-1 fw-bold border-radius-5px  letter-spacing me-5">
-                  確定兌換
-                </button>
-                <button className="btn color-bg-10 color-tx-1 fw-bold border-radius-5px  letter-spacing">
-                  放棄兌換
-                </button>
-              </div>
-              <div>如對書況評級有問題，請聯絡客服</div>
+                <div className="d-flex  w-100  justify-content-center my-5 ">
+                  <button className="btn color-bg-10 color-tx-1 fw-bold border-radius-5px  letter-spacing me-5">
+                    確定兌換
+                  </button>
+                  <button className="btn color-bg-10 color-tx-1 fw-bold border-radius-5px  letter-spacing">
+                    放棄兌換
+                  </button>
+                </div>
+                <div>如對書況評級有問題，請聯絡客服</div>
               </>
             )}
-            <div className='d-flex  justify-content-center w-100 '><Link href='/dashboard/used/changebook-message' className='mt-3 color-tx-8 me-5 ' >回二手書列表</Link></div>
-            
+            <div className="d-flex  justify-content-center w-100 ">
+              <Link
+                href="/dashboard/used/changebook-message"
+                className="mt-3 color-tx-8 me-5 "
+              >
+                回二手書列表
+              </Link>
+            </div>
+
             {/* <div className='d-flex  w-100  justify-content-center my-5 ' >
              
              <button className="btn color-bg-10 color-tx-1 fw-bold border-radius-5px  letter-spacing me-5">
