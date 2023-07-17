@@ -25,6 +25,7 @@
        padding-top: 10px;
     }
     .bookdiv{
+        width: 40px;
         display: flex;
         flex-direction: column;
         align-items: center;
