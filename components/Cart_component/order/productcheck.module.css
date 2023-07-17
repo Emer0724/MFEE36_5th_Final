@@ -1,0 +1,10 @@
+.checkconatin{
+    width:100%;
+    margin-bottom: 40px;
+}
+.checklist{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 40px;
+}
