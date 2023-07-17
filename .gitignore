@@ -40,4 +40,4 @@ yarn.lock
 /.temp/
 
 #mp4
-.mp4
+*.mp4

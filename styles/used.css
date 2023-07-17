@@ -131,7 +131,7 @@ video {
   display: flex;
   padding: 20px;
   /* box-shadow: -20px 20px 0 rgb(91, 91, 91);  */
-  background-color: #c2c2c2;
+  background-color: #747272;
 
 }
 
@@ -144,7 +144,7 @@ video {
   height: 100%; /* 设置伪元素的高度 */
   top: 0; /* 设置伪元素的顶部位置 */
   left:-100px; /* 设置伪元素的右侧位置 */
-  background-color: #c2c2c2; 
+  background-color: #747272; 
   /* box-shadow: -20px 20px 0 rgb(91, 91, 91);  */
   overflow: hidden;
   z-index: 2/*设置伪元素的背景颜色，便于看到效果*/
