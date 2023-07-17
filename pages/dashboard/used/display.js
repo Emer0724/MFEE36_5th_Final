@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import MemberNav from '@/components/common/member-nav/member-nav'
+import Member_info from '@/components/Leo/member/member_info'
+import MemberBreadcrumbs from '@/components/Leo/member/member_breadcrumbs'
 
 const books = {
   ISBN: 9789861371955,
@@ -21,7 +23,9 @@ export default function Display() {
   const [member, setMember] = useState(members)
   return (
     <>
+      <Member_info />
       <MemberNav />
+      <MemberBreadcrumbs />
 
       <div className="container-fliuid mt-3  ">
         <div className="row">

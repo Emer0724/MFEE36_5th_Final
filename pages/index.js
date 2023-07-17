@@ -10,6 +10,12 @@ import Footer from '@/components/layout/footer'
 import Link from 'next/link'
 import ReactPlayer from 'react-player/lazy'
 import { useEffect, useState, useRef } from 'react'
+import BlogHome from '@/components/blog/blog-home'
+import BookHome from '@/components/book-review/book-home'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Pagination } from 'swiper/modules'
 
 export default function Home() {
   const refscrollLeftTOP = useRef(null)
@@ -178,22 +184,100 @@ export default function Home() {
         </div>
         {/* section2---end */}
         {/* section3 */}
-        <div className=" container-fluid py-5 ">
-          <div className="textp-40px color-tx-1 fw-bold text-center">
+        <div className=" container-fluid py-4 color-bg-6 ">
+          <div className="textp-40px color-tx-1 fw-bold text-center my-5">
             熱門書評
+            <div className="my-5">
+              <Swiper
+                slidesPerView={windowWidth >= 700 ? 3 : 1}
+                spaceBetween={30}
+                // pagination={{
+                //   clickable: true,
+                // }}
+                modules={[Pagination]}
+                className="mySwiper"
+              >
+                <SwiperSlide>
+                  <BookHome />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <BookHome />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <BookHome />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <BookHome />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <BookHome />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <BookHome />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <BookHome />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <BookHome />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <BookHome />
+                </SwiperSlide>
+              </Swiper>
+            </div>
           </div>
         </div>
         {/* section3---end */}
         {/* section4 */}
         <div className=" container-fluid py-5 ">
-          <div className="textp-40px color-tx-1 fw-bold text-center">
+          <div className="textp-40px color-tx-1 fw-bold text-center mb-5">
             熱門作品
+          </div>
+          <div className="pb-5">
+            <Swiper
+              slidesPerView={windowWidth >= 700 ? 3 : 1}
+              spaceBetween={30}
+              // pagination={{
+              //   clickable: true,
+              // }}
+              modules={[Pagination]}
+              className="mySwiper"
+            >
+              <SwiperSlide>
+                <BlogHome />
+              </SwiperSlide>
+              <SwiperSlide>
+                <BlogHome />
+              </SwiperSlide>
+              <SwiperSlide>
+                <BlogHome />
+              </SwiperSlide>
+              <SwiperSlide>
+                <BlogHome />
+              </SwiperSlide>
+              <SwiperSlide>
+                <BlogHome />
+              </SwiperSlide>
+              <SwiperSlide>
+                <BlogHome />
+              </SwiperSlide>
+              <SwiperSlide>
+                <BlogHome />
+              </SwiperSlide>
+              <SwiperSlide>
+                <BlogHome />
+              </SwiperSlide>
+              <SwiperSlide>
+                <BlogHome />
+              </SwiperSlide>
+            </Swiper>
           </div>
         </div>
         {/* section4---end */}
         {/* section5 */}
         <div
-          className=" textp-40px color-tx-1 fw-bold text-center "
+          className=" textp-40px color-tx-1 fw-bold text-center index-index-aboutUs "
           id="aboutUs"
         >
           關於我們

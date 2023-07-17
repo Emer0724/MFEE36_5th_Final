@@ -1,7 +1,7 @@
-import Footer from './footer'
 import { useRouter } from 'next/router'
 import NavBar1 from '../common/navbar/NavBar'
 import UnderNavbar from '../common/navbar/Under_navbar'
+import Footer from '@/components/common/footer/footer'
 
 export default function DefaultLayout({ children }) {
   const router = useRouter()
