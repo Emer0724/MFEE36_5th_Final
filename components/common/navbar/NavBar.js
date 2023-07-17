@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '@/components/common/navbar/navbar.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -15,8 +15,14 @@ export default function NavBar1() {
   return (
     <div className={styles.Header}>
       <div className={styles.HeaderNavbar}>
-        <Link href="#" className={styles.logoimg}>
-          <Image src={logo} width={150} height={100} alt="icon" />
+        <Link href="#" className={styles.logolink}>
+          <Image
+            src={logo}
+            width={150}
+            height={100}
+            className={styles.logoimg}
+            alt="icon"
+          />
         </Link>
         <div className={styles.logoname}>
           <h3>BOOK書易</h3>
@@ -38,7 +44,13 @@ export default function NavBar1() {
           {NavIcon.map((v, i) => {
             return (
               <Link href="#" className={styles.navlink2} key={i}>
-                <Image src={v} width={60} height={40} alt="icon" />
+                <Image
+                  src={v}
+                  width={60}
+                  height={30}
+                  className={styles.Licon}
+                  alt="icon"
+                />
               </Link>
             )
           })}

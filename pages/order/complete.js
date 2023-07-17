@@ -1,38 +1,56 @@
 import CartTitle from '@/components/Cart_component/Cart_title'
 import OrderState from '@/components/Cart_component/order/order_state'
 import DeepButton from '@/components/common/CBtn/DeepgreenBtn'
-import NavBar1 from '@/components/common/navbar/NavBar'
-import React from 'react'
-const style1 = {
+import { useState,useEffect } from 'react'
+
+
+
+export default function complete() {
+    const [windowWidth ,setWindowWidth] = useState(null)
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    }
+    if (typeof window !== 'undefined') {
+      setWindowWidth(window.innerWidth)
+      window.addEventListener('resize', handleResize)
+    }
+
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', handleResize)
+      }
+    }
+  }, [])
+
+  const style1 = {
     display:"flex",
     justifyContent:"center",
     alignItems:"center",
     marginTop:"60px",
-    gap:"230px"
+    gap: windowWidth && windowWidth > 600 ?"230px":"80px",
 }
+
 const style2 = {
     display:"flex",
     flexDirection:"column",
     justifyContent:"center",
     alignItems:"center",
+    marginBottom: "100px"
 }
 
-export default function complete() {
-    // const waterlist = Math.floor(Math.random()*(9999999-1000000)+1000000)
-    const random = Math.random()
-    const waterlist = Math.floor(random+1000000)
+
   return (
     <>
-        <NavBar1/>
-        <OrderState/>
-        <div style={style2}>
-            <CartTitle titlecontent={"訂單已完成 等候5-7個工作天幫您送達 感謝您的支持"}/>
-            <CartTitle titlecontent={`訂單編號#${waterlist}`}/>
-            <div style={style1}>
-                <DeepButton DeepButtoncontent={"訂單查詢"}/>
-                <DeepButton DeepButtoncontent={"返回商城"}/>
-            </div>
-        </div>
+      <OrderState/>
+      <div style={style2}>
+          <CartTitle titlecontent={"訂單已完成 等候5-7個工作天幫您送達 感謝您的支持"}/>
+          <CartTitle titlecontent={`訂單編號#987654`}/>
+          <div style={style1}>
+              <DeepButton DeepButtoncontent={"訂單查詢"}/>
+              <DeepButton DeepButtoncontent={"返回商城"}/>
+          </div>
+      </div>
     </>
   )
 }

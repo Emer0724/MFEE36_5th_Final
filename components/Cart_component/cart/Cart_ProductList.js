@@ -5,25 +5,22 @@ import Trash from "@/assets/Nav_Image/trashcan.svg"
 import styles from "@/components/Cart_component/cart/CartProductlist.module.css"
 import fake from "@/assets/Cart_Image/fake.svg"
 
-
-
-export default function CurtProduct({display1}) {
-
-
-
+export default function CurtProduct() {
+  
   const Countcut = {
     textAlign: "center",
-    border: "1px solid black",
-    width:"10%",
+    border: "1px solid var(--color6)",
+    width:"30px",
     backgroundColor: "var(--bgc7)",
-    display:display1
+    borderRadius:"50%",
+    padding:"3px"
   }
   const Countplus = {
     textAlign: "center",
-    border: "1px solid black",
-    width:"10%",
+    border: "1px solid var(--color6)",
+    width:"30px",
     backgroundColor: "var(--bgc7)",
-    display:display1
+    borderRadius:"50%"
   }
 
   const PLheader = ["產品","ISBN","價格","數量","小計","刪除"]
@@ -63,7 +60,7 @@ const product = [
         <tr>
           {PLheader.map((v,i)=>{
           return(   
-              <th key={i}  style={{textAlign: 'center'}}>{v}</th>
+              <th key={i}  style={{textAlign:'center'}}>{v}</th>
               )
           })}
           </tr>  
@@ -82,14 +79,14 @@ const product = [
                 </div>
             </td>
             <td className={styles.ProdeuctBlock}>${v.price*v.count}</td>
-            <td className={styles.ProdeuctBlock}><Image src={Trash} width={40} height={40} alt='icon'/></td>
+            <td className={styles.ProdeuctBlock}><button className={styles.trashbtn}><Image src={Trash} width={40} height={40} alt='icon'/></button></td>
         </tr>)
     })}
     </tbody>
     </Table>
     {product.map((v,i)=>{
         return(
-          <div>
+          <div className={styles.CProductlist}>
             <div className={styles.CProductlist1} key={i}>
               <div><Image src={fake} alt='icon' width={100} height={80}/></div>
               <div className={styles.CProductlist2}>
@@ -102,8 +99,7 @@ const product = [
                 </div>
               </div>
               <div className={styles.CProductlist3}>
-                <Image src={Trash} width={30} height={30} alt='icon'/>
-                
+                <button className={styles.trashbtn}><Image src={Trash} width={30} height={30} alt='icon'/></button>
               </div>
             </div>
             <div className={styles.CPtotaltext}>
