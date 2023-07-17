@@ -35,20 +35,39 @@ export default function ProductCheck() {
       }
     ]
   return (
-    <div className={styles.checkcontain}>
-        {product.map((v,i)=>{
-            return(
-            <div key={i} className={styles.checkrow}>
-                <div className={styles.checklist}>
-                    <p className={styles.checkname}><Image src={fake} alt='icon'/>{v.Productname}</p>
-                    <p className={styles.checkisbn}>{v.ISBN}</p>
-                    <p className={styles.checkprice}>${v.price}</p>
-                    <p className={styles.checkcount}>{v.count}</p>
-                    <p className={styles.checktotal}>${v.price*v.count}</p>
-                </div>
-            </div>
-            )
-        })}
-    </div>
+    <>
+      <div className={styles.checkcontain}>
+          {product.map((v,i)=>{
+              return(
+              <div key={i} className={styles.checkrow}>
+                  <div className={styles.checklist}>
+                      <p className={styles.checkimg}><Image src={fake} alt='icon'/>{v.Productname}</p>
+                      <p className={styles.checkisbn}>{v.ISBN}</p>
+                      <p className={styles.checkprice}>${v.price}元</p>
+                      <p className={styles.checkcount}>{v.count}件</p>
+                      <p className={styles.checktotal}>${v.price*v.count}元</p>
+                  </div>
+              </div>
+              )
+          })}
+      </div>
+      <div className={styles.checkpc}>
+          {product.map((v,i)=>{
+              return(
+              <div key={i} className={styles.checkrow}>
+                  <div className={styles.checklist}>
+                      <p className={styles.checkimg}><Image src={fake} alt='icon'/></p>
+                      <div> 
+                        <p className={styles.checkname}>{v.Productname}</p>
+                        <p className={styles.checkisbn}>{v.ISBN}</p>
+                        <p className={styles.checkcount}>{v.count}件</p>
+                        <p className={styles.checktotal}>${v.price*v.count}元</p>
+                      </div>
+                  </div>
+              </div>
+              )
+          })}
+      </div>
+   </>
   )
 }

@@ -8,3 +8,19 @@
     align-items: center;
     margin-bottom: 40px;
 }
+.checkrow2{
+    display: flex;
+}
+.checkpc{
+    display: none;
+}
+@media (max-width:400px) {
+    .checkcontain{
+        display: none;
+    }
+    .checkpc{
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
