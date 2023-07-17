@@ -6,10 +6,14 @@
 import React from 'react'
 // import Nocoupon from '@/components/Leo/member/Nocoupon'
 import CouponForm from '@/components/Leo/member/CouponForm'
+import Notify_wrong from '@/components/Leo/member/notify_wrong'
+import Notify_correct from '@/components/Leo/member/notify_correct'
 
 export default function test() {
   return (
     <div>
+      <Notify_correct />
+      <Notify_wrong />
       <CouponForm />
       {/* <Nocoupon />
       <Member_info />
