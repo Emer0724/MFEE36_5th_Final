@@ -1,0 +1,55 @@
+.box_member_info{
+    display: flex;
+    justify-content: center;
+    width: 1820px;
+    height: 300px;
+    margin: 0px 50px;
+}
+.box_member_main{
+    display: flex;
+    width: 878px;
+    height: 300px;
+    padding: 10px;
+}
+.member_info_avatar{
+    width: 270px;
+    height: 270px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.avatar_img{
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    background-color: gray;
+    border-radius: 50%;
+    
+}
+.member_info_detail{
+    width: 578px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+.detail_name{
+    font-weight: bold;
+    font-size: 40px;
+    color: #000000;
+}
+.detail_nickname{
+    font-weight: bold;
+    font-size: 40px;
+    color: #6f6f6f;
+    
+}
+.camera_icon{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
