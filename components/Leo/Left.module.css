@@ -1,0 +1,22 @@
+.container{
+    padding:100px 14px;
+}
+.btn_set{
+    display:flex;
+    justify-content: space-evenly;
+}
+.content_box{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 30px;
+}
+.favor_set{
+    display: flex;
+    justify-content: space-evenly;
+}
+.pic_box{
+    width: 796px;
+    height: 655px;
+    display: flex;
+    justify-content: center;
+}
