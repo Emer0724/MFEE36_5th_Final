@@ -25,9 +25,6 @@ $border-radius-lg: 15px;
     background-color: #52796F
     }
   .color-bg-3{
-      background-color: #D4E9E2
-      }
-  .color-bg-3{
         background-color: #9A774E
         }
   .color-bg-4{
@@ -48,6 +45,9 @@ $border-radius-lg: 15px;
   .color-bg-9{
     background-color: #b9cac5;
   }
+  .color-bg-10{
+    background-color: #D4E9E2
+    }
   
   .color-tx-1{
     color: #132811
@@ -55,9 +55,7 @@ $border-radius-lg: 15px;
   .color-tx-2{
       color: #52796F
       }
-  .color-tx-3{
-        color: #D4E9E2
-        }
+
   .color-tx-3{
           color: #9A774E
           }
@@ -79,6 +77,9 @@ $border-radius-lg: 15px;
   .color-tx-9{
       color: #b9cac5;
     } 
+    .color-tx-10{
+      background-color: #D4E9E2
+      }
 
   .texti-14px{
     font-size: 14px
@@ -130,17 +131,33 @@ $border-radius-lg: 15px;
   .border-radius-15px{
     border-radius: 15px
   }
-       
-
-// google Noto Sans TC 字體
-@import 'https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&display=swap';
-
-// 定義中文字體用
-body {
- font-family: 'Noto Serif TC', serif;
  
-}
-main{
-  padding-left:5rem ;
-  padding-right: 5rem;
- }
+  
+ /*-google font-*/
+@import 'https://fonts.googleapis.com/css2?family=Noto+Serif+TC&family=Roboto&display=swap';
+/* @import 'https://fonts.googleapis.com/css2?family=Roboto&display=swap'; */
+
+// *{
+//   padding: 0;
+//   margin: 0;
+//   box-sizing: border-box;
+//   /* font-family: 'Noto Serif TC', serif,  sans-serif ,'Roboto';  */
+// }
+
+// body {
+//   font-family: 'Noto Serif TC', serif;
+//   /* font-family:  'Noto Serif TC', serif,  sans-serif ,'Roboto';  */
+  
+//  }
+//  main{
+//   padding-left:5rem ;
+//   padding-right: 5rem;
+//  }
+
+//  @media screen and (max-width:700px) {
+//   main{
+//     padding-left:2rem ;
+//     padding-right: 2rem;
+//    }
+//  }
+

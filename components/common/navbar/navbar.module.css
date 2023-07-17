@@ -1,42 +1,96 @@
+.header{
+    width: 100%;
+    height:100%;
+}
 .HeaderNavbar{
    display: flex;   
-   justify-content: center;
+   align-items: center;
+   justify-content: space-around;
    padding-top: 10px;
 }
-.NavbarLogo{
-    display: flex;
-    padding: 0 100px 0 50px;
+.logoname{
+    width: 100%;
+    display: none;
 }
 .NavbarRoute{
     display: flex;
     list-style: none;
+    width: 60%;
 }
 .navlinkdiv{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin:0 70px;
+    width: 40%;
+   height:100%;
+    transition: all 0.5s ease-in;
 }
-.NavBarIcon{
-    padding-top: 20px;
+.navlinkdiv:hover{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
 .navlink1{
     text-decoration: none;
+    text-align: center;
     color: #132811;
-    font-size: 26px;
-    line-height:40px;
-    letter-spacing: 2px;
+    font-size: var(--txp28);
+    font-weight: bolder;
+    line-height:60px;
+    letter-spacing: 8px;
 }
+    
 .linktext{
     color:#666666;
-    font-size: 14px;
+    font-size: var(--txp16);
+    font-weight: bolder;
+    opacity: 0.4;
     text-align: center;
     margin: 0;
+   
 }
+
 .navlink2{
     text-decoration: none;
-    margin-right: 30px;
+    margin:auto;
 }
-.logoimg{
-    margin-right: 150px;
+.Icongroup{  
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media(max-width:400px){
+
+    .HeaderNavbar{
+        height: 40px;
+        border-bottom: 1px solid  var(--color2); 
+        display: flex;   
+        align-items: center;
+        justify-content: start; 
+        padding: 20px 10px;
+     }
+    .NavbarRoute{
+        display: none;
+    }
+    .logoname{
+        width: 60%;
+        display: block;
+        font-size: var(--txi16);
+        color: var(--color2);
+        font-weight:900;
+        letter-spacing: 4px;
+        margin-right: 40px;
+        padding-top: 5px;
+    }
+    .logoimg{
+        width:50%;
+    }
+    .Licon{
+        width:25px;
+        margin-left: 10px;
+    }
+    .Icongroup{
+        width: 100px;
+    }
+    
 }

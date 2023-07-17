@@ -1,0 +1,66 @@
+.c_form{
+    border: 1px solid black;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25) ;
+    width: 960px;
+    height: 352px;
+    margin-left: ((1920-960)/2)px;
+
+  }
+  .c_button{
+    font-size: 20px;
+    width: 192px;
+    height: 48px;
+  }
+  .c_btn{
+    background-color: #84A98C;
+    border-radius: 8px;
+    border: none;
+    width: 189px;
+    height: 48px;
+    font-size: 20px;
+    color: white;
+    margin-left: 40px;
+  }
+  .c_h2{
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .centered {
+    margin-top: 88px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px; /* 調整上下間距 */
+  }
+  
+  .inputWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+  .inputGroup {
+    display: flex;
+  }
+  .c_label{
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 48px;
+    margin-left: 44px;
+  }
+  .c_input{
+    border-radius: 8px;
+    width: 645px;
+    height: 48px;
+  }
+  .formContainer {
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+  
+  
+  
+  
+  
+  

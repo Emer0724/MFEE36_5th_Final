@@ -1,0 +1,39 @@
+.totaldiv{
+    display: none;
+}
+
+@media (max-width:400px) {
+    .totaldiv{
+        display: block;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 60px;
+        background: var(--bgc7);
+    }
+    .containdiv{
+        display: flex;
+        justify-content: space-around;
+        align-content: center;
+    }
+    .rowdiv{
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       font-size: var(--txi14);
+       text-decoration: none;
+       padding-top: 10px;
+    }
+    .bookdiv{
+        width: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        margin:auto 20px ;
+    }
+    .bookcontain{
+        background-color: var(--bgc6);
+        border-radius: 50%;
+    }
+}

@@ -1,0 +1,10 @@
+.text_line{
+    border-bottom: 3px solid black ;
+}
+.text_line_sm{
+    border-bottom: 1px solid black ;
+}
+.border_card{
+    border: 1px solid black;
+    border-radius: 15px;
+}

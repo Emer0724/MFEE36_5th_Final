@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import '@/styles/globals.scss'
 import '@/styles/globals.css'
+import '@/styles/used.css'
 
 
 import DefaultLayout from '@/components/layout/default-layout'
