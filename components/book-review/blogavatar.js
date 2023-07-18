@@ -1,7 +1,6 @@
 import stlye from '@/components/book-review/blogavatar.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import img1 from '@/public/blogimg/images.jpg'
 
 export default function Avatar() {

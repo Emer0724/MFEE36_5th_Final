@@ -1,6 +1,5 @@
 import style from '@/components/book-review/book-element.module.css'
 import Link from 'next/link'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default function BookElement() {
     return (

@@ -1,4 +1,3 @@
-
 import Footer from "../common/footer/footer"
 import BlogPersonal1 from "./blog-personal1"
 

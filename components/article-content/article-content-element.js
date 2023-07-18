@@ -1,5 +1,4 @@
 import Link from "next/link"
-import 'bootstrap/dist/css/bootstrap.min.css'
 import style from '@/components/article-content/article-content-element.module.css'
 import Avatar3 from "../book-review/blogavatar3"
 import Button3 from "../common/button/button3"

@@ -1,5 +1,4 @@
 import Avatar3 from "../book-review/blogavatar3"
-import 'bootstrap/dist/css/bootstrap.min.css'
 import style from '@/components/article-content/reply.module.css'
 import {BiLike} from 'react-icons/bi'
 

@@ -2,7 +2,6 @@ import Avatar2 from './blogavatar2'
 import style from '@/components/book-review/book-review-element.module.css'
 import {AiFillStar} from 'react-icons/ai'
 import Image from 'next/image'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import imgbook1 from '@/public/blogimg/book1.jpg'
 
 

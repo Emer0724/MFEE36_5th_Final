@@ -2,7 +2,6 @@ import Button2 from "../common/button/button2"
 import Link from "next/link"
 import Image from "next/image"
 import style from '@/components/blog/follow-columndown.module.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import img1 from '@/public/blogimg/1.jpg'
 import img2 from '@/public/blogimg/2.jpg'
 import img3 from '@/public/blogimg/3.jpg'

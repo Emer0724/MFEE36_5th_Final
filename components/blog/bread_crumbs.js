@@ -1,6 +1,5 @@
 import style from '@/components/blog/bread-crumbs.module.css'
 import Link from 'next/link'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 

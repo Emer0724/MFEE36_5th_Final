@@ -1,4 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
 import Button8 from '../button/button8'
 import Button9 from '../button/button9'
 import { useState } from 'react'

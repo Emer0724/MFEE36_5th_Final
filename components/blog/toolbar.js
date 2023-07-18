@@ -14,7 +14,6 @@ import {GoPerson} from 'react-icons/go'
 
 import Image from 'next/image'
 import Link from "next/link"
-import 'bootstrap/dist/css/bootstrap.min.css'
 import Avatar from "../book-review/blogavatar"
 import style from '@/components/blog/toolbar.module.css'
 import { useState } from 'react'

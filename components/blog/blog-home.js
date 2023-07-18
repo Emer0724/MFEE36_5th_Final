@@ -1,5 +1,4 @@
 import Avatar2 from '../book-review/blogavatar2'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import Image from 'next/image'
 import Link from 'next/link'
 import style from '@/components/blog/blog-home.module.css'
