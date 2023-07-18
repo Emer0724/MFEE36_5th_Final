@@ -10,9 +10,10 @@ export default function Coupon_display() {
   const coat = {
     display: 'flex',
     justifyContent: 'center',
+    alignItem: 'center',
   }
   const r = {
-    marginTop: '40px',
+    marginTop: '75px',
   }
   return (
     <>
