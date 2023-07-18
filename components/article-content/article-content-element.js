@@ -9,6 +9,7 @@ import Reply from "./reply"
 
 export default function ArticleContentElement() {
     return (
+      <>
         <div className="col-7 d-flex flex-column ps-5 pe-5">
             <div className="border-bottom border-dark-subtle">
                 <div className={`${style.chenbreadhole} text-body-tertiary pb-5`}>
@@ -80,7 +81,7 @@ export default function ArticleContentElement() {
               <Reply/>
               <Reply/>
             </div>
-          
         </div>
+        </>
     )
 }
