@@ -14,26 +14,26 @@ export default function UnderNavbar() {
     <div className={styles.totaldiv}>
       <div className={styles.containdiv}>
           <Link href={"/"} className={styles.rowdiv}>
-            <div> <Image src={home} width={30} height={25} /></div>
-            <h3>首頁</h3>
+            <div> <Image src={home} width={30} height={25} alt='icon'/></div>
+            <p>首頁</p>
           </Link>
           <Link href={"/"} className={styles.rowdiv}>
-            <div><Image src={cart} width={30} height={25}/></div>
-            <h3>購物車</h3>
+            <div><Image src={cart} width={30} height={25} alt='icon'/></div>
+            <p>購物車</p>
           </Link>
           <div  className={styles.bookcontain}>
             <Link href={"/"} className={styles.bookdiv}>
-              <div><Image src={book} width={30} height={25}/></div>
-              <h3>商城</h3>
+              <div><Image src={book} width={30} height={25} alt='icon'/></div>
+              <p>商城</p>
             </Link>
           </div>
           <Link href={"/"} className={styles.rowdiv}>
-            <div><Image src={pen} width={30} height={25}/></div>
-            <h3>部落格</h3>
+            <div><Image src={pen} width={30} height={25} alt='icon'/></div>
+            <p>部落格</p>
             </Link>
           <Link href={"/"} className={styles.rowdiv}>
-            <div><Image src={member} width={30} height={25}/></div>
-            <h3>會員</h3>
+            <div><Image src={member} width={30} height={25} alt='icon'/></div>
+            <p>會員</p>
             </Link>
       </div>
     </div>

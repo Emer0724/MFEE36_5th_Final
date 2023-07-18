@@ -1,0 +1,16 @@
+.chenheadimg {
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    border: 1px black solid;     
+}
+
+.chenpersonal {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.editbutton {
+    font-size: 18px;
+}

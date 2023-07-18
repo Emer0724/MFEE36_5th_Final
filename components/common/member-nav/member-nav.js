@@ -4,7 +4,7 @@ const navInfos = [
   { id: 1, info: '個人資訊', url: '/dashboard/profile', router1: 'profile' },
   { id: 2, info: '優惠券', url: '/dashboard/coupon', router1: 'coupon' },
   { id: 3, info: '訂單', url: '/dashboard/order', router1: 'order' },
-  { id: 4, info: '二手書', url: '/used/display', router1: 'used' },
+  { id: 4, info: '二手書', url: '/dashboard/used/display', router1: 'used' },
 ]
 
 export default function MemberNav() {

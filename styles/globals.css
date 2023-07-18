@@ -56,6 +56,7 @@
 /*-google font-*/
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC&family=Roboto&display=swap');
 /* @import 'https://fonts.googleapis.com/css2?family=Roboto&display=swap'; */
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500&family=Noto+Serif+TC:wght@400;600&display=swap'); */
 
 *{
   padding: 0;
@@ -67,6 +68,8 @@
 body {
   /* font-family: 'Noto Serif TC', serif; */
   font-family:  'Noto Serif TC', serif,  sans-serif ,'Roboto'; 
+  /* font-family: 'Noto Serif SC', serif,'Noto Serif TC', serif; */
+
   
  }
  main{

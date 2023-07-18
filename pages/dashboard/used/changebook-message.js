@@ -4,6 +4,7 @@ import UsedTdUncomfirmed from '@/components/used/chk-msg/used-td-uncomfirmed'
 import UsedTdExchange from '@/components/used/chk-msg/used-td-exchange'
 import UsedTdReturn from '@/components/used/chk-msg/used-td-return'
 import UsedTdUnreceive from '@/components/used/chk-msg/used-td-unreceive'
+import Link from 'next/link'
 //暫定 1.待兌換 2.代收書 3.退回 4.已兌換
 const datas = [
   {
@@ -11,7 +12,7 @@ const datas = [
     ISBN: 9789864016433,
     book_name: '作者不詳：推理作家的讀本 (上卷)(下卷）',
     book_state: 1,
-    price:'500'
+    price: '500',
   },
   { used_id: 2, ISBN: 9789577417039, book_name: '第三時效', book_state: 2 },
   {
@@ -19,14 +20,14 @@ const datas = [
     ISBN: 9786263565616,
     book_name: '二度遭到殺害的她',
     book_state: 3,
-    price:'500'
+    price: '500',
   },
   {
     used_id: 4,
     ISBN: 9786263565616,
     book_name: '二度遭到殺害的她',
     book_state: 4,
-    price:'500'
+    price: '500',
   },
 ]
 
@@ -36,7 +37,46 @@ export default function ChangebookMessage() {
   return (
     <>
       <MemberNav />
+
       <div className="px-2">
+        <div className="dropdown pb-3 d-flex justify-content-end ">
+          <button
+            className="btn btn-success dropdown-toggle letter-spacing border-radius-5px"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            狀態篩選
+          </button>
+          <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li>
+              <Link className="dropdown-item" href="?book_state=all">
+                ALL
+              </Link>
+            </li>
+            <li>
+              <Link className="dropdown-item" href="?book_state=1">
+                待確認
+              </Link>
+            </li>
+            <li>
+              <Link className="dropdown-item" href="?book_state=2">
+                待收書
+              </Link>
+            </li>
+            <li>
+              <Link className="dropdown-item" href="?book_state=3">
+                退回
+              </Link>
+            </li>
+            <li>
+              <Link className="dropdown-item" href="?book_state=4">
+                已兌換
+              </Link>
+            </li>
+          </ul>
+        </div>
         <table className="table  " style={{ border: '6px solid #84A98C' }}>
           <thead>
             <tr>
@@ -62,7 +102,7 @@ export default function ChangebookMessage() {
           </thead>
           <tbody>
             {data.map((v, i) => {
-              const { used_id, ISBN, book_name, book_state,price } = v
+              const { used_id, ISBN, book_name, book_state, price } = v
               if (book_state === 1) {
                 //待確認
                 return (
@@ -86,7 +126,7 @@ export default function ChangebookMessage() {
                   />
                 )
               } else if (book_state === 3) {
-                 //退回
+                //退回
                 return (
                   <UsedTdReturn
                     key={used_id}
@@ -97,7 +137,7 @@ export default function ChangebookMessage() {
                   />
                 )
               } else if (book_state === 4) {
-                 //已兌換
+                //已兌換
                 return (
                   <UsedTdExchange
                     key={used_id}
@@ -112,6 +152,7 @@ export default function ChangebookMessage() {
             })}
           </tbody>
         </table>
+        <div className="used_rwd_botton"></div>
       </div>
     </>
   )
