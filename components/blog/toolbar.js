@@ -18,13 +18,32 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Avatar from "../book-review/blogavatar"
 import style from '@/components/blog/toolbar.module.css'
 import { useState } from 'react'
+import { useEffect } from 'react'
+
 
 export default function ToolBar() {
 
-    const [selectedIcon, setSelectedIcon] = useState(null);
+  const BlogClick = ('/blog/blog-home-page')
+  const reviewClick = ('/blog/book-review')
+  const favoriteClick = ('/blog/favorite')
+  const trackClick = ('/blog/track')
+  const personalClick = ('/blog/personal-page/work')
 
-    const handleIconClick = (iconName) => {
+  const [selectedIcon, setSelectedIcon] = useState(null);
+
+  useEffect(()=>{
+    const storedIcon =localStorage.getItem('selectedIcon')
+    if(storedIcon) {
+      setSelectedIcon(storedIcon)
+    }else{
+      setSelectedIcon('blog')
+    }
+  },[])
+
+  const handleIconClick = (iconName) => {
       setSelectedIcon(iconName);
+
+      localStorage.setItem('selectedIcon',iconName)
     };
 
     return (
@@ -33,7 +52,7 @@ export default function ToolBar() {
             <Avatar />
             <div className={`flex-direction-column align-items-center justify-content-center d-flex pt-5 ${selectedIcon === 'blog' ? style.selected : ''}`}>
               <Link
-                href="#"
+                href={BlogClick}
                 className={`text-decoration-none fw-bold fs-4 pb-2 ${selectedIcon === 'blog' ? style['icon-active'] : style['icon-inactive']} text-dark`}
                 onClick={() => handleIconClick('blog')}
               >
@@ -47,7 +66,7 @@ export default function ToolBar() {
             </div>
             <div className={`flex-direction-column align-items-center justify-content-center d-flex pt-5 ${selectedIcon === 'review' ? style.selected : ''}`}>
               <Link
-                href="#"
+                href={reviewClick}
                 className={`text-decoration-none fw-bold fs-4 pb-2 ${selectedIcon === 'review' ? style['icon-active'] : style['icon-inactive']} text-dark`}
                 onClick={() => handleIconClick('review')}
               >
@@ -61,7 +80,7 @@ export default function ToolBar() {
             </div>
             <div className={`flex-direction-column align-items-center justify-content-center d-flex pt-5 ${selectedIcon === 'favorite' ? style.selected : ''}`}>
               <Link
-                href="#"
+                href={favoriteClick}
                 className={`text-decoration-none fw-bold fs-4 pb-2 ${selectedIcon === 'favorite' ? style['icon-active'] : style['icon-inactive']} text-dark`}
                 onClick={() => handleIconClick('favorite')}
               >
@@ -75,7 +94,7 @@ export default function ToolBar() {
             </div>
             <div className={`flex-direction-column align-items-center justify-content-center d-flex pt-5 ${selectedIcon === 'follow' ? style.selected : ''}`}>
               <Link
-                href="#"
+                href={trackClick}
                 className={`text-decoration-none fw-bold fs-4 pb-2 ${selectedIcon === 'follow' ? style['icon-active'] : style['icon-inactive']} text-dark`}
                 onClick={() => handleIconClick('follow')}
               >
@@ -89,7 +108,7 @@ export default function ToolBar() {
             </div>
             <div className={`flex-direction-column align-items-center justify-content-center d-flex pt-5 ${selectedIcon === 'profile' ? style.selected : ''}`}>
               <Link
-                href="#"
+                href={personalClick}
                 className={`text-decoration-none fw-bold fs-4 pb-2 ${selectedIcon === 'profile' ? style['icon-active'] : style['icon-inactive']} text-dark`}
                 onClick={() => handleIconClick('profile')}
               >

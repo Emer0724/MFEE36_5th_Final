@@ -6,6 +6,8 @@ import BookPersonalIntegrate from "@/components/book-personal/book-personal-inte
 import LikeIntegrate from "@/components/like/like-integrate"
 import TrackIntegrate from "@/components/track/track-integrate"
 import TagIntegrate from "@/components/tag/tag-integrate"
+import BlogForm from "@/components/common/form/blog-form"
+import BookForm from "@/components/common/form/book-form"
 
 export default function Bookreview() {
     return (

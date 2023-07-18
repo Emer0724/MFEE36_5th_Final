@@ -5,6 +5,7 @@ import Avatar3 from "../book-review/blogavatar3"
 import Button3 from "../common/button/button3"
 import Button4 from "../common/button/button4"
 import Button5 from "../common/button/button5"
+import Button7 from "../common/button/button7"
 import Reply from "./reply"
 
 export default function ArticleContentElement() {
@@ -68,7 +69,12 @@ export default function ArticleContentElement() {
               <p className={`${style.chenp}`}>我的慾望本該活的理直氣壯。</p>
             </div>
             <div className="pt-5">
-              <h3 className="fw-bold pb-5">最新的回應</h3>
+              <div className="d-flex justify-content-between">
+                  <h3 className="fw-bold pb-5">最新的回應</h3>
+                  <div>
+                   <Button7/>
+                  </div>
+              </div>
               <Reply/>
               <Reply/>
               <Reply/>

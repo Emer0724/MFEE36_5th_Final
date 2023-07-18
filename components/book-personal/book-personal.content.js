@@ -4,6 +4,7 @@ import {AiFillStar} from 'react-icons/ai'
 import Image from 'next/image'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import imgbook1 from '@/public/blogimg/book1.jpg'
+import Button10 from '../common/button/button10'
 
 
 export default function BookPersonalContent() {
@@ -18,6 +19,9 @@ export default function BookPersonalContent() {
                         <div className='d-flex ps-3 pt-2'>
                             <Avatar2/>            
                         </div>
+                        <div className='d-flex ps-3 pt-3 fw-bold'>
+                            <span>名言佳句</span>            
+                        </div>
                         <div className='d-flex ps-3 pt-3'>
                             <div className={`pe-2 ${style.chenstar}`}><AiFillStar/></div>
                             <div className={`pe-2 ${style.chenstar}`}><AiFillStar/></div>
@@ -31,10 +35,10 @@ export default function BookPersonalContent() {
                     </div>
                     <div className='d-flex flex-column justify-content-between'>
                         <div>
-                            <span className={` ${style.chendate} pt-3 pb-3`}>2023.2.21</span>
+                            <span className={` ${style.chendate} d-flex justify-content-center pt-3 pb-3`}>2023.2.21</span>
                         </div>
                         <div className='d-flex justify-content-center'>
-                            <span style={{cursor:"pointer"}} className={`${style.chendate} fs-5`}>編輯</span>
+                            <Button10/>
                         </div>
                     </div>
                         

@@ -20,6 +20,9 @@ export default function BookHome() {
                         <div className='d-flex ps-3 pt-2'>
                             <Avatar2/>            
                         </div>
+                        <div className='d-flex ps-3 pt-3 fw-bold'>
+                            <span>名言佳句</span>            
+                        </div>
                         <div className='d-flex ps-3 pt-3'>
                             <div className={`pe-2 ${style.chenstar}`}><AiFillStar/></div>
                             <div className={`pe-2 ${style.chenstar}`}><AiFillStar/></div>
