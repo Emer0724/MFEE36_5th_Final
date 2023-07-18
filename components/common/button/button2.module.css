@@ -1,9 +1,11 @@
 .chenbutton2 {
     border-radius: 5px;
-    width: 80px;
-    height: 25px;
+    width: 100px;
+    height: 40px;
     background-color: #52796F;
     box-shadow: 0px 1px 0px 1px #ADADAD;
     color: white;
     border: 0px;
+    font-size: 20px;
+    padding: 5px;
 }

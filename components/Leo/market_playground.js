@@ -1,6 +1,5 @@
 import Card from '@/components/Leo/market_card'
 import ca from './market_playground.module.css'
-import 'bootstrap/dist/css/bootstrap.css'
 
 export default function Playground() {
   return (

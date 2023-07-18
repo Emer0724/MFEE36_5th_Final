@@ -3,7 +3,7 @@ import ArticleElement from "./article_element"
 import FollowColumn from "./follow-column"
 
 
-export default function Blog() {
+export default function BlogHomePage() {
     return (
         <div className="container d-flex pt-5">
             <ToolBar/>

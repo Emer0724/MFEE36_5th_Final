@@ -1,5 +1,4 @@
 import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import Market_aside_button from '@/components/Leo/market_aside_button'
 import a from './market_aside.module.css'
 

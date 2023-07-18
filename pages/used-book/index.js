@@ -180,96 +180,105 @@ export default function UsedBook() {
             </div>
           </div>
           {/*section2----end*/}
-           {/*section3*/}
-           <div  className='pb-5 ' style={{backgroundColor:'#dcdbdbc2'}} id='exchange'>
-          <div className='px-5'>
-          <div  className="textp-28px fw-bold color-tx-5 mx-5  py-5 px-5 text-center letter-spacing">知音幣是什麼可以吃嗎?</div>
-          <div className='d-flex justify-content-center  used-insex-s3-dflex ' >
-          <Image
-                  alt="coin"
-                  src={coin}
-                  
-                  width={300}
-                  height={300}
-                />
-          <div className='d-flex  flex-column justify-content-center ps-5 '>
-            <div className='textp-20px mb-2'>知音幣雖然不可以吃，但可以買書!</div>
-            <div className='textp-20px mb-2'>家裡沉積已久的書，賣給我們換取知書幣，再來換購其他二手書。</div>
-            <div className='textp-20px mb-2'>知音幣就是一個以書易書的媒介，一個拿舊書換舊書的概念。</div>
-            <div className='textp-20px mb-2'>讓家裡的舊書，再度被閱讀，產生一個書循環。</div>
-            <div className='textp-20px mb-2'>心動了嗎?趕快來賺取你得知音幣吧!!</div>
-          </div>
-          </div>
-          </div>
-          
-          </div>
-           {/*section3---end*/}
-          {/*section4*/}
-        <div className=' pb-5'>
-        <div
-            className="textp-28px fw-bold color-tx-5 mx-5 my-5 py-3 px-5 text-center  letter-spacing "
-            id="process"
+          {/*section3*/}
+          <div
+            className="pb-5 "
+            style={{ backgroundColor: '#dcdbdbc2' }}
+            id="exchange"
           >
-            二手書疑難雜症看這裡
+            <div className="px-5">
+              <div className="textp-28px fw-bold color-tx-5 mx-5  py-5 px-5 text-center letter-spacing">
+                知音幣是什麼可以吃嗎?
+              </div>
+              <div className="d-flex justify-content-center  used-insex-s3-dflex ">
+                <Image alt="coin" src={coin} width={300} height={300} />
+                <div className="d-flex  flex-column justify-content-center ps-5 ">
+                  <div className="textp-20px mb-2">
+                    知音幣雖然不可以吃，但可以買書!
+                  </div>
+                  <div className="textp-20px mb-2">
+                    家裡沉積已久的書，賣給我們換取知書幣，再來換購其他二手書。
+                  </div>
+                  <div className="textp-20px mb-2">
+                    知音幣就是一個以書易書的媒介，一個拿舊書換舊書的概念。
+                  </div>
+                  <div className="textp-20px mb-2">
+                    讓家裡的舊書，再度被閱讀，產生一個書循環。
+                  </div>
+                  <div className="textp-20px mb-2">
+                    心動了嗎?趕快來賺取你得知音幣吧!!
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          {/*手風琴*/}
-          <div className="w-100 d-flex justify-content-center  ">
+          {/*section3---end*/}
+          {/*section4*/}
+          <div className=" pb-5">
             <div
-              className="accordion accordion-flush w-75"
-              id="accordionFlushExample"
+              className="textp-28px fw-bold color-tx-5 mx-5 my-5 py-3 px-5 text-center  letter-spacing "
+              id="process"
             >
-              <div className="accordion-item ">
-                <h2 className="accordion-header">
-                  <button
-                    className="accordion-button  collapsed textp-20px letter-spacing"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#flush-collapseOne"
-                    aria-expanded="false"
-                    aria-controls="flush-collapseOne"
+              二手書疑難雜症看這裡
+            </div>
+            {/*手風琴*/}
+            <div className="w-100 d-flex justify-content-center  ">
+              <div
+                className="accordion accordion-flush w-75"
+                id="accordionFlushExample"
+              >
+                <div className="accordion-item ">
+                  <h2 className="accordion-header">
+                    <button
+                      className="accordion-button  collapsed textp-20px letter-spacing"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseOne"
+                      aria-expanded="false"
+                      aria-controls="flush-collapseOne"
+                    >
+                      書況等級如何判定?
+                    </button>
+                  </h2>
+                  <div
+                    id="flush-collapseOne"
+                    className="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample"
                   >
-                    書況等級如何判定?
-                  </button>
-                </h2>
-                <div
-                  id="flush-collapseOne"
-                  className="accordion-collapse collapse"
-                  data-bs-parent="#accordionFlushExample"
-                >
-                  <div className="accordion-body">
-                    <pre className="textp-20px letter-spacing used-index-Accordion-pre d-flex justify-content-center ">
-                      {`
+                    <div className="accordion-body">
+                      <pre className="textp-20px letter-spacing used-index-Accordion-pre d-flex justify-content-center ">
+                        {`
                     為了讓讀者們買到符合需求的二手書，小幫手們在收到大家寄來的二手書後，會依下列標準做書況標定：
                     A.全新：膠膜未拆，無瑕疵。
                     B.近全新：未包膜，翻閱痕跡不明顯，如實體賣場陳列販售之書籍。
                     C.良好：有使用痕跡，如摺角、碰撞等，不如新書潔白。
                     D.普通：有明顯使用痕跡或黃褐色、黑斑等。
                     E.差強人意：印刷褪色、模糊或其它更糟之書況。`}
-                    </pre>
+                      </pre>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="accordion-item">
-                <h2 className="accordion-header">
-                  <button
-                    className="accordion-button collapsed textp-20px letter-spacing"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#flush-collapseTwo"
-                    aria-expanded="false"
-                    aria-controls="flush-collapseTwo"
+                <div className="accordion-item">
+                  <h2 className="accordion-header">
+                    <button
+                      className="accordion-button collapsed textp-20px letter-spacing"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseTwo"
+                      aria-expanded="false"
+                      aria-controls="flush-collapseTwo"
+                    >
+                      不待售的二手書有哪些?
+                    </button>
+                  </h2>
+                  <div
+                    id="flush-collapseTwo"
+                    className="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample"
                   >
-                    不待售的二手書有哪些?
-                  </button>
-                </h2>
-                <div
-                  id="flush-collapseTwo"
-                  className="accordion-collapse collapse"
-                  data-bs-parent="#accordionFlushExample"
-                >
-                  <div className="accordion-body">
-                    <pre className="textp-20px letter-spacing used-index-Accordion-pre d-flex justify-content-center ">
-                      {`
+                    <div className="accordion-body">
+                      <pre className="textp-20px letter-spacing used-index-Accordion-pre d-flex justify-content-center ">
+                        {`
                       注意！以下為BOOK書易不賣的二手書，寄書前要特別注意唷：
                     1.中文雜誌、歐美雜誌，非書籍類商品，如卡牌，影音光碟等。
                     2.無定價、無出版日期、無ISBN、無版權頁之二手書。
@@ -281,31 +290,31 @@ export default function UsedBook() {
                     7.已使用過之各類練習簿、測驗簿、著色本或含習題之二手書，以及缺少附件即影響使用之二手書。
                       註記證件字號等個人資料之二手書。
                     `}
-                    </pre>
+                      </pre>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="accordion-item">
-                <h2 className="accordion-header">
-                  <button
-                    className="accordion-button collapsed textp-20px letter-spacing"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#flush-collapseThree"
-                    aria-expanded="false"
-                    aria-controls="flush-collapseThree"
+                <div className="accordion-item">
+                  <h2 className="accordion-header">
+                    <button
+                      className="accordion-button collapsed textp-20px letter-spacing"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseThree"
+                      aria-expanded="false"
+                      aria-controls="flush-collapseThree"
+                    >
+                      二手書兌換知音幣是如何估價的?
+                    </button>
+                  </h2>
+                  <div
+                    id="flush-collapseThree"
+                    className="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample"
                   >
-                    二手書兌換知音幣是如何估價的?
-                  </button>
-                </h2>
-                <div
-                  id="flush-collapseThree"
-                  className="accordion-collapse collapse"
-                  data-bs-parent="#accordionFlushExample"
-                >
-                  <div className="accordion-body">
-                    <pre className="textp-20px letter-spacing used-index-Accordion-pre d-flex justify-content-center ">
-                      {`
+                    <div className="accordion-body">
+                      <pre className="textp-20px letter-spacing used-index-Accordion-pre d-flex justify-content-center ">
+                        {`
                       二手書的價格會因書況的等級而給予折價，等級與折價關係，會依下列標準做標定：
                       A.全新：原價9折。
                       B.近全新：原價8折。
@@ -314,15 +323,13 @@ export default function UsedBook() {
                       E.差強人意：原價5折。
                       (原價是以該書在book書易的原價為基準，書況等級判定請詳<書況等級如何判定?>)
                     `}
-                    </pre>
+                      </pre>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        
-         
         </div>
         <div className="used_rwd_botton color-bg-6 "></div>
         <UnderNavbar />

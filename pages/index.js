@@ -6,10 +6,16 @@ import ThinCard from '@/components/common/inedx-card/thin-card'
 import ThinCardTilt from '@/components/common/inedx-card/thin-card-tilt'
 import NavBar1 from '@/components/common/navbar/NavBar'
 import UnderNavbar from '@/components/common/navbar/Under_navbar'
-import Footer from '@/components/layout/footer'
+import Footer from '@/components/common/footer/footer'
 import Link from 'next/link'
 import ReactPlayer from 'react-player/lazy'
 import { useEffect, useState, useRef } from 'react'
+import BlogHome from '@/components/blog/blog-home'
+import BookHome from '@/components/book-review/book-home'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Pagination } from 'swiper/modules'
 
 export default function Home() {
   const refscrollLeftTOP = useRef(null)
@@ -138,26 +144,31 @@ export default function Home() {
                 }
               })}
           </div>
-          <div
-            className="index_index_hidden d-flex align-items-end  pb-4 mt-5 "
-            onMouseDown={(e) => MouseDown1(e)}
-            onMouseLeave={() => Mouseleave1()}
-            onMouseUp={() => MouseUp1()}
-            onMouseMove={(e) => MouseMove1(e)}
-            ref={refscrollLeftDown}
-          >
-            {Array(20)
-              .fill(1)
-              .map((v, i) => {
-                if (i % 5 === 0) {
-                  return <ThinCardTilt key={i} />
-                } else if (i % 3 === 0) {
-                  return <ThinCard key={i} />
-                } else {
-                  return <BigCard key={i} />
-                }
-              })}
-          </div>
+
+          {windowWidth > 500 ? (
+            <div
+              className="index_index_hidden d-flex align-items-end  pb-4 mt-5 "
+              onMouseDown={(e) => MouseDown1(e)}
+              onMouseLeave={() => Mouseleave1()}
+              onMouseUp={() => MouseUp1()}
+              onMouseMove={(e) => MouseMove1(e)}
+              ref={refscrollLeftDown}
+            >
+              {Array(20)
+                .fill(1)
+                .map((v, i) => {
+                  if (i % 5 === 0) {
+                    return <ThinCardTilt key={i} />
+                  } else if (i % 3 === 0) {
+                    return <ThinCard key={i} />
+                  } else {
+                    return <BigCard key={i} />
+                  }
+                })}
+            </div>
+          ) : (
+            ''
+          )}
         </div>
         {/* section1---end */}
         {/* section2 */}
@@ -178,22 +189,100 @@ export default function Home() {
         </div>
         {/* section2---end */}
         {/* section3 */}
-        <div className=" container-fluid py-5 ">
-          <div className="textp-40px color-tx-1 fw-bold text-center">
+        <div className=" container-fluid py-4 color-bg-6 ">
+          <div className="textp-40px color-tx-1 fw-bold text-center my-5">
             熱門書評
+            <div className="my-5">
+              <Swiper
+                slidesPerView={windowWidth >= 700 ? 3 : 1}
+                spaceBetween={30}
+                // pagination={{
+                //   clickable: true,
+                // }}
+                modules={[Pagination]}
+                className="mySwiper"
+              >
+                <SwiperSlide>
+                  <BookHome />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <BookHome />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <BookHome />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <BookHome />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <BookHome />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <BookHome />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <BookHome />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <BookHome />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <BookHome />
+                </SwiperSlide>
+              </Swiper>
+            </div>
           </div>
         </div>
         {/* section3---end */}
         {/* section4 */}
         <div className=" container-fluid py-5 ">
-          <div className="textp-40px color-tx-1 fw-bold text-center">
+          <div className="textp-40px color-tx-1 fw-bold text-center mb-5">
             熱門作品
+          </div>
+          <div className="pb-5">
+            <Swiper
+              slidesPerView={windowWidth >= 700 ? 3 : 1}
+              spaceBetween={30}
+              // pagination={{
+              //   clickable: true,
+              // }}
+              modules={[Pagination]}
+              className="mySwiper"
+            >
+              <SwiperSlide>
+                <BlogHome />
+              </SwiperSlide>
+              <SwiperSlide>
+                <BlogHome />
+              </SwiperSlide>
+              <SwiperSlide>
+                <BlogHome />
+              </SwiperSlide>
+              <SwiperSlide>
+                <BlogHome />
+              </SwiperSlide>
+              <SwiperSlide>
+                <BlogHome />
+              </SwiperSlide>
+              <SwiperSlide>
+                <BlogHome />
+              </SwiperSlide>
+              <SwiperSlide>
+                <BlogHome />
+              </SwiperSlide>
+              <SwiperSlide>
+                <BlogHome />
+              </SwiperSlide>
+              <SwiperSlide>
+                <BlogHome />
+              </SwiperSlide>
+            </Swiper>
           </div>
         </div>
         {/* section4---end */}
         {/* section5 */}
         <div
-          className=" textp-40px color-tx-1 fw-bold text-center "
+          className=" textp-40px color-tx-1 fw-bold text-center index-index-aboutUs "
           id="aboutUs"
         >
           關於我們
@@ -203,7 +292,7 @@ export default function Home() {
             <div className="index-index-video">
               {myVideo}
               <div className="index-index-video-card">
-                <div className=" d-flex flex-column justify-content-center align-items-center px-5 ">
+                <div className=" d-flex flex-column justify-content-center align-items-center px-3 ">
                   <div className=" textp-28px my-2 fw-bold color-tx-7 index-index-video-text-md letter-spacing ">
                     Book書易-延續書的意義
                   </div>
@@ -221,7 +310,8 @@ export default function Home() {
         <div className="used_index_botton"></div>
         <div className="used_rwd_botton"></div>
         <UnderNavbar />
-        <Footer />
+        {windowWidth > 400 ? <Footer /> : ''}
+        {/* <Footer /> */}
       </div>
     </>
   )

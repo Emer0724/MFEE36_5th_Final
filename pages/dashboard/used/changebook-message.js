@@ -5,6 +5,8 @@ import UsedTdExchange from '@/components/used/chk-msg/used-td-exchange'
 import UsedTdReturn from '@/components/used/chk-msg/used-td-return'
 import UsedTdUnreceive from '@/components/used/chk-msg/used-td-unreceive'
 import Link from 'next/link'
+import Member_info from '@/components/Leo/member/member_info'
+import MemberBreadcrumbs from '@/components/Leo/member/member_breadcrumbs'
 //暫定 1.待兌換 2.代收書 3.退回 4.已兌換
 const datas = [
   {
@@ -36,12 +38,13 @@ export default function ChangebookMessage() {
 
   return (
     <>
+      <Member_info />
       <MemberNav />
-
+      <MemberBreadcrumbs />
       <div className="px-2">
         <div className="dropdown pb-3 d-flex justify-content-end ">
           <button
-            className="btn btn-success dropdown-toggle letter-spacing border-radius-5px"
+            className="btn btn-success dropdown-toggle letter-spacing border-radius-5px textp-20px"
             type="button"
             id="dropdownMenuButton1"
             data-bs-toggle="dropdown"
@@ -81,19 +84,19 @@ export default function ChangebookMessage() {
           <thead>
             <tr>
               <th
-                className="text-center col-8 text-20px fw-bold"
+                className="text-center col-8 textp-20px fw-bold"
                 style={{ background: '#84A98C' }}
               >
                 二手書
               </th>
               <th
-                className="text-center col-2 text-20px fw-bold"
+                className="text-center col-2 textp-20px fw-bold"
                 style={{ background: '#84A98C' }}
               >
                 狀態
               </th>
               <th
-                className="text-center col-2 text-20px fw-bold"
+                className="text-center col-2 textp-20px fw-bold"
                 style={{ background: '#84A98C' }}
               >
                 詳細資料
@@ -152,7 +155,7 @@ export default function ChangebookMessage() {
             })}
           </tbody>
         </table>
-        <div className="used_rwd_botton"></div>
+        <div className="used_rwd_botton" style={{ height: '300px' }}></div>
       </div>
     </>
   )

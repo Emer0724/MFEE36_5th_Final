@@ -1,5 +1,4 @@
  import Button2 from '../common/button/button2'
- import 'bootstrap/dist/css/bootstrap.min.css'
  import Link from "next/link"
  
  export default function FollowColumnTop() {

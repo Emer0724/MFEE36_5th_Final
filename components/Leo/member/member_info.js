@@ -1,5 +1,4 @@
 import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import Image from 'next/image'
 import x from './member_info.module.css'
 import camera from '@/assets/leo-svg/camera-solid.svg'
@@ -13,8 +12,8 @@ export default function Member_info() {
           <Image
             className={x.camera_icon}
             src={camera}
-            width={48}
-            height={48}
+            width={35}
+            height={35}
             alt="camera"
           />
         </div>

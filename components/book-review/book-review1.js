@@ -1,7 +1,6 @@
 import ToolBar from '../blog/toolbar'
 import BookContent from './book-content'
 import FollowColumn from '../blog/follow-column'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default function BookReview() {
   return (
