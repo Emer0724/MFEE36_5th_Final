@@ -38,8 +38,7 @@ export default function BookPersonalContent() {
                         <div className='d-flex justify-content-center'>
                             <Button10/>
                         </div>
-                    </div>
-                        
+                    </div>                       
                 </div>
             </div>
             <div className="d-flex ps-3 pt-3">
