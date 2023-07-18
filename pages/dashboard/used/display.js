@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import MemberNav from '@/components/common/member-nav/member-nav'
 import Member_info from '@/components/Leo/member/member_info'
-import MemberBreadcrumbs from '@/components/Leo/member/member_breadcrumbs'
+// import MemberBreadcrumbs from '@/components/Leo/member/member_breadcrumbs'
+import MemberBreadcrumbs_2 from '@/components/Leo/member/member_breadcrumbs-2'
 
 // const books = {
 //   ISBN: 9789861371955,
@@ -22,21 +23,41 @@ export default function Display() {
   const [book, setbooks] = useState(false)
   const [member, setMember] = useState(members)
   const [inputValue, setInputValue] = useState('')
-
-  const getbook = () => {
-    // if(!inputValue){
-    // }
-  }
+  const [search_error, setSearch_error] = useState('')
 
   //找書
+  const getbook = () => {
+    // console.log(inputValue)
+    if (!inputValue) {
+      setSearch_error('ISBN不可為空')
+    } else {
+      const rule = new RegExp(/^\d{13}$/)
+      if (rule.test(inputValue)) {
+        getbook_detal()
+      } else {
+        return setSearch_error('ISBN為13位數字')
+      }
+    }
+  }
+  const getbook_detal = async () => {
+    const getbook_detal1 = await fetch(
+      `http://localhost:3055/used/display/book_info?ISBN=${inputValue}`
+    )
+    const getbook_detal2 = await getbook_detal1.json()
+    console.log(getbook_detal2.rows)
+    setbooks(getbook_detal2.rows)
+  }
+  useEffect(() => {
+    getbook_detal()
+  }, [])
 
   return (
     <>
       <Member_info />
       <MemberNav />
-      <MemberBreadcrumbs />
+      <MemberBreadcrumbs_2 />
 
-      <div className="container-fliuid mt-3  ">
+      <div className="container-fliuid mt-5  ">
         <div className="row">
           <div className="col-12  col-lg-6 d-flex align-items-center ">
             <div className="d-flex flex-column align-items-center w-100   ">
@@ -51,14 +72,23 @@ export default function Display() {
                       className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px"
                       placeholder="請輸入ISBN"
                       value={inputValue}
+                      onChange={(e) => {
+                        setInputValue(e.target.value)
+                      }}
                       size={12}
                     />
                     <button
                       className="btn color-bg-4 border-radius-5px py-0  textp-20px "
-                      onClick={() => getbook()}
+                      // onClick={getbook}
+                      onClick={() => {
+                        getbook()
+                      }}
                     >
                       搜尋
                     </button>
+                  </div>
+                  <div className="text-danger letter-spacing">
+                    {search_error}
                   </div>
 
                   <div
@@ -84,20 +114,34 @@ export default function Display() {
                   </div>
                 </>
               ) : (
-                <div className="my-3 d-flex ">
-                  <span className="color-tx-1 fw-bold textp-20px  letter-spacing ">
-                    ISBN :
-                  </span>
-                  <input
-                    type="text"
-                    className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px"
-                    placeholder="請輸入ISBN"
-                    size={12}
-                  />
-                  <button className="btn color-bg-4 border-radius-5px py-0  textp-20px ">
-                    搜尋
-                  </button>
-                </div>
+                <>
+                  <div className="my-3 d-flex ">
+                    <span className="color-tx-1 fw-bold textp-20px  letter-spacing ">
+                      ISBN :
+                    </span>
+                    <input
+                      type="text"
+                      className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px"
+                      placeholder="請輸入ISBN"
+                      value={inputValue}
+                      onChange={(e) => {
+                        setInputValue(e.target.value)
+                      }}
+                      size={12}
+                    />
+                    <button
+                      className="btn color-bg-4 border-radius-5px py-0  textp-20px "
+                      onClick={() => {
+                        getbook()
+                      }}
+                    >
+                      搜尋
+                    </button>
+                  </div>
+                  <div className="text-danger letter-spacing ">
+                    {search_error}
+                  </div>
+                </>
               )}
             </div>
           </div>

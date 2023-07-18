@@ -6,7 +6,7 @@ import UsedTdReturn from '@/components/used/chk-msg/used-td-return'
 import UsedTdUnreceive from '@/components/used/chk-msg/used-td-unreceive'
 import Link from 'next/link'
 import Member_info from '@/components/Leo/member/member_info'
-import MemberBreadcrumbs from '@/components/Leo/member/member_breadcrumbs'
+import MemberBreadcrumbs_2 from '@/components/Leo/member/member_breadcrumbs-2'
 //暫定 1.待兌換 2.代收書 3.退回 4.已兌換
 const datas = [
   {
@@ -40,7 +40,7 @@ export default function ChangebookMessage() {
     <>
       <Member_info />
       <MemberNav />
-      <MemberBreadcrumbs />
+      <MemberBreadcrumbs_2 />
       <div className="px-2">
         <div className="dropdown pb-3 d-flex justify-content-end ">
           <button
