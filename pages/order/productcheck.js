@@ -17,7 +17,7 @@ export default function productcheck() {
         <CartTitle titlecontent={"再次確認商品後，前往付款吧"}/>
         <ProductCheck/>
         <div style={style1}>
-          <OrderTotalPrice btncontent={"下一步，前往付款"}/>
+          <OrderTotalPrice btncontent={"下一步，前往付款"} route1={"/order/checkout"}/>
         </div>
     </div>
   )

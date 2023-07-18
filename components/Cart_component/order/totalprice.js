@@ -36,7 +36,13 @@ export default function OrderTotalPrice({btncontent,border1,route1}) {
     display:"flex",
     justifyContent:"space-around",
     alignItems:"center",
-    gap:"90px"
+    gap:"40px"
+  }
+  const style3={
+    display:"flex",
+    flexDirection:"column",
+    justifyContent:"space-around",
+    alignItems:"center",
   }
   
   
@@ -45,15 +51,12 @@ export default function OrderTotalPrice({btncontent,border1,route1}) {
   return (
     <div style={style1} >
         <div><h1>訂單金額</h1></div>
-          {subprice.map((v,i)=>{
-              const v2 = price[i]
-              return(
-                <div style={style2} key={i}>
-                    <h3 >{v}</h3>
-                    <h4 >${v2}</h4>
-              </div>
-            )
-          })}
+        <div>
+          <div>
+            {subpricema}
+
+          </div>
+        </div>
         <DeepButton  DeepButtoncontent={btncontent} route={route1}/>
     </div>
   )

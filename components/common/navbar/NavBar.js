@@ -10,12 +10,13 @@ import Membericon from '@/assets/Nav_Image/Subtract.svg'
 export default function NavBar1() {
   const NavctName = ['商城', '二手書', '部落格', '關於我們']
   const NavEnName = ['STORE', 'USEDSTORE', 'BLOG', 'ABOUTUS']
-  const NavIcon = [Searchicon, Carticon, Membericon]
+  const navrouter = ["/product/","/used/","/blog/"]
+  // const NavIcon = [Searchicon, Carticon, Membericon]
 
   return (
     <div className={styles.Header}>
       <div className={styles.HeaderNavbar}>
-        <Link href="#" className={styles.logolink}>
+        <Link href="/" className={styles.logolink}>
           <Image
             src={logo}
             width={150}
@@ -30,9 +31,10 @@ export default function NavBar1() {
         <div className={styles.NavbarRoute}>
           {NavctName.map((v, i) => {
             const v2 = NavEnName[i]
+            const v3 = navrouter[i]
             return (
               <div className={styles.navlinkdiv} key={i}>
-                <Link href="#" className={styles.navlink1}>
+                <Link href={{v3}} className={styles.navlink1}>
                   {v}
                 </Link>
                 <p className={styles.linktext}>{v2}</p>
@@ -41,19 +43,33 @@ export default function NavBar1() {
           })}
         </div>
         <div className={styles.Icongroup}>
-          {NavIcon.map((v, i) => {
-            return (
-              <Link href="#" className={styles.navlink2} key={i}>
+              <Link href="#" className={styles.navlink2} >
                 <Image
-                  src={v}
+                  src={Searchicon}
                   width={60}
                   height={30}
                   className={styles.Licon}
                   alt="icon"
                 />
               </Link>
-            )
-          })}
+              <Link href="/product/cart" className={styles.navlink2} >
+                <Image
+                  src={Carticon}
+                  width={60}
+                  height={30}
+                  className={styles.Licon}
+                  alt="icon"
+                />
+              </Link>
+              <Link href="/member/profile" className={styles.navlink2} >
+                <Image
+                  src={Membericon}
+                  width={60}
+                  height={30}
+                  className={styles.Licon}
+                  alt="icon"
+                />
+              </Link>
         </div>
       </div>
     </div>
