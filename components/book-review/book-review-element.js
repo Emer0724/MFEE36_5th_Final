@@ -2,7 +2,6 @@ import Avatar2 from './blogavatar2'
 import style from '@/components/book-review/book-review-element.module.css'
 import {AiFillStar} from 'react-icons/ai'
 import Image from 'next/image'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import imgbook1 from '@/public/blogimg/book1.jpg'
 
 
@@ -17,6 +16,9 @@ export default function BookReviewElement() {
                     <div>
                         <div className='d-flex ps-3 pt-2'>
                             <Avatar2/>            
+                        </div>
+                        <div className='d-flex ps-3 pt-3 fw-bold'>
+                            <span>名言佳句</span>            
                         </div>
                         <div className='d-flex ps-3 pt-3'>
                             <div className={`pe-2 ${style.chenstar}`}><AiFillStar/></div>

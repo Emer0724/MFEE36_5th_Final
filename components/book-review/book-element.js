@@ -1,6 +1,5 @@
 import style from '@/components/book-review/book-element.module.css'
 import Link from 'next/link'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default function BookElement() {
     return (
@@ -12,12 +11,14 @@ export default function BookElement() {
                     <Link href="#" className={`text-body-tertiary text-decoration-none ${style.chenbreadhole}`}>書評</Link>
                 </div>
             </div>
-            <div class="d-flex">
-                <div>
-                    <Link href="#" className={`text-black fs-5 pe-4 text-decoration-none`}>評分最高</Link>
-                </div>
-                <div>
-                    <Link href="#" className={`text-black fs-5 text-decoration-none`}>評分最低</Link>
+            <div>
+                <div className='d-flex'>
+                    <div className='pe-4'>
+                        <Link href="#" className={`${style.chenbread} text-black fs-5 text-decoration-none`}>評分最高</Link>
+                    </div>
+                    <div>
+                        <Link href="#" className={`${style.chenbread} text-black fs-5 text-decoration-none`}>評分最低</Link>
+                    </div>
                 </div>
             </div>
         </>
