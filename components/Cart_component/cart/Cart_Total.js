@@ -18,6 +18,10 @@ export default function CartTotal() {
             <h2 className={styles.CartTotalCoupontext1}>折價卷</h2>
             <h2 className={styles.CartTotalCoupontext2}>$100</h2>
          </div>
+         <div className={styles.CartTotalCouponPrice}>
+            <h2 className={styles.CartTotalCoupontext1}>知音幣</h2>
+            <h2 className={styles.CartTotalCoupontext2}>100</h2>
+         </div>
          <div className={styles.CartTotalBtnNext}>
              <LightButton lightbtncontent='使用折價卷'/>
             <DeepButton DeepButtoncontent='下一步，前往付款'/>

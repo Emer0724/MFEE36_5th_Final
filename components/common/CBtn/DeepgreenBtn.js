@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
-import { divide } from 'lodash'
 
 const buttonStyle2 = {
   backgroundColor: '#52796F',

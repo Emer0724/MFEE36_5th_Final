@@ -40,8 +40,8 @@ export default function OrderTotalPrice({btncontent,border1}) {
   }
   
   
-  const subprice =["商品金額","貨運費用","折價卷","總金額"]
-  const price =[5000,"+60","-100",4960]
+  const subprice =["商品金額","貨運費用","折價卷","知音幣","總金額"]
+  const price =[5000,"+60","-100",100,4960]
   return (
     <div style={style1} >
         <div><h1>訂單金額</h1></div>

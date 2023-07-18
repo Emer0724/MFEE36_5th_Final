@@ -2,7 +2,6 @@ import {FaFacebook} from 'react-icons/fa'
 import {AiFillTwitterCircle} from 'react-icons/ai'
 import {BsFillTelephoneFill} from 'react-icons/bs'
 import {FaMapMarkedAlt} from 'react-icons/fa'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import style from '@/components/common/footer/footer.module.css'
 
 
