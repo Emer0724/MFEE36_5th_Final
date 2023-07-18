@@ -11,8 +11,9 @@
 }
 
 .crumbs_border{
-    font-size: 20px;
-    width: 95px;
+    font-size: 20px; 
+    margin-left:20px;
+    width: 141px;
     height: 30px;
     border-left: 1px solid black;
     padding-left: 15px;

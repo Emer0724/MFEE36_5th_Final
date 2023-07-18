@@ -12,8 +12,8 @@ export default function Member_info() {
           <Image
             className={x.camera_icon}
             src={camera}
-            width={48}
-            height={48}
+            width={35}
+            height={35}
             alt="camera"
           />
         </div>
