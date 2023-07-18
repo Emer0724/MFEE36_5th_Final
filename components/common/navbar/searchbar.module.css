@@ -2,7 +2,7 @@
     width:100%;
     height: 600px;
     position: relative;
-    background-color: rgb(12, 140, 44);
+    background-color: #a3daaf;
 }
 .searchrow{
     position:absolute;
@@ -12,14 +12,6 @@
     justify-content: center;
     gap: 10px;
 }
-
-.searchsel{
-    width: 150px;
-    height: 70px;
-    font-size: var(--txp20);
-    border-radius: 5px;
-}
-
 .searchinput{
     width: 600px;
     height: 70px;
@@ -27,3 +19,8 @@
     font-size: var(--txp20);
     border-radius: 5px;
 }
+.searchbtn{
+    border-style: none;
+    background-color: #a3daaf;
+}
+

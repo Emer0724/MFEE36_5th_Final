@@ -4,10 +4,11 @@ import Link from 'next/link'
 
 const buttonStyle2 = {
   backgroundColor: '#52796F',
-  width: 150,
+  width: 200,
   height: 40,
   borderRadius: 5,
   color: 'white',
+  fontSize:"20px"
 }
 const btnctstyle = {
   display: 'flex',

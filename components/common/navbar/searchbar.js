@@ -8,18 +8,9 @@ export default function Searchbar() {
     <div className={styles.searchcontain}>
         <div className={styles.searchrow}>
           <div className={styles.searchbar}>
-           <select className={styles.searchsel} name="category" id="" value='類別'>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-           </select>
-           <input className={styles.searchinput} type="text" placeholder='搜尋'/>
+           <input className={styles.searchinput} type="text" placeholder='搜尋書本名稱'/>
           </div>
-          <Image src={search} alt='icon' width={60} height={60}/>
+          <button className={styles.searchbtn}><Image src={search} className={styles.searchicon} alt='icon' width={60} height={60}/></button>
         </div>
     </div>
   )

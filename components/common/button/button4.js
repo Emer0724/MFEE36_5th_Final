@@ -1,5 +1,4 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import style from '@/components/common/button/button4.module.css'
 
 export default function Button4() {
 

@@ -4,10 +4,11 @@ import Link from 'next/link'
 
 const buttonStyle1 = {
   border: '2px solid #52796F',
-  width: 150,
+  width: 200,
   height: 40,
   borderRadius: 5,
   color: '#52796F',
+  fontSize:"20px"
 }
 
 export default function LightButton({ lightbtncontent, route, props }) {
