@@ -8,31 +8,22 @@ import arrow from "@/assets/Order_image/Arrow1.svg"
 import { useRouter } from 'next/router'
 
 export default function OrderIcon({}) {
-  const [icon,setIcon]=useState()
+  const [icon,setIcon]=useState(cartIconS)
   const router = useRouter()
   const currentPath = router.pathname
   const iconrouter = ['/product/cart','/order','/order/productcheck','/order/checkout','/order/complete']
   const StateIcon =[cartIconS,writeIconS,handIconS]
-  const StateName = ["購物車","資料填寫","付款完成"]
+  const StateName = ["購物車","資料填寫","訂單完成"]
   const length = StateName.length
-  
-  console.log(currentPath)
-  // const result = iconrouter.filter((v)=>{
-  //   return currentPath === v;
-  // }).map((v, index)=> index);
-  let index = 0;
-  const result =iconrouter.map((v,i)=>{
-    if(currentPath==v){
-      index = i
-      return i;
-    }
-  })
-  console.log(index)
+  console.log(currentPath);
 
+   const result = iconrouter.indexOf(currentPath)
+   console.log(result);
+  
   useEffect(()=>{
-    if(index===0){
+    if(result===0){
       setIcon(cartIconS)
-    }else if(index===4){
+    }else if(result===4){
       setIcon(handIconS)
     }else{
       setIcon(writeIconS)
@@ -62,7 +53,7 @@ export default function OrderIcon({}) {
               }else{
                 return(
                 <div className={styles.OrderStateDiv} key={i}>
-                  <div className={styles.OrderStateCircle}>
+                  <div className={`${styles.OrderStateCircle} ${icon===v?styles.orderstateani:''}`}>
                     <Image  src={v} width={60} height={60} alt='icon'/>
                   </div>
                   <div className={styles.OrderStateText}>

@@ -2,7 +2,7 @@ import DeepButton from '@/components/common/CBtn/DeepgreenBtn'
 import React from 'react'
 import { useState,useEffect } from 'react'
 
-export default function OrderTotalPrice({btncontent,border1}) {
+export default function OrderTotalPrice({btncontent,border1,route1}) {
   const [windowWidth ,setWindowWidth] = useState(null)
   useEffect(() => {
     const handleResize = () => {
@@ -40,7 +40,7 @@ export default function OrderTotalPrice({btncontent,border1}) {
   }
   
   
-  const subprice =["商品金額","貨運費用","折價卷","總金額"]
+  const subprice =["商品金額","貨運費用","折價卷","知音幣","總金額"]
   const price =[5000,"+60","-100",4960]
   return (
     <div style={style1} >
@@ -54,7 +54,7 @@ export default function OrderTotalPrice({btncontent,border1}) {
               </div>
             )
           })}
-        <DeepButton  DeepButtoncontent={btncontent}/>
+        <DeepButton  DeepButtoncontent={btncontent} route={route1}/>
     </div>
   )
 }

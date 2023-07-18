@@ -22,6 +22,10 @@ export default function CurtProduct() {
     backgroundColor: "var(--bgc7)",
     borderRadius:"50%"
   }
+  const Header1={
+    textAlign:"center",
+    fontSize:"var(--txp24)"
+  }
 
   const PLheader = ["產品","ISBN","價格","數量","小計","刪除"]
   
@@ -60,7 +64,7 @@ const product = [
         <tr>
           {PLheader.map((v,i)=>{
           return(   
-              <th key={i}  style={{textAlign:'center'}}>{v}</th>
+              <th key={i}  style={Header1}>{v}</th>
               )
           })}
           </tr>  

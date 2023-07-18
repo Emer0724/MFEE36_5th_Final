@@ -13,12 +13,18 @@
     margin:60px 0;
 }
 .Rebooklist{
+    width: 900px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    padding-top: 60px;
 }
 .RebookBook{
     margin: 30px;
+}
+.Rebookcard{
+    display: flex;
+    flex-direction: column;
 }
 @media (max-width:400px) {
     .RebookDiv{
