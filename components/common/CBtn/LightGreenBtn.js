@@ -1,20 +1,39 @@
-import React from 'react'
+import {useState,useEffect} from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 
-const buttonStyle1 = {
-  border: '2px solid #52796F',
-  width: 200,
-  height: 40,
-  borderRadius: 5,
-  color: '#52796F',
-  fontSize:"20px"
-}
 
-export default function LightButton({ lightbtncontent, route, props }) {
+
+export default function LightButton({ lightbtncontent, route }) {
+
+  const [windowWidth ,setWindowWidth] = useState(null)
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    }
+    if (typeof window !== 'undefined') {
+      setWindowWidth(window.innerWidth)
+      window.addEventListener('resize', handleResize)
+    }
+
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', handleResize)
+      }
+    }
+  }, [])
+
+  const buttonStyle1 = {
+    border: '2px solid #52796F',
+    width: windowWidth && windowWidth > 600 ? 200:150,
+    height: 50,
+    borderRadius: 5,
+    color: '#52796F',
+    fontSize:windowWidth && windowWidth > 600?"20px":"16px",
+  }
   return (
-    <Link href={{ route }}>
-      <button style={buttonStyle1} onClick={props}>
+    <Link href={ {route} }>
+      <button style={buttonStyle1} >
         {lightbtncontent}
       </button>
     </Link>

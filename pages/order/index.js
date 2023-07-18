@@ -6,14 +6,14 @@ import React from 'react'
 import styles from '@/pages/order/Orderindex.module.css'
 
 
-export default function checkout() {
+export default function checkForm() {
   return (
     <>
         <OrderState/>
         <CartTitle className={styles.title} titlecontent={"選擇喜歡的寄送方式和付款方式吧"}/>
         <div className={styles.checkcontain}>
           <OrderForm/>
-          <OrderTotalPrice btncontent={"下一步，確認商品"} border1={"1px solid #52796F"}/>
+          <OrderTotalPrice btncontent={"下一步，確認商品"} border1={"1px solid #52796F"} route1={"/order/productcheck"}/>
         </div>
           
     </>

@@ -24,7 +24,7 @@ export default function CartTotal() {
          </div>
          <div className={styles.CartTotalBtnNext}>
              <LightButton lightbtncontent='使用折價卷'/>
-            <DeepButton DeepButtoncontent='下一步，前往付款'/>
+            <DeepButton DeepButtoncontent='下一步，前往付款' route="/order" />
          </div>
       </div>
    </div>
