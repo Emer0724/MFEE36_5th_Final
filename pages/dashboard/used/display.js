@@ -4,13 +4,13 @@ import MemberNav from '@/components/common/member-nav/member-nav'
 import Member_info from '@/components/Leo/member/member_info'
 import MemberBreadcrumbs from '@/components/Leo/member/member_breadcrumbs'
 
-const books = {
-  ISBN: 9789861371955,
-  book_name: '被討厭的勇氣：自我啟發之父「阿德勒」的教導',
-  author: ' 岸見一郎, 古賀史健',
-  publish: '究竟',
-  img: 'getImage.webp',
-}
+// const books = {
+//   ISBN: 9789861371955,
+//   book_name: '被討厭的勇氣：自我啟發之父「阿德勒」的教導',
+//   author: ' 岸見一郎, 古賀史健',
+//   publish: '究竟',
+//   img: 'getImage.webp',
+// }
 const members = {
   name: '李曉明',
   moble: '0912345678',
@@ -19,8 +19,17 @@ const members = {
 }
 
 export default function Display() {
-  const [book, setbooks] = useState(books)
+  const [book, setbooks] = useState(false)
   const [member, setMember] = useState(members)
+  const [inputValue, setInputValue] = useState('')
+
+  const getbook = () => {
+    // if(!inputValue){
+    // }
+  }
+
+  //找書
+
   return (
     <>
       <Member_info />
@@ -31,43 +40,65 @@ export default function Display() {
         <div className="row">
           <div className="col-12  col-lg-6 d-flex align-items-center ">
             <div className="d-flex flex-column align-items-center w-100   ">
-              {/* book-serch */}
-              <div className="my-3 d-flex ">
-                <span className="color-tx-1 fw-bold textp-20px  letter-spacing ">
-                  ISBN :
-                </span>
-                <input
-                  type="text"
-                  className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px"
-                  placeholder="請輸入ISBN"
-                  size={12}
-                />
-                <button className="btn color-bg-4 border-radius-5px py-0  textp-20px ">
-                  搜尋
-                </button>
-              </div>
-              {/* book-serch */}
-              <div
-                className="color-bg-6 my-4 "
-                style={{
-                  width: 190,
-                  height: 190,
-                  background: `url('/used-img/${book.img}')`,
-                  backgroundSize: 'contain',
-                }}
-              ></div>
-              <div className="d-flex flex-column align-items-center ">
-                <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center">
-                  {book.book_name}
-                </h6>
-                <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center">
-                  作者: {book.author}
-                </h6>
-                <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center">
-                  出版社: {book.publish}
-                </h6>
-              </div>
-              {/*---book-serch  end*/}
+              {book ? (
+                <>
+                  <div className="my-3 d-flex ">
+                    <span className="color-tx-1 fw-bold textp-20px  letter-spacing ">
+                      ISBN :
+                    </span>
+                    <input
+                      type="text"
+                      className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px"
+                      placeholder="請輸入ISBN"
+                      value={inputValue}
+                      size={12}
+                    />
+                    <button
+                      className="btn color-bg-4 border-radius-5px py-0  textp-20px "
+                      onClick={() => getbook()}
+                    >
+                      搜尋
+                    </button>
+                  </div>
+
+                  <div
+                    className="color-bg-6 my-4 "
+                    style={{
+                      width: 190,
+                      height: 190,
+                      background: `url('/used-img/${book.img}')`,
+                      backgroundSize: 'contain',
+                    }}
+                  ></div>
+
+                  <div className="d-flex flex-column align-items-center ">
+                    <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center">
+                      {book.book_name}
+                    </h6>
+                    <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center">
+                      作者: {book.author}
+                    </h6>
+                    <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center">
+                      出版社: {book.publish}
+                    </h6>
+                  </div>
+                </>
+              ) : (
+                <div className="my-3 d-flex ">
+                  <span className="color-tx-1 fw-bold textp-20px  letter-spacing ">
+                    ISBN :
+                  </span>
+                  <input
+                    type="text"
+                    className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px"
+                    placeholder="請輸入ISBN"
+                    size={12}
+                  />
+                  <button className="btn color-bg-4 border-radius-5px py-0  textp-20px ">
+                    搜尋
+                  </button>
+                </div>
+              )}
             </div>
           </div>
           <div className="col-12 col-lg-6 border-start border-black used-display-member ">
@@ -117,3 +148,42 @@ export default function Display() {
     </>
   )
 }
+
+// /* book-serch
+// <div className="my-3 d-flex ">
+//   <span className="color-tx-1 fw-bold textp-20px  letter-spacing ">
+//     ISBN :
+//   </span>
+//   <input
+//     type="text"
+//     className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px"
+//     placeholder="請輸入ISBN"
+//     size={12}
+//   />
+//   <button className="btn color-bg-4 border-radius-5px py-0  textp-20px ">
+//     搜尋
+//   </button>
+// </div>
+// /* book-serch
+// <div
+//   className="color-bg-6 my-4 "
+//   style={{
+//     width: 190,
+//     height: 190,
+//     background: `url('/used-img/${book.img}')`,
+//     backgroundSize: 'contain',
+//   }}
+// ></div>
+
+// <div className="d-flex flex-column align-items-center ">
+//   <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center">
+//     {book.book_name}
+//   </h6>
+//   <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center">
+//     作者: {book.author}
+//   </h6>
+//   <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center">
+//     出版社: {book.publish}
+//   </h6>
+// </div>
+// /*---book-serch  end

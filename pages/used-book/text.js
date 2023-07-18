@@ -23,6 +23,7 @@ export default function Text() {
       </div>
       <UsedUpCheck />
       {/* <PopUp content1={12346} content2={'5454646'} onclick1={getsome} /> */}
+      <button>點我設token</button>
     </>
   )
 }

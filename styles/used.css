@@ -166,7 +166,7 @@ video {
   justify-content: center;
 }
 .used_index_botton {
-  height: 300px;
+  height: 100px;
 }
 .index-index-aboutUs{
   margin-top: 100px;
@@ -314,7 +314,7 @@ video {
     height: 90vw;
   }
   .index_index_circle_text-sm {
-    font-size: 28px;
+    font-size: 20px;
   }
 
   .used-insex-s3-dflex {
@@ -327,5 +327,16 @@ video {
   }
   .index-index-video-text-md {
     font-size: 20px;
+  }
+  .used_index_botton {
+    height: 500px;
+  }
+  .index-index-video-card{
+    padding: 10px !important;
+  
+  }
+  .index_index_hidden{
+    height: 400px;
+    overflow: auto;
   }
 }

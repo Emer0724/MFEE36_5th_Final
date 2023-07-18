@@ -5,6 +5,7 @@ const navInfos = [
   { id: 2, info: '優惠券', url: '/dashboard/coupon', router1: 'coupon' },
   { id: 3, info: '訂單', url: '/dashboard/order', router1: 'order' },
   { id: 4, info: '二手書', url: '/dashboard/used/display', router1: 'used' },
+  { id: 5, info: '收藏', url: '/dashboard/wishlist', router1: 'wishlist' },
 ]
 
 export default function MemberNav() {

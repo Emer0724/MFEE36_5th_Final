@@ -6,7 +6,7 @@ import ThinCard from '@/components/common/inedx-card/thin-card'
 import ThinCardTilt from '@/components/common/inedx-card/thin-card-tilt'
 import NavBar1 from '@/components/common/navbar/NavBar'
 import UnderNavbar from '@/components/common/navbar/Under_navbar'
-import Footer from '@/components/layout/footer'
+import Footer from '@/components/common/footer/footer'
 import Link from 'next/link'
 import ReactPlayer from 'react-player/lazy'
 import { useEffect, useState, useRef } from 'react'
@@ -144,26 +144,31 @@ export default function Home() {
                 }
               })}
           </div>
-          <div
-            className="index_index_hidden d-flex align-items-end  pb-4 mt-5 "
-            onMouseDown={(e) => MouseDown1(e)}
-            onMouseLeave={() => Mouseleave1()}
-            onMouseUp={() => MouseUp1()}
-            onMouseMove={(e) => MouseMove1(e)}
-            ref={refscrollLeftDown}
-          >
-            {Array(20)
-              .fill(1)
-              .map((v, i) => {
-                if (i % 5 === 0) {
-                  return <ThinCardTilt key={i} />
-                } else if (i % 3 === 0) {
-                  return <ThinCard key={i} />
-                } else {
-                  return <BigCard key={i} />
-                }
-              })}
-          </div>
+
+          {windowWidth > 500 ? (
+            <div
+              className="index_index_hidden d-flex align-items-end  pb-4 mt-5 "
+              onMouseDown={(e) => MouseDown1(e)}
+              onMouseLeave={() => Mouseleave1()}
+              onMouseUp={() => MouseUp1()}
+              onMouseMove={(e) => MouseMove1(e)}
+              ref={refscrollLeftDown}
+            >
+              {Array(20)
+                .fill(1)
+                .map((v, i) => {
+                  if (i % 5 === 0) {
+                    return <ThinCardTilt key={i} />
+                  } else if (i % 3 === 0) {
+                    return <ThinCard key={i} />
+                  } else {
+                    return <BigCard key={i} />
+                  }
+                })}
+            </div>
+          ) : (
+            ''
+          )}
         </div>
         {/* section1---end */}
         {/* section2 */}
@@ -287,7 +292,7 @@ export default function Home() {
             <div className="index-index-video">
               {myVideo}
               <div className="index-index-video-card">
-                <div className=" d-flex flex-column justify-content-center align-items-center px-5 ">
+                <div className=" d-flex flex-column justify-content-center align-items-center px-3 ">
                   <div className=" textp-28px my-2 fw-bold color-tx-7 index-index-video-text-md letter-spacing ">
                     Book書易-延續書的意義
                   </div>
@@ -305,7 +310,8 @@ export default function Home() {
         <div className="used_index_botton"></div>
         <div className="used_rwd_botton"></div>
         <UnderNavbar />
-        <Footer />
+        {windowWidth > 400 ? <Footer /> : ''}
+        {/* <Footer /> */}
       </div>
     </>
   )
