@@ -1,5 +1,4 @@
 import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import b from '@/components/Leo/market_aside.module.css'
 
 export default function Market_aside_button() {

@@ -1,5 +1,4 @@
 import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import Image from 'next/image'
 import x from './member_info.module.css'
 import camera from '@/assets/leo-svg/camera-solid.svg'

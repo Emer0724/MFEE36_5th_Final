@@ -1,5 +1,4 @@
 import React from 'react'
-import 'bootstrap/dist/css/bootstrap.leo.css'
 import Image from 'next/image'
 import pic1 from '@/public/Leo-image/bookstore.jpg'
 import pic2 from '@/public/Leo-image/天安門.webp'

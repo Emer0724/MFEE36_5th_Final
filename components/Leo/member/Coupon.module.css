@@ -1,0 +1,17 @@
+.coupon{
+    font-size: 20px;
+    border: 1px solid black;
+    width: 250px;;
+    height: 150px;
+    border-radius: 8px;
+    background-color: #D4E9E2;
+}
+.c_title{
+    margin-left: 15px;
+    margin-top: 10px;
+}
+.c_content{
+    display: flex;
+    justify-content: center;
+}
+
