@@ -1,0 +1,120 @@
+/* ./styles/member.css */
+
+/*Roboto字體 - Google Android 開源英文字體*/
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700);
+
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: 600px;
+  background-color: #fff;
+  color: #52796F;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 30px rgba(82, 121, 111, 0.5);
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease;
+  
+}
+
+.card:hover {
+  box-shadow: 5px 5px 10px rgba(82, 121, 111, 0.5);
+}
+
+.form-control {
+  width: 250px;
+  height: 40px;
+  background-color: #ECECEC;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.h1{
+  margin-bottom: 20px;
+}
+
+
+.color-tx-2 {
+  color: #52796F;
+}
+
+
+/* .input-focused {
+  outline: 5px solid #52796F;
+} */
+
+
+/* ./styles/member.module.css */
+
+.input-container {
+  position: relative;
+}
+
+.input-fade-in {
+  transition: border-color 0.5s ease;
+}
+
+.input-fade-out {
+  transition: border-color 0.5s ease;
+}
+
+.input-focused {
+  border-color: rgba(82, 121, 111, 0.8);
+}
+
+
+.login-btn{
+  background: #52796F;
+  border-radius: 5px;
+  width: 300px;
+  margin-top: 20px;
+  
+}
+@import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700';
+
+.edit-btn{
+  border: none;
+  color: #84A98C;
+  background-color: #fff;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 5px;
+}
+
+
+.profile-title{
+  font-size: 16px;
+  color: var(--color1);
+}
+
+.save-btn{
+  width: 250px;
+  height: 40px;
+  background: #52796F;
+  border-radius: 5px;
+  width: 300px;
+  margin-top: 20px;
+  border: none;
+  color: #fff;
+}
+
+
+.note{
+  font-size: 12px;
+  text-decoration: underline;
+  color: var(--color5);
+  border: none;
+  background-color: #fff;
+}
