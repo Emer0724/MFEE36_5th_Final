@@ -37,6 +37,7 @@ export default function Home() {
   //監聽視窗大小
   const [windowWidth, setWindowWidth] = useState(null)
   const [windowhight, setwindowhight] = useState(null)
+  const [slidesPerView_n , setslidesPerView_n] =useState(3)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       // 我們在客戶端，window 物件可用
@@ -50,15 +51,31 @@ export default function Home() {
       }
       window.addEventListener('resize', handleResize)
 
+
+       //swiper RWD 個數
+
+   
+    if(windowWidth<885){
+      setslidesPerView_n(1)
+   }else if(windowWidth<1350){
+      setslidesPerView_n(2)
+   }else{
+      setslidesPerView_n(3)
+   }
+
       return () => {
         // 在元件卸載時清除事件監聽器
         window.removeEventListener('resize', handleResize)
       }
     }
-  }, [])
 
-  console.log(windowWidth)
-  console.log(windowhight)
+    
+ 
+   
+  }, [windowWidth])
+  console.log(slidesPerView_n)
+
+  
   //書本拉bar
   //是否執行
   const [isDown1, setIsDown1] = useState(false)
@@ -194,7 +211,7 @@ export default function Home() {
             熱門書評
             <div className="my-5">
               <Swiper
-                slidesPerView={windowWidth >= 700 ? 3 : 1}
+                slidesPerView={slidesPerView_n}
                 spaceBetween={30}
                 // pagination={{
                 //   clickable: true,
@@ -241,7 +258,7 @@ export default function Home() {
           </div>
           <div className="pb-5">
             <Swiper
-              slidesPerView={windowWidth >= 700 ? 3 : 1}
+              slidesPerView={slidesPerView_n}
               spaceBetween={30}
               // pagination={{
               //   clickable: true,

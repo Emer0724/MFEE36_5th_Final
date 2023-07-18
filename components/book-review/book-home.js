@@ -9,7 +9,7 @@ import Button2 from '../common/button/button2'
 export default function BookHome() {
   return (
     <div
-      className={`${style.bookborder} ps-4 pe-3`}
+      className={`${style.bookborder} ps-3 pe-3`}
       style={{ width: '100%', backgroundColor: '#FFF' }}
     >
       <div className="pb-2 pt-4 ">
@@ -18,37 +18,39 @@ export default function BookHome() {
             <Image src={imgbook1} className={`${style.chenbooksize}`} />
           </div>
           <div>
-            <div className="d-flex ps-3 pt-2">
+            <div className="d-flex ms-3 pt-2">
               <Avatar2 />
-              <span className={`${style.chendate} pt-2 pb-2 ps-3`}>
+              <span className={`${style.chendate} pt-2 pb-2 ms-3`}>
                 2023.2.21
               </span>
             </div>
-            <div className="d-flex ps-3 ">
-              <div className={`pe-2 ${style.chenstar}`}>
+            <div className="d-flex ms-3 ">
+              <div className={` ${style.chenstar}`}>
                 <AiFillStar />
               </div>
-              <div className={`pe-2 ${style.chenstar}`}>
+              <div className={` ${style.chenstar}`}>
                 <AiFillStar />
               </div>
-              <div className={`pe-2 ${style.chenstar}`}>
+              <div className={` ${style.chenstar}`}>
                 <AiFillStar />
               </div>
-              <div className={`pe-2 ${style.chenstar}`}>
+              <div className={` ${style.chenstar}`}>
                 <AiFillStar />
               </div>
-              <div className={`pe-2 ${style.chenstar}`}>
+              <div className={` ${style.chenstar}`}>
                 <AiFillStar />
               </div>
             </div>
-            <div className="ps-3 pt-2">
+            <div className="ms-3 pt-2">
               <div className="textp-16px line-hight text-hidden pe-5">
                 這本書是一個關於人際關係和溝通技巧的指南，通過各種實例和故事，教導讀者如何與他人建立良好的關係、解決衝突並提升領導力。
               </div>
             </div>
-            <div className="ps-3 pt-4 d-flex justify-content-around  pb-3">
+            <div  className='d-flex justify-content-center'>
+            <div className="ms-3 pt-4 d-flex justify-content-start gap-5  pb-3">
               <Button2 />
               <AiOutlineShoppingCart />
+            </div>
             </div>
           </div>
           {/* <div className="d-flex flex-column justify-content-between">

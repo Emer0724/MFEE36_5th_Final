@@ -125,11 +125,11 @@ video {
   /* border-radius: 25% 10%; */
   top: 0%;
   right: 5%;
-  /* z-index: 0.5; */
+  z-index: 0.7;
   /* opacity: 0.9; */
   /* box-shadow: -30px 30px 0 rgb(91, 91, 91); */
   display: flex;
-  padding: 20px;
+  padding: 30px;
   /* box-shadow: -20px 20px 0 rgb(91, 91, 91);  */
   background-color: #747272;
 
@@ -147,7 +147,7 @@ video {
   background-color: #747272; 
   /* box-shadow: -20px 20px 0 rgb(91, 91, 91);  */
   overflow: hidden;
-  z-index: 2/*设置伪元素的背景颜色，便于看到效果*/
+  z-index: 0.5/*设置伪元素的背景颜色，便于看到效果*/
 
 }
 .index-index-video-container {

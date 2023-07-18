@@ -20,10 +20,19 @@ const members = {
 }
 
 export default function Display() {
-  const [book, setbooks] = useState(false)
+  const [book, setbooks] = useState()
   const [member, setMember] = useState(members)
   const [inputValue, setInputValue] = useState('')
   const [search_error, setSearch_error] = useState('')
+  const [goSearch,setGoSearch]=useState(false)
+  useEffect(() => {
+    if(goSearch){
+      getbook_detal()
+      setGoSearch(false)
+    }
+  
+   
+  }, [goSearch])
 
   //找書
   const getbook = () => {
@@ -33,6 +42,8 @@ export default function Display() {
     } else {
       const rule = new RegExp(/^\d{13}$/)
       if (rule.test(inputValue)) {
+        setSearch_error('') 
+        setGoSearch(true)
         getbook_detal()
       } else {
         return setSearch_error('ISBN為13位數字')
@@ -40,16 +51,21 @@ export default function Display() {
     }
   }
   const getbook_detal = async () => {
+    setSearch_error("")
     const getbook_detal1 = await fetch(
       `http://localhost:3055/used/display/book_info?ISBN=${inputValue}`
     )
     const getbook_detal2 = await getbook_detal1.json()
-    console.log(getbook_detal2.rows)
-    setbooks(getbook_detal2.rows)
+    
+    setbooks(getbook_detal2[0])
+    console.log(getbook_detal2.length)
+    if(getbook_detal2.length === 0){
+      setSearch_error("查無此本書")
+     
+     }
+   
   }
-  useEffect(() => {
-    getbook_detal()
-  }, [])
+
 
   return (
     <>
@@ -73,16 +89,17 @@ export default function Display() {
                       placeholder="請輸入ISBN"
                       value={inputValue}
                       onChange={(e) => {
-                        setInputValue(e.target.value)
+                       setInputValue(e.target.value)
                       }}
                       size={12}
                     />
                     <button
                       className="btn color-bg-4 border-radius-5px py-0  textp-20px "
                       // onClick={getbook}
-                      onClick={() => {
-                        getbook()
-                      }}
+                      onClick={
+                        
+                        getbook
+                      }
                     >
                       搜尋
                     </button>
@@ -96,7 +113,7 @@ export default function Display() {
                     style={{
                       width: 190,
                       height: 190,
-                      background: `url('/used-img/${book.img}')`,
+                      background: `url('/used-img/${book.pic}')`,
                       backgroundSize: 'contain',
                     }}
                   ></div>
@@ -131,9 +148,7 @@ export default function Display() {
                     />
                     <button
                       className="btn color-bg-4 border-radius-5px py-0  textp-20px "
-                      onClick={() => {
-                        getbook()
-                      }}
+                      onClick={getbook}
                     >
                       搜尋
                     </button>
@@ -180,12 +195,13 @@ export default function Display() {
 
       <div className="d-flex justify-content-center my-4 ">
         <div className="d-flex flex-column  align-items-center">
-          <div className="fw-bold letter-spacing my-4">
+          {book? ( <><div className="fw-bold letter-spacing my-4">
             請確認上述資料是否正確
           </div>
           <button className="btn color-bg-2 color-tx-7 fw-bold border-radius-5px  letter-spacing">
             我要上架
-          </button>
+          </button></>) : ''}
+         
           <div className="used_rwd_botton"></div>
         </div>
       </div>
