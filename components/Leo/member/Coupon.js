@@ -6,11 +6,11 @@ export default function Coupon() {
     display: 'flex',
     justifyContent: 'space-evenly',
   }
-  const d = {
-    marginLeft: '15px',
-    marginBottom: '0px',
-    paddingBottom: '0px',
-  }
+  // const d = {
+  //   marginLeft: '15px',
+  //   marginBottom: '0px',
+  //   paddingBottom: '0px',
+  // }
   return (
     <>
       <div className={`col`} style={c}>
