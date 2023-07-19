@@ -25,7 +25,7 @@ export default function orderlist() {
             <>
                 <div className={s.listcol}>
                     <div>
-                        <div className={s.listnum}><h3>訂單編號:{v}</h3></div>
+                        <div className={s.listnum}><h3>訂單編號</h3><h3>{v}</h3></div>
                         <div className={s.listdiv}>
                             <h4>訂單日期:</h4>
                             <h4>{dates}</h4>

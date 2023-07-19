@@ -23,6 +23,7 @@
 }
 .listnum{
     margin: 20px 0;
+    text-align: center;
 }
 .orderbtn{
     background-color: var(--color2);

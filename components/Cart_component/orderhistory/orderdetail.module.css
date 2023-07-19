@@ -28,12 +28,12 @@
     .detaillist1 {
       margin-bottom: 20px;
       border-bottom: 1px solid var(--color2);
-      
     }
   
     .detaillist2 {
       flex-direction: column;
-      gap: 20px;
+      align-items: end;
+      gap: 10px;
     }
     .detailimg{
         width: 80%;
@@ -44,7 +44,7 @@
   
     .detailname {
       width: 150%;
-      text-align: center;
+      text-align: end;
     }
     .detailcontain {
       width: 100%;
@@ -57,10 +57,6 @@
     .detailprice{
         display: none;
     }
-    .detailcount{
-        text-align: end;
-    }
-  
     .detaillist1 {
       padding: 0;
     }

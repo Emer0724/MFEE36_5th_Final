@@ -8,15 +8,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: slideInFromLeft 1s ease-in-out;
+    animation: slideInFromLeft 0.8s ease-in-out;
 }
 @keyframes slideInFromLeft {
     0% {
-    transform: translateY(100%);
+    transform: translateY(-100%);
       opacity: 0;
     }
     100% {
-      transform: translateY(0);
+      transform: translateY(0%);
       opacity: 0.8;
     }
   }
@@ -34,6 +34,7 @@
 .searchbtn{
     border-style: none;
     background-color: var(--color2);
+    cursor: pointer;
 }
 @media (max-width:400px) {
         .searchcontain{
@@ -49,8 +50,8 @@
             gap: 1px;
         }
         .searchicon{
-            width: 50%;
-            height: 50%;
+            width: 80%;
+            height: 70%;
         }
     
     
