@@ -1,0 +1,66 @@
+/* member/profile */
+
+.edit-btn{
+    border: none;
+    color: #84A98C;
+    background-color: #fff;
+    margin-bottom: 5px;
+    font-family: 'Noto Serif TC', serif;
+  }
+  
+  .outer-container{
+    align-items:center;
+    max-width: 50%;
+  }
+  
+  .profile-title{
+    font-size: 20px;
+    color: var(--color2);
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-weight: 800;
+    font-family: 'Noto Serif TC', serif;
+  }
+  
+  .profile-items{
+    font-size: 16px;
+    color: var(--color11);
+    margin-bottom: 5px;
+    font-family: 'Noto Serif TC', serif;
+  }
+  
+  .profile-box{
+    max-width: 1070px;
+    margin-top: 0px;
+    font-family: 'Noto Serif TC', serif;
+  }
+  
+  .data-line{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .form-radio{
+    display: flex;
+    line-height: 16px;
+    align-items: center;
+    margin-bottom: 10px;
+    
+  }
+  
+  
+  .save-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 40px;
+    background: #52796F;
+    border-radius: 5px;
+    width: 300px;
+    margin-top: 20px;
+    border: none;
+    color: #fff;
+    font-family: 'Noto Serif TC', serif;
+  }

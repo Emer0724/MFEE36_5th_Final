@@ -1,0 +1,233 @@
+/* ./styles/mem-style/login.module.css */
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter&family=Noto+Serif+TC&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-iBBwArnDmDzr7nDZB12A9A1SmdF5Su9C5K9iGSJ4pK/rfB1B8Zt7KJC03S0mDOQiu" crossorigin="anonymous">
+
+
+/* member/login */
+
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
+}
+
+
+.card {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
+  max-height: 800px;
+  background-color: #fff;
+  color: #52796F;  
+  box-shadow: 0 4px 30px rgba(82, 121, 111, 0.5);
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+  flex-direction: row; 
+
+  aspect-ratio: 3/2;
+  max-width: 100%;
+  max-height: calc(100vw * 2 / 3);
+}
+
+@media (max-width: 1200px) {
+  .card {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    aspect-ratio: 1/1;
+    max-height: 100vw;
+  }
+}
+
+
+.card:hover {
+  box-shadow: 5px 5px 10px rgba(82, 121, 111, 0.5);
+}
+
+.lr-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+
+.left-box{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: 5px 0 0 5px;
+  padding: 50px 20px;
+  justify-content: center;
+}
+
+.right-box{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  /* background-color: var(--bgc2); */
+  background: linear-gradient(to bottom right, #52796F,#52796F,#52796F, #52796F,#84A98C);
+  box-sizing: border-box;
+  border-radius: 0 5px 5px 0;
+  padding: 0 10px 0 10px;
+  width: 100%;
+}
+
+
+.right-text{
+  color: var(--color7);
+  font-size: var(--txp20);
+}
+
+
+.form-control {
+  flex:1;
+  height: 40px;
+  background-color: #ECECEC;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+}
+
+.login-title{
+  margin-bottom: 30px;
+  color: color-tx-2;
+}
+
+
+.color-tx-2 {
+  color: #52796F;
+}
+
+
+.input-container {
+  position: relative;
+}
+
+.input-fade-in {
+  transition: border-color 0.5s ease;
+}
+
+.input-fade-out {
+  transition: border-color 0.5s ease;
+}
+
+.input-focused {
+  border-color: rgba(82, 121, 111, 0.8);
+}
+
+.googlelogin-btn{
+  background: #fff;
+  color: var(--color2);
+  border-radius: 5px;
+  border: none;
+  height: 40px;
+  margin: auto;
+  width: 100%;
+  min-width: fit-content;
+  max-width: 300px;
+  border: 0.5px solid var(--color2);
+  margin-bottom: 30px;
+  border-radius: 50px;
+}
+
+.googlelogin-btn:hover{
+  box-shadow: 0 2px 8px rgba(132, 169, 140, 0.5);
+}
+
+.fa-google-plus-g {
+  margin-right: 10px;
+  height: fit-content;
+}
+
+
+.login-btn{
+  background: var(--color2);
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  height: 40px;
+  margin: auto;
+  width: 100%;
+  min-width: fit-content;
+  max-width: 300px;
+  border: 2px solid transparent;
+}
+
+.login-btn:hover{
+  background: var(--color11);
+  color: #fff;
+  border-radius: 5px;
+  width: 100%; 
+  border: 2px solid var(--color11); 
+}
+
+
+
+.login-input{
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  width:100%;
+}
+
+.login-input label{
+  width: 80px;
+  text-align: right;
+}
+
+.signup-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  background-color: var(--bgc2);
+  border-radius: 5px;
+  border: 1px solid var(--color11);
+  color: #fff;
+  width: 100%;
+  min-width: fit-content;
+  max-width: 300px;
+}
+
+.signup-btn:hover{
+  background-color:var(--color11);
+}
+
+
+.note{
+  font-size: 12px;
+  text-decoration: underline;
+  color: var(--color5);
+  border: none;
+  background-color: #fff;
+}
+
+.box-center{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}

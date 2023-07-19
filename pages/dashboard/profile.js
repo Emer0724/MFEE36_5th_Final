@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import styles from '../../styles/member.module.css'
+import styles from '../../styles/mem-style/dashboard-profile.module.css'
 import MemberNav from '@/components/common/member-nav/member-nav'
 import Member_info from '@/components/Leo/member/member_info'
 import Form from 'react-bootstrap/Form'
 import Image from 'next/image'
 
 const Profile = () => {
-  // 状态用于存储用户输入的数据
   const [name, setName] = useState('xxx')
   const [email, setEmail] = useState('xxx@company.com')
   const [username, setUsername] = useState('username')
@@ -18,10 +17,7 @@ const Profile = () => {
   )
   const [token, setToken] = useState('9999點')
 
-  // 处理保存数据的函数
   const saveData = () => {
-    // 将数据发送到服务器保存的逻辑
-    // 这里只是一个示例，你需要根据实际情况自行实现
     console.log('Saving data:', {
       name,
       email,
@@ -67,7 +63,7 @@ const Profile = () => {
               </div>
 
               <div>
-                <p className={styles['profile-items']}>用户名: </p>
+                <p className={styles['profile-items']}>使用者名稱: </p>
                 <div className={styles['data-line']}>
                   {username}
                   <button
