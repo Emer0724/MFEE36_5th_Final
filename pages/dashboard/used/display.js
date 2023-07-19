@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import { useState } from 'react'
 import MemberNav from '@/components/common/member-nav/member-nav'
 import Member_info from '@/components/Leo/member/member_info'
 // import MemberBreadcrumbs from '@/components/Leo/member/member_breadcrumbs'
 import MemberBreadcrumbs_2 from '@/components/Leo/member/member_breadcrumbs-2'
 import Link from 'next/link'
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/router'
 
 // const books = {
 //   ISBN: 9789861371955,
@@ -22,6 +22,7 @@ import { useNavigate } from 'react-router-dom'
 // }
 
 export default function Display() {
+  const router = useRouter()
   const [book, setbooks] = useState('')
   const [member, setMember] = useState('')
   const [inputValue, setInputValue] = useState('')
@@ -29,13 +30,18 @@ export default function Display() {
   // const history = useNavigate()
 
   useEffect(() => {
-    getmember()
+    if (!localStorage.getItem('auth')) {
+      router.push('/member/login')
+    }else{
+      getmember()
+    }
+    
   }, [])
 
   //個人資料
   const getmember = async () => {
     //如果非會員轉首頁
-
+  
     const authMember = JSON.parse(localStorage.getItem('auth')).member_id
     const getmember1 = await fetch(
       'http://localhost:3055/used/display/member/' + authMember
