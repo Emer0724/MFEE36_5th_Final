@@ -13,7 +13,7 @@ export default function MemberNav() {
   return (
     <>
       <div>
-        <ul className="d-flex border-bottom border-black px-0 mb-3">
+        <ul className="d-flex border-bottom border-black px-0 mb-3 text-center">
           {navInfo.map((v, i) => (
             <NavButton
               key={v.id}

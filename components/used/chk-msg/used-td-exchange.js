@@ -11,19 +11,19 @@ export default function UsedTdExchange({
     <>
       <tr>
         <td
-          className="text-center textp-20px fw-bold ${color}"
+          className="text-center textp-20px fw-bold ${color} used-search-text-16"
           style={{ color: '#c2c2c2c2' }}
         >
           {book_name}
         </td>
         <td
-          className="text-center textp-20px fw-bold "
+          className="text-center textp-20px fw-bold used-search-text-16 "
           style={{ color: '#c2c2c2c2' }}
         >
           已兌換
         </td>
         <td
-          className="text-center textp-20px fw-bold"
+          className="text-center textp-20px fw-bold used-search-text-16"
           style={{ color: '#c2c2c2c2' }}
         >
           +{price}

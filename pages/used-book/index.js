@@ -187,25 +187,31 @@ export default function UsedBook() {
             id="exchange"
           >
             <div className="px-5">
-              <div className="textp-28px fw-bold color-tx-5 mx-5  py-5 px-5 text-center letter-spacing">
+              <div className="textp-28px fw-bold color-tx-5 mx-5  py-5  text-center letter-spacing">
                 知音幣是什麼可以吃嗎?
               </div>
               <div className="d-flex justify-content-center  used-insex-s3-dflex ">
-                <Image alt="coin" src={coin} width={300} height={300} />
+                <Image
+                  alt="coin"
+                  src={coin}
+                  width={300}
+                  height={300}
+                  className="mb-3"
+                />
                 <div className="d-flex  flex-column justify-content-center ps-5 ">
-                  <div className="textp-20px mb-2">
+                  <div className="textp-20px mb-2 ">
                     知音幣雖然不可以吃，但可以買書!
                   </div>
-                  <div className="textp-20px mb-2">
+                  <div className="textp-20px mb-2 ">
                     家裡沉積已久的書，賣給我們換取知書幣，再來換購其他二手書。
                   </div>
-                  <div className="textp-20px mb-2">
+                  <div className="textp-20px mb-2 ">
                     知音幣就是一個以書易書的媒介，一個拿舊書換舊書的概念。
                   </div>
-                  <div className="textp-20px mb-2">
+                  <div className="textp-20px mb-2 ">
                     讓家裡的舊書，再度被閱讀，產生一個書循環。
                   </div>
-                  <div className="textp-20px mb-2">
+                  <div className="textp-20px mb-2 ">
                     心動了嗎?趕快來賺取你得知音幣吧!!
                   </div>
                 </div>

@@ -26,7 +26,7 @@ export default function MemberBreadcrumbs_2() {
         <Link
           href="/dashboard/used/changebook-message"
           className={` ${c.under_line} ${
-            router.asPath === '/dashboard/used/changebook-message'
+            router.asPath.includes('/dashboard/used/changebook-message')
               ? c.selected
               : c.unselected
           } `}

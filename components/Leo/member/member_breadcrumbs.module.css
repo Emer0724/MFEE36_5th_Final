@@ -28,3 +28,12 @@
 .under_line{
     text-decoration: none;
 }
+@media screen and (max-width: 767.98px) {
+    .crumbs_border{
+        font-size: 16px;  
+    } 
+    .crumbs_none{
+        font-size: 16px;
+        
+    }
+}

@@ -5,9 +5,13 @@ export default function UsedTdReturn({ used_id, book_name, book_state }) {
   return (
     <>
       <tr>
-        <td className="text-center textp-20px fw-bold ${color}">{book_name}</td>
-        <td className="text-center textp-20px fw-bold">退回</td>
-        <td className="text-center textp-20px fw-bold">
+        <td className="text-center textp-20px fw-bold ${color} used-search-text-16 ">
+          {book_name}
+        </td>
+        <td className="text-center textp-20px fw-bold used-search-text-16">
+          退回
+        </td>
+        <td className="text-center textp-20px fw-bold used-search-text-16">
           <Link
             href={`/dashboard/used/book-edit/${used_id}`}
             style={{ color: '#52796F' }}

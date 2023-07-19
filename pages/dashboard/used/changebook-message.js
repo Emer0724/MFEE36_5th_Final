@@ -38,13 +38,13 @@ export default function ChangebookMessage() {
 
   return (
     <>
-      <Member_info />
+      {/* <Member_info /> */}
       <MemberNav />
       <MemberBreadcrumbs_2 />
-      <div className="px-2">
+      <div className="px-2 mt-3">
         <div className="dropdown pb-3 d-flex justify-content-end ">
           <button
-            className="btn btn-success dropdown-toggle letter-spacing border-radius-5px textp-20px"
+            className="btn btn-success dropdown-toggle letter-spacing border-radius-5px textp-20px used-search-text-16"
             type="button"
             id="dropdownMenuButton1"
             data-bs-toggle="dropdown"
@@ -84,19 +84,19 @@ export default function ChangebookMessage() {
           <thead>
             <tr>
               <th
-                className="text-center col-8 textp-20px fw-bold"
+                className="text-center col-6 textp-20px fw-bold used-search-text-16"
                 style={{ background: '#84A98C' }}
               >
                 二手書
               </th>
               <th
-                className="text-center col-2 textp-20px fw-bold"
+                className="text-center col-4 textp-20px fw-bold used-search-text-16"
                 style={{ background: '#84A98C' }}
               >
                 狀態
               </th>
               <th
-                className="text-center col-2 textp-20px fw-bold"
+                className="text-center col-4 textp-20px fw-bold used-search-text-16"
                 style={{ background: '#84A98C' }}
               >
                 詳細資料

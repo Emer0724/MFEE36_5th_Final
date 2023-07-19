@@ -10,6 +10,7 @@
         width: 100%;
         height: 60px;
         background: var(--bgc7);
+        z-index: 99999;
     }
     .containdiv{
         display: flex;

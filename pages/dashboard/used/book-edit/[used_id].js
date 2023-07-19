@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import MemberNav from '@/components/common/member-nav/member-nav'
 import UsedInfoExchange from '@/components/used/usedid/used-info-exchange'
 import Link from 'next/link'
+import MemberBreadcrumbs_2 from '@/components/Leo/member/member_breadcrumbs-2'
+
 const book_info = {
   used_id: 18,
   ISBN: 9789861371955,
@@ -30,11 +32,14 @@ export default function Usedid() {
   const [bookInfo, setbookInfo] = useState(book_info)
   return (
     <>
+      {/* <Member_info /> */}
       <MemberNav />
+      <MemberBreadcrumbs_2 />
+
       <div className="container-fliuid ">
         <div className="row">
           <div className="col-12   col-md-6   d-flex flex-column  align-items-center  ">
-            <h3 className="textp-24px my-5 text-center">
+            <h3 className="textp-24px my-5 text-center used-search-text-20">
               {bookInfo.book_name}
             </h3>
             <div
@@ -49,34 +54,34 @@ export default function Usedid() {
           </div>
           <div className="col-12  col-md-6  border-start border-black d-flex  flex-column  align-items-center justify-content-center used-usededit-member-1  ">
             <div className="d-flex flex-column used-usededit-member-2    ">
-              <div className="textp-20px letter-spacing mt-3">
+              <div className="textp-20px letter-spacing mt-3 used-search-text-16">
                 ISBN:{newdata.ISBN}
               </div>
               {newdata.status !== '' ? (
-                <div className="textp-20px letter-spacing mt-3">
+                <div className="textp-20px letter-spacing mt-3 used-search-text-16">
                   書況評級:{newdata.status}
                 </div>
               ) : (
                 ''
               )}
-              <div className="textp-20px letter-spacing mt-3">
+              <div className="textp-20px letter-spacing mt-3 used-search-text-16">
                 狀態:{newdata.state}
               </div>
               {newdata.price !== '' ? (
-                <div className="textp-20px letter-spacing mt-3">
+                <div className="textp-20px letter-spacing mt-3 used-search-text-16">
                   可換代幣:{newdata.price}
                 </div>
               ) : (
                 ''
               )}
               {newdata.node !== '' ? (
-                <div className="textp-20px letter-spacing mt-3">
+                <div className="textp-20px letter-spacing mt-3 used-search-text-16">
                   書況備註:{newdata.node}
                 </div>
               ) : (
                 ''
               )}
-              <div className="textp-20px letter-spacing mt-3">
+              <div className="textp-20px letter-spacing mt-3 used-search-text-16">
                 新增時間:{newdata.updated}
               </div>
             </div>

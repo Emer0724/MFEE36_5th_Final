@@ -4,6 +4,7 @@ import MemberNav from '@/components/common/member-nav/member-nav'
 import Member_info from '@/components/Leo/member/member_info'
 // import MemberBreadcrumbs from '@/components/Leo/member/member_breadcrumbs'
 import MemberBreadcrumbs_2 from '@/components/Leo/member/member_breadcrumbs-2'
+import Link from 'next/link'
 
 // const books = {
 //   ISBN: 9789861371955,
@@ -12,27 +13,21 @@ import MemberBreadcrumbs_2 from '@/components/Leo/member/member_breadcrumbs-2'
 //   publish: '究竟',
 //   img: 'getImage.webp',
 // }
-const members = {
-  name: '李曉明',
-  moble: '0912345678',
-  email: 'abc@gmail.com',
-  adress: '新北市文青區斂財路5段12樓',
-}
+// const members = {
+//   name: '李曉明',
+//   moble: '0912345678',
+//   email: 'abc@gmail.com',
+//   adress: '新北市文青區斂財路5段12樓',
+// }
 
 export default function Display() {
   const [book, setbooks] = useState()
   const [member, setMember] = useState(members)
   const [inputValue, setInputValue] = useState('')
   const [search_error, setSearch_error] = useState('')
-  const [goSearch,setGoSearch]=useState(false)
-  useEffect(() => {
-    if(goSearch){
-      getbook_detal()
-      setGoSearch(false)
-    }
-  
-   
-  }, [goSearch])
+
+  //個人資料
+  // const get
 
   //找書
   const getbook = () => {
@@ -42,34 +37,32 @@ export default function Display() {
     } else {
       const rule = new RegExp(/^\d{13}$/)
       if (rule.test(inputValue)) {
-        setSearch_error('') 
-        setGoSearch(true)
+        setSearch_error('')
         getbook_detal()
       } else {
         return setSearch_error('ISBN為13位數字')
       }
     }
   }
+
+  //fetch 書的資料
   const getbook_detal = async () => {
-    setSearch_error("")
+    setSearch_error('')
     const getbook_detal1 = await fetch(
       `http://localhost:3055/used/display/book_info?ISBN=${inputValue}`
     )
     const getbook_detal2 = await getbook_detal1.json()
-    
+
     setbooks(getbook_detal2[0])
     console.log(getbook_detal2.length)
-    if(getbook_detal2.length === 0){
-      setSearch_error("查無此本書")
-     
-     }
-   
+    if (getbook_detal2.length === 0) {
+      setSearch_error('查無此本書')
+    }
   }
-
 
   return (
     <>
-      <Member_info />
+      {/* <Member_info /> */}
       <MemberNav />
       <MemberBreadcrumbs_2 />
 
@@ -80,26 +73,23 @@ export default function Display() {
               {book ? (
                 <>
                   <div className="my-3 d-flex ">
-                    <span className="color-tx-1 fw-bold textp-20px  letter-spacing ">
+                    <span className="color-tx-1 fw-bold textp-20px  letter-spacing  used-search-text">
                       ISBN :
                     </span>
                     <input
                       type="text"
-                      className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px"
+                      className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px used-search-text"
                       placeholder="請輸入ISBN"
                       value={inputValue}
                       onChange={(e) => {
-                       setInputValue(e.target.value)
+                        setInputValue(e.target.value)
                       }}
                       size={12}
                     />
                     <button
-                      className="btn color-bg-4 border-radius-5px py-0  textp-20px "
+                      className="btn color-bg-4 border-radius-5px py-0  textp-20px  used-search-text "
                       // onClick={getbook}
-                      onClick={
-                        
-                        getbook
-                      }
+                      onClick={getbook}
                     >
                       搜尋
                     </button>
@@ -119,13 +109,13 @@ export default function Display() {
                   ></div>
 
                   <div className="d-flex flex-column align-items-center ">
-                    <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center">
+                    <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center used-search-text-14">
                       {book.book_name}
                     </h6>
-                    <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center">
+                    <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center used-search-text-14">
                       作者: {book.author}
                     </h6>
-                    <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center">
+                    <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center used-search-text-14">
                       出版社: {book.publish}
                     </h6>
                   </div>
@@ -133,12 +123,12 @@ export default function Display() {
               ) : (
                 <>
                   <div className="my-3 d-flex ">
-                    <span className="color-tx-1 fw-bold textp-20px  letter-spacing ">
+                    <span className="color-tx-1 fw-bold textp-20px  letter-spacing used-search-text-14 ">
                       ISBN :
                     </span>
                     <input
                       type="text"
-                      className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px"
+                      className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px used-search-text"
                       placeholder="請輸入ISBN"
                       value={inputValue}
                       onChange={(e) => {
@@ -147,7 +137,7 @@ export default function Display() {
                       size={12}
                     />
                     <button
-                      className="btn color-bg-4 border-radius-5px py-0  textp-20px "
+                      className="btn color-bg-4 border-radius-5px py-0  textp-20px  used-search-text-14"
                       onClick={getbook}
                     >
                       搜尋
@@ -165,26 +155,26 @@ export default function Display() {
               <div>
                 {/* //member-info */}
                 <div className="d-flex flex-column w-100   ">
-                  <div className="textp-20px fw-bold letter-spacing mb-5 mt-3  ">
+                  <div className="textp-20px fw-bold letter-spacing mb-5 mt-3 used-search-text-14  ">
                     基本資料
                   </div>
-                  <div className="textp-20px fw-bold letter-spacing mt-5 ">
+                  <div className="textp-20px fw-bold letter-spacing mt-5 used-search-text-14 ">
                     姓名:{member.name}
                   </div>
-                  <div className="textp-20px fw-bold letter-spacing mt-3 ">
+                  <div className="textp-20px fw-bold letter-spacing mt-3 used-search-text-14 ">
                     連絡電話:{member.moble}
                   </div>
-                  <div className="textp-20px fw-bold letter-spacing mt-3 ">
+                  <div className="textp-20px fw-bold letter-spacing mt-3 used-search-text-14 ">
                     Email:{member.email}
                   </div>
-                  <div className="textp-20px fw-bold letter-spacing mt-3 ">
+                  <div className="textp-20px fw-bold letter-spacing mt-3 used-search-text-14 ">
                     退回地址:{member.adress}
                   </div>
-                  <div className="textp-16px  letter-spacing mt-3 color-tx-6 ">
+                  <div className="textp-16px  letter-spacing mt-3 color-tx-6 used-search-text-14 ">
                     基本資料有問題嗎? 前往{' '}
-                    <a href="#" className="color-tx-8 ">
+                    <Link href="/dashboard/profile" className="color-tx-8 ">
                       修改基本資料
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -195,13 +185,19 @@ export default function Display() {
 
       <div className="d-flex justify-content-center my-4 ">
         <div className="d-flex flex-column  align-items-center">
-          {book? ( <><div className="fw-bold letter-spacing my-4">
-            請確認上述資料是否正確
-          </div>
-          <button className="btn color-bg-2 color-tx-7 fw-bold border-radius-5px  letter-spacing">
-            我要上架
-          </button></>) : ''}
-         
+          {book ? (
+            <>
+              <div className="fw-bold letter-spacing my-4">
+                請確認上述資料是否正確
+              </div>
+              <button className="btn color-bg-2 color-tx-7 fw-bold border-radius-5px  letter-spacing">
+                我要上架
+              </button>
+            </>
+          ) : (
+            ''
+          )}
+
           <div className="used_rwd_botton"></div>
         </div>
       </div>

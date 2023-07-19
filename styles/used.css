@@ -158,6 +158,9 @@ video {
 .index-index-video-text-sm {
   text-indent: 2em;
   line-height: 35px;
+  padding:0px 10px;
+  text-align: justify;
+  
 }
 
 .index_index_mask {
@@ -304,7 +307,7 @@ video {
     font-size: var(--txi24);
   }
   .used-index-text1-sm {
-    font-size: var(--txi16);
+    font-size: var(--txi14);
   }
   .index_index_circle_text {
     font-size: calc(90vw / 7);
@@ -320,7 +323,8 @@ video {
   .used-insex-s3-dflex {
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    padding-top: 10px;
+    /* gap: 30px; */
   }
   .index-index-video-text-sm {
     font-size: 16px;
@@ -335,8 +339,25 @@ video {
     padding: 10px !important;
   
   }
+  /* .index_index_hidden{
+    height: 400px;
+    overflow: auto;
+  } */
+
+  .used-search-text-14{
+    font-size: var(--txi14) !important;
+  }
+  .used-search-text-16{
+    font-size: var(--txi16) !important;
+  }
+  .used-search-text-20{
+    font-size: var(--txi20) !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
   .index_index_hidden{
     height: 400px;
     overflow: auto;
   }
-}
+ }

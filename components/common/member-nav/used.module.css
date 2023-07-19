@@ -51,7 +51,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: var(--txp16);
+        font-size: var(--txi14);
         color:var(--bgc7) ;
         font-weight: 600;
         letter-spacing: var(--Lp1);
@@ -76,7 +76,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: var(--txp16);
+        font-size: var(--txi14);
         color:var(--bgc7) ;
         font-weight: 600;
         letter-spacing: var(--Lp1);
