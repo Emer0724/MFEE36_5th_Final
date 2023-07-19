@@ -1,0 +1,26 @@
+.detailcontain{
+    width:100%;
+    margin-bottom: 40px;
+}
+.detaillist{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.checkrow2{
+    display: flex;
+}
+.checkpc{
+    display: none;
+}
+@media (max-width:400px) {
+    .checkcontain{
+        display: none;
+    }
+    .checkpc{
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
