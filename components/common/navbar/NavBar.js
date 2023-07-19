@@ -6,12 +6,18 @@ import logo from '@/assets/Nav_Image/logo.svg'
 import Searchicon from '@/assets/Nav_Image/search.svg'
 import Carticon from '@/assets/Nav_Image/Vector.svg'
 import Membericon from '@/assets/Nav_Image/Subtract.svg'
+import Searchbar from './searchbar'
 
 export default function NavBar1() {
   const NavctName = ['商城', '二手書', '部落格', '關於我們']
   const NavEnName = ['STORE', 'USEDSTORE', 'BLOG', 'ABOUTUS']
   const navrouter = ["/product/","/used/","/blog/"]
   // const NavIcon = [Searchicon, Carticon, Membericon]
+  const [searchbaropen,setSearchbaropen] = useState(false)
+  const toggleSearch = ()=>{
+    setSearchbaropen(!searchbaropen)
+  };
+
 
   return (
     <div className={styles.Header}>
@@ -43,7 +49,7 @@ export default function NavBar1() {
           })}
         </div>
         <div className={styles.Icongroup}>
-              <Link href="#" className={styles.navlink2} >
+              <div onClick={toggleSearch} className={styles.naviconbtn} >
                 <Image
                   src={Searchicon}
                   width={60}
@@ -51,7 +57,7 @@ export default function NavBar1() {
                   className={styles.Licon}
                   alt="icon"
                 />
-              </Link>
+              </div>
               <Link href="/product/cart" className={styles.navlink2} >
                 <Image
                   src={Carticon}
@@ -72,6 +78,7 @@ export default function NavBar1() {
               </Link>
         </div>
       </div>
+       {searchbaropen && <Searchbar/>}
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import DeepButton from '@/components/common/CBtn/DeepgreenBtn'
 import React from 'react'
 import { useState,useEffect } from 'react'
+import {TbCoins} from 'react-icons/tb'
 
 export default function OrderTotalPrice({btncontent,border1,route1}) {
   const [windowWidth ,setWindowWidth] = useState(null)
@@ -30,31 +31,45 @@ export default function OrderTotalPrice({btncontent,border1,route1}) {
     height: '550px',
     padding:"20px",
     border:border1,
-    marginBottom:"60px"
+    marginBottom:windowWidth && windowWidth > 600 ?  "60px":"20px" 
   }
   const style2 = {
     display:"flex",
     justifyContent:"space-around",
     alignItems:"center",
-    gap:"40px"
+    gap:windowWidth && windowWidth > 600 ?  "150px":"60px" 
   }
   const style3={
     display:"flex",
     flexDirection:"column",
     justifyContent:"space-around",
     alignItems:"center",
+    marginBottom:"30px"
+  }
+  const style4={
+    marginTop:"30px"
+    
   }
   
-  
   const subprice =["商品金額","貨運費用","折價卷","知音幣","總金額"]
-  const price =[5000,"+60","-100",4960]
+  const price =["$5000","$60","$100",<TbCoins/>,"$4960"]
   return (
     <div style={style1} >
         <div><h1>訂單金額</h1></div>
-        <div>
-          <div>
-            {subpricema}
-
+        <div style={style2}>
+          <div style={style3}>
+            {subprice.map((v,i)=>{
+              return (
+                <h3 key={i} style={style4}>{v}</h3>
+              )
+            })}
+          </div>
+          <div style={style3}>
+            {price.map((v,i)=>{
+              return(
+              <h3 key={i} style={style4}>{v}</h3>
+              )
+            })}
           </div>
         </div>
         <DeepButton  DeepButtoncontent={btncontent} route={route1}/>

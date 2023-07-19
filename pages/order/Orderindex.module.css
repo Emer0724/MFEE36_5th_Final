@@ -1,8 +1,13 @@
+.title{
+  margin: 60px 0;
+}
 .checkcontain{
     display:flex;
     flex-direction: row;
-    justify-content:space-around;
+    justify-content:center;
     align-items:center;
+    gap: 360px;
+    margin-top:160px;
   }
 
 @media(max-width:400px) {
@@ -12,5 +17,6 @@
         justify-content:space-around;
         align-items:center;
         margin-bottom: 50px;
+        gap: 10px;
       }
 }
