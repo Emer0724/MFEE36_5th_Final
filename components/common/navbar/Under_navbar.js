@@ -9,7 +9,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export default function UnderNavbar() {
-  const icon = [home,cart,book,pen,member]
   return (
     <div className={styles.totaldiv}>
       <div className={styles.containdiv}>

@@ -14,7 +14,10 @@ export default function OrderCheckout() {
         <OrderInput labelcontent={"日期"} type={"number"} />
         <OrderInput labelcontent={"安全碼"} type={"number"} />
       </div>
-       <DeepButton DeepButtoncontent={"完成付款"} />
+      <div style={{marginBottom:"40px"}}>
+        <DeepButton DeepButtoncontent={"完成付款"} route="/order/complete"/>
+      </div>
+        
     </>
   )
 }

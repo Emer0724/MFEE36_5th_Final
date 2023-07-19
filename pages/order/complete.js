@@ -47,8 +47,8 @@ const style2 = {
           <CartTitle titlecontent={"訂單已完成 等候5-7個工作天幫您送達 感謝您的支持"}/>
           <CartTitle titlecontent={`訂單編號#987654`}/>
           <div style={style1}>
-              <DeepButton DeepButtoncontent={"訂單查詢"}/>
-              <DeepButton DeepButtoncontent={"返回商城"}/>
+              <DeepButton DeepButtoncontent={"訂單查詢"} route='../dashboard/order'/>
+              <DeepButton DeepButtoncontent={"返回商城"} route='#'/>
           </div>
       </div>
     </>

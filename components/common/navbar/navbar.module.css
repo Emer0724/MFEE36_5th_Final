@@ -53,6 +53,10 @@
     text-decoration: none;
     margin:auto;
 }
+.naviconbtn{
+    margin:auto;
+    border-style: none;
+}
 .Icongroup{  
     width: 10%;
     display: flex;

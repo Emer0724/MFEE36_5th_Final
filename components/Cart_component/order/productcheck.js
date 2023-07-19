@@ -41,11 +41,11 @@ export default function ProductCheck() {
               return(
               <div key={i} className={styles.checkrow}>
                   <div className={styles.checklist}>
-                      <p className={styles.checkimg}><Image src={fake} alt='icon'/>{v.Productname}</p>
-                      <p className={styles.checkisbn}>{v.ISBN}</p>
-                      <p className={styles.checkprice}>${v.price}元</p>
-                      <p className={styles.checkcount}>{v.count}件</p>
-                      <p className={styles.checktotal}>${v.price*v.count}元</p>
+                      <h3 className={styles.checkimg}><Image src={fake} alt='icon'/>{v.Productname}</h3>
+                      <h3 className={styles.checkisbn}>{v.ISBN}</h3>
+                      <h3 className={styles.checkprice}>${v.price}元</h3>
+                      <h3 className={styles.checkcount}>{v.count}件</h3>
+                      <h3 className={styles.checktotal}>${v.price*v.count}元</h3>
                   </div>
               </div>
               )
@@ -58,7 +58,7 @@ export default function ProductCheck() {
                   <div className={styles.checklist}>
                       <p className={styles.checkimg}><Image src={fake} alt='icon'/></p>
                       <div> 
-                        <p className={styles.checkname}>{v.Productname}</p>
+                        <h4 className={styles.checkname}>{v.Productname}</h4>
                         <p className={styles.checkisbn}>{v.ISBN}</p>
                         <p className={styles.checkcount}>{v.count}件</p>
                         <p className={styles.checktotal}>${v.price*v.count}元</p>
