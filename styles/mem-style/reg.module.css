@@ -1,4 +1,4 @@
-/* ./styles/mem-style/login.module.css */
+/* ./styles/mem-style/reg.module.css */
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-iBBwArnDmDzr7nDZB12A9A1SmdF5Su9C5K9iGSJ4pK/rfB1B8Zt7KJC03S0mDOQiu" crossorigin="anonymous">
 
 
-/* member/login */
 
 
 .card-container {
@@ -76,6 +75,7 @@
   border-radius: 5px 0 0 5px;
   padding: 50px 20px;
   justify-content: center;
+  background: linear-gradient(to bottom right,#84A98C, #52796F,#52796F,#52796F, #52796F);
 }
 
 .right-box{
@@ -85,8 +85,6 @@
   height: 100%;
   justify-content: center;
   align-items: center;
-  /* background-color: var(--bgc2); */
-  background: linear-gradient(to bottom right, #52796F,#52796F,#52796F, #52796F,#84A98C);
   box-sizing: border-box;
   border-radius: 0 5px 5px 0;
   padding: 0 10px 0 10px;
@@ -95,8 +93,8 @@
 
 
 .right-text{
-  color: var(--color7);
-  font-size: var(--txp20);
+  color: var(--color1);
+  font-size: var(--txp24);
 }
 
 
@@ -108,11 +106,14 @@
   border-radius: 5px;
   margin-bottom: 5px;
   margin-left: 10px;
+  border: none;
+  padding-left: 10px;
+  font-size: 12px;
 }
 
-.login-title{
+.reg-title{
+  color: #fff;
   margin-bottom: 30px;
-  color: color-tx-2;
 }
 
 
@@ -137,9 +138,10 @@
   border-color: rgba(82, 121, 111, 0.8);
 }
 
+
 .googlelogin-btn{
   background: #fff;
-  color: var(--color2);
+  color: var(--color6);
   border-radius: 5px;
   border: none;
   height: 40px;
@@ -147,14 +149,16 @@
   width: 100%;
   min-width: fit-content;
   max-width: 300px;
-  border: 0.5px solid var(--color2);
-  margin-bottom: 30px;
+  border: 0.5px solid var(--color6);
+  margin:10px 0;
   border-radius: 50px;
 }
 
 .googlelogin-btn:hover{
   box-shadow: 0 2px 8px rgba(132, 169, 140, 0.5);
+  color: var(--color2);
 }
+
 
 .fa-google-plus-g {
   margin-right: 10px;
@@ -172,7 +176,7 @@
   width: 100%;
   min-width: fit-content;
   max-width: 300px;
-  border: 2px solid transparent;
+  border: 0.5px solid var(--color11)
 }
 
 .login-btn:hover{
@@ -190,7 +194,9 @@
   justify-content:space-between;
   align-items: center;
   width:100%;
-  padding: 0 50px;
+  font-size: var(--txp16);
+  margin-bottom: 5px;
+  min-width: 300px;
 }
 
 
@@ -200,7 +206,7 @@
   justify-content: center;
   align-items: center;
   height: 40px;
-  background-color: var(--bgc2);
+  background-color: var(--bgc11);
   border-radius: 5px;
   border: 1px solid var(--color11);
   color: #fff;
@@ -217,10 +223,12 @@
 
 .note{
   font-size: 12px;
-  text-decoration: underline;
   color: var(--color5);
   border: none;
   background-color: #fff;
+  width: 100%;
+  margin: 10px 50px;
+  align-items: center;
 }
 
 .box-center{
@@ -228,5 +236,5 @@
   width: 100%;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  /* margin-top: 30px; */
 }

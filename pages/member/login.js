@@ -44,8 +44,8 @@ const Login = () => {
                     </div>
                     {/*  */}
                     <div className={styles['login-input']}>
-                      <label htmlFor="email">Email:</label>
                       <input
+                        placeholder="email"
                         type="email"
                         id="email"
                         value={email}
@@ -56,8 +56,8 @@ const Login = () => {
                   </div>
 
                   <div className={styles['login-input']}>
-                    <label htmlFor="password">Password:</label>
                     <input
+                      placeholder="密碼"
                       type="password"
                       id="password"
                       value={password}
