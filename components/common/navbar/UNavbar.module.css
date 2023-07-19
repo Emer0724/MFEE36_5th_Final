@@ -30,7 +30,7 @@
         flex-direction: column;
         align-items: center;
         text-decoration: none;
-        margin:auto 20px ;
+        margin:5px 20px ;
     }
     .bookcontain{
         background-color: var(--bgc6);

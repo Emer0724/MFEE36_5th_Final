@@ -7,3 +7,8 @@
 .chenicon2 {
     font-size: 26px;
 }
+@media (max-width:400px) {
+    .chencolor{
+        display: none;
+    }
+}

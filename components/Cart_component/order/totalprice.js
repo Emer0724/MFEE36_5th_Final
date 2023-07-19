@@ -1,7 +1,7 @@
 import DeepButton from '@/components/common/CBtn/DeepgreenBtn'
 import React from 'react'
 import { useState,useEffect } from 'react'
-import {TbCoins} from 'react-icons/tb'
+import coin from '@/assets/coin/coin.svg'
 
 export default function OrderTotalPrice({btncontent,border1,route1}) {
   const [windowWidth ,setWindowWidth] = useState(null)
@@ -50,9 +50,15 @@ export default function OrderTotalPrice({btncontent,border1,route1}) {
     marginTop:"30px"
     
   }
+  const coinimg =() =>{
+    return
+      <Image src={coin} width={15} height={15}/>
+    
+  }
+
   
   const subprice =["商品金額","貨運費用","折價卷","知音幣","總金額"]
-  const price =["$5000","$60","$100",<TbCoins/>,"$4960"]
+  const price =["$5000","$60","$100",coinimg,"$4960"]
   return (
     <div style={style1} >
         <div><h1>訂單金額</h1></div>
