@@ -5,6 +5,7 @@ import Member_info from '@/components/Leo/member/member_info'
 // import MemberBreadcrumbs from '@/components/Leo/member/member_breadcrumbs'
 import MemberBreadcrumbs_2 from '@/components/Leo/member/member_breadcrumbs-2'
 import Link from 'next/link'
+import { useNavigate } from 'react-router-dom'
 
 // const books = {
 //   ISBN: 9789861371955,
@@ -21,13 +22,29 @@ import Link from 'next/link'
 // }
 
 export default function Display() {
-  const [book, setbooks] = useState()
-  const [member, setMember] = useState(members)
+  const [book, setbooks] = useState('')
+  const [member, setMember] = useState('')
   const [inputValue, setInputValue] = useState('')
   const [search_error, setSearch_error] = useState('')
+  // const history = useNavigate()
+
+  useEffect(() => {
+    getmember()
+  }, [])
 
   //個人資料
-  // const get
+  const getmember = async () => {
+    //如果非會員轉首頁
+
+    const authMember = JSON.parse(localStorage.getItem('auth')).member_id
+    const getmember1 = await fetch(
+      'http://localhost:3055/used/display/member/' + authMember
+    )
+    const getmember2 = await getmember1.json()
+
+    setMember(getmember2[0])
+    // console.log([...getmember2])
+  }
 
   //找書
   const getbook = () => {
@@ -159,16 +176,16 @@ export default function Display() {
                     基本資料
                   </div>
                   <div className="textp-20px fw-bold letter-spacing mt-5 used-search-text-14 ">
-                    姓名:{member.name}
+                    姓名: {member.name}
                   </div>
                   <div className="textp-20px fw-bold letter-spacing mt-3 used-search-text-14 ">
-                    連絡電話:{member.moble}
+                    連絡電話: {member.mobile}
                   </div>
                   <div className="textp-20px fw-bold letter-spacing mt-3 used-search-text-14 ">
-                    Email:{member.email}
+                    Email: {member.email}
                   </div>
                   <div className="textp-20px fw-bold letter-spacing mt-3 used-search-text-14 ">
-                    退回地址:{member.adress}
+                    退回地址: {member.city + member.district + member.address}
                   </div>
                   <div className="textp-16px  letter-spacing mt-3 color-tx-6 used-search-text-14 ">
                     基本資料有問題嗎? 前往{' '}
