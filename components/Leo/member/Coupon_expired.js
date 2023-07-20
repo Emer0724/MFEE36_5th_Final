@@ -1,9 +1,7 @@
 import React from 'react'
 import styles from '@/components/Leo/member/Coupon.module.css'
-import { useRouter } from 'next/router'
 
 export default function Coupon() {
-  const router = useRouter()
   const c = {
     display: 'flex',
     justifyContent: 'space-evenly',
@@ -15,13 +13,7 @@ export default function Coupon() {
   return (
     <>
       <div className={`col`} style={c}>
-        <div
-          className={`${
-            router.asPath === '/dashboard/coupon'
-              ? styles.coupon
-              : styles.coupon_ex
-          }`}
-        >
+        <div className={styles.coupon}>
           <div className={styles.c_title}>
             <p>生日禮</p>
           </div>
