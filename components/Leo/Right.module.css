@@ -3,6 +3,7 @@
     padding: 20PX;
 }
 .content{
+    width: 990px;
     word-wrap: break-word;
     word-break: break-all;
     white-space: pre-wrap;

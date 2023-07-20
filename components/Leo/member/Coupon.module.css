@@ -1,17 +1,25 @@
 .coupon{
     font-size: 20px;
-    border: 1px solid black;
     width: 250px;;
     height: 150px;
     border-radius: 8px;
-    background-color: #D4E9E2;
+    background-image: url(../../../public/Leo-image/ticket-solid.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 250px, 150px;
+    transition: transform 0.3s ease;
+}
+.coupon:hover{
+    transform: scale(1.2);
 }
 .c_title{
-    margin-left: 15px;
+    margin-left: 70px;
     margin-top: 10px;
 }
 .c_content{
     display: flex;
     justify-content: center;
+    font-weight: bold;
+    font-size: 24px;
 }
 
