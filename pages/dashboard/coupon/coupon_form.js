@@ -11,11 +11,10 @@ export default function coupon_form() {
   }
   const d3 = {
     position: 'relative',
-    marginTop: '120px',
-    border: '1px solid pink',
   }
   const d4 = {
     marginTop: '60px',
+    marginBottom: '30px',
   }
   return (
     <>
