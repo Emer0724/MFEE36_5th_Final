@@ -175,6 +175,14 @@ video {
   margin-top: 100px;
   margin-bottom: 50px;
 }
+.used_display_UsedUpCheck{
+  background-color:#747272a3;
+  width: 100vw;
+  height: 102vh;
+  position: absolute;
+  top: 0 ;
+  right: 0;
+}
 
 @media screen and (max-width: 1700px) {
   .index_index_circle_text {

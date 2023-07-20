@@ -6,6 +6,7 @@ import Member_info from '@/components/Leo/member/member_info'
 import MemberBreadcrumbs_2 from '@/components/Leo/member/member_breadcrumbs-2'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import UsedUpCheck from '@/components/used/used-upcheck'
 
 // const books = {
 //   ISBN: 9789861371955,
@@ -27,6 +28,7 @@ export default function Display() {
   const [member, setMember] = useState('')
   const [inputValue, setInputValue] = useState('')
   const [search_error, setSearch_error] = useState('')
+  const [postData, setPostData] = useState('')
   // const history = useNavigate()
 
   useEffect(() => {
@@ -43,7 +45,7 @@ export default function Display() {
 
     const authMember = JSON.parse(localStorage.getItem('auth')).member_id
     const getmember1 = await fetch(
-      'http://localhost:3055/used/display/member/' + authMember
+      `${process.env.API_SERVER}/used/display/member/` + authMember
     )
     const getmember2 = await getmember1.json()
 
@@ -71,14 +73,45 @@ export default function Display() {
   const getbook_detal = async () => {
     setSearch_error('')
     const getbook_detal1 = await fetch(
-      `http://localhost:3055/used/display/book_info?ISBN=${inputValue}`
+      `${process.env.API_SERVER}/used/display/book_info?ISBN=${inputValue}`
     )
+
     const getbook_detal2 = await getbook_detal1.json()
 
     setbooks(getbook_detal2[0])
     console.log(getbook_detal2.length)
     if (getbook_detal2.length === 0) {
       setSearch_error('查無此本書')
+    }
+  }
+
+  //新增二手書資料
+  const post_up = async () => {
+    const data = {
+      ISBN: inputValue,
+      member_id: JSON.parse(localStorage.getItem('auth')).member_id,
+    }
+    const post_up1 = await fetch(
+      `${process.env.API_SERVER}/used/display/up-post`,
+      {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
+    const post_up2 = await post_up1.json()
+    console.log(post_up2[1][0])
+    setPostData(post_up2[1][0])
+  }
+
+  //取消上架資訊框
+  const closeItem = (e) => {
+    const usedUpCheckElement = document.querySelector('.used_display_chkbox')
+    if (!usedUpCheckElement.contains(e.target)) {
+      setPostData('')
+      setbooks('')
     }
   }
 
@@ -212,7 +245,10 @@ export default function Display() {
               <div className="fw-bold letter-spacing my-4">
                 請確認上述資料是否正確
               </div>
-              <button className="btn color-bg-2 color-tx-7 fw-bold border-radius-5px  letter-spacing">
+              <button
+                className="btn color-bg-2 color-tx-7 fw-bold border-radius-5px  letter-spacing"
+                onClick={post_up}
+              >
                 我要上架
               </button>
             </>
@@ -223,6 +259,29 @@ export default function Display() {
           <div className="used_rwd_botton"></div>
         </div>
       </div>
+      {postData ? (
+        <div
+          className="used_display_UsedUpCheck"
+          role="button"
+          tabIndex={0}
+          onClick={
+            closeItem
+            // 在這裡處理點擊事件
+          }
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              closeItem
+
+              // 在這裡處理回車鍵或空白鍵事件，模擬點擊效果
+            }
+          }}
+          // 此處可以添加其他滑鼠或觸控事件處理程序
+        >
+          <UsedUpCheck postData={postData} />
+        </div>
+      ) : (
+        ''
+      )}
     </>
   )
 }

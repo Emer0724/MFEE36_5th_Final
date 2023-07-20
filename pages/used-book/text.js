@@ -18,7 +18,7 @@ export default function Text() {
   //設置token
   const getAuth = async () => {
     const user = { member_id: inputvalue }
-    const getAuth1 = await fetch(`http://localhost:3055/used/login/`, {
+    const getAuth1 = await fetch(`${process.env.API_SERVER}/used/login/`, {
       method: 'POST',
       body: JSON.stringify(user),
       headers: {
@@ -33,11 +33,11 @@ export default function Text() {
 
   return (
     <>
-      <div className="w-50">
+      {/* <div className="w-50">
         <UsedList datas={datas} ISBN={ISBN}></UsedList>
       </div>
       <UsedUpCheck />
-      {/* <PopUp content1={12346} content2={'5454646'} onclick1={getsome} /> */}
+      <PopUp content1={12346} content2={'5454646'} onclick1={getsome} /> */}
       <div>
         會員編碼:
         <input
