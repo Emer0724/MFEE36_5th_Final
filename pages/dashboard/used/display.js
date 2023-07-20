@@ -32,16 +32,15 @@ export default function Display() {
   useEffect(() => {
     if (!localStorage.getItem('auth')) {
       router.push('/member/login')
-    }else{
+    } else {
       getmember()
     }
-    
   }, [])
 
   //個人資料
   const getmember = async () => {
     //如果非會員轉首頁
-  
+
     const authMember = JSON.parse(localStorage.getItem('auth')).member_id
     const getmember1 = await fetch(
       'http://localhost:3055/used/display/member/' + authMember
@@ -218,7 +217,7 @@ export default function Display() {
               </button>
             </>
           ) : (
-            ''
+            <div style={{ height: '100px' }}></div>
           )}
 
           <div className="used_rwd_botton"></div>
