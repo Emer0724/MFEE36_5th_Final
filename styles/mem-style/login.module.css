@@ -44,7 +44,7 @@
     display: flex;
     flex-direction: column;
     width: 330px;
-    height: 450px;
+    height: 500px;
     margin: 30px auto;
     max-width: 100%;
     max-height: 100%;
@@ -74,6 +74,13 @@
   align-items: center;
   width: 100%;
 }
+
+@media (max-width: 600px) {
+  .left-box .login-btn {
+    order: 2;
+  }
+}
+
 
 .left-box .signup-btn {
   display: none;
@@ -245,7 +252,7 @@
   align-items: center;
   height: 40px;
   width: 100%;
-  padding: 0 50px;
+  padding: 0;
   margin: 0px auto 25px 0px;
   position: relative;
 }
