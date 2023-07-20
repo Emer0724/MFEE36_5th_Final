@@ -1,19 +1,23 @@
 import React, { useState } from 'react'
-import styles from '../../styles/member.module.css'
+import styles from '../../styles/mem-style/dashboard-profile.module.css'
+import MemberNav from '@/components/common/member-nav/member-nav'
+import Member_info from '@/components/Leo/member/member_info'
+import Form from 'react-bootstrap/Form'
+import Image from 'next/image'
 
 const Profile = () => {
-  // 状态用于存储用户输入的数据
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [paymentMethod, setPaymentMethod] = useState('')
-  const [shippingAddress, setShippingAddress] = useState('')
+  const [name, setName] = useState('xxx')
+  const [email, setEmail] = useState('xxx@company.com')
+  const [username, setUsername] = useState('username')
+  const [password, setPassword] = useState('********')
+  const [paymentMethod, setPaymentMethod] = useState('Linepay 或 信用卡')
+  const [creditcard, setCreditcard] = useState('XXXX-XXXX-XXXX-XXXX')
+  const [shippingAddress, setShippingAddress] = useState(
+    '106 台北市大安區復興南路一段390號2樓'
+  )
+  const [token, setToken] = useState('9999點')
 
-  // 处理保存数据的函数
   const saveData = () => {
-    // 将数据发送到服务器保存的逻辑
-    // 这里只是一个示例，你需要根据实际情况自行实现
     console.log('Saving data:', {
       name,
       email,
@@ -25,81 +29,139 @@ const Profile = () => {
   }
 
   return (
-    <div className="flex">
-      <div>
-        <div className={styles['profile-title']}>帳戶資料</div>
-        <div>
-          <p>姓名: </p>
-          <div className="d-flex justify-content-between align-items-center">
-            <p>{name}</p>
-            <button onClick={() => setName('')} className={styles['edit-btn']}>
-              編輯
-            </button>
-          </div>
-        </div>
-        <div>
-          <div className="d-flex justify-content-between align-items-center">
-            <p>電子郵件: {email}</p>
-            <button onClick={() => setEmail('')} className={styles['edit-btn']}>
-              編輯
-            </button>
-          </div>
-        </div>
-        <div>
-          <div className="d-flex justify-content-between align-items-center">
-            <p>用户名: {username}</p>
-            <button
-              onClick={() => setUsername('')}
-              className={styles['edit-btn']}
-            >
-              編輯
-            </button>
-          </div>
-        </div>
-        <div>
-          <div className="d-flex justify-content-between align-items-center">
-            <p>密碼: {password}</p>
-            <button
-              onClick={() => setPassword('')}
-              className={styles['edit-btn']}
-            >
-              編輯
-            </button>
-          </div>
-        </div>
-      </div>
+    <div>
+      <Member_info />
+      <MemberNav />
+      <div className={styles['outer-container']}>
+        <div className={styles['profile-box']}>
+          <div>
+            <div className={styles['profile-title']}>帳戶資料</div>
 
-      <h1 className={styles['profile-title']}>付款方式</h1>
-      <div>
-        <div className="d-flex justify-content-between align-items-center">
-          <p>信用卡/其他支付方式: {paymentMethod}</p>
-          <button
-            onClick={() => setPaymentMethod('')}
-            className={styles['edit-btn']}
-          >
-            編輯
+            <div>
+              <p className={styles['profile-items']}>姓名: </p>
+              <div className={styles['data-line']}>
+                <p>{name}</p>
+                <button
+                  onClick={() => setName('')}
+                  className={styles['edit-btn']}
+                >
+                  編輯
+                </button>
+              </div>
+
+              <div>
+                <p className={styles['profile-items']}>電子郵件: </p>
+                <div className={styles['data-line']}>
+                  {email}
+                  <button
+                    onClick={() => setEmail('')}
+                    className={styles['edit-btn']}
+                  >
+                    編輯
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <p className={styles['profile-items']}>使用者名稱: </p>
+                <div className={styles['data-line']}>
+                  {username}
+                  <button
+                    onClick={() => setUsername('')}
+                    className={styles['edit-btn']}
+                  >
+                    編輯
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div>
+                <p className={styles['profile-items']}>密碼: </p>
+                <div className={styles['data-line']}>
+                  {password}
+                  <button
+                    onClick={() => setPassword('')}
+                    className={styles['edit-btn']}
+                  >
+                    編輯
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h1 className={styles['profile-title']}>付款方式</h1>
+
+          <div>
+            <div>
+              <p className={styles['profile-items']}>信用卡/其他支付方式:</p>
+
+              <Form>
+                <div className={styles['form-radio']}>
+                  <Form.Check
+                    type="radio"
+                    name="group1"
+                    id={`default-radio`}
+                    label={``}
+                  />
+                  <Image
+                    alt="Linepay"
+                    src="/mem-img/linepayw85h25.png"
+                    className=""
+                    width={85}
+                    height={25}
+                  />
+                </div>
+                <div className={styles['data-line']}>
+                  <div className="d-flex align-items-baseline">
+                    <input type="radio" name="group1" id={`default-radio`} />
+                    <p className="px-1">信用卡卡號: {creditcard}</p>
+                  </div>
+
+                  <button
+                    onClick={() => setShippingAddress('')}
+                    className={styles['edit-btn']}
+                  >
+                    編輯
+                  </button>
+                </div>
+              </Form>
+
+              {/* <button
+                  onClick={() => setPaymentMethod('')}
+                  className={styles['edit-btn']}
+                >
+                  編輯
+                </button> */}
+            </div>
+          </div>
+          <div>
+            <div>
+              <p className={styles['profile-items']}>地址: </p>
+              <div className={styles['data-line']}>
+                {shippingAddress}
+                <button
+                  onClick={() => setShippingAddress('')}
+                  className={styles['edit-btn']}
+                >
+                  編輯
+                </button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h1 className={styles['profile-title']}>知音幣</h1>
+            <div className={styles['data-line']}>{token}</div>
+          </div>
+        </div>
+        <div className="d-flex justify-content-center mx-5">
+          <button onClick={saveData} className={styles['save-btn']}>
+            保存
           </button>
         </div>
       </div>
-      <div>
-        <div className="d-flex justify-content-between align-items-center">
-          <p>地址: {shippingAddress}</p>
-          <button
-            onClick={() => setShippingAddress('')}
-            className={styles['edit-btn']}
-          >
-            編輯
-          </button>
-        </div>
-      </div>
-      <div className="d-flex justify-content-between align-items-center">
-        <h1 className={styles['profile-title']}>知音幣</h1>
-        <div>{/* 知音币相关内容 */}</div>
-      </div>
-
-      <button onClick={saveData} className={styles['save-btn']}>
-        保存
-      </button>
     </div>
   )
 }
