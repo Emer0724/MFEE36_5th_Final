@@ -11,7 +11,7 @@ import Searchbar from './searchbar'
 export default function NavBar1() {
   const NavctName = ['商城', '二手書', '部落格', '關於我們']
   const NavEnName = ['STORE', 'USEDSTORE', 'BLOG', 'ABOUTUS']
-  const navrouter = ["/product/","/used/","/blog/"]
+  const navrouter = ["/product/","/used-book/","/blog/blog-home-page","/#aboutUs"]
   // const NavIcon = [Searchicon, Carticon, Membericon]
   const [searchbaropen,setSearchbaropen] = useState(false)
   const toggleSearch = ()=>{
@@ -40,7 +40,7 @@ export default function NavBar1() {
             const v3 = navrouter[i]
             return (
               <div className={styles.navlinkdiv} key={i}>
-                <Link href={{v3}} className={styles.navlink1}>
+                <Link href={v3} className={styles.navlink1}>
                   {v}
                 </Link>
                 <p className={styles.linktext}>{v2}</p>
@@ -67,7 +67,7 @@ export default function NavBar1() {
                   alt="icon"
                 />
               </Link>
-              <Link href="/member/profile" className={styles.navlink2} >
+              <Link href="/dashboard/profile" className={styles.navlink2} >
                 <Image
                   src={Membericon}
                   width={60}
