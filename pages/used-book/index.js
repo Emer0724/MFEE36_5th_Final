@@ -8,8 +8,10 @@ import book_2 from '@/assets/used-svg/book_2.svg'
 import book_3 from '@/assets/used-svg/book_3.svg'
 import Link from 'next/link'
 import coin from '@/assets/used-svg/coin.svg'
+import { useRouter } from 'next/router'
 
 export default function UsedBook() {
+  const router = useRouter()
   return (
     <>
       <div
@@ -88,13 +90,18 @@ export default function UsedBook() {
           </div>
           {/* section1--end */}
           <div className="w-100 py-5 d-flex justify-content-center my-5 ">
-            <button className="btn  color-bg-4 fw-bold border-radius-5px  letter-spacing textp-28px px-3 ">
+            <button
+              className="btn  color-bg-4 fw-bold border-radius-5px  letter-spacing textp-28px px-3 "
+              onClick={() => {
+                router.push('/dashboard/used/display')
+              }}
+            >
               我要賣書
             </button>
           </div>
           {/* section2 */}
           <div
-            className="textp-28px fw-bold color-tx-5 py-5  text-center color-bg-6 letter-spacing"
+            className="textp-32px fw-bold color-tx-5 py-5  text-center color-bg-6 letter-spacing"
             id="process"
           >
             簡易流程，幫舊書找新歸宿
@@ -187,7 +194,7 @@ export default function UsedBook() {
             id="exchange"
           >
             <div className="px-5">
-              <div className="textp-28px fw-bold color-tx-5 mx-5  py-5  text-center letter-spacing">
+              <div className="textp-32px fw-bold color-tx-5 mx-5  py-5  text-center letter-spacing">
                 知音幣是什麼可以吃嗎?
               </div>
               <div className="d-flex justify-content-center  used-insex-s3-dflex ">
@@ -222,7 +229,7 @@ export default function UsedBook() {
           {/*section4*/}
           <div className=" pb-5">
             <div
-              className="textp-28px fw-bold color-tx-5 mx-5 my-5 py-3 px-5 text-center  letter-spacing "
+              className="textp-32px fw-bold color-tx-5 mx-5 my-5 py-3 px-5 text-center  letter-spacing "
               id="process"
             >
               二手書疑難雜症看這裡

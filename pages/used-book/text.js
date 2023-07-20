@@ -2,7 +2,6 @@ import React from 'react'
 import UsedList from '@/components/used/used-list/index'
 import { useState } from 'react'
 import UsedUpCheck from '@/components/used/used-upcheck'
-import PopUp from '@/components/common/popup/popup'
 
 export default function Text() {
   const [inputvalue, setInputvalue] = useState('')

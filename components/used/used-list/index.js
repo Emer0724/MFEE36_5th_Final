@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 
-export default function UsedList({datas, ISBN}) {
-  console.log(datas)
-  if(datas[0]==='noUsedBook'){
-    return (<>
-    <div className='textp-28px letter-spacing'>目前無二手書</div>
-    </>)
+export default function UsedList({ datas, ISBN }) {
+  // console.log(datas)
+  if (datas[0] === 'noUsedBook') {
+    return (
+      <>
+        <div className="textp-28px letter-spacing">目前無二手書</div>
+      </>
+    )
   }
   return (
     <>
@@ -20,7 +22,7 @@ export default function UsedList({datas, ISBN}) {
           </tr>
         </thead>
         <tbody>
-          {datas.map((v, i) => 
+          {datas.map((v, i) => (
             <tr key={i}>
               <th className="text-center">{v.book_state}</th>
               <td>{v.price}</td>
@@ -32,7 +34,7 @@ export default function UsedList({datas, ISBN}) {
                 </Link>
               </td>
             </tr>
-          )}
+          ))}
         </tbody>
       </table>
     </>
