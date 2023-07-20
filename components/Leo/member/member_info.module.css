@@ -1,11 +1,9 @@
 .box_member_info{
     display: flex;
-    justify-content: center;
+    padding-left: 10px;
     width: 100%;
     height: 300px;
     margin: 0px;
-    /* border: 1px solid pink;
-    background-color: aquamarine; */
 }
 .box_member_main{
     display: flex;

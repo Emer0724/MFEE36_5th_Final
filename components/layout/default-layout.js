@@ -1,4 +1,4 @@
-import Footer from './footer'
+import Footer from '../common/footer/footer'
 import { useRouter } from 'next/router'
 import NavBar1 from '../common/navbar/NavBar'
 import UnderNavbar from '../common/navbar/Under_navbar'

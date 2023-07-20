@@ -9,7 +9,7 @@ export default function product() {
     <>
       <CarouselComponent />
       <Wish />
-      <div style={{ display: 'flex', marginTop: '0px', width: '1920px' }}>
+      <div style={{ display: 'flex', marginTop: '0px', width: '100%' }}>
         <Aside />
         <Playground />
       </div>

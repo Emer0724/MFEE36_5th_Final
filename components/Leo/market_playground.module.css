@@ -1,11 +1,13 @@
 
 .box{
 width: 100%; 
-height: 1404px;
+margin-bottom: 50px;
+padding-left: 100px;
 }
 .c_row{
 border-bottom: 10px solid #000000;
 border-color: rgba(0, 0, 0, 0.55);
 margin-top: 60px !important; 
 padding-bottom:5px ;
+
 }
