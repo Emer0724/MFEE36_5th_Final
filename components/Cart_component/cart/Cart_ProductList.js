@@ -75,14 +75,14 @@ const product = [
         <tr key={i} className={styles.Prodeucttr}>
             <td className={styles.ProdeuctBlock}><Image src={fake} alt='icon'/>{v.Productname}</td>
             <td className={styles.ProdeuctBlock}>{v.ISBN}</td>
-            <td className={styles.ProdeuctBlock}>{v.price}</td>
+            <td className={styles.ProdeuctBlock}><span className={styles.oneprice}>{v.price}</span></td>
             <td><div className={styles.CountBlock}>
                   <button style={Countcut} className={styles.Countcut}>-</button>
                   <div className={styles.Countvalue}>{v.count}</div>
                   <button style={Countplus} className={styles.Countplus}>+</button>
                 </div>
             </td>
-            <td className={styles.ProdeuctBlock}>${v.price*v.count}</td>
+            <td className={styles.ProdeuctBlock}><span className={styles.totalprice}>{v.price*v.count}</span></td>
             <td className={styles.ProdeuctBlock}><button className={styles.trashbtn}><Image src={Trash} width={40} height={40} alt='icon'/></button></td>
         </tr>)
     })}
@@ -107,7 +107,7 @@ const product = [
               </div>
             </div>
             <div className={styles.CPtotaltext}>
-              <p >${v.price*v.count}</p>
+              <p><span className={styles.totalprice}>{v.price*v.count}</span></p>
             </div>
           </div>
 

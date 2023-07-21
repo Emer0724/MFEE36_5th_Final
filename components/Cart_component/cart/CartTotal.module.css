@@ -3,6 +3,9 @@
     height: 100%;
     margin-bottom: 30px;
 }
+.totalprice::before{
+content: "$";
+}
 
 .CartTotalcol{
     display: flex;

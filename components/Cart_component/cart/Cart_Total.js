@@ -18,7 +18,7 @@ export default function CartTotal() {
          </div>
          <div className={styles.CartTotalPrice}>
             <h2 className={styles.CartTotalPriceItem1}>商品金額</h2>
-            <h2 className={styles.CartTotalPriceItem2}>$5000</h2>
+            <h2 className={styles.CartTotalPriceItem2}><span className={styles.totalprice}>5000</span></h2>
          </div>
          <div className={styles.CartTotalCouponPrice}>
             <h2 className={styles.CartTotalCoupontext1}>折價卷</h2>
