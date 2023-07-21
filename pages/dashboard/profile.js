@@ -15,6 +15,7 @@ const Profile = () => {
   const [shippingAddress, setShippingAddress] = useState(
     '106 台北市大安區復興南路一段390號2樓'
   )
+  const [mobile, setMobile] = useState('09xx-xxx-xxx')
   const [token, setToken] = useState('9999點')
 
   const saveData = () => {
@@ -151,6 +152,22 @@ const Profile = () => {
               </div>
             </div>
           </div>
+
+          <div>
+            <div>
+              <p className={styles['profile-items']}>電話: </p>
+              <div className={styles['data-line']}>
+                {mobile}
+                <button
+                  onClick={() => setMobile('')}
+                  className={styles['edit-btn']}
+                >
+                  編輯
+                </button>
+              </div>
+            </div>
+          </div>
+
           <div>
             <h1 className={styles['profile-title']}>知音幣</h1>
             <div className={styles['data-line']}>{token}</div>

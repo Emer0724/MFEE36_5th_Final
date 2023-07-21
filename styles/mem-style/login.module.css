@@ -1,15 +1,6 @@
-/* ./styles/mem-style/login.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Noto+Serif+TC&display=swap');
 
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter&family=Noto+Serif+TC&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-iBBwArnDmDzr7nDZB12A9A1SmdF5Su9C5K9iGSJ4pK/rfB1B8Zt7KJC03S0mDOQiu" crossorigin="anonymous">
-
-
-/* member/login */
-
+@import url('https://use.fontawesome.com/releases/v5.15.3/css/all.css');
 
 .card-container {
   display: flex;
@@ -20,21 +11,22 @@
   overflow: auto;
 }
 
-
 .card {
   display: flex;
-  width: 100%;
-  height: 100%;
-  max-width: 1200px;
-  max-height: 800px;
+  justify-content: center;
+  align-items: center;
+  width: 900px;
+  height: 500px;
+  max-width: 900px;
+  max-height: 500px;
+  margin: 30px auto;
   background-color: #fff;
-  color: #52796F;  
+  color: #52796F;
   box-shadow: 0 4px 30px rgba(82, 121, 111, 0.5);
   border-radius: 5px;
   transition: box-shadow 0.3s ease;
   overflow: hidden;
-  flex-direction: row; 
-
+  flex-direction: row;
   aspect-ratio: 3/2;
   max-width: 100%;
   max-height: calc(100vw * 2 / 3);
@@ -49,11 +41,15 @@
 
 @media (max-width: 600px) {
   .card {
-    aspect-ratio: 1/1;
-    max-height: 100vw;
+    display: flex;
+    flex-direction: column;
+    width: 330px;
+    height: 500px;
+    margin: 30px auto;
+    max-width: 100%;
+    max-height: 100%;
   }
 }
-
 
 .card:hover {
   box-shadow: 5px 5px 10px rgba(82, 121, 111, 0.5);
@@ -66,8 +62,7 @@
   height: 100%;
 }
 
-
-.left-box{
+.left-box {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -76,32 +71,99 @@
   border-radius: 5px 0 0 5px;
   padding: 50px 20px;
   justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
-.right-box{
+@media (max-width: 600px) {
+  .left-box .login-btn {
+    order: 2;
+  }
+}
+
+
+.left-box .signup-btn {
+  display: none;
+}
+
+.right-box {
   display: flex;
   flex-direction: column;
   flex: 1;
   height: 100%;
   justify-content: center;
   align-items: center;
-  /* background-color: var(--bgc2); */
-  background: linear-gradient(to bottom right, #52796F,#52796F,#52796F, #52796F,#84A98C);
+  background: linear-gradient(to bottom right, #52796F, #52796F, #52796F, #52796F, #84A98C);
   box-sizing: border-box;
   border-radius: 0 5px 5px 0;
   padding: 0 10px 0 10px;
   width: 100%;
+  min-width: 100px;
 }
 
-
-.right-text{
+.right-box .right-text {
   color: var(--color7);
   font-size: var(--txp20);
 }
 
+.signup-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  background-color: var(--color2);
+  border-radius: 5px;
+  border: 1px solid var(--color11);
+  color: #fff;
+  width: 100%;
+  min-width: fit-content;
+  max-width: 300px;
+  margin-top: 30px;
+}
+
+
+
+.right-box .signup-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid var(--color11);
+  color: #fff;
+  width: 100%;
+  min-width: fit-content;
+  max-width: 300px;
+  margin-top: 30px;
+}
+.signup-btn:hover {
+  background-color: var(--color11);
+}
+
+.signup-btn {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .left-box .signup-btn {
+    display: flex;
+  }
+
+  .right-box {
+    display: none;
+  }
+
+  .signup-btn {
+    display: flex;
+    margin-top: 0px;
+    background-color: #fff;
+    color: #52796F;
+  }
+}
 
 .form-control {
-  flex:1;
+  flex: 1;
   height: 40px;
   background-color: #ECECEC;
   border: none;
@@ -110,16 +172,14 @@
   margin-left: 10px;
 }
 
-.login-title{
-  margin-bottom: 30px;
-  color: color-tx-2;
+.login-title {
+  margin-bottom: auto;
+  color: var(--color-tx-2);
 }
-
 
 .color-tx-2 {
   color: #52796F;
 }
-
 
 .input-container {
   position: relative;
@@ -137,12 +197,15 @@
   border-color: rgba(82, 121, 111, 0.8);
 }
 
-.googlelogin-btn{
+.googlelogin-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
   background: #fff;
   color: var(--color2);
   border-radius: 5px;
   border: none;
-  height: 40px;
   margin: auto;
   width: 100%;
   min-width: fit-content;
@@ -152,17 +215,19 @@
   border-radius: 50px;
 }
 
-.googlelogin-btn:hover{
+.googlelogin-btn:hover {
   box-shadow: 0 2px 8px rgba(132, 169, 140, 0.5);
 }
 
-.fa-google-plus-g {
+.googlelogin-btn i {
   margin-right: 10px;
-  height: fit-content;
+  display: flex;
+  align-items: center;
+  font-size: 150%;
 }
 
 
-.login-btn{
+.login-btn {
   background: var(--color2);
   color: #fff;
   border-radius: 5px;
@@ -175,47 +240,41 @@
   border: 2px solid transparent;
 }
 
-.login-btn:hover{
+.login-btn:hover {
   background: var(--color11);
   color: #fff;
   border-radius: 5px;
-  width: 100%; 
-  border: 2px solid var(--color11); 
+  width: 100%;
+  border: 2px solid var(--color11);
 }
 
-
-
-.login-input{
+.login-input {
   display: flex;
-  justify-content:space-between;
-  align-items: center;
-  width:100%;
-  padding: 0 50px;
-}
-
-
-
-.signup-btn{
-  display: flex;
-  justify-content: center;
   align-items: center;
   height: 40px;
-  background-color: var(--bgc2);
-  border-radius: 5px;
-  border: 1px solid var(--color11);
-  color: #fff;
   width: 100%;
-  min-width: fit-content;
-  max-width: 300px;
-  margin-top: 30px;
+  padding: 0;
+  margin: 0px auto 25px 0px;
+  position: relative;
 }
 
-.signup-btn:hover{
-  background-color:var(--color11);
+.login-input .error {
+  border-color: #b52424;
 }
 
+.login-input .error-message {
+  font-size: 12px;
+  color: #b52424;
+  line-height: 12px;
+  margin-top: 5px;
+  position: absolute;
+  bottom: -15px;
+  left: 60px;
+  width: 100%;
+  text-align: left;
+}
 
-.note{
+.note {
   font-size: 12px;
   text-decoration: underline;
   color: var(--color5);
@@ -223,7 +282,7 @@
   background-color: #fff;
 }
 
-.box-center{
+.box-center {
   display: flex;
   width: 100%;
   justify-content: center;
