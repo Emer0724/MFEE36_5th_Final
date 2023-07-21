@@ -9,6 +9,8 @@
     border: 1px solid black;
     border-radius: 15px;
     background-color: white;
-    top: calc((100vh - 50%) / 2);
+    /* top: calc((100vh - 50%) / 2); */
     left: calc((100vw - 50%)/2);
+    /* padding-top:  60px; */
+    cursor: default;
 }

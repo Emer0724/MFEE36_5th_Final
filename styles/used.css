@@ -178,10 +178,13 @@ video {
 .used_display_UsedUpCheck{
   background-color:#747272a3;
   width: 100vw;
-  height: 102vh;
-  position: absolute;
+  height: 100vmax;
+  position: fixed;
   top: 0 ;
   right: 0;
+  left: 0;
+  bottom: 0;
+  padding-top: 100px;
 }
 
 @media screen and (max-width: 1700px) {

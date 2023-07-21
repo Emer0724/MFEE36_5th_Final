@@ -2,7 +2,7 @@ import React from 'react'
 import css from '@/components/used/used-upcheck/used-upcheck.module.css'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 
-export default function UsedUpCheck({ postData }) {
+export default function UsedUpCheck({ postData, cancel_btn }) {
   return (
     <div className={`w-50 px-5 py-5 ${css.border_card} used_display_chkbox `}>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
@@ -51,7 +51,10 @@ export default function UsedUpCheck({ postData }) {
         <button className="textp-20px btn btn-secondary  border-radius-5px  ">
           確認並列印
         </button>
-        <button className="textp-20px btn btn-secondary  border-radius-5px ">
+        <button
+          className="textp-20px btn btn-secondary  border-radius-5px "
+          onClick={cancel_btn}
+        >
           我要取消
         </button>
       </div>

@@ -7,6 +7,7 @@ import MemberBreadcrumbs_2 from '@/components/Leo/member/member_breadcrumbs-2'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import UsedUpCheck from '@/components/used/used-upcheck'
+import Popup_window from '@/components/used/popup_window'
 
 // const books = {
 //   ISBN: 9789861371955,
@@ -28,7 +29,9 @@ export default function Display() {
   const [member, setMember] = useState('')
   const [inputValue, setInputValue] = useState('')
   const [search_error, setSearch_error] = useState('')
-  const [postData, setPostData] = useState('')
+  const [postData, setPostData] = useState(false)
+  const [checkCancel, setCheckCancel] = useState(false)
+  const [cancel_result, setCancel_result] = useState(false)
   // const history = useNavigate()
 
   useEffect(() => {
@@ -102,7 +105,7 @@ export default function Display() {
       }
     )
     const post_up2 = await post_up1.json()
-    console.log(post_up2[1][0])
+    // console.log(post_up2[1][0])
     setPostData(post_up2[1][0])
   }
 
@@ -112,6 +115,35 @@ export default function Display() {
     if (!usedUpCheckElement.contains(e.target)) {
       setPostData('')
       setbooks('')
+    }
+  }
+
+  //取消上架botton
+
+  const cancel_btn = () => {
+    setCheckCancel(true)
+  }
+  //2度彈跳視窗取消
+  const cancel_thing = () => {
+    setCheckCancel(false)
+  }
+  const cancel_data = async () => {
+    setCheckCancel(false)
+    setPostData(false)
+    console.log(postData.used_id)
+    const cancel_data1 = await fetch(
+      `${process.env.API_SERVER}/used/display/delete_item/${postData.used_id}`,
+      {
+        method: 'PATCH',
+      }
+    )
+    const cancel_data2 = await cancel_data1.json()
+    // console.log(cancel_data2.changedRows)
+    if (cancel_data2.changedRows === 1) {
+      setCancel_result(true)
+      setTimeout(() => {
+        setCancel_result(false) // 在指定的等待时间后，更新 message 状态
+      }, 2000)
     }
   }
 
@@ -277,50 +309,27 @@ export default function Display() {
           }}
           // 此處可以添加其他滑鼠或觸控事件處理程序
         >
-          <UsedUpCheck postData={postData} />
+          <UsedUpCheck postData={postData} cancel_btn={cancel_btn} />
         </div>
+      ) : (
+        ''
+      )}
+      {checkCancel ? (
+        <Popup_window
+          text={'確定要取消嗎?'}
+          botton_text_left={'確定'}
+          botton_text_right={'取消'}
+          botton_right={cancel_thing}
+          botton_left={cancel_data}
+        />
+      ) : (
+        ''
+      )}
+      {cancel_result ? (
+        <Popup_window text={'已成功取消'} no_botton={true} icon={true} />
       ) : (
         ''
       )}
     </>
   )
 }
-
-// /* book-serch
-// <div className="my-3 d-flex ">
-//   <span className="color-tx-1 fw-bold textp-20px  letter-spacing ">
-//     ISBN :
-//   </span>
-//   <input
-//     type="text"
-//     className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px"
-//     placeholder="請輸入ISBN"
-//     size={12}
-//   />
-//   <button className="btn color-bg-4 border-radius-5px py-0  textp-20px ">
-//     搜尋
-//   </button>
-// </div>
-// /* book-serch
-// <div
-//   className="color-bg-6 my-4 "
-//   style={{
-//     width: 190,
-//     height: 190,
-//     background: `url('/used-img/${book.img}')`,
-//     backgroundSize: 'contain',
-//   }}
-// ></div>
-
-// <div className="d-flex flex-column align-items-center ">
-//   <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center">
-//     {book.book_name}
-//   </h6>
-//   <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center">
-//     作者: {book.author}
-//   </h6>
-//   <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center">
-//     出版社: {book.publish}
-//   </h6>
-// </div>
-// /*---book-serch  end

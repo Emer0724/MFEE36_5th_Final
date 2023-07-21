@@ -2,6 +2,7 @@ import React from 'react'
 import UsedList from '@/components/used/used-list/index'
 import { useState } from 'react'
 import UsedUpCheck from '@/components/used/used-upcheck'
+import Popup_window from '@/components/used/popup_window'
 
 export default function Text() {
   const [inputvalue, setInputvalue] = useState('')
@@ -49,6 +50,11 @@ export default function Text() {
 
       <button onClick={getAuth}>點我設token</button>
       {/* {auth === '' ? '' : <div>{auth.}</div>} */}
+      <Popup_window
+        text={'確定要取消?'}
+        botton_text_left={'確定'}
+        botton_text_right={'取消'}
+      />
     </>
   )
 }

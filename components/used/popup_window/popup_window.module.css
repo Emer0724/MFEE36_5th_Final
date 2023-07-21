@@ -1,0 +1,17 @@
+.card_div {
+    background-color: white;
+    box-shadow: 5px 5px 5px gray;
+    position: absolute;
+    left: calc((100vw - 25%)/2);
+}
+.border_card_back{
+    background-color:#747272a3;
+    width: 100vw;
+    height: 100vmax;
+    position: fixed;
+    top: 0 ;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding-top: 100px;
+  }
