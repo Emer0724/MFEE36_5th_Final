@@ -12,6 +12,7 @@
     align-items:center;
     max-width: 50%;
     padding-bottom: 50px;
+    min-width: 500px;
   }
   
   .profile-title{
