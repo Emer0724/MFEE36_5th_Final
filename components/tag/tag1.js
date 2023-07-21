@@ -1,4 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
+
 import TagBreadCrumbs from './tag-breadcrumbs'
 import ToolBar from '../blog/toolbar'
 import FollowColumn from '../blog/follow-column'

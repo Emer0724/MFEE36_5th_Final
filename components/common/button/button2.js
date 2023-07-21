@@ -1,6 +1,7 @@
 import style from '@/components/common/button/button2.module.css'
 import { useRouter } from 'next/router'
 
+
 export default function Button2() {
 
     const router = useRouter('')

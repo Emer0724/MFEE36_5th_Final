@@ -4,3 +4,13 @@
 .chenbread:hover {
     border-bottom: 1px solid black;
 }
+
+
+@media (max-width:400px) {
+    .bread {
+      display: none;
+    }
+    .chenfs {
+        font-size: 14px;
+    }
+}
