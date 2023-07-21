@@ -111,7 +111,7 @@
   justify-content: center;
   align-items: center;
   height: 40px;
-  background-color: var(--bgc2);
+  background-color: var(--color2);
   border-radius: 5px;
   border: 1px solid var(--color11);
   color: #fff;
@@ -121,16 +121,14 @@
   margin-top: 30px;
 }
 
-.signup-btn:hover {
-  background-color: var(--color11);
-}
+
 
 .right-box .signup-btn {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 40px;
-  background-color: var(--bgc2);
+  background-color: transparent;
   border-radius: 5px;
   border: 1px solid var(--color11);
   color: #fff;
@@ -138,6 +136,9 @@
   min-width: fit-content;
   max-width: 300px;
   margin-top: 30px;
+}
+.signup-btn:hover {
+  background-color: var(--color11);
 }
 
 .signup-btn {
