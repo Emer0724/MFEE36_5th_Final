@@ -11,6 +11,7 @@
   .outer-container{
     align-items:center;
     max-width: 50%;
+    padding-bottom: 50px;
   }
   
   .profile-title{
