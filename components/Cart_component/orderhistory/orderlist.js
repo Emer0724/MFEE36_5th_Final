@@ -24,8 +24,8 @@ export default function orderlist() {
         return(
             <>
                 <div className={s.listcol}>
-                    <div>
                         <div className={s.listnum}><h3>訂單編號</h3><h3>{v}</h3></div>
+                    <div>
                         <div className={s.listdiv}>
                             <h4>訂單日期:</h4>
                             <h4>{dates}</h4>
@@ -47,7 +47,7 @@ export default function orderlist() {
                             <h4>已送達</h4>
                         </div>
                     </div>
-                    <div className={s.orderbtn}><div onClick={() => opendetailhandle(i)}><h4>商品細節</h4></div></div>
+                    <div className={s.orderbtn}><div onClick={() => opendetailhandle(i)} className={s.orderbtntext}>商品細節</div></div>
                 </div>
                 <div className={s.detaillocation}>
                 {openedIndexes.includes(i) && <Orderdetail />}
