@@ -20,7 +20,7 @@ export default function MemberBreadcrumbs_3() {
           <p>可使用</p>
         </Link>
       </div>
-      <div className={`${c.crumbs_border} `}>
+      <div className={`${c.crumbs_border}`}>
         <Link
           href="/dashboard/coupon/expired"
           className={` ${c.under_line} ${

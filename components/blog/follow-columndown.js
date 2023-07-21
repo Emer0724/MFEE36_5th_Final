@@ -1,4 +1,4 @@
-import Button2 from "../common/button/button2"
+import Button12 from "../common/button/button12"
 import Link from "next/link"
 import Image from "next/image"
 import style from '@/components/blog/follow-columndown.module.css'
@@ -13,9 +13,9 @@ export default function FollowColumnDown() {
     return (
         <>
             <div className="d-flex justify-content-between pt-3 pb-3">
-                <h5 className="fw-bold">找你想看的</h5>
+                <h5 className="fw-bold d-flex align-items-center">找你想看的</h5>
                 <div className="d-flex">
-                    <Button2/>
+                    <Button12/>
                 </div>
             </div>
             <div className="d-flex pb-3">

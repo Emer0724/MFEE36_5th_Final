@@ -64,6 +64,7 @@ export default function BookForm() {
       <div className="row d-flex justify-content-center">
         <div className="col-7">
           <form onSubmit={BookSubmit}>
+            <h3 className='d-flex justify-content-center pb-5'>寫書評</h3>
             <div className={`mb-3 pt-3 ${titleError ? 'has-error' : ''}`}>
               <label
                 htmlFor="exampleFormControlInput1"
@@ -109,7 +110,7 @@ export default function BookForm() {
               </select>
               {scoreError && <div style={{ fontSize: '16px' }} className="invalid-feedback ps-2 pt-2">{scoreError}</div>}
             </div>
-            <div className="mb-3 pt-3">
+            <div className="mb-3 pt-5">
               <label
                 htmlFor="exampleFormControlTextarea1"
                 className={`form-label fs-4 ${contentError ? 'has-error' : ''}`}
@@ -133,7 +134,7 @@ export default function BookForm() {
                 </div>
               )}
             </div>
-            <div className="d-flex justify-content-between pt-3">
+            <div className="d-flex justify-content-between pt-5">
               <div>
                 <Button8 />
               </div>

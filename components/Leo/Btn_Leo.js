@@ -8,7 +8,7 @@ const buttonStyle_l = {
   height: 65,
   borderRadius: 5,
   color: 'white',
-  fontSize: 36,
+  fontSize: 28,
 }
 const btnctstyle = {
   display: 'flex',

@@ -57,6 +57,7 @@ export default function BlogForm() {
       <div className="row d-flex justify-content-center">
         <div className="col-7">
           <form onSubmit={BlogSubmit}>
+            <h3 className='d-flex justify-content-center pb-5'>寫作品</h3>
             <div className={`mb-3 pt-3 ${titleError ? 'has-error' : ''}`}>
               <label
                 htmlFor="exampleFormControlInput1"
@@ -72,7 +73,7 @@ export default function BlogForm() {
                 onChange={Titledata}
                 placeholder="請輸入標題"
               />
-              {titleError && <div style={{fontSize:'16px'}} className="text-danger ps-2 pt-2">{titleError}</div>}
+              {titleError && <div style={{fontSize:'16px'}} className="text-danger ps-2 pt-3">{titleError}</div>}
             </div>
             <div className="mb-3 pt-3">
               <label htmlFor="formFile" className="form-label fs-4">
@@ -86,7 +87,7 @@ export default function BlogForm() {
                 value={image}
               />
             </div>
-            <div className="mb-3 pt-3">
+            <div className="mb-3 pt-5">
               <label
                 htmlFor="exampleFormControlTextarea1"
                 className={`form-label fs-4 ${contentError ? 'has-error' : ''}`}
@@ -101,9 +102,9 @@ export default function BlogForm() {
                 value={content}
                 rows="6"
               ></textarea>
-               {contentError && <div style={{fontSize:'16px'}} className="text-danger ps-2 pt-2">{contentError}</div>}
+               {contentError && <div style={{fontSize:'16px'}} className="text-danger ps-2 pt-3">{contentError}</div>}
             </div>
-            <div className="d-flex justify-content-between pt-3">
+            <div className="d-flex justify-content-between pt-5">
               <div>
                 <Button8 />
               </div>

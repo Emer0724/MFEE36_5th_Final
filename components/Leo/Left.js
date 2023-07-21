@@ -7,8 +7,7 @@ import styles from '@/components/Leo/Left.module.css'
 
 export default function L() {
   const btntitle1 = '加入購物車'
-  const btntitle2 = '看二手書'
-  const btntitle3 = '以書易書'
+  const btntitle2 = '找二手書'
 
   return (
     <>
@@ -46,7 +45,6 @@ export default function L() {
         <div className={styles.btn_set}>
           <ButtonStyle_l t1={btntitle1} />
           <ButtonStyle_l t1={btntitle2} />
-          <ButtonStyle_l t1={btntitle3} />
         </div>
       </div>
     </>

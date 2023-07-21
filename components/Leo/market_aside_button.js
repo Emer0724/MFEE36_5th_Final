@@ -86,7 +86,7 @@ const items = [
   ]),
   getItem('其他', 'sub11', ' ', [
     getItem('斗內', '51'),
-    getItem('友站連結', 'sub3', null, [
+    getItem('友站連結', 'sub12', null, [
       getItem('博客來', '52'),
       getItem('讀冊', '53'),
     ]),
