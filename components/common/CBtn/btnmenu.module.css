@@ -1,0 +1,39 @@
+.btnmenucontain{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:15px
+}
+.btnmenurow{
+    display:flex;
+    align-items:center;
+    gap:40px
+}
+.btnmenu{
+border: 2px solid #52796F;
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  color: #52796F;
+  font-size: '20px';
+}
+.menuStyle {
+    width: 600px;
+    padding: 30px;
+    background: #fff;
+    border: 2px solid #52796F;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px #52796F;
+    text-align:center;
+  };
+
+
+.options{
+    color: var(--color2);
+    cursor: pointer;
+    padding: 10px 0;
+}
+.options:hover{
+    color: white;
+    background: var(--color2);
+}

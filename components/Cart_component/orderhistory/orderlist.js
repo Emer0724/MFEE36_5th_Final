@@ -35,8 +35,12 @@ export default function orderlist() {
                             <h4>{price}元</h4>
                         </div>
                         <div className={s.listdiv}>
-                            <h4>知音幣:</h4>
-                            <h4>100</h4>
+                            <h4>知音幣使用:</h4>
+                            <h4>100元</h4>
+                        </div>
+                        <div className={s.listdiv}>
+                            <h4>折價卷使用:</h4>
+                            <h4>100元</h4>
                         </div>
                         <div className={s.listdiv}>
                             <h4>訂單狀態:</h4>

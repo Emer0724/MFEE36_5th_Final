@@ -1,11 +1,11 @@
 import React from 'react'
+
 const blockstyle = {
   display:"flex",
   flexDirection: "column",
   justifyContent:"space-around",
   alignItems:"center",
   marginBottom:"100px",
-  
 }
 const labelstyle = {
   fontSize:"20px"
@@ -21,12 +21,12 @@ const inputstyle = {
 }
 
 
-export default function OrderInput({labelcontent,type}) {
+export default function OrderInput({labelcontent,type,required,pattern}) {
   return (
     <>
       <div style={blockstyle}>
         <label style={labelstyle}>{labelcontent}</label>
-        <input type={type} style={inputstyle} required/>
+        <input type={type} style={inputstyle}  pattern={pattern} required/>
       </div>
     </>
   )
