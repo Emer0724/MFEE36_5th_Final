@@ -5,16 +5,18 @@ import R from '@/components/Leo/Right'
 const square = {
   display: 'flex',
   width: '100%',
-  height: 1200,
+  height: '100%',
+  flexWrap: 'wrap',
 }
 const l_box = {
   margin: 0,
-  width: '40%',
-  height: 1150,
+  flex: '0 0 40%',
+  height: '100%',
+  position: 'sticky',
+  top: 0,
 }
 const r_box = {
-  width: '60%',
-  height: 1150,
+  flex: '0 0 50%',
   margin: 0,
 }
 

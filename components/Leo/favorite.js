@@ -6,9 +6,15 @@ export default function Favorite() {
   const i = {
     fontSize: '45px',
   }
+  const fbtn = {
+    border: 'none',
+    backgroundColor: 'transparent',
+  }
   return (
     <>
-      <FontAwesomeIcon icon={faBookmark} style={i} />
+      <button style={fbtn} onClick={''}>
+        <FontAwesomeIcon icon={faBookmark} style={i} />
+      </button>
     </>
   )
 }

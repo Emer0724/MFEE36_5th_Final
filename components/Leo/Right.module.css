@@ -3,7 +3,7 @@
     padding: 20PX;
 }
 .content{
-    width: 990px;
+    width: 100%;
     word-wrap: break-word;
     word-break: break-all;
     white-space: pre-wrap;
@@ -11,4 +11,19 @@
 }
 .p{
     margin-top: 50px;
+    font-size: 20px;
 }
+.verticalExpand {
+    white-space: pre-line;
+    text-align: center; 
+    
+  }
+  .scrollable {
+    overflow-y: auto;
+    max-height: 400px; /* 設置適當的最大高度，讓內容超過時才出現滾動條 */
+  }
+  .used{
+    width: 100%;
+    position: sticky;
+    bottom: 0;
+  }

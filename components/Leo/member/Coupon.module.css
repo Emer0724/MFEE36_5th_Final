@@ -23,9 +23,7 @@
 .coupon:hover{
     transform: scale(1.2);
 }
-.coupon_ex:hover{
-    transform: scale(1.2);
-}
+
 .c_title{
     margin-left: 70px;
     margin-top: 10px;
