@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styles from '../../styles/mem-style/login.module.css'
 import { Container, Button } from 'react-bootstrap'
+import { useRouter } from 'next/router'
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -36,6 +37,12 @@ const Login = () => {
 
   const handleGoogleLogin = () => {
     // google login
+  }
+
+  const router = useRouter()
+
+  const handleJoinMember = () => {
+    router.push('/member/register') // 2. 使用 router.push 导航到 "member/register" 页面
   }
 
   return (
@@ -99,7 +106,11 @@ const Login = () => {
                 </button>
               </div>
               <div className={styles['box-center']}>
-                <button type="submit" className={styles['signup-btn']}>
+                <button
+                  type="submit"
+                  className={styles['signup-btn']}
+                  onClick={handleJoinMember}
+                >
                   加入會員
                 </button>
               </div>
@@ -108,7 +119,11 @@ const Login = () => {
 
           <div className={styles['right-box']}>
             <h1 className={styles['right-text']}>沒有帳號?</h1>
-            <button type="submit" className={styles['signup-btn']}>
+            <button
+              type="submit"
+              className={styles['signup-btn']}
+              onClick={handleJoinMember}
+            >
               加入會員
             </button>
           </div>

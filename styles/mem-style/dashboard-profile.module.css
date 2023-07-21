@@ -8,14 +8,14 @@
     font-family: 'Noto Serif TC', serif;
   }
   
-  .outer-container{
+.outer-container{
     align-items:center;
     max-width: 50%;
     padding-bottom: 50px;
     min-width: 500px;
   }
   
-  .profile-title{
+.profile-title{
     font-size: 20px;
     color: var(--color2);
     margin-bottom: 10px;
@@ -24,26 +24,26 @@
     font-family: 'Noto Serif TC', serif;
   }
   
-  .profile-items{
+.profile-items{
     font-size: 16px;
     color: var(--color11);
     margin-bottom: 5px;
     font-family: 'Noto Serif TC', serif;
   }
   
-  .profile-box{
+.profile-box{
     max-width: 1070px;
     margin-top: 0px;
     font-family: 'Noto Serif TC', serif;
   }
   
-  .data-line{
+.data-line{
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
   }
   
-  .form-radio{
+.form-radio{
     display: flex;
     line-height: 16px;
     align-items: center;
@@ -52,7 +52,7 @@
   }
   
   
-  .save-btn{
+.save-btn{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -65,4 +65,21 @@
     border: none;
     color: #fff;
     font-family: 'Noto Serif TC', serif;
+  }
+@media (max-width: 600px) {
+  .outer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 50px;
+    }
+  
+  .profile-box {
+      width: 100%;
+      max-width: 500px;
+    }
+  
+  .data-line {
+      justify-content: space-between;
+    }
   }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styles from '../../styles/mem-style/reg.module.css'
 import { Container, Button } from 'react-bootstrap'
+import { useRouter } from 'next/router'
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -66,6 +67,12 @@ const Login = () => {
     }
   }
 
+  const router = useRouter()
+
+  const handleLogin = () => {
+    router.push('/member/login') // 轉至"member/login"
+  }
+
   return (
     <div>
       <div className={styles.card}>
@@ -81,6 +88,7 @@ const Login = () => {
                 className={`${styles['login-btn']} ${
                   isMobile ? styles['login-btn-mobile'] : ''
                 }`}
+                onClick={handleLogin}
               >
                 登入
               </button>
@@ -177,6 +185,7 @@ const Login = () => {
                           ? styles['login-btn-mobile']
                           : styles['login-btn-none']
                       }
+                      onClick={handleLogin}
                     >
                       登入
                     </button>

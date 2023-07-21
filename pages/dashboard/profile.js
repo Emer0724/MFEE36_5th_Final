@@ -172,11 +172,11 @@ const Profile = () => {
             <h1 className={styles['profile-title']}>知音幣</h1>
             <div className={styles['data-line']}>{token}</div>
           </div>
-        </div>
-        <div className="d-flex justify-content-center mx-5">
-          <button onClick={saveData} className={styles['save-btn']}>
-            保存
-          </button>
+          <div className="d-flex justify-content-center mx-5">
+            <button onClick={saveData} className={styles['save-btn']}>
+              保存
+            </button>
+          </div>
         </div>
       </div>
     </div>
