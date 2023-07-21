@@ -1,8 +1,8 @@
-import Button8 from '../button/button8'
-import Button9 from '../button/button9'
+import Button13 from '../button/button13'
+import BackButton from '../button/backbutton'
 import { useState } from 'react'
 
-export default function BlogForm() {
+export default function BlogEditForm() {
   const [title, setTitle] = useState('')
   const [image, setImage] = useState('')
   const [content, setContent] = useState('')
@@ -57,7 +57,7 @@ export default function BlogForm() {
       <div className="row d-flex justify-content-center">
         <div className="col-7">
           <form onSubmit={BlogSubmit}>
-            <h3 className='d-flex justify-content-center pb-5'>寫作品</h3>
+            <h3 className='d-flex justify-content-center pb-5'>編輯作品</h3>
             <div className={`mb-3 pt-3 ${titleError ? 'has-error' : ''}`}>
               <label
                 htmlFor="exampleFormControlInput1"
@@ -106,10 +106,10 @@ export default function BlogForm() {
             </div>
             <div className="d-flex justify-content-between pt-5">
               <div>
-                <Button8 />
+                <Button13 />
               </div>
               <div>
-                <Button9 />
+                <BackButton />
               </div>
             </div>
           </form>

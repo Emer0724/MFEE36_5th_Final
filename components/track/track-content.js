@@ -1,4 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
 import Avatar2 from '../book-review/blogavatar2'
 import Button6 from '../common/button/button6'
 

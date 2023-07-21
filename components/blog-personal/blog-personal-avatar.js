@@ -9,13 +9,13 @@ export default function BlogPersonalAvatar() {
             <div>
                 <div className={`${stlye.chenpersonal} d-flex`}>
                     <div>
-                        <Link href="#">
+                        <div>
                             <Image src={img1} className={stlye.chenheadimg}/>
-                        </Link>
+                        </div>
                     </div>
-                    <Link href="#" className={`text-decoration-none`}>
+                    <div className={`text-decoration-none`}>
                             <div className="fw-bold mb-0 mt-1 fs-5 text-dark pb-2">阿巴</div>
-                        </Link>
+                        </div>
                     <div className='d-flex'>
                         <div className='pe-2'>
                             <span className='pe-2 text-decoration-none'>500 追蹤者</span>

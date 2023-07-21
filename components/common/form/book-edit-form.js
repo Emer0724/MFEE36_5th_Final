@@ -1,8 +1,8 @@
-import Button8 from '../button/button8'
-import Button9 from '../button/button9'
+import BackButton from '../button/backbutton'
+import Button13 from '../button/button13'
 import { useState } from 'react'
 
-export default function BookForm() {
+export default function BookEditForm() {
   const [title, setTitle] = useState('')
   const [score, setScore] = useState('')
   const [content, setContent] = useState('')
@@ -64,7 +64,7 @@ export default function BookForm() {
       <div className="row d-flex justify-content-center">
         <div className="col-7">
           <form onSubmit={BookSubmit}>
-            <h3 className='d-flex justify-content-center pb-5'>寫書評</h3>
+            <h3 className='d-flex justify-content-center pb-5'>編輯書評</h3>
             <div className={`mb-3 pt-3 ${titleError ? 'has-error' : ''}`}>
               <label
                 htmlFor="exampleFormControlInput1"
@@ -136,10 +136,10 @@ export default function BookForm() {
             </div>
             <div className="d-flex justify-content-between pt-5">
               <div>
-                <Button8 />
+                <Button13 />
               </div>
               <div>
-                <Button9 />
+                <BackButton />
               </div>
             </div>
           </form>
