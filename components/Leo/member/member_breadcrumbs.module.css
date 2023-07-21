@@ -1,19 +1,20 @@
 .crumbs_box{
-    margin: 0px,20px;
+    margin-left:120px;
     display: flex;
     justify-content: center;
 }
 .crumbs_none{
     font-size: 20px;
-    width: 80px;
+    width: 64px;
     height: 30px;
     font-weight: bold;
+    margin-right: 0px;
 }
 
 .crumbs_border{
     font-size: 20px; 
     margin-left:20px;
-    width: 141px;
+    width: 80px;
     height: 30px;
     border-left: 1px solid black;
     padding-left: 15px;
@@ -37,3 +38,7 @@
         
     }
 }
+.mid{
+    display: flex;
+    justify-content: center;
+ }

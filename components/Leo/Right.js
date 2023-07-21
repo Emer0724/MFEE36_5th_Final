@@ -4,9 +4,9 @@ import styles from '@/components/Leo/Right.module.css'
 export default function R() {
   return (
     <>
-      <div className={styles.content}>
+      <div className={`${styles.content} ${styles.scrollable} `}>
         <h1 className={styles.title}>內容描述</h1>
-        <pre className={styles.p}>
+        <pre className={`${styles.p} ${styles.verticalExpand}`}>
           出版三十多年暢銷不墜，建基於十數萬筆經驗取樣研究，
           提出「心流」概念，並以科學方法加以探索的開創之作。
           啟發心理學、腦科學、社會學、運動學、人類學、宗教學等眾多領域研究，
@@ -37,7 +37,7 @@ export default function R() {
           更快樂、更充實、也更具意義的人生。（更詳盡介紹可參閱目錄引文）
         </pre>
       </div>
-      <div>
+      <div className={styles.used}>
         <h1 className={styles.title}>二手書</h1>
       </div>
     </>
