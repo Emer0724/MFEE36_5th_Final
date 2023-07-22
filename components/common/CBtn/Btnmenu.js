@@ -7,17 +7,7 @@ import s from '@/components/common/CBtn/btnmenu.module.css'
 
 
 export default function CouponSelectMenu({ lightbtncontent, options }) {
-  const [showMenu, setShowMenu] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(options[0]);
-
-  const toggleMenu = () => {
-    setShowMenu((prev) => !prev);
-  };
-
-  const handleOptionSelect = (option) => {
-    setSelectedOption(option);
-    setShowMenu(false);
-  };
+  
 
   return (
     <div className={s.btnmenucontain} >
@@ -26,7 +16,7 @@ export default function CouponSelectMenu({ lightbtncontent, options }) {
           <button className={s.btnmenu} onClick={toggleMenu}>
               {lightbtncontent}
           </button>
-        </div>  
+        </div>
       {showMenu && (
         <div className={s.menuStyle}>
           {options.map((option, index) => (

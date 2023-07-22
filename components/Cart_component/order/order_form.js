@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import OrderInput from "@/components/Cart_component/order/order_small/order-input"
-import OrderSelect1 from "@/components/Cart_component/order/order_small/order-selection"
 import DeepButton from '@/components/common/CBtn/DeepgreenBtn'
 
 const Formstyles1 ={

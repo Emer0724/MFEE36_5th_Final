@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 
 
-export default function LightButton({ lightbtncontent, route }) {
+export default function LightButton({ lightbtncontent, onClick={} }) {
 
   const [windowWidth ,setWindowWidth] = useState(null)
   useEffect(() => {
@@ -32,11 +32,9 @@ export default function LightButton({ lightbtncontent, route }) {
     fontSize:windowWidth && windowWidth > 600?"20px":"16px",
   }
   return (
-    <Link href={ {route} }>
-      <button style={buttonStyle1} >
+      <button style={buttonStyle1} onClick={onClick} >
         {lightbtncontent}
       </button>
-    </Link>
   )
 }
 
