@@ -15,4 +15,11 @@
     cursor: default;
 }
 
+@media  print {
+    .used_print{
+        margin: 20px;
+    }
+    
+}
+
 

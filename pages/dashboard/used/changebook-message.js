@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MemberNav from '@/components/common/member-nav/member-nav'
 import UsedTdUncomfirmed from '@/components/used/chk-msg/used-td-uncomfirmed'
 import UsedTdExchange from '@/components/used/chk-msg/used-td-exchange'
@@ -7,42 +7,64 @@ import UsedTdUnreceive from '@/components/used/chk-msg/used-td-unreceive'
 import Link from 'next/link'
 import Member_info from '@/components/Leo/member/member_info'
 import MemberBreadcrumbs_2 from '@/components/Leo/member/member_breadcrumbs-2'
+import { useRouter } from 'next/router'
+
 //暫定 1.待兌換 2.代收書 3.退回 4.已兌換
-const datas = [
-  {
-    used_id: 1,
-    ISBN: 9789864016433,
-    book_name: '作者不詳：推理作家的讀本 (上卷)(下卷）',
-    book_state: 1,
-    price: '500',
-  },
-  { used_id: 2, ISBN: 9789577417039, book_name: '第三時效', book_state: 2 },
-  {
-    used_id: 3,
-    ISBN: 9786263565616,
-    book_name: '二度遭到殺害的她',
-    book_state: 3,
-    price: '500',
-  },
-  {
-    used_id: 4,
-    ISBN: 9786263565616,
-    book_name: '二度遭到殺害的她',
-    book_state: 4,
-    price: '500',
-  },
-]
+// const datas = [
+//   {
+//     used_id: 1,
+//     ISBN: 9789864016433,
+//     book_name: '作者不詳：推理作家的讀本 (上卷)(下卷）',
+//     book_state: 1,
+//     price: '500',
+//   },
+//   { used_id: 2, ISBN: 9789577417039, book_name: '第三時效', book_state: 2 },
+//   {
+//     used_id: 3,
+//     ISBN: 9786263565616,
+//     book_name: '二度遭到殺害的她',
+//     book_state: 3,
+//     price: '500',
+//   },
+//   {
+//     used_id: 4,
+//     ISBN: 9786263565616,
+//     book_name: '二度遭到殺害的她',
+//     book_state: 4,
+//     price: '500',
+//   },
+// ]
 
 export default function ChangebookMessage() {
-  const [data, setData] = useState(datas)
+  const router=useRouter()
+  const [data, setData] = useState([])
+  const [totalpage,setTotalpage]=useState(1)
+  const [nowpage,setnowpage]=useState(1)
+  useEffect(() => {
+    getData()
+
+  }, [])
+console.log(router.query.page)
+  const getData = async () => {
+    const member_id = JSON.parse(localStorage.getItem('auth')).member_id
+    console.log(member_id)
+    const getdata1 = await fetch(
+      `${process.env.API_SERVER}/used/change/item/${member_id}`
+    )
+    const getdata2 = await getdata1.json()
+    setData(getdata2[0])
+    setTotalpage(getdata2[1])
+   
+    console.log(data)
+  }
 
   return (
     <>
-      {/* <Member_info /> */}
+      <Member_info />
       <MemberNav />
       <MemberBreadcrumbs_2 />
       <div className="px-2 mt-3">
-        <div className="dropdown pb-3 d-flex justify-content-end ">
+        <div className="dropdown pb-3 d-flex  ">
           <button
             className="btn btn-success dropdown-toggle letter-spacing border-radius-5px textp-20px used-search-text-16"
             type="button"
@@ -105,8 +127,8 @@ export default function ChangebookMessage() {
           </thead>
           <tbody>
             {data.map((v, i) => {
-              const { used_id, ISBN, book_name, book_state, price } = v
-              if (book_state === 1) {
+              const { used_id, ISBN, book_name, used_state, price } = v
+              if (used_state === '1') {
                 //待確認
                 return (
                   <UsedTdUncomfirmed
@@ -114,10 +136,10 @@ export default function ChangebookMessage() {
                     used_id={used_id}
                     ISBN={ISBN}
                     book_name={book_name}
-                    book_state={book_state}
+                    used_state={used_state}
                   />
                 )
-              } else if (book_state === 2) {
+              } else if (used_state === '2') {
                 //待收書
                 return (
                   <UsedTdUnreceive
@@ -125,10 +147,10 @@ export default function ChangebookMessage() {
                     used_id={used_id}
                     ISBN={ISBN}
                     book_name={book_name}
-                    book_state={book_state}
+                    used_state={used_state}
                   />
                 )
-              } else if (book_state === 3) {
+              } else if (used_state === '3') {
                 //退回
                 return (
                   <UsedTdReturn
@@ -136,10 +158,10 @@ export default function ChangebookMessage() {
                     used_id={used_id}
                     ISBN={ISBN}
                     book_name={book_name}
-                    book_state={book_state}
+                    used_state={used_state}
                   />
                 )
-              } else if (book_state === 4) {
+              } else if (used_state === '4') {
                 //已兌換
                 return (
                   <UsedTdExchange
@@ -147,7 +169,7 @@ export default function ChangebookMessage() {
                     used_id={used_id}
                     ISBN={ISBN}
                     book_name={book_name}
-                    book_state={book_state}
+                    used_state={used_state}
                     price={price}
                   />
                 )
@@ -155,6 +177,31 @@ export default function ChangebookMessage() {
             })}
           </tbody>
         </table>
+        <div className='d-flex justify-content-center mt-5 '><nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            {Array(5).fill(1).map((v,i)=>(
+               <li class="page-item" key={i}>
+               <a class="page-link" href="#">
+                {i}
+               </a>
+             </li>
+
+            ))}
+           
+           
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav></div>
+        
         <div className="used_rwd_botton" style={{ height: '300px' }}></div>
       </div>
     </>

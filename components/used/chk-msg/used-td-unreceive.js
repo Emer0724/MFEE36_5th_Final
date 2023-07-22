@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-export default function UsedTdUnreceive({ used_id, book_name, book_state }) {
+export default function UsedTdUnreceive({ used_id, book_name, used_state }) {
   return (
     <>
       <tr>

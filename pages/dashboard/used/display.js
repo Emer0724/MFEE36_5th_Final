@@ -117,6 +117,7 @@ export default function Display() {
     if (!usedUpCheckElement.contains(e.target)) {
       setPostData('')
       setbooks('')
+      setInputValue('')
     }
   }
 
@@ -146,14 +147,19 @@ export default function Display() {
       setCancel_result(true)
       setTimeout(() => {
         setCancel_result(false) // 在指定的等待时间后，更新 message 状态
+        setbooks('')
+        setInputValue('')
       }, 2000)
     }
   }
 
   //確認列印
-  const print_item = () => {
-    window.print()
-  }
+
+  const print_item = useReactToPrint({
+    content: () => printref.current,
+    documentTitle: '上架資訊',
+   
+  })
 
   return (
     <>
@@ -328,6 +334,7 @@ export default function Display() {
             postData={postData}
             cancel_btn={cancel_btn}
             print_btn={print_item}
+            printref={printref}
           />
         </div>
       ) : (
@@ -349,43 +356,36 @@ export default function Display() {
       ) : (
         ''
       )}
-      <div className="used_print_only" ref={printref}>
+      {/* <div>
         <div
-          className={`textp-32px letter-spacing fw-bold  text-center used_print_only   `}
+          className={`textp-32px letter-spacing fw-bold  text-center    `}
+          ref={printref}
         >
           上架資訊
         </div>
-        <div
-          className={`textp-20px mt-3 pb-1 letter-spacing used_print_only  `}
-        >
+        <div className={`textp-20px mt-3 pb-1 letter-spacing   `}>
           上架流水號: {postData.used_id}
         </div>
-        <div
-          className={`textp-20px mt-3 pb-1 letter-spacing used_print_only  `}
-        >
+        <div className={`textp-20px mt-3 pb-1 letter-spacing  `}>
           ISBN: {postData.ISBN}
         </div>
-        <div
-          className={`textp-20px mt-3 pb-1 letter-spacing used_print_only  `}
-        >
+        <div className={`textp-20px mt-3 pb-1 letter-spacing   `}>
           書名: {postData.book_name}
         </div>
-        <div className={`textp-20px mt-3 pb-1 letter-spacing used_print_only `}>
+        <div className={`textp-20px mt-3 pb-1 letter-spacing  `}>
           會員名稱: {postData.name}
         </div>
-        <div
-          className={`textp-20px mt-3 pb-1 letter-spacing used_print_only  `}
-        >
+        <div className={`textp-20px mt-3 pb-1 letter-spacing   `}>
           Email: {postData.email}
         </div>
-        <div className={`textp-20px mt-3 pb-1 letter-spacing used_print_only `}>
+        <div className={`textp-20px mt-3 pb-1 letter-spacing  `}>
           地址: {postData.city + postData.district + postData.address}
         </div>
         <div className={`textp-20px mt-3 pb-1 letter-spacing  `}>
           **請列印上表資訊並與該二手書一同寄回
           106台北市大安區復興南路一段390號2樓
         </div>
-      </div>
+      </div> */}
     </>
   )
 }

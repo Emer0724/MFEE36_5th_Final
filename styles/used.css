@@ -387,8 +387,8 @@ video {
   }
  }
 
- @media print {
-  body *:not(.used_print_only) {
-    display: none;
+ /* @media print {
+  .used_print_only {
+    padding-left: 20px;
   }
-}
+} */
