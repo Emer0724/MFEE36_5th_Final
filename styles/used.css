@@ -189,6 +189,9 @@ video {
 .used_print_only{
   display: none;
 }
+.used_chk_msg_td_center{
+  vertical-align: middle
+}
 
 @media screen and (max-width: 1700px) {
   .index_index_circle_text {

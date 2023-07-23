@@ -36,26 +36,35 @@ import { useRouter } from 'next/router'
 // ]
 
 export default function ChangebookMessage() {
-  const router=useRouter()
-  const [data, setData] = useState([])
-  const [totalpage,setTotalpage]=useState(1)
-  const [nowpage,setnowpage]=useState(1)
+  const router = useRouter()
+  const [data, setData] = useState({
+    redirect: "",
+    
+    perPage: 4,
+    totalPages: 0,
+    page: 1,
+    rows: [],
+    error:''
+  })
+  // const [totalpage, setTotalpage] = useState(1)
+  // const [nowpage, setnowpage] = useState(1)
   useEffect(() => {
     getData()
-
-  }, [])
-console.log(router.query.page)
+  }, [router.query])
+  console.log(router.query)
   const getData = async () => {
     const member_id = JSON.parse(localStorage.getItem('auth')).member_id
-    console.log(member_id)
+    
+    const usp = new URLSearchParams(router.query);
+    
     const getdata1 = await fetch(
-      `${process.env.API_SERVER}/used/change/item/${member_id}`
+      `${process.env.API_SERVER}/used/change/item/${member_id}?${usp.toString()}`
     )
     const getdata2 = await getdata1.json()
-    setData(getdata2[0])
-    setTotalpage(getdata2[1])
-   
-    console.log(data)
+    setData(getdata2)
+    // setTotalpage(getdata2[1])
+
+    // console.log(getdata2)
   }
 
   return (
@@ -102,7 +111,7 @@ console.log(router.query.page)
             </li>
           </ul>
         </div>
-        <table className="table  " style={{ border: '6px solid #84A98C' }}>
+        {data.error==='no_data' ? <div className='text-center fs-3'>目前沒有資料</div> :( <>  <table className="table  " style={{ border: '6px solid #84A98C' }}>
           <thead>
             <tr>
               <th
@@ -126,7 +135,8 @@ console.log(router.query.page)
             </tr>
           </thead>
           <tbody>
-            {data.map((v, i) => {
+            {data.rows.map((v, i) => {
+              
               const { used_id, ISBN, book_name, used_state, price } = v
               if (used_state === '1') {
                 //待確認
@@ -177,31 +187,48 @@ console.log(router.query.page)
             })}
           </tbody>
         </table>
-        <div className='d-flex justify-content-center mt-5 '><nav aria-label="Page navigation example">
-          <ul class="pagination">
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            {Array(5).fill(1).map((v,i)=>(
-               <li class="page-item" key={i}>
-               <a class="page-link" href="#">
-                {i}
+         <div className="d-flex justify-content-center mt-5 ">
+         <nav aria-label="Page navigation example">
+           <ul className="pagination">
+             <li className="page-item">
+               <a className="page-link" href="?page=1" aria-label="Previous">
+                 <span aria-hidden="true">&laquo;</span>
                </a>
              </li>
+             {Array(5)
+               .fill(1)
+               .map((v, i) => {
+                 const p=data.page -2 + i
+                 const query = { ...router.query }
+                 
+                
+                 if(p<1 || p > data.totalPages) return;
+                 query.page=p
+                 return (
+                   
+                   <li className={`page-item ${p===data.page ? "active" : ""}`} key={p}>
+                     <Link
+                       className="page-link"
+                       href={'?' + new URLSearchParams(query).toString()}
+                     >
+                       {p}
+                     </Link>
+                   </li>
+                 )
+               })}
 
-            ))}
-           
-           
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-        </nav></div>
-        
+             <li className="page-item">
+               <a className="page-link" href={`?page=${data.totalPages}`} aria-label="Next">
+                 <span aria-hidden="true">&raquo;</span>
+               </a>
+             </li>
+           </ul>
+         </nav>
+       </div>
+       </>) }
+      
+       
+
         <div className="used_rwd_botton" style={{ height: '300px' }}></div>
       </div>
     </>

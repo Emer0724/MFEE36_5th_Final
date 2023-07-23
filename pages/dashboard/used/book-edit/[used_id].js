@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MemberNav from '@/components/common/member-nav/member-nav'
 import UsedInfoExchange from '@/components/used/usedid/used-info-exchange'
 import Link from 'next/link'
 import MemberBreadcrumbs_2 from '@/components/Leo/member/member_breadcrumbs-2'
+import Member_info from '@/components/Leo/member/member_info'
+import { useRouter } from 'next/router'
 
 const book_info = {
   used_id: 18,
@@ -17,22 +19,54 @@ const book_info = {
 }
 
 //暫定 1.待兌換 2.代收書 3.退回 4.已兌換
-const newdata = { ...book_info }
-if (newdata.state === '1') {
-  newdata.state = '待兌換'
-} else if (newdata.state === '2') {
-  newdata.state = '待收書'
-} else if (newdata.state === '3') {
-  newdata.state = '退回'
-} else if (newdata.state === '4') {
-  newdata.state = '已兌換'
-}
-console.log(newdata)
+// const newdata = { ...book_info }
+// if (newdata.state === '1') {
+//   newdata.state = '待兌換'
+// } else if (newdata.state === '2') {
+//   newdata.state = '待收書'
+// } else if (newdata.state === '3') {
+//   newdata.state = '退回'
+// } else if (newdata.state === '4') {
+//   newdata.state = '已兌換'
+// }
+// console.log(newdata)
 export default function Usedid() {
-  const [bookInfo, setbookInfo] = useState(book_info)
+  const router=useRouter()
+  const [bookInfo, setbookInfo] = useState({})
+  // console.log((router.query.used_id).toString())
+  
+  useEffect(()=>{
+    if(router.query.used_id){
+      getBookInfo()
+    }
+    
+  },[router.query])
+
+  const getBookInfo=async()=>{
+    const getbookInfo1=await fetch(`${process.env.API_SERVER}/used/book_edit/${(router.query.used_id).toString()}`)
+    const getbookInfo2=await getbookInfo1.json()
+    console.log(getbookInfo2[0])
+    const newdata = { ...getbookInfo2[0] }
+  if (newdata.used_state === '1') {
+    newdata.used_state = '待兌換'
+  } else if (newdata.used_state === '2') {
+    newdata.used_state = '待收書'
+  } else if (newdata.used_state === '3') {
+    newdata.used_state = '退回'
+  } else if (newdata.used_state === '4') {
+    newdata.used_state = '已兌換'
+  }
+    setbookInfo(newdata)
+    console.log(newdata)
+    
+ 
+  }
+  
+ 
+
   return (
     <>
-      {/* <Member_info /> */}
+      <Member_info />
       <MemberNav />
       <MemberBreadcrumbs_2 />
 
@@ -47,7 +81,7 @@ export default function Usedid() {
               style={{
                 width: 200,
                 height: 200,
-                background: `url('/used-img/${bookInfo.img}')`,
+                background: `url('/used-img/${bookInfo.pic}')`,
                 backgroundSize: 'contain',
               }}
             ></div>
@@ -55,37 +89,37 @@ export default function Usedid() {
           <div className="col-12  col-md-6  border-start border-black d-flex  flex-column  align-items-center justify-content-center used-usededit-member-1  ">
             <div className="d-flex flex-column used-usededit-member-2    ">
               <div className="textp-20px letter-spacing mt-3 used-search-text-16">
-                ISBN:{newdata.ISBN}
+                ISBN:{bookInfo.ISBN}
               </div>
-              {newdata.status !== '' ? (
+              {bookInfo.status_name   ? (
                 <div className="textp-20px letter-spacing mt-3 used-search-text-16">
-                  書況評級:{newdata.status}
+                  書況評級:{bookInfo.status_name}
                 </div>
               ) : (
                 ''
               )}
               <div className="textp-20px letter-spacing mt-3 used-search-text-16">
-                狀態:{newdata.state}
+                狀態:{bookInfo.used_state}
               </div>
-              {newdata.price !== '' ? (
+              {bookInfo.price  ? (
                 <div className="textp-20px letter-spacing mt-3 used-search-text-16">
-                  可換代幣:{newdata.price}
+                  可換代幣:{bookInfo.price}
                 </div>
               ) : (
                 ''
               )}
-              {newdata.node !== '' ? (
+              {bookInfo.node  ? (
                 <div className="textp-20px letter-spacing mt-3 used-search-text-16">
-                  書況備註:{newdata.node}
+                  書況備註:{bookInfo.node}
                 </div>
               ) : (
                 ''
               )}
               <div className="textp-20px letter-spacing mt-3 used-search-text-16">
-                新增時間:{newdata.updated}
+                異動時間:{bookInfo.updated}
               </div>
             </div>
-            {newdata.status === '' ? (
+            { !bookInfo.status_name  ? (
               <div className="d-flex  w-100  justify-content-center my-5 ">
                 <button className="btn color-bg-10 color-tx-1 fw-bold border-radius-5px  letter-spacing me-5">
                   我要取消
@@ -113,18 +147,11 @@ export default function Usedid() {
               </Link>
             </div>
 
-            {/* <div className='d-flex  w-100  justify-content-center my-5 ' >
-             
-             <button className="btn color-bg-10 color-tx-1 fw-bold border-radius-5px  letter-spacing me-5">
-            確定兌換
-          </button>
-          <button className="btn color-bg-10 color-tx-1 fw-bold border-radius-5px  letter-spacing">
-            取消兌換
-          </button>
-          </div> */}
+
           </div>
         </div>
-        <div className="used_rwd_botton"></div>
+
+        <div className="used_rwd_botton" style={{ height: '100px' }}></div>
       </div>
     </>
   )
