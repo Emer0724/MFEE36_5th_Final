@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 
 
-export default function DeepButton({ DeepButtoncontent, route="",type="",onClick={}}) {
+export default function DeepButton({ DeepButtoncontent, route="",type="",onClick}) {
   const [windowWidth ,setWindowWidth] = useState(null)
   useEffect(() => {
     const handleResize = () => {

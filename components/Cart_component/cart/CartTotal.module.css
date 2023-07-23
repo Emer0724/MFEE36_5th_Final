@@ -13,41 +13,31 @@ content: "$";
     justify-content: space-around;
     align-items: center;
     margin-top:75px;
+    gap: 30px;
 }
-.CartTotalPrice{
+.CartTotaldiv{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 34px;
-    gap:50px;
-    margin:62px 0;
+    justify-content: space-around;
+    align-items: stretch;
+    margin: 20px 0;
+    gap:50px
 }
-.CartTotalCouponPrice{
-    margin-bottom: 62px;
-}
-.CartTotalTitle{
-    font-size: 40px;
-    font-family: 400;
-}
-.CartTotalCouponPrice{
+.CartTotalname{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 80px;
-    font-size: 34px;
+    flex-direction: column;
+    gap:40px
 }
-.CartTotalCurrencyPrice{
+.CartTotalprice{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 60px;
-    font-size: 34px;
+    flex-direction: column;
+    gap:40px
 }
+
 .CartTotalBtnNext{
      display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
     gap:30px
 }
 .CartTotalbtn{
@@ -55,8 +45,7 @@ content: "$";
     justify-content: center;
     align-items: center;
     gap: 80px;
-    margin-bottom: 150px;
-    
+    margin: 40px 0;
 }
 .btnmenucontain{
     display:flex;
@@ -67,27 +56,28 @@ content: "$";
 .btnmenurow{
     display:flex;
     align-items:center;
-    gap:40px
+    gap:40px;
 }
 .btnmenu{
-border: 2px solid #52796F;
-  width: 200px;
+  border: 2px solid #52796F;
+  width: 150px;
   height: 50px;
   border-radius: 5px;
   color: #52796F;
-  font-size: '20px';
+  font-size: 20px;
 }
 .menuStyle {
-    width: 600px;
+    width: 300px;
     padding: 30px;
     background: #fff;
     border: 2px solid #52796F;
     border-radius: 5px;
     box-shadow: 3px 3px 10px #52796F;
     text-align:center;
-  };
-
-
+  }
+.btnmeundiv{
+    margin-bottom: 20px;
+}
 .options{
     color: var(--color2);
     cursor: pointer;
@@ -98,11 +88,10 @@ border: 2px solid #52796F;
     background: var(--color2);
 }
 @media (max-width:400px) {
-    .CartTotalContain{
-        border-bottom: 1px solid black;
-    }
     .CartTotalTitle{
         font-size: var(--txi28);
     }
-    
+    .CartTotalbtn{
+       gap:40px;
+    }
 }
