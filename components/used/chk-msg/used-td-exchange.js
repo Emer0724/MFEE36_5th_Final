@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { BsCoin } from 'react-icons/bs'
 
 export default function UsedTdExchange({
+  snumber,
   used_id,
   book_name,
   used_state,
@@ -12,7 +13,13 @@ export default function UsedTdExchange({
     <>
       <tr>
         <td
-          className="text-center textp-20px fw-bold ${color} used-search-text-16 used_chk_msg_td_center "
+          className=" text-center textp-20px fw-bold ${color} used-search-text-16 used_chk_msg_td_center  used_chk_msg_book_name px-5 "
+          style={{ color: '#c2c2c2c2' }}
+        >
+          {snumber}
+        </td>
+        <td
+          className=" textp-20px fw-bold ${color} used-search-text-16 used_chk_msg_td_center  used_chk_msg_book_name px-5 "
           style={{ color: '#c2c2c2c2' }}
         >
           {book_name}
@@ -27,7 +34,8 @@ export default function UsedTdExchange({
           className="text-center textp-20px fw-bold used-search-text-16 used_chk_msg_td_center"
           style={{ color: '#c2c2c2c2' }}
         >
-          <BsCoin className='px-1 fs-3'/>{price}
+          <BsCoin className="px-1 fs-3" />
+          {price}
         </td>
       </tr>
     </>

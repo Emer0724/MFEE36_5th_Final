@@ -48,14 +48,22 @@ export default function Display() {
   const getmember = async () => {
     //如果非會員轉首頁
 
-    const authMember = JSON.parse(localStorage.getItem('auth')).member_id
+    const authToken = JSON.parse(localStorage.getItem('auth')).token
     const getmember1 = await fetch(
-      `${process.env.API_SERVER}/used/display/member/` + authMember
+      `${process.env.API_SERVER}/used/display/member/`,
+      {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      }
     )
     const getmember2 = await getmember1.json()
+    if (getmember2.error) {
+      router.push('/member/login')
+    }
 
     setMember(getmember2[0])
-    // console.log([...getmember2])
+    // console.log(getmember2)
   }
 
   //找書
@@ -158,7 +166,6 @@ export default function Display() {
   const print_item = useReactToPrint({
     content: () => printref.current,
     documentTitle: '上架資訊',
-   
   })
 
   return (

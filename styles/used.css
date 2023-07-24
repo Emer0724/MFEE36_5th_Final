@@ -192,6 +192,15 @@ video {
 .used_chk_msg_td_center{
   vertical-align: middle
 }
+.used_chk_msg_book_name{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+.used_table_layout{
+  table-layout: fixed;
+}
 
 @media screen and (max-width: 1700px) {
   .index_index_circle_text {

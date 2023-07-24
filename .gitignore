@@ -43,3 +43,5 @@ yarn.lock
 
 #mp4
 *.mp4
+
+/public/all_img
