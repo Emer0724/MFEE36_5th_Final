@@ -11,7 +11,7 @@ export default function Cart() {
     <div>
         <OrderIcon/>
         <CartTitle titlecontent={"找到喜歡的東西，就快下單吧"}/>
-        <Productlist/>
+        <Productlist/> 
         <CartTotal/>
         <CartRecommend/>
     </div>
