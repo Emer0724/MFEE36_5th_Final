@@ -1,10 +1,11 @@
 import {useState,useEffect} from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
+import { prototype } from 'ws'
 
 
 
-export default function DeepButton({ DeepButtoncontent, route="123" }) {
+export default function DeepButton({ DeepButtoncontent, route="",type="",onClick}) {
   const [windowWidth ,setWindowWidth] = useState(null)
   useEffect(() => {
     const handleResize = () => {
@@ -39,7 +40,7 @@ export default function DeepButton({ DeepButtoncontent, route="123" }) {
   return (
     <div style={btnctstyle}>
       <Link href={route}>
-        <button style={buttonStyle2}>{DeepButtoncontent}</button>
+        <button type={type} style={buttonStyle2} onClick={onClick}>{DeepButtoncontent}</button>
       </Link>
     </div>
   )
@@ -48,4 +49,5 @@ export default function DeepButton({ DeepButtoncontent, route="123" }) {
 DeepButton.propTypes = {
   content: PropTypes.string,
   route: PropTypes.string,
+  onClick: PropTypes.object,
 }

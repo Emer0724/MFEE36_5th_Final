@@ -48,7 +48,6 @@ export default function OrderTotalPrice({border1}) {
   }
   const style4={
     marginTop:"30px"
-    
   }
 
 

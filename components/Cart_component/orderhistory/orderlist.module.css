@@ -56,7 +56,8 @@
     .orderbtn{
         background-color: var(--color2);
         border-radius: 40px;  
-        padding: 6px 9px;
+        padding: auto 15px;
+        margin: 20px 0;
         cursor: pointer;
     }
 }

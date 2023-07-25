@@ -28,6 +28,7 @@
     "react-multi-carousel": "^2.8.4",
     "react-player": "^2.12.0",
     "react-router-dom": "^6.14.2",
+    "react-tooltip": "^5.18.1",
     "swiper": "^10.0.4",
     "validator": "^13.9.0"
   },
