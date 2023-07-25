@@ -12,8 +12,9 @@ export default function BigCard({ pic, book_name, author, ISBN }) {
               style={{
                 width: '150px',
                 height: '150px',
-                background: `url(/used-img/${pic})`,
-                backgroundSize: 'contain',
+                background: `url(/all_img/book_pic/${encodeURIComponent(pic)})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
               }}
             ></div>
             <div className={styles.card_text}>

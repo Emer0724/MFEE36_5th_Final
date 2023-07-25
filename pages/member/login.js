@@ -46,7 +46,7 @@ const Login = () => {
   }
 
   return (
-    <div>
+    <div className={styles.card_container}>
       <div className={styles.card}>
         <div className={styles['lr-container']}>
           <div className={styles['left-box']}>
