@@ -14,7 +14,7 @@ export default function BookHome() {
     >
       <div className="pb-2 pt-4 ">
         <div className={`d-flex ${style.card_gap}`}>
-          <div className="d-flex justify-content-center align-items-center  book_img">
+          <div className="d-flex justify-content-center align-items-center">
             <Image src={imgbook1} className={`${style.chenbooksize}`} />
           </div>
           <div>

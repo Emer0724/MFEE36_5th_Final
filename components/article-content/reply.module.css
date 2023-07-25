@@ -4,3 +4,15 @@
 .chenp {
     font-size: 18px;
 }
+
+@media (max-width:400px) {
+    .blogcontent {
+        flex-direction: column;
+    }
+    .chenre {
+        display: none;
+    }
+    .chenp {
+        font-size: 14px;
+    }
+}

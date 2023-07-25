@@ -1,0 +1,9 @@
+@media screen and (max-width: 700px){
+    .cardgap{
+        flex-direction: column;
+        align-items: center;
+    }
+    .chenbetween {
+        justify-content: space-around;
+    }
+}

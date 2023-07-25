@@ -6,7 +6,7 @@ import style from '@/components/blog/blog.module.css'
 
 export default function BlogHomePage() {
     return (
-        <div className={`${style.blogcontent} container d-flex pt-5 container-sm-fluid`}>
+        <div className={`${style.blogcontent} container d-flex pt-5`}>
             <ToolBar/>
             <ArticleElement/>
             <FollowColumn/>

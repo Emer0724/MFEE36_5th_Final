@@ -18,8 +18,8 @@ export default function LikeContent() {
             <div className="pt-3">
                 <div><Image src={shadowverse} className={`${style.blogimg}`}/></div>
             </div>
-            <div className="pt-3">
-                <Link href={blog} className="text-black text-decoration-none"><p>疫情好轉，各國開關，有些馬特市民外出遊走，也有的在自己的市內散步，不論你在哪裡，都有美麗的風景、交雜的心情，以及想要分享的事物。最近 Matty 發現很多市民不約而同的分享了他／她們散步的故事</p></Link>
+            <div className="pt-3 pb-3">
+                <Link href={blog} className={`${style.chenover} text-black text-decoration-none`}><p>疫情好轉，各國開關，有些馬特市民外出遊走，也有的在自己的市內散步，不論你在哪裡，都有美麗的風景、交雜的心情，以及想要分享的事物。最近 Matty 發現很多市民不約而同的分享了他／她們散步的故事</p></Link>
             </div>
             <div className='pb-3 d-flex align-items-center justify-content-between border-bottom'>
                 <div className={ `d-flex ${style.chendate} pt-1`}>

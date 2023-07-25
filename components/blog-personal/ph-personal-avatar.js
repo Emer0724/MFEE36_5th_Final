@@ -2,10 +2,10 @@ import stlye from '@/components/book-review/blogavatar.module.css'
 import Image from 'next/image'
 import img1 from '@/public/blogimg/images.jpg'
 
-export default function BlogPersonalAvatar() {
+export default function PhPersonalAvatar() {
     return (
         <>
-            <div>
+            <div className={`${stlye.phava}`}>
                 <div className={`${stlye.chenpersonal} d-flex`}>
                     <div>
                         <div>

@@ -10,9 +10,9 @@ import Reply from './reply'
 export default function ArticleContentElement() {
   return (
     <>
-      <div className="col-7 d-flex flex-column ps-5 pe-5">
-        <div className="border-bottom border-dark-subtle">
-          <div className={`${style.chenbreadhole} text-body-tertiary pb-5`}>
+      <div className="col-xl-7 px-xl-5 d-flex flex-column pb-5">
+        <div className="border-bottom border-dark-subtle ">
+          <div className={`${style.chenbreadhole} ${style.chenre} text-body-tertiary pb-5`}>
             <Link
               href="#"
               className={`text-body-tertiary text-decoration-none ${style.chenbreadhole}`}
@@ -41,7 +41,7 @@ export default function ArticleContentElement() {
                   <Avatar3 />
                 </div>
                 <div className="d-flex align-items-center ps-3">
-                  <h4 className="fw-bold">心理的創傷</h4>
+                  <h4 className={`${style.chenfs} fw-bold`}>心理的創傷</h4>
                 </div>
               </div>
               <div className="d-flex pt-1">

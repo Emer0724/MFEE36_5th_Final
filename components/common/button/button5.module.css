@@ -8,3 +8,17 @@
     font-weight: bold;
     box-shadow: 1px 1px 1px 1px #ADADAD;
 }
+.dis {
+    display: none;
+}
+
+@media (max-width:400px) {
+
+    .chendis {
+        display: none;
+    }
+
+    .dis {
+        display: block;
+    }
+}

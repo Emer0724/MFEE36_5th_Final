@@ -6,3 +6,8 @@
     border: 0px;
 }
 
+@media (max-width:400px) {
+    .chenbutton1 {
+        font-size: 12px;
+    }
+}
