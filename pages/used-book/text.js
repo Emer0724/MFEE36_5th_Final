@@ -50,11 +50,11 @@ export default function Text() {
 
       <button onClick={getAuth}>點我設token</button>
       {/* {auth === '' ? '' : <div>{auth.}</div>} */}
-      <Popup_window
+      {/* <Popup_window
         text={'確定要取消?'}
         botton_text_left={'確定'}
         botton_text_right={'取消'}
-      />
+      /> */}
     </>
   )
 }

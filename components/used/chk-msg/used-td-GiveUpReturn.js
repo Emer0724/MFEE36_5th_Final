@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-export default function UsedTdReturn({
+export default function UsedTdGiveUpReturn({
   snumber,
   used_id,
   book_name,
@@ -20,7 +20,7 @@ export default function UsedTdReturn({
           {book_name}
         </td>
         <td className="text-center textp-20px fw-bold used-search-text-16 used_chk_msg_td_center">
-          退回
+          取消退回
         </td>
         <td className="text-center textp-20px fw-bold used-search-text-16 used_chk_msg_td_center">
           <Link

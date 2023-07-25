@@ -186,6 +186,21 @@ video {
   bottom: 0;
   padding-top: 100px;
 }
+.used_print_only{
+  display: none;
+}
+.used_chk_msg_td_center{
+  vertical-align: middle
+}
+.used_chk_msg_book_name{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+.used_table_layout{
+  table-layout: fixed;
+}
 
 @media screen and (max-width: 1700px) {
   .index_index_circle_text {
@@ -371,4 +386,21 @@ video {
     height: 400px;
     overflow: auto;
   }
+  .used-display-search{
+    flex-direction: column;
+    align-items: center;
+    
+  }
+  .used-search-text{
+    margin-top: 20px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
  }
+
+ /* @media print {
+  .used_print_only {
+    padding-left: 20px;
+  }
+} */

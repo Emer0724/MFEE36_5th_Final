@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react'
+import React, { useEffect, useReducer, useRef } from 'react'
 import { useState } from 'react'
 import MemberNav from '@/components/common/member-nav/member-nav'
 import Member_info from '@/components/Leo/member/member_info'
@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import UsedUpCheck from '@/components/used/used-upcheck'
 import Popup_window from '@/components/used/popup_window'
+import { useReactToPrint } from 'react-to-print'
 
 // const books = {
 //   ISBN: 9789861371955,
@@ -24,6 +25,7 @@ import Popup_window from '@/components/used/popup_window'
 // }
 
 export default function Display() {
+  const printref = useRef()
   const router = useRouter()
   const [book, setbooks] = useState('')
   const [member, setMember] = useState('')
@@ -46,14 +48,22 @@ export default function Display() {
   const getmember = async () => {
     //如果非會員轉首頁
 
-    const authMember = JSON.parse(localStorage.getItem('auth')).member_id
+    const authToken = JSON.parse(localStorage.getItem('auth')).token
     const getmember1 = await fetch(
-      `${process.env.API_SERVER}/used/display/member/` + authMember
+      `${process.env.API_SERVER}/used/display/member/`,
+      {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      }
     )
     const getmember2 = await getmember1.json()
+    if (getmember2.error) {
+      router.push('/member/login')
+    }
 
     setMember(getmember2[0])
-    // console.log([...getmember2])
+    // console.log(getmember2)
   }
 
   //找書
@@ -115,6 +125,7 @@ export default function Display() {
     if (!usedUpCheckElement.contains(e.target)) {
       setPostData('')
       setbooks('')
+      setInputValue('')
     }
   }
 
@@ -127,6 +138,7 @@ export default function Display() {
   const cancel_thing = () => {
     setCheckCancel(false)
   }
+  //2度彈跳視窗 確認後跳成功畫面
   const cancel_data = async () => {
     setCheckCancel(false)
     setPostData(false)
@@ -143,13 +155,22 @@ export default function Display() {
       setCancel_result(true)
       setTimeout(() => {
         setCancel_result(false) // 在指定的等待时间后，更新 message 状态
+        setbooks('')
+        setInputValue('')
       }, 2000)
     }
   }
 
+  //確認列印
+
+  const print_item = useReactToPrint({
+    content: () => printref.current,
+    documentTitle: '上架資訊',
+  })
+
   return (
     <>
-      {/* <Member_info /> */}
+      <Member_info />
       <MemberNav />
       <MemberBreadcrumbs_2 />
 
@@ -159,20 +180,23 @@ export default function Display() {
             <div className="d-flex flex-column align-items-center w-100   ">
               {book ? (
                 <>
-                  <div className="my-3 d-flex ">
-                    <span className="color-tx-1 fw-bold textp-20px  letter-spacing  used-search-text">
-                      ISBN :
-                    </span>
-                    <input
-                      type="text"
-                      className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px used-search-text"
-                      placeholder="請輸入ISBN"
-                      value={inputValue}
-                      onChange={(e) => {
-                        setInputValue(e.target.value)
-                      }}
-                      size={12}
-                    />
+                  <div className="my-3 d-flex used-display-search ">
+                    <div>
+                      <span className="color-tx-1 fw-bold textp-20px  letter-spacing  used-search-text">
+                        ISBN :
+                      </span>
+                      <input
+                        type="text"
+                        className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px used-search-text"
+                        placeholder="請輸入ISBN"
+                        value={inputValue}
+                        onChange={(e) => {
+                          setInputValue(e.target.value)
+                        }}
+                        size={12}
+                      />
+                    </div>
+
                     <button
                       className="btn color-bg-4 border-radius-5px py-0  textp-20px  used-search-text "
                       // onClick={getbook}
@@ -209,28 +233,32 @@ export default function Display() {
                 </>
               ) : (
                 <>
-                  <div className="my-3 d-flex ">
-                    <span className="color-tx-1 fw-bold textp-20px  letter-spacing used-search-text-14 ">
-                      ISBN :
-                    </span>
-                    <input
-                      type="text"
-                      className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px used-search-text"
-                      placeholder="請輸入ISBN"
-                      value={inputValue}
-                      onChange={(e) => {
-                        setInputValue(e.target.value)
-                      }}
-                      size={12}
-                    />
+                  <div className="my-3 d-flex used-display-search ">
+                    <div>
+                      <span className="color-tx-1 fw-bold textp-20px  letter-spacing  used-search-text">
+                        ISBN :
+                      </span>
+                      <input
+                        type="text"
+                        className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px used-search-text"
+                        placeholder="請輸入ISBN"
+                        value={inputValue}
+                        onChange={(e) => {
+                          setInputValue(e.target.value)
+                        }}
+                        size={12}
+                      />
+                    </div>
+
                     <button
-                      className="btn color-bg-4 border-radius-5px py-0  textp-20px  used-search-text-14"
+                      className="btn color-bg-4 border-radius-5px py-0  textp-20px  used-search-text "
+                      // onClick={getbook}
                       onClick={getbook}
                     >
                       搜尋
                     </button>
                   </div>
-                  <div className="text-danger letter-spacing ">
+                  <div className="text-danger letter-spacing">
                     {search_error}
                   </div>
                 </>
@@ -309,7 +337,12 @@ export default function Display() {
           }}
           // 此處可以添加其他滑鼠或觸控事件處理程序
         >
-          <UsedUpCheck postData={postData} cancel_btn={cancel_btn} />
+          <UsedUpCheck
+            postData={postData}
+            cancel_btn={cancel_btn}
+            print_btn={print_item}
+            printref={printref}
+          />
         </div>
       ) : (
         ''
@@ -330,6 +363,36 @@ export default function Display() {
       ) : (
         ''
       )}
+      {/* <div>
+        <div
+          className={`textp-32px letter-spacing fw-bold  text-center    `}
+          ref={printref}
+        >
+          上架資訊
+        </div>
+        <div className={`textp-20px mt-3 pb-1 letter-spacing   `}>
+          上架流水號: {postData.used_id}
+        </div>
+        <div className={`textp-20px mt-3 pb-1 letter-spacing  `}>
+          ISBN: {postData.ISBN}
+        </div>
+        <div className={`textp-20px mt-3 pb-1 letter-spacing   `}>
+          書名: {postData.book_name}
+        </div>
+        <div className={`textp-20px mt-3 pb-1 letter-spacing  `}>
+          會員名稱: {postData.name}
+        </div>
+        <div className={`textp-20px mt-3 pb-1 letter-spacing   `}>
+          Email: {postData.email}
+        </div>
+        <div className={`textp-20px mt-3 pb-1 letter-spacing  `}>
+          地址: {postData.city + postData.district + postData.address}
+        </div>
+        <div className={`textp-20px mt-3 pb-1 letter-spacing  `}>
+          **請列印上表資訊並與該二手書一同寄回
+          106台北市大安區復興南路一段390號2樓
+        </div>
+      </div> */}
     </>
   )
 }

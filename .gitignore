@@ -45,3 +45,4 @@ yarn.lock
 *.mp4
 
 /pages/product/carttest
+/public/all_img
