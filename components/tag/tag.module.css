@@ -1,0 +1,9 @@
+@media screen and (max-width:400px){
+    .cardgap{
+        flex-direction: column;
+        align-items: center;
+    }
+    .chenpa {
+        padding: 100px;
+    }
+}

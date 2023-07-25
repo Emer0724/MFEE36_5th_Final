@@ -27,7 +27,7 @@ export default function FollowColumnDown() {
                         <Link href="#" className={`text-decoration-none d-flex align-items-center fw-bold ${style.editbutton} text-black`}>葛洛</Link>
                     </div>
                     <div>
-                        <Link href="#" className={`text-decoration-none text-black`}>世界走走｜她的故事與妳同行</Link>
+                        <Link href="#" className={`${style.editbutton} text-decoration-none text-black`}>世界走走｜她的故事與妳同行</Link>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@ export default function FollowColumnDown() {
                         <Link href="#" className={`text-decoration-none d-flex align-items-center fw-bold ${style.editbutton} text-black`}>李楊</Link>
                     </div>
                     <div>
-                        <Link href="#" className={`text-decoration-none text-black`}>甚麼都由好奇而起，甚麼都慢過人，只懂寫字</Link>
+                        <Link href="#" className={`${style.editbutton} text-decoration-none text-black`}>甚麼都由好奇而起，甚麼都慢過人，只懂寫字</Link>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@ export default function FollowColumnDown() {
                         <Link href="#" className={`text-decoration-none d-flex align-items-center fw-bold ${style.editbutton} text-black`}>龍二</Link>
                     </div>
                     <div>
-                        <Link href="#" className={`text-decoration-none text-black`}>| 天蠍男 | 媒體人 | 愛閱讀 | 寫生活 | 寫城市 |</Link>
+                        <Link href="#" className={`${style.editbutton} text-decoration-none text-black`}>| 天蠍男 | 媒體人 | 愛閱讀 | 寫生活 | 寫城市 |</Link>
                     </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@ export default function FollowColumnDown() {
                         <Link href="#" className={`text-decoration-none d-flex align-items-center fw-bold ${style.editbutton} text-black`}>阿飛</Link>
                     </div>
                     <div>
-                        <Link href="#" className={`text-decoration-none text-black`}>work in progress</Link>
+                        <Link href="#" className={`${style.editbutton} text-decoration-none text-black`}>work in progress</Link>
                     </div>
                 </div>
             </div>
@@ -79,7 +79,7 @@ export default function FollowColumnDown() {
                         <Link href="#" className={`d-flex align-items-center fw-bold ${style.editbutton} text-decoration-none text-black`}>小戴</Link>
                     </div>
                     <div>
-                        <Link href="#" className={`${style.chena} text-decoration-none text-black`}>人在少年夢中不覺醒後要歸去</Link>
+                        <Link href="#" className={`${style.chena} ${style.editbutton} text-decoration-none text-black`}>人在少年夢中不覺醒後要歸去</Link>
                     </div>
                 </div>
             </div>

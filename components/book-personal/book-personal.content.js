@@ -3,6 +3,7 @@ import style from '@/components/book-review/book-review-element.module.css'
 import { AiFillStar } from 'react-icons/ai'
 import Image from 'next/image'
 import imgbook1 from '@/public/blogimg/book1.jpg'
+import Button15 from '../common/button/button15'
 import Button14 from '../common/button/button14'
 
 export default function BookPersonalContent() {
@@ -12,10 +13,16 @@ export default function BookPersonalContent() {
                 <div className='d-flex'>
                     <div>
                         <Image src={imgbook1} className={`${style.chenbooksize}`}/>
+                        <div className={`${style.chends}`}>
+                            <span className={`${style.chendate} d-flex justify-content-center pt-3 pb-3`}>2023.2.21</span>
+                        </div>
+                        <div className={`d-flex justify-content-center pt-3 pb-3`}>
+                            <Button14/>
+                        </div>           
                     </div>
                     <div>
                         <div className='d-flex ps-3 pt-2'>
-                            <Avatar2/>            
+                            <Avatar2/>                                     
                         </div>
                         <div className='d-flex ps-3 pt-3 fw-bold'>
                             <span>名言佳句</span>            
@@ -32,11 +39,11 @@ export default function BookPersonalContent() {
                         </div>
                     </div>
                     <div className='d-flex flex-column justify-content-between'>
-                        <div>
-                            <span className={` ${style.chendate} d-flex justify-content-center pt-3 pb-3`}>2023.2.21</span>
+                        <div className={`${style.chensd}`}>
+                            <span className={`${style.chendate} d-flex justify-content-center pt-3 pb-3`}>2023.2.21</span>
                         </div>
-                        <div className='d-flex justify-content-center'>
-                            <Button14/>
+                        <div className={`d-flex justify-content-center`}>
+                            <Button15/>
                         </div>
                     </div>                       
                 </div>

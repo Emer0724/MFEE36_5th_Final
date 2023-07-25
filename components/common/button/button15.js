@@ -1,7 +1,7 @@
 import style from '@/components/common/button/button5.module.css'
 import { useRouter } from 'next/router'
 
-export default function Button14() {
+export default function Button15() {
 
     const router = useRouter('')
     const editBook = ()=>{
@@ -10,7 +10,7 @@ export default function Button14() {
 
     return (
         <>
-            <button onClick={editBook} className={`${style.chenbutton3} ${style.dis}`}>編 輯</button>
+            <button onClick={editBook} className={`${style.chenbutton3} ${style.chendis}`}>編 輯</button>
         </>
     )
 }

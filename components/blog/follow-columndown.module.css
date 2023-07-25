@@ -10,3 +10,9 @@
 .chenspacing1 {
     padding-left: 140px;
 }
+
+@media (max-width:400px) {
+    .editbutton {
+        font-size: 12px;
+    }
+}

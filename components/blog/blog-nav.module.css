@@ -1,0 +1,11 @@
+.chennav {
+    display: none;
+}
+
+@media (max-width:400px) {
+
+    .chennav {
+        display: flex;
+        text-decoration: none;
+    }
+}

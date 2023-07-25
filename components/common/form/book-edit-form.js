@@ -62,7 +62,7 @@ export default function BookEditForm() {
   return (
     <div className="container pt-5 pb-5">
       <div className="row d-flex justify-content-center">
-        <div className="col-7">
+        <div className="col-xl-7">
           <form onSubmit={BookSubmit}>
             <h3 className='d-flex justify-content-center pb-5'>編輯書評</h3>
             <div className={`mb-3 pt-3 ${titleError ? 'has-error' : ''}`}>

@@ -1,8 +1,8 @@
 .chenbreadhole {
     font-size: 12px;
 }
-.chenbread:hover {
-    border-bottom: 1px solid black;
+.chenbread{
+    font-size: 18px;
 }
 
 
@@ -10,7 +10,13 @@
     .bread {
       display: none;
     }
-    .chenfs {
-        font-size: 14px;
+    .chenbread{
+        font-size: 16px;
+    }
+    .chenjc {
+        justify-content: center;
+    }
+    .chenp {
+        padding-right: 50px;
     }
 }

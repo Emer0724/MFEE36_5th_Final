@@ -1,0 +1,16 @@
+.chenwd {
+    font-size: 20px;
+}
+
+@media (max-width:400px) {
+    .chenwd {
+        font-size: 16px;
+    }
+    .chenmt {
+        display: flex;
+        justify-content: space-between;
+    }
+    .chenpa {
+        padding-bottom: 20px;
+    }
+}
