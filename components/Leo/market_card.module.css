@@ -3,10 +3,11 @@
 }
 .card:hover{
     height: 170px;
-    width: 340px;
+    width: 400px;
 }
 .extra{
     display: none;
+    position: relative
 }
 .card:hover .extra {
     display: block;
@@ -19,6 +20,8 @@
     font-size: 20px;
 }
 .x{
+    position: absolute;
+    right: 0px;
     border: none;
     background-color: transparent;
     position: absolute;

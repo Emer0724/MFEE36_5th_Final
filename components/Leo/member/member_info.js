@@ -8,14 +8,16 @@ export default function Member_info() {
     <div className={x.box_member_info}>
       <div className={x.box_member_main}>
         <div className={x.member_info_avatar}>
-          <div className={x.avatar_img}></div>
-          <Image
-            className={x.camera_icon}
-            src={camera}
-            width={35}
-            height={35}
-            alt="camera"
-          />
+          <div className={x.avatar_img}>
+            <Image
+              className={x.camera_icon}
+              src={camera}
+              width={35}
+              height={35}
+              alt="camera"
+              onClick={''}
+            />
+          </div>
         </div>
         <div className={x.member_info_detail}>
           <h2 className={x.detail_name}>胡力中</h2>

@@ -5,7 +5,6 @@ import MemberBreadcrumbs_3 from '@/components/Leo/member/member_breadcrumbs-3'
 import Coupon_display from '@/components/Leo/member/Coupon_display'
 
 export default function expired() {
-  const d1 = { paddingLeft: '150px' }
   const d2 = {
     marginTop: '0px',
   }
@@ -18,7 +17,7 @@ export default function expired() {
   }
   return (
     <>
-      <div style={d1}>
+      <div>
         <Member_info />
       </div>
       <div style={d2}>
