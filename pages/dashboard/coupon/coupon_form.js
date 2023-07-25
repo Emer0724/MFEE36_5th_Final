@@ -5,7 +5,6 @@ import MemberBreadcrumbs_3 from '@/components/Leo/member/member_breadcrumbs-3'
 import CouponForm from '@/components/Leo/member/CouponForm'
 
 export default function coupon_form() {
-  const d1 = { paddingLeft: '150px' }
   const d2 = {
     marginTop: '0px',
   }
@@ -18,7 +17,7 @@ export default function coupon_form() {
   }
   return (
     <>
-      <div style={d1}>
+      <div>
         <Member_info />
       </div>
       <div style={d2}>

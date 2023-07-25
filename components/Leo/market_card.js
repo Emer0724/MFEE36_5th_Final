@@ -24,17 +24,7 @@ export default function MarketCard() {
       >
         <div className={`${car.card}`}>
           <div className={`market-card d-flex ${car.no}`}>
-            <div style={{ border: '1px solid pink' }}>
-              <button className={car.x}>
-                <Image
-                  src={cl}
-                  className={`cl-img`}
-                  alt="..."
-                  width={20}
-                  height={20}
-                />
-              </button>
-
+            <div>
               <Link href="/">
                 <Image
                   src={bk}
@@ -46,10 +36,20 @@ export default function MarketCard() {
               </Link>
             </div>
             <div className={`w-100 color-bg-1 h-100 ${car.extra}`}>
-              <p className={car.p}>你好啊!!</p>
-              <p className={car.p}>你好啊!!</p>
-              <p className={car.p}>你好啊!!</p>
-              <p className={car.p}>你好啊!!</p>
+              <button className={car.x}>
+                <Image
+                  src={cl}
+                  className={`cl-img`}
+                  alt="..."
+                  width={20}
+                  height={20}
+                />
+              </button>
+              <br />
+              <p className={car.p}>
+                心流：高手都在研究的最優體驗心理學（繁體中文唯一全譯本，二版）
+              </p>
+              <p className={car.p}>價格:{'price'}</p>
             </div>
           </div>
         </div>
