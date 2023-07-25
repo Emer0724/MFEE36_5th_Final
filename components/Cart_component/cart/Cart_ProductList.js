@@ -7,8 +7,7 @@ import fake from "@/assets/Cart_Image/fake.svg"
 
 
 
-export default function CurtProduct({data,addcount}) {
-  console.log(data.cart);
+export default function CurtProduct({data,addcount,cutcount}) {
   const Countcut = {
     textAlign: "center",
     border: "1px solid var(--color6)",
@@ -55,12 +54,12 @@ const limitText = (text,maxLength) => {
         const truncatedBookName = limitText(v.book_name,10);
           return(
           <tr key={i} className={styles.Prodeucttr}>
-              <td className={styles.ProdeuctBlock}><Image src={fake}  alt='icon'/>{truncatedBookName}</td>
+              <td className={styles.ProdeuctBlock}><Image src={fake} alt='icon'/>{truncatedBookName}</td>
               <td className={styles.ProdeuctBlock}>{v.ISBN}</td>
               <td className={styles.ProdeuctBlock}><span className={styles.oneprice}>{v.price}</span></td>
               <td>
                   <div className={styles.CountBlock}>
-                    <button style={Countcut} className={styles.Countcut} >-</button>
+                    <button style={Countcut} className={styles.Countcut} onClick={() => cutcount(v.ISBN)}>-</button>
                     <div className={styles.Countvalue}>{v.count}</div>
                     <button style={Countplus} className={styles.Countplus} onClick={() => addcount(v.ISBN)}>+</button>
                   </div>

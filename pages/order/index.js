@@ -47,7 +47,7 @@ export default function checkForm() {
     <>
         <OrderState/>
         <CartTitle className={styles.title} titlecontent={"選擇喜歡的寄送方式和付款方式吧"}/>
-        <div className={styles.checkcontain}>
+          <div className={styles.checkcontain}>
           <OrderForm onSubmit={handleFormSubmit}/>
           {windowWidth>600 ? <div>
           <OrderTotalPrice  border1={"1px solid #52796F"} />
