@@ -10,7 +10,7 @@ import Reply from './reply'
 export default function ArticleContentElement() {
   return (
     <>
-      <div className="col-xl-7 d-flex flex-column pb-5">
+      <div className="col-xl-7 px-xl-5 d-flex flex-column pb-5">
         <div className="border-bottom border-dark-subtle ">
           <div className={`${style.chenbreadhole} ${style.chenre} text-body-tertiary pb-5`}>
             <Link
