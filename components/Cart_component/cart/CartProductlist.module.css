@@ -33,6 +33,15 @@
     border-style: none;
     border-radius: 50%;
 }
+.textContainer{
+    overflow: hidden;
+    text-overflow: ellipsis ;
+    display: -webkit-box;
+    -webkit-line-clamp: 2 ;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    font-weight: 600;
+}
 @media (max-width:400px) {
     .CProductlist{
         display: block;

@@ -23,7 +23,6 @@ export default function Products() {
 
   useEffect(() => {
     const usp = new URLSearchParams(router.query);
-
     fetch(`${process.env.API_SERVER}/cart/test1?${usp.toString()}`)
       .then((r) => r.json())
       .then((data) => {
@@ -40,7 +39,6 @@ export default function Products() {
       },
       body: JSON.stringify({ ISBN: ISBN }),
     })
-    console.log("出錯在這")
         .then((res) => res.json())
         .then((data) => {
           console.log(data.message);
