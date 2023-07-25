@@ -22,7 +22,10 @@ export default function Home() {
   const refscrollLeftDown = useRef(null)
   //處理影片部分
   const [myVideo, setMyVideo] = useState('')
+  const [book_up, setbook_up] = useState([])
+  const [book_down, setbook_down] = useState([])
   useEffect(() => {
+    getbookdata()
     setMyVideo(
       <ReactPlayer
         playing={true}
@@ -34,6 +37,21 @@ export default function Home() {
       ></ReactPlayer>
     )
   }, [])
+
+  //得書本資料
+  const getbookdata = async () => {
+    const getbookdata1 = await fetch(
+      'http://localhost:3055/used/index/book_info/'
+    )
+    const getbookdata2 = await getbookdata1.json()
+    console.log(getbookdata2)
+    const getupdata = getbookdata2.slice(0, 30)
+    const getdowndata = getbookdata2.slice(30)
+    console.log(getupdata)
+    setbook_up(getupdata)
+    setbook_down(getdowndata)
+  }
+
   //監聽視窗大小
   const [windowWidth, setWindowWidth] = useState(null)
   const [windowhight, setwindowhight] = useState(null)
@@ -67,7 +85,7 @@ export default function Home() {
       }
     }
   }, [windowWidth])
-  console.log(slidesPerView_n)
+  // console.log(slidesPerView_n)
 
   //書本拉bar
   //是否執行
@@ -85,8 +103,8 @@ export default function Home() {
     setStartX1(e.pageX) // if the slider has the margin left then we should correct it
     setScrollLeft1(refscrollLeftTOP.current.scrollLeft)
 
-    console.log(startX1)
-    console.log(refscrollLeftTOP.current.scrollLeft)
+    // console.log(startX1)
+    // console.log(refscrollLeftTOP.current.scrollLeft)
   }
   const Mouseleave = () => {
     setIsDown1(false)
@@ -106,8 +124,8 @@ export default function Home() {
 
     setScrollLeft2(refscrollLeftDown.current.scrollLeft)
 
-    console.log(startX2)
-    console.log(refscrollLeftDown.current.scrollLeft)
+    // console.log(startX2)
+    // console.log(refscrollLeftDown.current.scrollLeft)
   }
   const Mouseleave1 = () => {
     setIsDown2(false)
@@ -142,17 +160,39 @@ export default function Home() {
             onMouseMove={(e) => MouseMove(e)}
             ref={refscrollLeftTOP}
           >
-            {Array(20)
-              .fill(1)
-              .map((v, i) => {
-                if (i % 5 === 0) {
-                  return <ThinCardTilt key={i} />
-                } else if (i % 3 === 0) {
-                  return <ThinCard key={i} />
-                } else {
-                  return <BigCard key={i} />
-                }
-              })}
+            {book_up.map((v, i) => {
+              if (v.state === 'category' && i % 2 == 0) {
+                return (
+                  <ThinCardTilt
+                    key={v.category_id}
+                    ft_category={v.ft_category}
+                    sec_category={v.sec_category}
+                    sort_num={v.sort_num}
+                    category_id={v.category_id}
+                  />
+                )
+              } else if (v.state === 'category' && i % 2 == 1) {
+                return (
+                  <ThinCard
+                    key={v.category_id}
+                    ft_category={v.ft_category}
+                    sec_category={v.sec_category}
+                    sort_num={v.sort_num}
+                    category_id={v.category_id}
+                  />
+                )
+              } else {
+                return (
+                  <BigCard
+                    key={v.ISBN}
+                    pic={v.pic}
+                    book_name={v.book_name}
+                    author={v.author}
+                    ISBN={v.ISBN}
+                  />
+                )
+              }
+            })}
           </div>
 
           {windowWidth > 500 ? (
@@ -164,17 +204,39 @@ export default function Home() {
               onMouseMove={(e) => MouseMove1(e)}
               ref={refscrollLeftDown}
             >
-              {Array(20)
-                .fill(1)
-                .map((v, i) => {
-                  if (i % 5 === 0) {
-                    return <ThinCardTilt key={i} />
-                  } else if (i % 3 === 0) {
-                    return <ThinCard key={i} />
-                  } else {
-                    return <BigCard key={i} />
-                  }
-                })}
+              {book_down.map((v, i) => {
+                if (v.state === 'category' && i % 2 == 0) {
+                  return (
+                    <ThinCardTilt
+                      key={v.category_id}
+                      ft_category={v.ft_category}
+                      sec_category={v.sec_category}
+                      sort_num={v.sort_num}
+                      category_id={v.category_id}
+                    />
+                  )
+                } else if (v.state === 'category' && i % 2 == 1) {
+                  return (
+                    <ThinCard
+                      key={v.category_id}
+                      ft_category={v.ft_category}
+                      sec_category={v.sec_category}
+                      sort_num={v.sort_num}
+                      category_id={v.category_id}
+                    />
+                  )
+                } else {
+                  return (
+                    <BigCard
+                      key={v.ISBN}
+                      pic={v.pic}
+                      book_name={v.book_name}
+                      author={v.author}
+                      ISBN={v.ISBN}
+                    />
+                  )
+                }
+              })}
             </div>
           ) : (
             ''
