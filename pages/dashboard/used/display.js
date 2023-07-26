@@ -63,7 +63,7 @@ export default function Display() {
     }
 
     setMember(getmember2[0])
-    // console.log(getmember2)
+     console.log(getmember2[0])
   }
 
   //找書

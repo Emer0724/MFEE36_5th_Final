@@ -19,6 +19,18 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.card_text_sm_author{
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 2px;
+    color: var(--bgc5) ;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .card_text_dot{
 color: var(--bgc5) ;
 }
@@ -59,6 +71,9 @@ color: var(--bgc5) ;
     align-items: center;
     border-radius: 15px;
     background-color: white;
+    animation-name: card;
+    animation-duration: 1s;
+    animation-delay: 3s;
 
 }
 .card_all_thin_tilt{
@@ -70,7 +85,10 @@ color: var(--bgc5) ;
     align-items: center;
     border-radius: 15px;
     background-color: white;
-    transform:rotate(-20deg)
+    transform:rotate(-20deg);
+    animation-name: card;
+    animation-duration: 1s;
+    animation-delay: 3s;
 
 }
 .card_all:hover{
@@ -91,8 +109,20 @@ color: var(--bgc5) ;
 .index_book_card_text{
     text-decoration: none;
 }
-.index-card-hight{
-    height: 300px;
-    display: flex;
-    align-items: end;
+.index_card_hight{
+    /* height: 300px; */
+    /* display: flex;
+    align-items: end; */
+    transform: translate(0px, 0px);
+    animation-name: card;
+    animation-duration: 1s;
+    animation-delay: 3s;
+}
+
+@keyframes card{
+    0%{
+        transform: translate(0px, -200px);
+    }100%{
+        transform: translate(0px, 0px);
+    }
 }

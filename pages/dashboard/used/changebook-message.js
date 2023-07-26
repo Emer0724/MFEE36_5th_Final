@@ -131,13 +131,13 @@ export default function ChangebookMessage() {
               <thead>
                 <tr>
                   <th
-                    className="text-center col-1 textp-20px fw-bold used-search-text-16"
+                    className="text-center col-2 textp-20px fw-bold used-search-text-16"
                     style={{ background: '#84A98C' }}
                   >
                     序號
                   </th>
                   <th
-                    className="text-center col-7 textp-20px fw-bold used-search-text-16"
+                    className="text-center col-6 textp-20px fw-bold used-search-text-16"
                     style={{ background: '#84A98C' }}
                   >
                     二手書

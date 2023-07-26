@@ -16,14 +16,20 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Pagination } from 'swiper/modules'
+import css from '@/pages/used-book/test_load.module.css'
+import Image from 'next/image';
+import logo from '@/assets/used-svg/LOGO_notext.svg'
 
 export default function Home() {
   const refscrollLeftTOP = useRef(null)
   const refscrollLeftDown = useRef(null)
   //處理影片部分
   const [myVideo, setMyVideo] = useState('')
+  //處理書櫃資料
   const [book_up, setbook_up] = useState([])
   const [book_down, setbook_down] = useState([])
+  //loading
+  const [load,setload]=useState(true)
   useEffect(() => {
     getbookdata()
     setMyVideo(
@@ -36,6 +42,10 @@ export default function Home() {
         loop={true}
       ></ReactPlayer>
     )
+    setTimeout(() => {
+      setload(false)
+    }, 4000);
+   
   }, [])
 
   //得書本資料
@@ -151,7 +161,7 @@ export default function Home() {
       <div className="color-bg-7">
         <NavBar1 />
         {/* section1 */}
-        <div className="container-fluid index-book-section mt-5 ">
+        <div className="container-fluid index-book-section  ">
           <div
             className="index_index_hidden d-flex align-items-end  pb-4 mt-4 "
             onMouseDown={(e) => MouseDown(e)}
@@ -189,6 +199,7 @@ export default function Home() {
                     book_name={v.book_name}
                     author={v.author}
                     ISBN={v.ISBN}
+                   
                   />
                 )
               }
@@ -197,7 +208,7 @@ export default function Home() {
 
           {windowWidth > 500 ? (
             <div
-              className="index_index_hidden d-flex align-items-end  pb-4 mt-5 "
+              className="index_index_hidden d-flex align-items-end  pb-4 mt-4 "
               onMouseDown={(e) => MouseDown1(e)}
               onMouseLeave={() => Mouseleave1()}
               onMouseUp={() => MouseUp1()}
@@ -385,6 +396,25 @@ export default function Home() {
         {windowWidth > 400 ? <Footer /> : ''}
         {/* <Footer /> */}
       </div>
+      {/*/loading*/}
+      {load ? (     <div className={css.container}>
+      <div className={css.center_1}> <div className={css.center}>
+      <Image
+            src={logo}
+            width={200}
+            height={200}
+            alt="icon"
+            style={{color:'#52796F'}}
+            className={css.logo}
+          />
+     <h3 className={css.slogan}>延續書的意義</h3>
+     <h3 className={css.logoName}>BOOK 書易</h3>
+     </div>
+     
+      </div>
+     
+     </div>) :''}
+ 
     </>
   )
 }

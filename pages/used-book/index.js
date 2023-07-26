@@ -41,7 +41,7 @@ export default function UsedBook() {
                   </div>
 
                   <div className="textp-16px fw-bold  mt-1 ms-auto letter-spacing used-index-text1-sm ">
-                    <Link href="#" className="color-tx-8">
+                    <Link href="/product/" className="color-tx-8">
                       進入商城
                     </Link>
                   </div>

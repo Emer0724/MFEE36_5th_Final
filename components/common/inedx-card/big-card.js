@@ -5,7 +5,7 @@ import Link from 'next/link'
 export default function BigCard({ pic, book_name, author, ISBN }) {
   return (
     <>
-      <div className="index-card-hight">
+      <div className={styles.index_card_hight}>
         <div className={`${styles.card_all} me-3 ms-3`}>
           <Link href="#" className={styles.index_book_card_text}>
             <div
@@ -18,7 +18,7 @@ export default function BigCard({ pic, book_name, author, ISBN }) {
               }}
             ></div>
             <div className={styles.card_text}>
-              <div className={styles.card_text_sm}>{author}</div>
+              <div className={styles.card_text_sm_author}>{author}</div>
               <div className={styles.card_text_dot}>．</div>
               <div className={styles.card_text_sm}>{book_name}</div>
             </div>

@@ -195,8 +195,9 @@ export default function Usedid() {
               style={{
                 width: 200,
                 height: 200,
-                background: `url('/used-img/${bookInfo.pic}')`,
-                backgroundSize: 'contain',
+                background: `url('/all_img/book_pic/${bookInfo.pic}')`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
               }}
             ></div>
           </div>
