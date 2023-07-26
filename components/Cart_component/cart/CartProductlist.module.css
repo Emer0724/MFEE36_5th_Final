@@ -4,11 +4,13 @@
 .tablecontain{
     width: 100%;
 }
+.tablehead{
+    border-bottom: 2px solid var(--color2);
+}
 .CountBlock{
  display: flex;
  justify-content: center;
  gap: 8px;
- 
 }
 .totalprice::before{
     content: "$";
@@ -18,7 +20,7 @@
 }
 .Countvalue{
     text-align: center;
-    border: 1px solid var(--color6);
+    border: 1px solid var(--color5);
     width: 60px;
 }
 .ProdeuctBlock{
@@ -28,6 +30,11 @@
 }
 .Prodeucttr{
     vertical-align: middle;
+    transition: all 0.6s ease-in-out;
+}
+.Prodeucttr:hover{
+    background-color: var(--color9);
+  
 }
 .trashbtn{
     border-style: none;

@@ -12,6 +12,11 @@ const [data, setData] = useState({
     cart:[],
  }
 );
+const eachprice = data.cart.map((v) => {
+  return v.price * v.count;
+});
+const totalprice = eachprice.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
 
 useEffect(() => {
   fetch(`${process.env.API_SERVER}/cart/cart`)
@@ -44,33 +49,60 @@ const addcount = (ISBN) => {
       console.error("錯誤訊息:", error);
     });
 };
-const cutcount = (ISBN) =>{
-  fetch(`${process.env.API_SERVER}/cart/cart/cut`,{
-    method:"POST",
-    body:JSON.stringify({ISBN:ISBN}),
-    header:{"Content-Type": "application/json",}
+
+const cutcount = (ISBN) => {
+  fetch(`${process.env.API_SERVER}/cart/cart/cut`, {
+    method: "POST",
+    body: JSON.stringify({ ISBN: ISBN }),
+    headers: { "Content-Type": "application/json" }
   })
-  .then((r)=>r.json())
+  .then((r) => r.json())
   .then((resultcut) => {
     console.log(resultcut);
-    setData((prevData) => ({
-      ...prevData,
-      cart: prevData.cart.map((item) =>
-        item.ISBN === ISBN ? { ...item, count: item.count - 1 } : item
-      ),
-    }));
+    if (resultcut.message === 'Item deleted from cart.') {
+      // 商品數量為0，刪除該項目,使用 setData 函式來更新前端的資料狀態。
+      setData((prevData) => ({
+        ...prevData,
+        cart: prevData.cart.filter((item) => item.ISBN !== ISBN)
+      }));
+    } else {
+      // 商品數量更新
+      setData((prevData) => ({
+        ...prevData,
+        cart: prevData.cart.map((item) =>
+          item.ISBN === ISBN ? { ...item, count: item.count - 1 } : item
+        )
+      }));
+    }
   })
   .catch((error) => {
     console.error("錯誤訊息:", error);
   });
 };
 
+const deleteitem = (ISBN) =>{
+  fetch(`${process.env.API_SERVER}/cart/cart/delete`,{
+    method:"POST",
+    body:JSON.stringify({ISBN:ISBN}),
+    headers: { "Content-Type": "application/json" }
+  })
+  .then((r)=>r.json())
+  .then((resultdel)=>{
+    if(resultdel.message === "Item deleted from cart."){
+      setData((prevData)=>({
+        ...prevData, cart: prevData.cart.filter((item) => item.ISBN !== ISBN)
+      }))
+    }
+  })
+}
+
+
   return (
     <div>
         <OrderIcon />
         <CartTitle titlecontent={"找到喜歡的東西，就快下單吧"}/>
-        <Productlist data={data} addcount={addcount} cutcount={cutcount}/> 
-        <CartTotal/>
+        <Productlist data={data} addcount={addcount} cutcount={cutcount} deleteitem={deleteitem}/> 
+        <CartTotal data={data}/>
         <CartRecommend/>
     </div>
   )

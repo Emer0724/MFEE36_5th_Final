@@ -1,0 +1,45 @@
+.totalcontain{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items:center;
+    border-radius:8px;
+    width: 500px;
+    height: 550px;
+    padding:20px;
+    margin-bottom:60px;
+}
+.totalrow{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    gap:150px;
+}
+.totaldiv{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items:center;
+    margin-bottom:30px;
+}
+.totaltext{
+    margin-top:30px;
+}
+.totalprice{
+    margin-top:30px;
+}
+.totalprice::before{
+    content: "$";
+}
+
+
+
+@media (max-width:400px) {
+    .totalcontain{
+        width: 100%;
+        margin-bottom:20px;
+    }
+    .totalrow{
+        gap:60px;
+    }
+}

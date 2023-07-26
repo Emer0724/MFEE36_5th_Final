@@ -3,12 +3,17 @@ import LightButton from '@/components/common/CBtn/LightGreenBtn';
 import React, { useState } from 'react'
 import styles from "@/components/Cart_component/cart/CartTotal.module.css"
 
-export default function CartTotal() {
+export default function CartTotal({data}) {
    const [showCouponMenu, setShowCouponMenu] = useState(false);
    const [showCurrencyMenu, setShowCurrencyMenu] = useState(false);
    const [selectedCouponOption, setSelectedCouponOption] = useState('$0');
    const [selectedCurrencyOption, setSelectedCurrencyOption] = useState('$0');
- 
+
+   const eachprice = data.cart.map((v) => {
+      return v.price * v.count;
+    });
+    const totalprice = eachprice.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+   
    const toggleCouponMenu = () => {
       setShowCouponMenu((prev) => !prev);
       setShowCurrencyMenu(false);
@@ -45,7 +50,7 @@ export default function CartTotal() {
                <h3 className={styles.CartTotalCurrencytext1}>知音幣</h3>
             </div>
             <div className={styles.CartTotalprice}>
-               <h2 className={styles.CartTotalPriceItem2}><span className={styles.totalprice}>5000</span></h2>
+               <h2 className={styles.CartTotalPriceItem2}><span className={styles.totalprice}>{totalprice}</span></h2>
                <h3 className={styles.CartTotalCoupontext2}>{selectedCouponOption}</h3>
                <h3 className={styles.CartTotalCurrencytext2}>{selectedCurrencyOption}</h3>
             </div>
