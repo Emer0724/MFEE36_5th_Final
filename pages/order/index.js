@@ -33,8 +33,8 @@ export default function checkForm() {
       {area.AreaName}
     </option>
   ));
+  setRecipientAddress(`${selectedCity} ${areaOptions[0].props.value}`);
   setAreaOptions(areaOptions);
-  setRecipientAddress(selectedCity);
 };
 const handleAreaChange = (event) => {
   // 根據所選的區域，更新路名的選項
@@ -43,9 +43,7 @@ const handleAreaChange = (event) => {
   const selectedAreaData = selectedCityData.AreaList.find(
     (area) => area.ZipCode === selectedArea
   );
-  setRecipientAddress((prevAddress) => ({
-    ...prevAddress+selectedArea,
-  }));
+  setRecipientAddress(`${recipientAddress.split(' ')[0]} ${selectedArea}`);
 };
 
 
@@ -186,16 +184,16 @@ const handleAreaChange = (event) => {
                 </div>
                 <div style={blockstyle1}>
                     <label style={labelstyle1}>收件人電話</label>
-                    <input type="text" style={inputstyle} placeholder="請輸入電話" value={recipientPhone} onChange={(e) => setRecipientPhone(e.target.value)} pattern="[[0-9]{10}"  required/>
+                    <input type="text" style={inputstyle} placeholder="請輸入電話" value={recipientPhone} onChange={(e) => setRecipientPhone(e.target.value)} pattern="\d{10}"  required/>
                 </div>
                 {shippingMethod === "宅配到家+100" && (
                 <div style={blockstyle1}>
                   <label style={labelstyle1}>收件人地址</label>
                         <div style={address}>
-                          <select style={selectstyle1} value={recipientAddress.city} onChange={handleCityChange}>
+                          <select style={selectstyle1}  value={recipientAddress.split(' ')[0]} onChange={handleCityChange}>
                             {city}
                           </select>
-                          <select style={selectstyle1} value={recipientAddress.area} onChange={handleAreaChange}>
+                          <select style={selectstyle1} value={recipientAddress.split(' ')[1]} onChange={handleAreaChange}>
                             {areaOptions}
                           </select>
                           <input
@@ -203,10 +201,9 @@ const handleAreaChange = (event) => {
                             placeholder="請輸入路名鄉鎮巷號"
                             value={recipientAddress.address}
                             onChange={(e) =>
-                              setRecipientAddress((prevAddress) => ({
-                                ...prevAddress,
-                                address: e.target.value,
-                              }))
+                              setRecipientAddress(
+                                `${recipientAddress.split(' ')[0]} ${recipientAddress.split(' ')[1]} ${e.target.value}`
+                              )
                             }
                             style={inputstyle}
                             required
