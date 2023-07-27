@@ -38,18 +38,32 @@ const style2 = {
     alignItems:"center",
     marginBottom: "100px"
 }
+const style3 = {
+    display:"flex",
+    flexDirection:"column",
+    justifyContent:"space-around",
+    alignItems:"center",
+    marginBottom: "100px",
+    marginTop: "100px",
+    gap:"60px",
+    color:"var(--color2)"
+}
 
 
   return (
     <>
       <OrderState/>
       <div style={style2}>
-          <CartTitle titlecontent={"訂單已完成 等候5-7個工作天幫您送達 感謝您的支持"}/>
-          <CartTitle titlecontent={`訂單編號#987654`}/>
-          <div style={style1}>
-              <DeepButton DeepButtoncontent={"訂單查詢"} route='../dashboard/order'/>
-              <DeepButton DeepButtoncontent={"返回商城"} route='#'/>
-          </div>
+        <div style={style3}>
+            <h1>訂單已完成</h1>
+            <h3>等候5-7個工作天幫您送達</h3>
+            <h3>感謝您的支持</h3>
+            <h1>訂單編號#987654</h1>
+        </div>
+        <div style={style1}>
+            <DeepButton DeepButtoncontent={"訂單查詢"} route='../dashboard/order'/>
+            <DeepButton DeepButtoncontent={"返回商城"} route='../product/'/>
+        </div>
       </div>
     </>
   )

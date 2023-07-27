@@ -15,10 +15,7 @@ export default function OrderIcon({}) {
   const StateIcon =[cartIconS,writeIconS,handIconS]
   const StateName = ["購物車","資料填寫","訂單完成"]
   const length = StateName.length
-  console.log(currentPath);
-
-   const result = iconrouter.indexOf(currentPath)
-   console.log(result);
+  const result = iconrouter.indexOf(currentPath)
   
   useEffect(()=>{
     if(result===0){
