@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import '@/styles/globals.scss'
 import '@/styles/globals.css'
 import '@/styles/used.css'
+// import LeoContextProvider from '@/context/LeoContext'
 
 import DefaultLayout from '@/components/layout/default-layout'
 
@@ -17,4 +18,7 @@ export default function MyApp({ Component, pageProps }) {
     Component.getLayout || ((page) => <DefaultLayout>{page}</DefaultLayout>)
 
   return getLayout(<Component {...pageProps} />)
+  //   <LeoContextProvider>
+  //     {getLayout(<Component {...pageProps} />)}
+  //   </LeoContextProvider>
 }
