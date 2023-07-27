@@ -17,7 +17,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Pagination } from 'swiper/modules'
 import css from '@/pages/used-book/test_load.module.css'
-import Image from 'next/image';
+import Image from 'next/image'
 import logo from '@/assets/used-svg/LOGO_notext.svg'
 
 export default function Home() {
@@ -29,7 +29,7 @@ export default function Home() {
   const [book_up, setbook_up] = useState([])
   const [book_down, setbook_down] = useState([])
   //loading
-  const [load,setload]=useState(true)
+  const [load, setload] = useState(true)
   useEffect(() => {
     getbookdata()
     setMyVideo(
@@ -44,8 +44,7 @@ export default function Home() {
     )
     setTimeout(() => {
       setload(false)
-    }, 4000);
-   
+    }, 4000)
   }, [])
 
   //得書本資料
@@ -199,7 +198,6 @@ export default function Home() {
                     book_name={v.book_name}
                     author={v.author}
                     ISBN={v.ISBN}
-                   
                   />
                 )
               }
@@ -397,24 +395,27 @@ export default function Home() {
         {/* <Footer /> */}
       </div>
       {/*/loading*/}
-      {load ? (     <div className={css.container}>
-      <div className={css.center_1}> <div className={css.center}>
-      <Image
-            src={logo}
-            width={200}
-            height={200}
-            alt="icon"
-            style={{color:'#52796F'}}
-            className={css.logo}
-          />
-     <h3 className={css.slogan}>延續書的意義</h3>
-     <h3 className={css.logoName}>BOOK 書易</h3>
-     </div>
-     
-      </div>
-     
-     </div>) :''}
- 
+      {load ? (
+        <div className={css.container}>
+          <div className={css.center_1}>
+            {' '}
+            <div className={css.center}>
+              <Image
+                src={logo}
+                width={200}
+                height={200}
+                alt="icon"
+                style={{ color: '#52796F' }}
+                className={css.logo}
+              />
+              <h3 className={css.slogan}>延續書的意義</h3>
+              <h3 className={css.logoName}>BOOK 書易</h3>
+            </div>
+          </div>
+        </div>
+      ) : (
+        ''
+      )}
     </>
   )
 }

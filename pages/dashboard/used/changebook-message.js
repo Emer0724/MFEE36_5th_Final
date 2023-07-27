@@ -9,6 +9,7 @@ import Member_info from '@/components/Leo/member/member_info'
 import MemberBreadcrumbs_2 from '@/components/Leo/member/member_breadcrumbs-2'
 import { useRouter } from 'next/router'
 import UsedTdGiveUpReturn from '@/components/used/chk-msg/used-td-GiveUpReturn'
+import Head from 'next/head'
 
 //暫定 1.待兌換 2.代收書 3.退回 4.已兌換
 // const datas = [
@@ -77,6 +78,9 @@ export default function ChangebookMessage() {
 
   return (
     <>
+      <Head>
+        <title>Book書易</title>
+      </Head>
       <Member_info />
       <MemberNav />
       <MemberBreadcrumbs_2 />

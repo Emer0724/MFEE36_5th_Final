@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 import UsedUpCheck from '@/components/used/used-upcheck'
 import Popup_window from '@/components/used/popup_window'
 import { useReactToPrint } from 'react-to-print'
+import Head from 'next/head'
 
 // const books = {
 //   ISBN: 9789861371955,
@@ -63,7 +64,7 @@ export default function Display() {
     }
 
     setMember(getmember2[0])
-     console.log(getmember2[0])
+    console.log(getmember2[0])
   }
 
   //找書
@@ -170,6 +171,9 @@ export default function Display() {
 
   return (
     <>
+      <Head>
+        <title>Book書易</title>
+      </Head>
       <Member_info />
       <MemberNav />
       <MemberBreadcrumbs_2 />
@@ -214,8 +218,9 @@ export default function Display() {
                     style={{
                       width: 190,
                       height: 190,
-                      background: `url('/used-img/${book.pic}')`,
-                      backgroundSize: 'contain',
+                      background: `url('/all_img/book_pic/${book.pic}')`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
                     }}
                   ></div>
 

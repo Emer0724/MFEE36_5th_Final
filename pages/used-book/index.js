@@ -9,11 +9,15 @@ import book_3 from '@/assets/used-svg/book_3.svg'
 import Link from 'next/link'
 import coin from '@/assets/used-svg/coin.svg'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 export default function UsedBook() {
   const router = useRouter()
   return (
     <>
+      <Head>
+        <title>Book書易</title>
+      </Head>
       <div
         style={{
           backgroundColor: '#EEEEEE',

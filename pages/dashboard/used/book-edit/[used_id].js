@@ -6,6 +6,7 @@ import MemberBreadcrumbs_2 from '@/components/Leo/member/member_breadcrumbs-2'
 import Member_info from '@/components/Leo/member/member_info'
 import { useRouter } from 'next/router'
 import Popup_window from '@/components/used/popup_window'
+import Head from 'next/head'
 
 const book_info = {
   used_id: 18,
@@ -180,6 +181,9 @@ export default function Usedid() {
 
   return (
     <>
+      <Head>
+        <title>Book書易</title>
+      </Head>
       <Member_info />
       <MemberNav />
       <MemberBreadcrumbs_2 />
@@ -195,8 +199,8 @@ export default function Usedid() {
               style={{
                 width: 200,
                 height: 200,
-                background: `url('/all_img/book_pic/${bookInfo.pic}')`,
                 backgroundSize: 'cover',
+                background: `url('/all_img/book_pic/${bookInfo.pic}')`,
                 backgroundPosition: 'center',
               }}
             ></div>

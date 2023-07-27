@@ -11,12 +11,12 @@ export default function UsedTdGiveUpReturn({
     <>
       <tr>
         <td
-          className=" text-center textp-20px fw-bold ${color} used-search-text-16 used_chk_msg_td_center  used_chk_msg_book_name px-5 "
+          className=" text-center textp-20px fw-bold ${color} used-search-text-16 used_chk_msg_td_center  used_chk_msg_book_name  "
           style={{ color: '#c2c2c2c2' }}
         >
           {snumber}
         </td>
-        <td className=" textp-20px fw-bold ${color} used-search-text-16 used_chk_msg_td_center  used_chk_msg_book_name px-5">
+        <td className=" textp-20px fw-bold ${color} used-search-text-16 used_chk_msg_td_center  used_chk_msg_book_name px-3">
           {book_name}
         </td>
         <td className="text-center textp-20px fw-bold used-search-text-16 used_chk_msg_td_center">
