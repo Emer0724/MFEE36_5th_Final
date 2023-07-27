@@ -4,6 +4,7 @@ import '@/styles/globals.css'
 import '@/styles/used.css'
 
 import DefaultLayout from '@/components/layout/default-layout'
+import { AuthContextProvider } from '@/context/AuthContext'
 
 export default function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -16,5 +17,9 @@ export default function MyApp({ Component, pageProps }) {
   const getLayout =
     Component.getLayout || ((page) => <DefaultLayout>{page}</DefaultLayout>)
 
-  return getLayout(<Component {...pageProps} />)
+  return getLayout(
+    <AuthContextProvider>
+      <Component {...pageProps} />
+    </AuthContextProvider>
+  )
 }
