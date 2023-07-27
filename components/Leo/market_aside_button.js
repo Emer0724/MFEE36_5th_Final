@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Menu } from 'antd'
 import n from '@/components/Leo/market_aside.module.css'
 
-function getItem(label, key, onclick, items, type) {
+function getItem(label, key, type, onclick, items) {
   return {
     key,
     onclick,
