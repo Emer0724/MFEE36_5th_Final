@@ -8,6 +8,7 @@ export default function UsedUpCheck({
   cancel_btn,
   print_btn,
   printref,
+  showQRcode,
 }) {
   return (
     <div className={`w-50 px-5 py-5 ${css.border_card} used_display_chkbox `}>
@@ -54,7 +55,11 @@ export default function UsedUpCheck({
           **請列印上表資訊並與該二手書一同寄回
           106台北市大安區復興南路一段390號2樓
         </div>
-        <div>
+
+        <div
+          className={`d-flex justify-content-end me-5 qr-code d-none
+          `}
+        >
           <QRCodeSVG value={JSON.stringify(postData)} />
         </div>
       </div>

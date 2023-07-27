@@ -201,6 +201,20 @@ video {
 .used_table_layout{
   table-layout: fixed;
 }
+.index_index_hidden::before{
+  height: 100px;
+  content: '';
+  width: 100%;
+  /* color:#747272; */
+  position: absolute;
+  z-index: 10;
+}
+@media print{
+  .qr-code{
+    display: flex !important;
+    
+  }
+}
 
 @media screen and (max-width: 1700px) {
   .index_index_circle_text {
@@ -217,6 +231,7 @@ video {
   .index-index-video-text-md {
     font-size: 28px;
   }
+
 
   /* video {
     width: 80% !important;

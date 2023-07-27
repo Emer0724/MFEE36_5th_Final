@@ -75,7 +75,7 @@ export default function ChangebookMessage() {
 
     setData(getdata2)
   }
-
+  const getUsedInfo = () => {}
   return (
     <>
       <Head>
@@ -85,7 +85,7 @@ export default function ChangebookMessage() {
       <MemberNav />
       <MemberBreadcrumbs_2 />
       <div className="px-2 mt-3">
-        <div className="dropdown pb-3 d-flex  ">
+        <div className="dropdown pb-3 d-flex justify-content-between ">
           <button
             className="btn btn-success dropdown-toggle letter-spacing border-radius-5px textp-20px used-search-text-16"
             type="button"
@@ -122,6 +122,12 @@ export default function ChangebookMessage() {
               </Link>
             </li>
           </ul>
+          <button
+            className="btn btn-success  letter-spacing border-radius-5px textp-20px used-search-text-16 "
+            onClick={getUsedInfo}
+          >
+            列印二手書資訊
+          </button>
         </div>
         {data.error === 'no_data' ? (
           <div className="text-center fs-3">目前沒有資料</div>
