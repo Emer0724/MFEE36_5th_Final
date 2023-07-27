@@ -42,7 +42,7 @@ const Login = () => {
   const router = useRouter()
 
   const handleJoinMember = () => {
-    router.push('/member/register') // 2. 使用 router.push 导航到 "member/register" 页面
+    router.push('/member/register')
   }
 
   return (

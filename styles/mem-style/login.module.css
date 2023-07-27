@@ -119,6 +119,7 @@
   min-width: fit-content;
   max-width: 300px;
   margin-top: 30px;
+  font-size: 20px;
 }
 
 
@@ -169,7 +170,6 @@
   border: none;
   border-radius: 5px;
   margin-bottom: 5px;
-  margin-left: 10px;
 }
 
 .login-title {
@@ -213,6 +213,7 @@
   border: 0.5px solid var(--color2);
   margin-bottom: 30px;
   border-radius: 50px;
+  font-size: 20px;
 }
 
 .googlelogin-btn:hover {
@@ -238,6 +239,7 @@
   min-width: fit-content;
   max-width: 300px;
   border: 2px solid transparent;
+  font-size: 20px;
 }
 
 .login-btn:hover {
@@ -256,6 +258,7 @@
   padding: 0;
   margin: 0px auto 25px 0px;
   position: relative;
+  font-size: 20px;
 }
 
 .login-input .error {
@@ -263,19 +266,18 @@
 }
 
 .login-input .error-message {
-  font-size: 12px;
+  font-size: 16px;
   color: #b52424;
   line-height: 12px;
   margin-top: 5px;
   position: absolute;
   bottom: -15px;
-  left: 60px;
   width: 100%;
   text-align: left;
 }
 
 .note {
-  font-size: 12px;
+  font-size: 16px;
   text-decoration: underline;
   color: var(--color5);
   border: none;

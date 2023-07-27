@@ -9,10 +9,10 @@
 .card_container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   height: 78vh;
   width: 90vw;
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 .card {
@@ -71,8 +71,8 @@
 }
 
 .right-text {
-  color: var(--color1);
-  font-size: var(--txp24);
+  margin: auto;
+  color: var(--color-tx-2);
 }
 
 
@@ -114,9 +114,9 @@
   border: none;
   border-radius: 5px;
   margin-bottom: 5px;
-  margin-left: 10px;
+  margin-left: 0px;
   padding-left: 10px;
-  font-size: 12px;
+  font-size: 20px;
 }
 
 .reg-title {
@@ -149,9 +149,9 @@
 }
 
 .error-message {
-  font-size: 12px;
+  font-size: 16px;
   color: #b52424;
-  line-height: 12px;
+  line-height: 16px;
   margin-top: 5px;
   position: absolute;
   bottom: -15px;
@@ -162,17 +162,21 @@
 
 
 .googlelogin-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
   background: #fff;
   color: var(--color6);
   border-radius: 5px;
-  height: 40px;
-  margin: auto;
+  border: none;
+  margin: 20px auto;
   width: 100%;
   min-width: fit-content;
   max-width: 300px;
   border: 0.5px solid var(--color6);
-  margin: 10px 0;
   border-radius: 50px;
+  font-size: 20px; 
 }
 
 .googlelogin-btn:hover {
@@ -266,7 +270,7 @@
   align-items: center;
   width: 100%;
   margin: 0px auto 25px 0px;
-  font-size: var(--txp16);
+  font-size: var(--txp20);
 }
 
 .signup-btn {
@@ -290,13 +294,14 @@
 }
 
 .note {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--color5);
   border: none;
   background-color: #fff;
   width: 100%;
-  margin: 10px 60px;
+  margin: 12px 0 10px 0;
   align-items: center;
+  justify-content: center;
 }
 
 .box-center {

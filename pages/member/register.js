@@ -61,7 +61,7 @@ const Login = () => {
     if (!confirmPassword) {
       setConfirmPasswordError('請輸入確認密碼')
     } else if (password !== confirmPassword) {
-      setConfirmPasswordError('確認密碼不一致')
+      setConfirmPasswordError('輸入密碼不一致')
     } else {
       setConfirmPasswordError('')
     }
