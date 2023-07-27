@@ -17,8 +17,20 @@ export default function checkForm() {
   const [recipientstore, setRecipientstore] = useState("");
   const [shippingCost, setShippingCost] = useState(100);
   const [areaOptions, setAreaOptions] = useState([]);
+  const [isNameRight,setisNameRight] = useState(true);
+  const [iscellphoneRight,setiscellphoneRight] = useState(true);
 
+  const judgename = () => {
 
+    const chineseNameRegExp = /^[\u4e00-\u9fa5]{2,4}$/;
+    setisNameRight(chineseNameRegExp.test(recipientName));
+  };
+  
+  const judgecellphone = () => {
+    const taiwanPhoneNumberRegExp = /^09\d{8}$/;
+    setiscellphoneRight(taiwanPhoneNumberRegExp.test(recipientPhone));
+  };
+  
   
  const addresscity=loc.map((v)=>v.CityName)
  const city = addresscity.map(
@@ -72,6 +84,7 @@ const handleAreaChange = (event) => {
       recipientPhone,
       recipientAddress,
       recipientstore,
+      shippingCost
     };
     console.log(formData);
   }
@@ -155,7 +168,9 @@ const handleAreaChange = (event) => {
     display:"flex",
     flexWrap:"wrap",
     gap:"25px"
-
+  }
+  const alerttext ={
+    color:"red"
   }
   
   return (
@@ -179,18 +194,22 @@ const handleAreaChange = (event) => {
                   </select>
                 </div> 
                 <div style={blockstyle1}>
-                    <label style={labelstyle1}>收件人姓名</label>
-                    <input type="text" style={inputstyle} placeholder="請輸入姓名" value={recipientName} onChange={(e) => setRecipientName(e.target.value)} pattern="[a-zA-Z\u4e00-\u9fa5\s]+"   required/>
+                    <label style={labelstyle1} name={"custname"}>收件人姓名</label>
+                    <input type="text" style={inputstyle} name={"custname"} placeholder="請輸入中文姓名" value={recipientName} onChange={(e) => setRecipientName(e.target.value)} onBlur={judgename}   required/>
+                    {judgename!==true?<div><p style={alerttext}>請輸入正確中文姓名</p></div>:'' }
                 </div>
+                
                 <div style={blockstyle1}>
-                    <label style={labelstyle1}>收件人電話</label>
-                    <input type="text" style={inputstyle} placeholder="請輸入電話" value={recipientPhone} onChange={(e) => setRecipientPhone(e.target.value)} pattern="\d{10}"  required/>
+                    <label style={labelstyle1} name={"cellphone"}>收件人手機</label>
+                    <input type="text" style={inputstyle} name={"cellphone"} placeholder="請輸入手機(09xxxxxxxx)" value={recipientPhone} onChange={(e) => setRecipientPhone(e.target.value)} onBlur={judgecellphone}  required/>
+                    {judgecellphone!==true?<div><p style={alerttext}>請輸入正確電話號碼</p></div>:'' }
                 </div>
                 {shippingMethod === "宅配到家+100" && (
                 <div style={blockstyle1}>
                   <label style={labelstyle1}>收件人地址</label>
                         <div style={address}>
                           <select style={selectstyle1}  value={recipientAddress.split(' ')[0]} onChange={handleCityChange}>
+                          <option value="請選擇">請選擇</option>
                             {city}
                           </select>
                           <select style={selectstyle1} value={recipientAddress.split(' ')[1]} onChange={handleAreaChange}>
@@ -219,7 +238,6 @@ const handleAreaChange = (event) => {
               )}
               <button style={buttonStyle2} type={"submit"}>下一步，確認商品</button>
             </form>
-
           {windowWidth>600 
           ?
            <div>
