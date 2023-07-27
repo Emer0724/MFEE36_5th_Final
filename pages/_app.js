@@ -5,6 +5,7 @@ import '@/styles/used.css'
 // import LeoContextProvider from '@/context/LeoContext'
 
 import DefaultLayout from '@/components/layout/default-layout'
+import { AuthContextProvider } from '@/context/AuthContext'
 
 export default function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -17,8 +18,9 @@ export default function MyApp({ Component, pageProps }) {
   const getLayout =
     Component.getLayout || ((page) => <DefaultLayout>{page}</DefaultLayout>)
 
-  return getLayout(<Component {...pageProps} />)
-  //   <LeoContextProvider>
-  //     {getLayout(<Component {...pageProps} />)}
-  //   </LeoContextProvider>
+  return getLayout(
+    <AuthContextProvider>
+      <Component {...pageProps} />
+    </AuthContextProvider>
+  )
 }
