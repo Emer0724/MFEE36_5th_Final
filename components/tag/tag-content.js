@@ -1,4 +1,4 @@
-import style from '@/components/tag/tag.module.css'
+
 
 export default function TagContent() {
     return (
