@@ -23,8 +23,23 @@
     border: 1px solid var(--color5);
     width: 60px;
 }
+.Countvalue2{
+    text-align: center;
+    width: 60px;
+}
+.Countvalue1{
+    text-align: center;
+    width: 60px;
+    font-size: var(--txi24);
+}
 .ProdeuctBlock{
     text-align: center;
+    font-size: var(--txi24);
+    padding: 25px;
+}
+.Prodeuctpn{
+    width: 40%;
+    text-align:left;
     font-size: var(--txi24);
     padding: 25px;
 }
@@ -99,6 +114,9 @@
         width: 45%;
         border-radius: 50%;
         border: 1px solid var(--color6);
+    }
+    .counttext::after{
+        content:"件"
     }
     
     

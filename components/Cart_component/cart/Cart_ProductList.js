@@ -67,7 +67,7 @@ const limitText = (text,maxLength) => {
         const truncatedBookName = limitText(v.book_name,10);
           return(
           <tr key={i} className={styles.Prodeucttr}>
-              <td className={styles.ProdeuctBlock}><Image src={fake} alt='icon'/>{truncatedBookName}</td>
+              <td className={styles.Prodeuctpn}><Image src={fake} alt='icon'/>{truncatedBookName}</td>
               <td className={styles.ProdeuctBlock}>{v.ISBN}</td>
               <td className={styles.ProdeuctBlock}><span className={styles.oneprice}>{v.price}</span></td>
               <td>
@@ -78,7 +78,9 @@ const limitText = (text,maxLength) => {
                     <button style={Countplus} className={styles.Countplus} onClick={() => addcount(v.ISBN)}>+</button>
                   </div>
                   :
-                    <div className={styles.Countvalue}>{v.count}</div>
+                  <div className={styles.CountBlock}>
+                    <div className={styles.Countvalue1}>{v.count}</div>
+                  </div>
                  }
               </td> 
               <td className={styles.ProdeuctBlock}><span className={styles.totalprice}>{v.price*v.count}</span></td>
@@ -108,7 +110,7 @@ const limitText = (text,maxLength) => {
                 </div>
                 :
                 <div className={styles.CountBlock}>
-                    <div className={styles.Countvalue}>{v.count}</div>
+                    <div className={styles.Countvalue2}><span className={styles.counttext}>{v.count}</span></div>
                 </div>
                 }
               </div>
@@ -124,7 +126,6 @@ const limitText = (text,maxLength) => {
               <p><span className={styles.totalprice}>{v.price*v.count}</span></p>
             </div>
           </div>
-
         )
     })}
   </>
