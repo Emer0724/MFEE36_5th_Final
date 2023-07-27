@@ -3,10 +3,14 @@ import Image from 'next/image'
 import bk from '@/public/Leo-image/心流.webp'
 import car from '@/components/Leo/market_card.module.css'
 import Link from 'next/link'
-import cl from '@/public/Leo-image/cancle.svg'
+// import cl from '@/public/Leo-image/cancle.svg'
+// import LeoContext from '@/context/LeoContext'
 
 export default function MarketCard() {
   const cardRef = useRef(null)
+
+  // const { y, setData } = useContext(LeoContext)
+  // console.log(y)
 
   const handleMouseEnter = () => {
     cardRef.current.classList.add(car.hovered)
@@ -36,16 +40,6 @@ export default function MarketCard() {
               </Link>
             </div>
             <div className={`w-100 color-bg-1 h-100 ${car.extra}`}>
-              <button className={car.x}>
-                <Image
-                  src={cl}
-                  className={`cl-img`}
-                  alt="..."
-                  width={20}
-                  height={20}
-                />
-              </button>
-              <br />
               <p className={car.p}>
                 心流：高手都在研究的最優體驗心理學（繁體中文唯一全譯本，二版）
               </p>
@@ -57,26 +51,3 @@ export default function MarketCard() {
     </>
   )
 }
-/**
-
-                                                     __----~~~~~~~~~~~------___
-                                    .  .   ~~//====......          __--~ ~~
-                    -.            \_|//     |||\\  ~~~~~~::::... /~
-                 ___-==_       _-~o~  \/    |||  \\            _/~~-
-         __---~~~.==~||\=_    -_--~/_-~|-   |\\   \\        _/~
-     _-~~     .=~    |  \\-_    '-~7  /-   /  ||    \      /
-   .~       .~       |   \\ -_    /  /-   /   ||      \   /
-  /  ____  /         |     \\ ~-_/  /|- _/   .||       \ /
-  |~~    ~~|--~~~~--_ \     ~==-/   | \~--===~~        .\
-           '         ~-|      /|    |-~\~~       __--~~
-                       |-~~-_/ |    |   ~\_   _-~            /\
-                            /  \     \__   \/~                \__
-                        _--~ _/ | .-~~____--~-/                  ~~==.
-                       ((->/~   '.|||' -_|    ~~-/ ,              . _||
-                                  -_     ~\      ~~---l__i__i__i--~~_/
-                                  _-~-__   ~)  \--______________--~~
-                                //.-~~~-~_--~- |-------~~~~~~~~
-                                       //.-~~~--\
-                                神獸保佑，程式碼沒Bug!
-    
-*/

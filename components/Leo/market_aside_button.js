@@ -3,11 +3,11 @@ import React, { useState } from 'react'
 import { Menu } from 'antd'
 import n from '@/components/Leo/market_aside.module.css'
 
-function getItem(label, key, icon, children, type) {
+function getItem(label, key, onclick, items, type) {
   return {
     key,
-    icon,
-    children,
+    onclick,
+    items,
     label,
     type,
   }
@@ -110,6 +110,19 @@ const rootSubmenuKeys = [
 ]
 const Market_aside_button = () => {
   const [openKeys, setOpenKeys] = useState([])
+
+  const handleDisplay = (label) => {
+    fetch(`${process.env.API_SERVER}/market/search?label=${label}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('後端回傳結果:', data)
+        console.log(label)
+      })
+      .catch((err) => {
+        console.error('無該分類資料', err)
+      })
+  }
+
   const onOpenChange = (keys) => {
     const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1)
     if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
@@ -124,8 +137,16 @@ const Market_aside_button = () => {
       openKeys={openKeys}
       onOpenChange={onOpenChange}
       className={n.market_aside_button}
-      items={items}
-    />
+    >
+      {items.map((item) => (
+        <Menu.Item
+          key={item.key}
+          onClick={() => handleDisplay(item.label)} // 指定處理按鈕點擊的函式
+        >
+          {item.label}
+        </Menu.Item>
+      ))}
+    </Menu>
   )
 }
 export default Market_aside_button

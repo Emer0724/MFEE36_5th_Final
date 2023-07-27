@@ -1,4 +1,4 @@
-import { React, useEffect } from 'react'
+import React from 'react'
 import Playground from '@/components/Leo/market_playground'
 import Aside from '@/components/Leo/market_aside'
 import Wish from '@/components/Leo/market_wish'
