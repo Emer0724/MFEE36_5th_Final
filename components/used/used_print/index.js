@@ -4,24 +4,24 @@ import { Checkbox } from 'antd'
 import { useState } from 'react'
 import { Pagination } from 'antd'
 import { check } from 'prettier'
-const used = [
-  { used: 1048, book_name: '重置人生：你還是16歲時的那個自己嗎？1' },
-  { used: 1047, book_name: '重置人生：你還是16歲時的那個自己嗎？2' },
-  { used: 1046, book_name: '重置人生：你還是16歲時的那個自己嗎？3' },
-  { used: 1049, book_name: '重置人生：你還是16歲時的那個自己嗎？4' },
-  { used: 1050, book_name: '重置人生：你還是16歲時的那個自己嗎？5' },
-  { used: 1051, book_name: '重置人生：你還是16歲時的那個自己嗎？6' },
-  { used: 1052, book_name: '重置人生：你還是16歲時的那個自己嗎？7' },
-  { used: 1053, book_name: '重置人生：你還是16歲時的那個自己嗎？8' },
-  { used: 1054, book_name: '重置人生：你還是16歲時的那個自己嗎？9' },
-  { used: 1055, book_name: '重置人生：你還是16歲時的那個自己嗎？10' },
-  { used: 1056, book_name: '重置人生：你還是16歲時的那個自己嗎？11' },
-  { used: 1057, book_name: '重置人生：你還是16歲時的那個自己嗎？12' },
-]
+// const used = [
+//   { used: 1048, book_name: '重置人生：你還是16歲時的那個自己嗎？1' },
+//   { used: 1047, book_name: '重置人生：你還是16歲時的那個自己嗎？2' },
+//   { used: 1046, book_name: '重置人生：你還是16歲時的那個自己嗎？3' },
+//   { used: 1049, book_name: '重置人生：你還是16歲時的那個自己嗎？4' },
+//   { used: 1050, book_name: '重置人生：你還是16歲時的那個自己嗎？5' },
+//   { used: 1051, book_name: '重置人生：你還是16歲時的那個自己嗎？6' },
+//   { used: 1052, book_name: '重置人生：你還是16歲時的那個自己嗎？7' },
+//   { used: 1053, book_name: '重置人生：你還是16歲時的那個自己嗎？8' },
+//   { used: 1054, book_name: '重置人生：你還是16歲時的那個自己嗎？9' },
+//   { used: 1055, book_name: '重置人生：你還是16歲時的那個自己嗎？10' },
+//   { used: 1056, book_name: '重置人生：你還是16歲時的那個自己嗎？11' },
+//   { used: 1057, book_name: '重置人生：你還是16歲時的那個自己嗎？12' },
+// ]
 
-export default function UsedPrint() {
+export default function UsedPrint({usedInfo,printALL}) {
   const [checkedValues, setCheckedValues] = useState([])
-  const [data, setdata] = useState(used)
+  const [data, setdata] = useState(usedInfo)
   const [pagedata, setPagedate] = useState([])
   const [page1, setpage1] = useState(1)
   const [selectAll, setSelectAll] = useState(false)
@@ -40,11 +40,13 @@ export default function UsedPrint() {
     getpage(needata, 1, 5)
   }
 
+  //點擊 checkbox 改變狀態
   const checkitem = (data, id, page, perPage) => {
-    console.log(data)
     // const value = e.target.value
+    
     const newdata = data.map((v, i) => {
-      if (parseInt(v.used) === parseInt(id)) {
+      if (parseInt(v.used_id) === parseInt(id)) {
+        //改變狀態
         return { ...v, checked: !v.checked }
       } else {
         return { ...v }
@@ -55,6 +57,7 @@ export default function UsedPrint() {
     getpage(newdata, page, perPage)
   }
 
+//改變頁數
   const getpage = (data, page, pageSize) => {
     const pagedata = data.filter((v, i) => {
       if (i >= (page - 1) * pageSize && i < page * pageSize) {
@@ -64,7 +67,7 @@ export default function UsedPrint() {
     setPagedate(pagedata)
     setpage1(page)
   }
-
+//設定全選
   const getAllitem = (selectAll, e, data, page1, pageSize) => {
     let newdata = []
 
@@ -81,6 +84,7 @@ export default function UsedPrint() {
     setdata(newdata)
     getpage(newdata, page1, pageSize)
   }
+ 
 
   return (
     // <div className={css.used_bg}>
@@ -100,13 +104,14 @@ export default function UsedPrint() {
         <tbody>
           {pagedata.map((v, i) => {
             return (
-              <tr key={v.used}>
+              <tr key={v.used_id}>
                 <th className="text-center">
                   <Checkbox
                     checked={v.checked}
-                    value={v.used}
+                    value={v.used_id}
                     onClick={(e) => {
                       checkitem(data, e.target.value, page1, 5)
+                  
                     }}
                   />
                 </th>
@@ -120,12 +125,14 @@ export default function UsedPrint() {
       <div className="d-flex justify-content-between mt-3 ">
         <Pagination
           defaultCurrent={1}
-          total={used.length}
+          total={usedInfo.length}
           defaultPageSize={5}
           onChange={(page, pageSize) => getpage(data, page, pageSize)}
         />
-        <button className="textp-20px letter-spacing btn  color-bg-2 border-radius-5px color-tx-7 ">
+        <button className="textp-20px letter-spacing btn  color-bg-2 border-radius-5px color-tx-7 "
+        onClick={()=>printALL(data)}>
           列印
+          
         </button>
       </div>
     </div>

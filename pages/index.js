@@ -31,7 +31,8 @@ export default function Home() {
   //loading
   const [load, setload] = useState(true)
   useEffect(() => {
-    getbookdata()
+    if(typeof window !== 'undefined'){
+      getbookdata()
     setMyVideo(
       <ReactPlayer
         playing={true}
@@ -45,6 +46,9 @@ export default function Home() {
     setTimeout(() => {
       setload(false)
     }, 4000)
+
+    }
+    
   }, [])
 
   //得書本資料

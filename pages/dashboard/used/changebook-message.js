@@ -50,6 +50,7 @@ export default function ChangebookMessage() {
     rows: [],
     error: '',
   })
+  const [usedInfo,setusedInfo]=useState([])
   // const [totalpage, setTotalpage] = useState(1)
   // const [nowpage, setnowpage] = useState(1)
   useEffect(() => {
@@ -77,7 +78,16 @@ export default function ChangebookMessage() {
 
     setData(getdata2)
   }
-  const getUsedInfo = () => {
+  const getUsedInfo = async() => {
+    const authToken = JSON.parse(localStorage.getItem('auth')).token
+  const getUsedInfo1=await fetch(`${process.env.API_SERVER}/used/getUsedinfo`,
+  {
+    headers: {
+      Authorization: `Bearer ${authToken}`,
+    },
+  })
+  const getUsedInfo12=await getUsedInfo1.json()
+  setusedInfo(getUsedInfo12)
     setusedlist(true)
   }
   //取消二手書資訊框
@@ -86,6 +96,15 @@ export default function ChangebookMessage() {
     if (!usedUpCheckElement.contains(e.target)) {
       setusedlist(false)
     }
+  }
+  const printALL=(used_data)=>{
+    const printrow= used_data.filter((v,i)=>{
+      if(v.checked) return v
+    })
+    if(!printrow[0]){
+     console.log('未選擇')
+    }
+    console.log(printrow)
   }
 
   return (
@@ -332,7 +351,7 @@ export default function ChangebookMessage() {
           }}
           // 此處可以添加其他滑鼠或觸控事件處理程序
         >
-          <UsedPrint />
+          <UsedPrint  usedInfo={usedInfo} printALL={printALL}/>
         </div>
       ) : (
         ''
