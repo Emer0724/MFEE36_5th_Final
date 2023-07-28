@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 
 export default function Products() {
   const router = useRouter();
-  console.log(router);
   const [data, setData] = useState({
     redirect: "",
     totalRows: 0,

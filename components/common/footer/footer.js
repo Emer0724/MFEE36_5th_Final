@@ -3,8 +3,28 @@ import { AiFillTwitterCircle } from 'react-icons/ai'
 import { BsFillTelephoneFill } from 'react-icons/bs'
 import { FaMapMarkedAlt } from 'react-icons/fa'
 import style from '@/components/common/footer/footer.module.css'
+import { useState,useEffect } from 'react'
 
 export default function Footer() {
+  const [windowWidth ,setWindowWidth] = useState(null)
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    }
+    if (typeof window !== 'undefined') {
+      setWindowWidth(window.innerWidth)
+      window.addEventListener('resize', handleResize)
+    }
+
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', handleResize)
+      }
+    }
+  }, [])
+  if (windowWidth<600) {
+    return <></>
+  }
   return (
       <div className={`${style.chencolor} container-fulid d-flex`}>
         <div className="d-flex  justify-content-center col-6 mt-2 mb-2">

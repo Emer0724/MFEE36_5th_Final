@@ -28,6 +28,7 @@
 .totalprice{
     margin-top:30px;
 }
+
 .totalprice::before{
     content: "$";
 }

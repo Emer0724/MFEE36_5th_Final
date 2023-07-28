@@ -1,30 +1,26 @@
 import React from 'react'
-import { useState,useEffect,useRouter} from 'react'
+import { useState,useEffect} from 'react'
 import OrderIcon from '@/components/Cart_component/order/order_state'
 import Productlist from '@/components/Cart_component/cart/Cart_ProductList'
 import CartTotal from '@/components/Cart_component/cart/Cart_Total'
 import CartRecommend from '@/components/Cart_component/cart/Cart_recommend'
 import CartTitle from '@/components/Cart_component/Cart_title'
+import { useRouter } from 'next/router'
 
 export default function Cart() {
+const router= useRouter()
 const [data, setData] = useState({
     totalcart:0,
     cart:[],
  }
 );
-const eachprice = data.cart.map((v) => {
-  return v.price * v.count;
-});
-const totalprice = eachprice.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-
-
 useEffect(() => {
   fetch(`${process.env.API_SERVER}/cart/cart`)
     .then((r) => r.json())
     .then((data) => {
       setData(data);
     }); 
-}, []);
+}, [router.query]);
 
 
 const addcount = (ISBN) => {

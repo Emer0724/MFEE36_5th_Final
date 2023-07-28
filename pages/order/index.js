@@ -4,6 +4,7 @@ import OrderTotalPrice from '@/components/Cart_component/order/totalprice'
 import React, { useState,useEffect } from 'react'
 import styles from '@/pages/order/Orderindex.module.css'
 import loc from '@/data/address.json'
+import { useRouter } from 'next/router'
 
 
 
@@ -19,12 +20,13 @@ export default function checkForm() {
   const [areaOptions, setAreaOptions] = useState([]);
   const [isNameRight,setisNameRight] = useState(true);
   const [iscellphoneRight,setiscellphoneRight] = useState(true);
+  const router = useRouter();
 
   const judgename = () => {
-
     const chineseNameRegExp = /^[\u4e00-\u9fa5]{2,4}$/;
     setisNameRight(chineseNameRegExp.test(recipientName));
   };
+
   
   const judgecellphone = () => {
     const taiwanPhoneNumberRegExp = /^09\d{8}$/;
@@ -40,11 +42,11 @@ export default function checkForm() {
   // 根據所選的縣市，更新區域的選項
   const selectedCity = event.target.value;
   const selectedCityData = loc.find((v) => v.CityName === selectedCity);
-  const areaOptions = selectedCityData.AreaList.map((area) => (
+  const areaOptions = selectedCityData.AreaList.map((area) =>{return (
     <option value={area.AreaName} key={area.AreaName}>
       {area.AreaName}
     </option>
-  ));
+  )});
   setRecipientAddress(`${selectedCity} ${areaOptions[0].props.value}`);
   setAreaOptions(areaOptions);
 };
@@ -52,9 +54,9 @@ const handleAreaChange = (event) => {
   // 根據所選的區域，更新路名的選項
   const selectedArea = event.target.value;
   const selectedCityData = loc.find((v) => v.CityName === recipientAddress.city);
-  const selectedAreaData = selectedCityData.AreaList.find(
-    (area) => area.ZipCode === selectedArea
-  );
+  // const selectedAreaData = selectedCityData.AreaList.find(
+  //   (area) => area.ZipCode === selectedArea
+  // );
   setRecipientAddress(`${recipientAddress.split(' ')[0]} ${selectedArea}`);
 };
 
@@ -86,8 +88,11 @@ const handleAreaChange = (event) => {
       recipientstore,
       shippingCost
     };
-    console.log(formData);
+    const formDataJSON = JSON.stringify(formData);
+    localStorage.setItem('formData', formDataJSON);
+    router.push('/order/productcheck');
   }
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -128,7 +133,8 @@ const handleAreaChange = (event) => {
     border:"1px solid #52796F",
     background:"#EEEEEE",
     padding:"5px",
-    fontSize:"20px"
+    fontSize:"20px",
+    marginTop:"20px"
   }
   const blockstyle = {
     display:"flex",
@@ -144,13 +150,15 @@ const handleAreaChange = (event) => {
     width:"350px",
     height:"60px",
     borderRadius:"8px",
-    border:"1px solid #52796F"
+    border:"1px solid #52796F",
+    marginTop:"20px"
   }
   const selectstyle1 = {
     width:"150px",
     height:"60px",
     borderRadius:"8px",
-    border:"1px solid #52796F"
+    border:"1px solid #52796F",
+    marginTop:"20px"
   }
   const buttonStyle2 = {
     backgroundColor: '#52796F',
@@ -171,6 +179,9 @@ const handleAreaChange = (event) => {
   }
   const alerttext ={
     color:"red"
+  }
+  const pad1 ={
+    paddingTop:"10px"
   }
   
   return (
@@ -195,14 +206,14 @@ const handleAreaChange = (event) => {
                 </div> 
                 <div style={blockstyle1}>
                     <label style={labelstyle1} name={"custname"}>收件人姓名</label>
-                    <input type="text" style={inputstyle} name={"custname"} placeholder="請輸入中文姓名" value={recipientName} onChange={(e) => setRecipientName(e.target.value)} onBlur={judgename}   required/>
-                    {judgename!==true?<div><p style={alerttext}>請輸入正確中文姓名</p></div>:'' }
+                    <input type="text" style={inputstyle} name={"custname"} placeholder="請輸入中文姓名" value={recipientName} onChange={(e) => setRecipientName(e.target.value)} onBlur={judgename}  required/>
+                    {isNameRight!==true ? <div style={pad1}><p style={alerttext}>請輸入正確中文姓名</p></div>:'' }
                 </div>
                 
                 <div style={blockstyle1}>
                     <label style={labelstyle1} name={"cellphone"}>收件人手機</label>
-                    <input type="text" style={inputstyle} name={"cellphone"} placeholder="請輸入手機(09xxxxxxxx)" value={recipientPhone} onChange={(e) => setRecipientPhone(e.target.value)} onBlur={judgecellphone}  required/>
-                    {judgecellphone!==true?<div><p style={alerttext}>請輸入正確電話號碼</p></div>:'' }
+                    <input type="text" style={inputstyle} name={"cellphone"} placeholder="請輸入手機(09xxxxxxxx)" value={recipientPhone} onChange={(e) => setRecipientPhone(e.target.value)} onBlur={judgecellphone} required/>
+                    {iscellphoneRight!==true ? <div style={pad1}><p style={alerttext}>請輸入正確電話號碼</p></div>:'' }
                 </div>
                 {shippingMethod === "宅配到家+100" && (
                 <div style={blockstyle1}>
@@ -217,7 +228,7 @@ const handleAreaChange = (event) => {
                           </select>
                           <input
                             type="text"
-                            placeholder="請輸入路名鄉鎮巷號"
+                            placeholder="請輸入路名 鄉 鎮 巷 號 樓層"
                             value={recipientAddress.address}
                             onChange={(e) =>
                               setRecipientAddress(
@@ -241,7 +252,7 @@ const handleAreaChange = (event) => {
           {windowWidth>600 
           ?
            <div>
-          <OrderTotalPrice  border1={"1px solid #52796F"} shippingCost={shippingCost}/>
+          <OrderTotalPrice  border1={"1px solid #52796F"} shippingCost={shippingCost} />
           </div>
           :
           ""
