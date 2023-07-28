@@ -14,7 +14,6 @@ import css from '@/components/Leo/carousel.module.css'
 export default function Carousel() {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
   const handleActiveIndexChange = (index) => {
-    console.log(index.realIndex)
     // console.log(index)
     setActiveSlideIndex(index.realIndex)
   }

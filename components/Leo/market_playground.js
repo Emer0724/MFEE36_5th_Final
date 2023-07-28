@@ -1,12 +1,12 @@
 import Card from '@/components/Leo/market_card'
 import ca from './market_playground.module.css'
 
-export default function Playground() {
+export default function Playground({ data }) {
   return (
     <>
       <div className={`container ${ca.box}`}>
         <div className={`row ${ca.c_row} d-flex`}>
-          <Card />
+          <Card data={data} />
           <Card />
           <Card />
           <Card />
