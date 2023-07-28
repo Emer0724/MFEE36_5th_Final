@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styles from '@/components/common/navbar/navbar.module.css'
+import styles from './navbar.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
 import logo from '@/assets/Nav_Image/logo.svg'
@@ -7,17 +7,30 @@ import Searchicon from '@/assets/Nav_Image/search.svg'
 import Carticon from '@/assets/Nav_Image/Vector.svg'
 import Membericon from '@/assets/Nav_Image/Subtract.svg'
 import Searchbar from './searchbar'
+import DropdownMenu from '../dropdown/dropdown-menu' // Import DropdownMenu
 
 export default function NavBar1() {
   const NavctName = ['商城', '二手書', '部落格', '關於我們']
   const NavEnName = ['STORE', 'USEDSTORE', 'BLOG', 'ABOUTUS']
-  const navrouter = ["/product/","/used-book/","/blog/blog-home-page","/#aboutUs"]
-  // const NavIcon = [Searchicon, Carticon, Membericon]
-  const [searchbaropen,setSearchbaropen] = useState(false)
-  const toggleSearch = ()=>{
-    setSearchbaropen(!searchbaropen)
-  };
+  const navrouter = [
+    '/product/',
+    '/used-book/',
+    '/blog/blog-home-page',
+    '/#aboutUs',
+  ]
 
+  const [searchbaropen, setSearchbaropen] = useState(false)
+  const toggleSearch = () => {
+    setSearchbaropen(!searchbaropen)
+  }
+
+  // Correctly set initial isLoggedIn state to false
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const logout = () => {
+    // Logout logic here
+    setIsLoggedIn(false) // Set isLoggedIn to false on logout
+  }
 
   return (
     <div className={styles.Header}>
@@ -49,25 +62,28 @@ export default function NavBar1() {
           })}
         </div>
         <div className={styles.Icongroup}>
-              <div onClick={toggleSearch} className={styles.naviconbtn} >
-                <Image
-                  src={Searchicon}
-                  width={60}
-                  height={30}
-                  className={styles.Licon}
-                  alt="icon"
-                />
-              </div>
-              <Link href="/product/cart" className={styles.navlink2} >
-                <Image
-                  src={Carticon}
-                  width={60}
-                  height={30}
-                  className={styles.Licon}
-                  alt="icon"
-                />
-              </Link>
-              <Link href="/dashboard/profile" className={styles.navlink2} >
+          <div onClick={toggleSearch} className={styles.naviconbtn}>
+            <Image
+              src={Searchicon}
+              width={60}
+              height={30}
+              className={styles.Licon}
+              alt="icon"
+            />
+          </div>
+          <Link href="/product/cart" className={styles.navlink2}>
+            <Image
+              src={Carticon}
+              width={60}
+              height={30}
+              className={styles.Licon}
+              alt="icon"
+            />
+          </Link>
+          {/* Add a class to separate login button from other icons */}
+          <div className={styles.loginWrapper}>
+            {isLoggedIn ? (
+              <Link href="/dashboard/profile" className={styles.navlink2}>
                 <Image
                   src={Membericon}
                   width={60}
@@ -76,9 +92,17 @@ export default function NavBar1() {
                   alt="icon"
                 />
               </Link>
+            ) : (
+              <Link href="/member/login">
+                <span className={styles.loginBtn}>登入</span>
+              </Link>
+            )}
+          </div>
         </div>
+        {searchbaropen && <Searchbar />}
+        {/* Render the DropdownMenu component */}
+        {isLoggedIn && <DropdownMenu isLoggedIn={isLoggedIn} logout={logout} />}
       </div>
-       {searchbaropen && <Searchbar/>}
     </div>
   )
 }
