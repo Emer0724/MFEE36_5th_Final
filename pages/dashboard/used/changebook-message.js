@@ -10,6 +10,7 @@ import MemberBreadcrumbs_2 from '@/components/Leo/member/member_breadcrumbs-2'
 import { useRouter } from 'next/router'
 import UsedTdGiveUpReturn from '@/components/used/chk-msg/used-td-GiveUpReturn'
 import Head from 'next/head'
+import UsedPrint from '@/components/used/used_print'
 
 //暫定 1.待兌換 2.代收書 3.退回 4.已兌換
 // const datas = [
@@ -39,6 +40,7 @@ import Head from 'next/head'
 
 export default function ChangebookMessage() {
   const router = useRouter()
+  const [usedlist, setusedlist] = useState(false)
   const [data, setData] = useState({
     redirect: '',
 
@@ -75,7 +77,17 @@ export default function ChangebookMessage() {
 
     setData(getdata2)
   }
-  const getUsedInfo = () => {}
+  const getUsedInfo = () => {
+    setusedlist(true)
+  }
+  //取消二手書資訊框
+  const closeItem = (e) => {
+    const usedUpCheckElement = document.querySelector('.used_display_chkbox')
+    if (!usedUpCheckElement.contains(e.target)) {
+      setusedlist(false)
+    }
+  }
+
   return (
     <>
       <Head>
@@ -302,6 +314,29 @@ export default function ChangebookMessage() {
 
         <div className="used_rwd_botton" style={{ height: '300px' }}></div>
       </div>
+      {usedlist ? (
+        <div
+          className="used_display_UsedUpCheck"
+          role="button"
+          tabIndex={0}
+          onClick={
+            closeItem
+            // 在這裡處理點擊事件
+          }
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              closeItem
+
+              // 在這裡處理回車鍵或空白鍵事件，模擬點擊效果
+            }
+          }}
+          // 此處可以添加其他滑鼠或觸控事件處理程序
+        >
+          <UsedPrint />
+        </div>
+      ) : (
+        ''
+      )}
     </>
   )
 }

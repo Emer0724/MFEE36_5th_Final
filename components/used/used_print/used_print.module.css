@@ -1,0 +1,36 @@
+.used_bg{
+    background-color:#747272a3;
+    width: 100vw;
+    height: 100vmax;
+    position: fixed;
+    top: 0 ;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding-top: 100px;
+    z-index: 9999999;
+  }
+  .used_whitebg{
+    position: fixed;
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: white;
+    /* top: calc((100vh - 50%) / 2); */
+    /* left: calc((100vw - 40%) / 2); */
+    /* padding-top:  60px; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    cursor: default;
+    padding: 50px;
+
+  }
+  .text{
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: rgb(0, 0, 0);
+    font-family:  'Noto Serif TC', serif,  sans-serif ,'Roboto'; 
+  }
+  .used_table_layout{
+    table-layout: fixed;
+  }

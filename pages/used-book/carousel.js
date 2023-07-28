@@ -10,6 +10,7 @@ import 'swiper/css/free-mode'
 import 'swiper/css/navigation'
 import 'swiper/css/thumbs'
 import css from '@/pages/used-book/carousel.module.css'
+import UsedPrint from '@/components/used/used_print'
 
 export default function Carousel() {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
@@ -20,7 +21,7 @@ export default function Carousel() {
   }
   return (
     <>
-      <div
+      {/* <div
         className="d-flex justify-content-center color-bg-6 align-items-center "
         style={{ height: '400px' }}
       >
@@ -168,7 +169,8 @@ export default function Carousel() {
             </div>
           </SwiperSlide>
         </Swiper>
-      </div>
+      </div> */}
+      <UsedPrint />
     </>
   )
 }
