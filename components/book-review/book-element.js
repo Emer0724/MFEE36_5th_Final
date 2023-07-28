@@ -13,10 +13,10 @@ export default function BookElement() {
             </div>
                 <div className={`${style.chenjc} d-flex`}>
                     <div className='pe-4'>
-                        <Link href="#" className={`${style.chenp} ${style.chenfs} text-black text-decoration-none`}>評分最高</Link>
+                        <Link href="#" className={`${style.chenp} fs-5 text-black text-decoration-none`}>評分最高</Link>
                     </div>
                     <div>
-                        <Link href="#" className={`${style.chenfs} text-black text-decoration-none`}>評分最低</Link>
+                        <Link href="#" className={`fs-5 text-black text-decoration-none`}>評分最低</Link>
                     </div>
                 </div>
         </>

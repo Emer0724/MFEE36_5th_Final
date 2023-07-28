@@ -1,6 +1,6 @@
 import stlye from '@/components/book-review/blogavatar.module.css'
 import Image from 'next/image'
-import img1 from '@/public/blogimg/images.jpg'
+import img1 from '@/public/blog-img/images.jpg'
 
 export default function PhPersonalAvatar() {
     return (

@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import stlye from '@/components/book-review/blogavatar3.module.css'
-import img1 from '@/public/blogimg/images.jpg'
+import img1 from '@/public/blog-img/images.jpg'
 
 
 export default function Avatar3() {

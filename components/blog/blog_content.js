@@ -2,7 +2,7 @@ import Avatar2 from '../book-review/blogavatar2'
 import Image from 'next/image'
 import Link from 'next/link'
 import style from '@/components/blog/blog_content.module.css'
-import shadowverse from '@/public/blogimg/shadowverse.jpg'
+import shadowverse from '@/public/blog-img/shadowverse.jpg'
 
 export default function BlogContent() {
   const blogcontent = '/blog/recommend'
@@ -14,7 +14,7 @@ export default function BlogContent() {
             href={blogcontent}
             className={`${style.blogtitle} text-black text-decoration-none`}
           >
-            <span>吐槽日常語言裡的歸納法思想</span>
+            <span className={`${style.chenfs}`}>吐槽日常語言裡的歸納法思想</span>
           </Link>
         </div>
         <div className="d-flex">

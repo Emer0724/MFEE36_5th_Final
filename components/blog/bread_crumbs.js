@@ -15,10 +15,10 @@ export default function BreadCrumbs() {
             </div>
             <div className={`${style.chenjc} d-flex`}>
                 <div className='pe-4'>
-                    <Link href="#" className={`${style.chenp} text-black text-decoration-none`}>熱門</Link>
+                    <Link href="#" className={`${style.chenp} fs-5 text-black text-decoration-none`}>熱門</Link>
                 </div>
                 <div>
-                    <Link href="#" className={`text-black text-decoration-none`}>最新</Link>
+                    <Link href="#" className={`fs-5 text-black text-decoration-none`}>最新</Link>
                 </div>
             </div>
         </>

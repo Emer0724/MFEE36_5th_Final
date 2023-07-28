@@ -1,4 +1,11 @@
+.chendis {
+    display: none;
+}
+
 @media (max-width:400px) {
+    .chendis {
+        display: block;
+    }
     .chenjc {
         justify-content: center;
     }

@@ -2,7 +2,7 @@ import Avatar2 from '../book-review/blogavatar2'
 import Image from 'next/image'
 import Link from 'next/link'
 import style from '@/components/blog/blog-home.module.css'
-import shadowverse from '@/public/blogimg/shadowverse.jpg'
+import shadowverse from '@/public/blog-img/shadowverse.jpg'
 
 export default function BlogHome() {
   return (
