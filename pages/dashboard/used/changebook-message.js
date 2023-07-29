@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useRef } from 'react'
 import MemberNav from '@/components/common/member-nav/member-nav'
 import UsedTdUncomfirmed from '@/components/used/chk-msg/used-td-uncomfirmed'
 import UsedTdExchange from '@/components/used/chk-msg/used-td-exchange'
@@ -11,34 +11,11 @@ import { useRouter } from 'next/router'
 import UsedTdGiveUpReturn from '@/components/used/chk-msg/used-td-GiveUpReturn'
 import Head from 'next/head'
 import UsedPrint from '@/components/used/used_print'
-
-//暫定 1.待兌換 2.代收書 3.退回 4.已兌換
-// const datas = [
-//   {
-//     used_id: 1,
-//     ISBN: 9789864016433,
-//     book_name: '作者不詳：推理作家的讀本 (上卷)(下卷）',
-//     book_state: 1,
-//     price: '500',
-//   },
-//   { used_id: 2, ISBN: 9789577417039, book_name: '第三時效', book_state: 2 },
-//   {
-//     used_id: 3,
-//     ISBN: 9786263565616,
-//     book_name: '二度遭到殺害的她',
-//     book_state: 3,
-//     price: '500',
-//   },
-//   {
-//     used_id: 4,
-//     ISBN: 9786263565616,
-//     book_name: '二度遭到殺害的她',
-//     book_state: 4,
-//     price: '500',
-//   },
-// ]
+import UsedPintInfo from '@/components/used/used_printinfo'
+import { useReactToPrint } from 'react-to-print'
 
 export default function ChangebookMessage() {
+  const printref = useRef()
   const router = useRouter()
   const [usedlist, setusedlist] = useState(false)
   const [data, setData] = useState({
@@ -50,7 +27,9 @@ export default function ChangebookMessage() {
     rows: [],
     error: '',
   })
-  const [usedInfo,setusedInfo]=useState([])
+  const [usedInfo, setusedInfo] = useState([])
+  const [usedPrintInfo, setusedPrintInfo] = useState([])
+  const [memberinfo,setmemberinfo]=useState([])
   // const [totalpage, setTotalpage] = useState(1)
   // const [nowpage, setnowpage] = useState(1)
   useEffect(() => {
@@ -78,16 +57,19 @@ export default function ChangebookMessage() {
 
     setData(getdata2)
   }
-  const getUsedInfo = async() => {
+  const getUsedInfo = async () => {
     const authToken = JSON.parse(localStorage.getItem('auth')).token
-  const getUsedInfo1=await fetch(`${process.env.API_SERVER}/used/getUsedinfo`,
-  {
-    headers: {
-      Authorization: `Bearer ${authToken}`,
-    },
-  })
-  const getUsedInfo12=await getUsedInfo1.json()
-  setusedInfo(getUsedInfo12)
+    const getUsedInfo1 = await fetch(
+      `${process.env.API_SERVER}/used/getUsedinfo`,
+      {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      }
+    )
+    const getUsedInfo12 = await getUsedInfo1.json()
+    setusedInfo(getUsedInfo12[0])
+    setmemberinfo(getUsedInfo12[1][0])
     setusedlist(true)
   }
   //取消二手書資訊框
@@ -97,15 +79,34 @@ export default function ChangebookMessage() {
       setusedlist(false)
     }
   }
-  const printALL=(used_data)=>{
-    const printrow= used_data.filter((v,i)=>{
-      if(v.checked) return v
+  const printALL = (used_data) => {
+    const printrow = used_data.filter((v, i) => {
+      if (v.checked) return v
     })
-    if(!printrow[0]){
-     console.log('未選擇')
-    }
-    console.log(printrow)
+    setusedPrintInfo(printrow)
+  
+    
+    
   }
+
+  useEffect(()=>{
+    if(usedPrintInfo.length >=1){
+      print_item()
+    }
+   },[usedPrintInfo])
+
+   const handleAfterPrint = () => {
+   
+    setusedlist(false); // Update the state when onAfterPrint is triggered
+  };
+
+  const print_item = useReactToPrint({
+    content: () => printref.current,
+    documentTitle: '上架資訊',
+    onAfterPrint:  handleAfterPrint
+  })
+
+
 
   return (
     <>
@@ -351,11 +352,15 @@ export default function ChangebookMessage() {
           }}
           // 此處可以添加其他滑鼠或觸控事件處理程序
         >
-          <UsedPrint  usedInfo={usedInfo} printALL={printALL}/>
+          <UsedPrint usedInfo={usedInfo} printALL={printALL} />
         </div>
       ) : (
         ''
       )}
+      <div className='d-none'>
+      <UsedPintInfo usedPrintInfo={usedPrintInfo} memberinfo={memberinfo} printref={printref}  />
+      </div>
+     
     </>
   )
 }

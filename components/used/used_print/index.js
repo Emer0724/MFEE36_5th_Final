@@ -25,10 +25,14 @@ export default function UsedPrint({usedInfo,printALL}) {
   const [pagedata, setPagedate] = useState([])
   const [page1, setpage1] = useState(1)
   const [selectAll, setSelectAll] = useState(false)
+  const [canprint,setcanprint]=useState(true)
 
   useEffect(() => {
     getcheck()
   }, [])
+  useEffect(() => {
+   printabout(data)
+  }, [data])
 
   //初始化
   const getcheck = () => {
@@ -84,6 +88,18 @@ export default function UsedPrint({usedInfo,printALL}) {
     setdata(newdata)
     getpage(newdata, page1, pageSize)
   }
+  //是否列印
+  const printabout=(data)=>{
+const newdata=data.filter((v,i)=>{
+  if(v.checked)return v
+})
+if(!newdata[0]) {
+  // console.log(newdata[0])
+  setcanprint(true)
+}else{
+  setcanprint(false)
+}
+  }
  
 
   return (
@@ -130,7 +146,10 @@ export default function UsedPrint({usedInfo,printALL}) {
           onChange={(page, pageSize) => getpage(data, page, pageSize)}
         />
         <button className="textp-20px letter-spacing btn  color-bg-2 border-radius-5px color-tx-7 "
-        onClick={()=>printALL(data)}>
+        onClick={()=>printALL(data)}
+        disabled={canprint}
+
+        >
           列印
           
         </button>
