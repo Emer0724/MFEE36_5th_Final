@@ -7,7 +7,7 @@ import Searchicon from '@/assets/Nav_Image/search.svg'
 import Carticon from '@/assets/Nav_Image/Vector.svg'
 import Membericon from '@/assets/Nav_Image/Subtract.svg'
 import Searchbar from './searchbar'
-import DropdownMenu from '../dropdown/dropdown-menu' // Import DropdownMenu
+import DropdownMenu from './dropdown-menu'
 
 export default function NavBar1() {
   const NavctName = ['商城', '二手書', '部落格', '關於我們']

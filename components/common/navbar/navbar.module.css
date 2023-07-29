@@ -23,9 +23,9 @@
     flex-direction: column;
     justify-content: center;
     width: 40%;
-   height:100%;
+    height:100%;
     transition: all 0.5s ease-in;
-    min-width: 150px; /*add min width for navlink items */
+    white-space:nowrap;/*設定文字不換行*/
 }
 .navlinkdiv:hover{
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -73,7 +73,7 @@
         border-bottom: 1px solid  var(--color2); 
         display: flex;   
         align-items: center;
-        justify-content: flex-start; 
+        justify-content: space-around; 
         padding: 20px 10px;
      }
     .NavbarRoute{
@@ -96,10 +96,6 @@
         width:25px;
         margin-left: 10px;
     }
-    .Icongroup{
-        width: 100px;
-    }
-    
 }
 
 /* 登入按鈕的自定義樣式 */
@@ -125,7 +121,7 @@
     width: 0;
     height: 2px;
     background-color: #84a98c;
-    transition: width 0.2s;
+    transition: width 0.8s;
   }
   
   .loginBtn:hover {
@@ -159,3 +155,9 @@
         margin-left: 10px;  /* Adjust the margin on smaller screens */
     }
 }
+
+/*
+TODO: 
+手機版 logo漢堡圖
+手機版 navbar樣式
+*/
