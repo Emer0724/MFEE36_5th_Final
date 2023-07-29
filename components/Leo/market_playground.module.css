@@ -5,9 +5,9 @@ margin-bottom: 50px;
 padding-left: 100px;
 }
 .c_row{
-border-bottom: 10px solid #000000;
+border-bottom: 20px solid #898989;
 border-color: rgba(0, 0, 0, 0.55);
 margin-top: 60px !important; 
 padding-bottom:5px ;
-
+/* box-shadow: inset 0 -100px 0 var(--color5); */
 }

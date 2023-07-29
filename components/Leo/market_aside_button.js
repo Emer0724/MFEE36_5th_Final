@@ -140,13 +140,13 @@ const items = [
     ],
     '53'
   ),
-  getItem('其他', 'sub11', ' ', [
-    getItem('斗內', '53'),
-    getItem('友站連結', 'sub12', null, [
-      getItem('博客來', '54'),
-      getItem('讀冊', '55'),
-    ]),
-  ]),
+  // getItem('其他', 'sub11', ' ', [
+  //   getItem('斗內', '53'),
+  //   getItem('友站連結', 'sub12', null, [
+  //     getItem('博客來', '54'),
+  //     getItem('讀冊', '55'),
+  //   ]),
+  // ]),
 ]
 
 const rootSubmenuKeys = [

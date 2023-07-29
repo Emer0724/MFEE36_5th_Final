@@ -1,5 +1,5 @@
 import React from 'react'
-import ww from '@/components/Leo/market_wish.module.css'
+import ww from '@/components/Leo/market_breadcrumbs.module.css'
 
 export default function Wish() {
   return (
