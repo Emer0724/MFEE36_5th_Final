@@ -7,6 +7,9 @@ const nextConfig = {
   env: {
     API_SERVER: 'http://localhost:3055',
   },
+  // env: {
+  //   API_SERVER: 'http://localhost:3002',
+  // },
   // avoid cors with proxy
   // async rewrites() {
   //   return [

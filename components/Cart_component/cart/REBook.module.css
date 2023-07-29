@@ -16,8 +16,9 @@
     width: 900px;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
     padding-top: 60px;
+    gap: 40px;
 }
 .RebookBook{
     margin: 30px;
@@ -25,6 +26,9 @@
 .Rebookcard{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }
 @media (max-width:400px) {
     .RebookDiv{

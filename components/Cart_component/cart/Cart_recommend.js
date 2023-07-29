@@ -1,11 +1,13 @@
 import React from 'react'
 import Link from 'next/link'
 import styles from "@/components/Cart_component/Cart/REBook.module.css"
-import fake from "@/assets/Cart_Image/fake.svg"
 import Image from 'next/image'
 
-export default function Recommend() {
-    const Rebook = ["黃衣國王","藍衣國王","紅衣主教","綠帽達人"]
+export default function Recommend({recommand}) {
+  if (!Array.isArray(recommand)) {
+    return null;
+  }
+  
   return (
     <div className={styles.RebookDiv}>
       <div className={styles.RebookContain}>
@@ -14,20 +16,18 @@ export default function Recommend() {
      <div className={styles.RebookBlock}>
           <h1 >已收藏書籍</h1>
           <div className={styles.Rebooklist}>
-                {Rebook.map((v,i)=>{
-            return(
+                {recommand.map((v,i)=>{
+                  return(
                   <div className={styles.Rebookcard} key={i}>
-                    <Image src={fake} alt='icon'/>
+                    <Image src={`/all_img/book_pic/${encodeURIComponent(v.pic)}`} width={200} height={200} alt='icon'/>
                     <Link href="#" className={styles.RebookBook}>
-                        <p>{v}</p>
+                        <p>{v.book_name}</p>
                     </Link>
                   </div>
                     )
                 })}  
           </div>
       </div>
-        
-
     </div>
   )
 }

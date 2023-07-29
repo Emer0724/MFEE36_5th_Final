@@ -67,7 +67,7 @@ const limitText = (text,maxLength) => {
         const truncatedBookName = limitText(v.book_name,10);
           return(
           <tr key={i} className={styles.Prodeucttr}>
-              <td className={styles.Prodeuctpn}><Image src={fake} alt='icon'/>{truncatedBookName}</td>
+              <td className={styles.Prodeuctpn}><Image src={`/all_img/book_pic/${encodeURIComponent(v.pic)}`} width={100} height={100} alt='icon'/>{truncatedBookName}</td>
               <td className={styles.ProdeuctBlock}>{v.ISBN}</td>
               <td className={styles.ProdeuctBlock}><span className={styles.oneprice}>{v.price}</span></td>
               <td>
@@ -98,7 +98,7 @@ const limitText = (text,maxLength) => {
         return(
           <div className={styles.CProductlist} key={i}>
             <div className={styles.CProductlist1} >
-              <div><Image src={fake} alt='icon' width={100} height={80}/></div>
+              <div><Image src={`/all_img/book_pic/${encodeURIComponent(v.pic)}`} alt='icon' width={100} height={80}/></div>
               <div className={styles.CProductlist2}>
                 <h6 className={styles.Clisttext}>{truncatedBookName}</h6>
                 <h6 className={styles.Clisttext}>{v.ISBN}</h6>

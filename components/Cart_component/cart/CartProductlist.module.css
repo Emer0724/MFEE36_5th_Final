@@ -48,7 +48,7 @@
     transition: all 0.6s ease-in-out;
 }
 .Prodeucttr:hover{
-    background-color: var(--color9);
+    background: linear-gradient(to right, #ffffff, #ffffff, #a6b9c2, #77999c, #52796f);
   
 }
 .trashbtn{

@@ -2,17 +2,26 @@ import DeepButton from '@/components/common/CBtn/DeepgreenBtn'
 import LightButton from '@/components/common/CBtn/LightGreenBtn';
 import React, { useState } from 'react'
 import styles from "@/components/Cart_component/cart/CartTotal.module.css"
+import { useRouter } from 'next/router';
 
 export default function CartTotal({data}) {
+
+   if (!Array.isArray(usetoken)) {
+      return null;
+    }
+   if (!Array.isArray(coupon)) {
+      return null;
+    }
    const [showCouponMenu, setShowCouponMenu] = useState(false);
    const [showCurrencyMenu, setShowCurrencyMenu] = useState(false);
-   const [selectedCouponOption, setSelectedCouponOption] = useState('$0');
-   const [selectedCurrencyOption, setSelectedCurrencyOption] = useState('$0');
+   const [selectedCouponOption, setSelectedCouponOption] = useState(0);
+   const [selectedCurrencyOption, setSelectedCurrencyOption] = useState(0);
 
    const eachprice = data.cart.map((v) => {
       return v.price * v.count;
     });
-    const totalprice = eachprice.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+   const totalprice = eachprice.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+   const router = useRouter();
    
    const toggleCouponMenu = () => {
       setShowCouponMenu((prev) => !prev);
@@ -25,7 +34,7 @@ export default function CartTotal({data}) {
     };
   
     const handleCouponOptionSelect = (option) => {
-      setSelectedCouponOption(option);
+      setSelectedCouponOption(Math.floor(totalprice*(1-option)));
       setShowCouponMenu(false);
     };
   
@@ -33,9 +42,17 @@ export default function CartTotal({data}) {
       setSelectedCurrencyOption(option);
       setShowCurrencyMenu(false);
     };
- 
-   const couponOptions = ['8折', '9折', '95折']; 
-   const currencyOptions = ['$100', '$200', '$500']; 
+
+    const pricedata = {
+      selectedCouponOption,
+      selectedCurrencyOption
+    };
+
+const handlebtn = ()=>{
+   const pricedataJSON = JSON.stringify(pricedata)
+   localStorage.setItem('pricedata',pricedataJSON)
+   router.push('../order')
+}
 
   return (
     <div className={styles.CartTotalContain}>
@@ -50,9 +67,9 @@ export default function CartTotal({data}) {
                <h3 className={styles.CartTotalCurrencytext1}>知音幣</h3>
             </div>
             <div className={styles.CartTotalprice}>
-               <h2 className={styles.CartTotalPriceItem2}><span className={styles.totalprice}>{totalprice}</span></h2>
-               <h3 className={styles.CartTotalCoupontext2}>{selectedCouponOption}</h3>
-               <h3 className={styles.CartTotalCurrencytext2}>{selectedCurrencyOption}</h3>
+               <h2 className={styles.CartTotalPriceItem2}><span className={styles.price}>{totalprice}</span></h2>
+               <h3 className={styles.CartTotalCoupontext2}><span className={styles.price}>{selectedCouponOption}</span></h3>
+               <h3 className={styles.CartTotalCurrencytext2}><span className={styles.price}>{selectedCurrencyOption}</span></h3>
             </div>
          </div>
          <div className={styles.CartTotalbtn}>
@@ -62,25 +79,27 @@ export default function CartTotal({data}) {
          <div className={styles.btnmeundiv}>
          {showCouponMenu && (
                   <div className={styles.menuStyle}>
-                     {couponOptions.map((option, index) => (
-                        <div key={index} className={styles.options}  onClick={() => handleCouponOptionSelect(option)}>
-                        {option}
+                     {coupon.map((v, i) => (
+                        <div key={i} className={styles.options}  onClick={() => handleCouponOptionSelect(v.coupon_discount)}>
+                         {i+1}.{v.coupon_name}{v.coupon_discount+"折"}
                         </div>
                      ))}
                   </div>
                   )}
          {showCurrencyMenu && (
                   <div className={styles.menuStyle}>
-                     {currencyOptions.map((option, index) => (
-                        <div key={index} className={styles.options}  onClick={() => handleCurrencyOptionSelect(option)}>
-                        {option}
+                        <div className={styles.options}  onClick={() => handleCurrencyOptionSelect(0)}>
+                         1.$0
                         </div>
-                     ))}
+                        <div className={styles.options}  onClick={() => handleCurrencyOptionSelect(usetoken[0].token)}>
+                          2.${usetoken[0].token}
+                        </div>
+                    
                   </div>
                   )}
          </div>
          <div className={styles.CartTotalBtnNext}>
-            <DeepButton DeepButtoncontent='下一步，前往付款' route="/order" />
+            <DeepButton DeepButtoncontent='下一步，前往付款' onClick={handlebtn} />
          </div>
       </div>
    </div>

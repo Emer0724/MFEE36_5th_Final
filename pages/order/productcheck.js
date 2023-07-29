@@ -21,14 +21,17 @@ const [data, setData] = useState({
 }
 );
 const [shippingCost,setshippingCost] = useState(100);
-console.log(shippingCost);
+const [finalprice,setFinalprice] = useState(0)
+const handleFinalprice = ()=>{
+  setFinalprice(finalprice)
+}
 
 useEffect(() => {
 fetch(`${process.env.API_SERVER}/cart/cart`)
  .then((r) => r.json())
  .then((data) => {
    setData(data);
- }); 
+ });
 }, []);
 
 useEffect(()=>{
@@ -38,15 +41,15 @@ useEffect(()=>{
   const shippingCost = formData.shippingCost
   setshippingCost(shippingCost);
 },)
-const totalprice = data.cart.reduce((r, v) => r + v.price*v.count, 0);
-const coupon = 100; 
-const token = 100;
-const finalcost = totalprice+shippingCost-coupon-token;
 
 
 const handleclick = ()=>{
   
 }
+// fetch('https://sandbox-api-pay.line.me',{
+   
+// })
+
 
 
 
@@ -56,9 +59,9 @@ const handleclick = ()=>{
         <CartTitle titlecontent={"再次確認商品後，前往付款吧"}/>
         <CurtProduct data={data}/>
         <div style={style2}>
-          <OrderTotalPrice shippingCost={shippingCost} totalprice={totalprice} coupon={coupon} token={token} finalcost={finalcost}/>
+          <OrderTotalPrice shippingCost={shippingCost} onFinalPrice={handleFinalprice}/>
         </div>
-        <DeepButton  DeepButtoncontent={"下一步，前往付款"} onClick={handleclick} />
+        <DeepButton  DeepButtoncontent={"下一步，前往付款"} router={'./order/complete'} />
     </div>
   )
 }

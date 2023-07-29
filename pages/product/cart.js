@@ -14,14 +14,42 @@ const [data, setData] = useState({
     cart:[],
  }
 );
+const [coupon, setCoupon] = useState({});
+const [usetoken, setusetoken] = useState({});
+const [recommand,setrecommand] =useState({});
+
 useEffect(() => {
   fetch(`${process.env.API_SERVER}/cart/cart`)
     .then((r) => r.json())
     .then((data) => {
       setData(data);
     }); 
-}, [router.query]);
-
+  fetch(`${process.env.API_SERVER}/cart/cart/coupon`)
+  .then((r) => r.json())
+  .then((coupon) => {
+    setCoupon(coupon);
+  });
+  fetch(`${process.env.API_SERVER}/cart/cart/usetoken`)
+    .then((r) => r.json())
+    .then((usetoken) => {
+      setusetoken(usetoken);
+    });
+    fetch(`${process.env.API_SERVER}/cart/cart/recommand`)
+    .then((r) => r.json())
+    .then((recommand) => {
+      const copiedRecommand = JSON.parse(JSON.stringify(recommand));
+      const selectedRecommand = [];
+      while (selectedRecommand.length < 4 && copiedRecommand.length > 0) {
+        const randomIndex = Math.floor(Math.random() * copiedRecommand.length);
+        const selectedBook = copiedRecommand.splice(randomIndex, 1)[0];
+        if (!selectedRecommand.some((item) => item.ISBN === selectedBook.ISBN)) {
+          selectedRecommand.push(selectedBook);
+        }
+    setrecommand(selectedRecommand);
+    console.log(recommand);
+}
+    }); 
+}, []);
 
 const addcount = (ISBN) => {
   fetch(`${process.env.API_SERVER}/cart/cart/plus`, {
@@ -92,14 +120,13 @@ const deleteitem = (ISBN) =>{
   })
 }
 
-
   return (
     <div>
         <OrderIcon />
         <CartTitle titlecontent={"找到喜歡的東西，就快下單吧"}/>
         <Productlist data={data} addcount={addcount} cutcount={cutcount} deleteitem={deleteitem}/> 
-        <CartTotal data={data}/>
-        <CartRecommend/>
+        <CartTotal data={data} coupon={coupon} usetoken={usetoken}/>
+        <CartRecommend recommand={recommand}/>
     </div>
   )
 }
