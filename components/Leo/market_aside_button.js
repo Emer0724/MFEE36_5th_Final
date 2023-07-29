@@ -165,7 +165,7 @@ const rootSubmenuKeys = [
 
 // submenu keys of first level
 
-const Market_aside_button = ({ handleDisplay, data }) => {
+const Market_aside_button = ({ handleDisplay, rows }) => {
   const [openKeys, setOpenKeys] = useState([])
 
   const onOpenChange = (keys) => {

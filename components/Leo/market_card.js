@@ -9,9 +9,6 @@ import Link from 'next/link'
 export default function MarketCard() {
   const cardRef = useRef(null)
 
-  // const { y, setData } = useContext(LeoContext)
-  // console.log(y)
-
   const handleMouseEnter = () => {
     cardRef.current.classList.add(car.hovered)
   }
