@@ -30,6 +30,7 @@ export default function ChangebookMessage() {
   const [usedInfo, setusedInfo] = useState([])
   const [usedPrintInfo, setusedPrintInfo] = useState([])
   const [memberinfo,setmemberinfo]=useState([])
+  const [qrcode_info,setqrcode_info] = useState([])
   // const [totalpage, setTotalpage] = useState(1)
   // const [nowpage, setnowpage] = useState(1)
   useEffect(() => {
@@ -83,17 +84,22 @@ export default function ChangebookMessage() {
     const printrow = used_data.filter((v, i) => {
       if (v.checked) return v
     })
+    const qrcode_infodata=printrow.map((v,i)=>{
+return v.used_id
+    })
+    
     setusedPrintInfo(printrow)
+    setqrcode_info(qrcode_infodata)
   
     
     
   }
 
   useEffect(()=>{
-    if(usedPrintInfo.length >=1){
+    if(qrcode_info.length >=1){
       print_item()
     }
-   },[usedPrintInfo])
+   },[qrcode_info])
 
    const handleAfterPrint = () => {
    
@@ -358,7 +364,7 @@ export default function ChangebookMessage() {
         ''
       )}
       <div className='d-none'>
-      <UsedPintInfo usedPrintInfo={usedPrintInfo} memberinfo={memberinfo} printref={printref}  />
+      <UsedPintInfo usedPrintInfo={usedPrintInfo} memberinfo={memberinfo} printref={printref} qrcode_info={qrcode_info}  />
       </div>
      
     </>

@@ -2,7 +2,10 @@
     background-color: white;
     box-shadow: 5px 5px 5px gray;
     position: absolute;
-    left: calc((100vw - 25%)/2);
+    /* left: calc((100vw - 25%)/2); */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 .border_card_back{
     background-color:#747272a3;
@@ -14,4 +17,13 @@
     left: 0;
     bottom: 0;
     padding-top: 100px;
+    z-index: 12;
   }
+
+  @media screen and (max-width: 767.98px) {
+    .card_div{
+      width: 80% !important;
+    }
+    .used_text{
+      font-size: 14px !important;
+    }}

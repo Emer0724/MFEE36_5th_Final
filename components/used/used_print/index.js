@@ -105,8 +105,8 @@ if(!newdata[0]) {
   return (
     // <div className={css.used_bg}>
     <div className={`${css.used_whitebg} used_display_chkbox`}>
-      <div className="textp-24px d-flex justify-content-center">二手書資訊</div>
-      <table className="table ">
+      <div className="textp-32px d-flex justify-content-center used-search-text-20">二手書資訊</div>
+      <table className="table used_table_layout ">
         <thead>
           <tr>
             <th className="text-center">
@@ -114,7 +114,7 @@ if(!newdata[0]) {
                 onChange={(e) => getAllitem(selectAll, e, data, page1, 5)}
               />
             </th>
-            <th className="col-10  textp-20px">全選</th>
+            <th className={`col-10  textp-20px ${css.used_text}`}>全選</th>
           </tr>
         </thead>
         <tbody>
@@ -131,7 +131,7 @@ if(!newdata[0]) {
                     }}
                   />
                 </th>
-                <td className="textp-20px letter-spacing">{v.book_name}</td>
+                <td className={`textp-20px letter-spacing used_chk_msg_book_name ${css.used_text}` }>{v.book_name}</td>
               </tr>
             )
           })}

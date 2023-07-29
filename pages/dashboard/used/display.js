@@ -175,7 +175,7 @@ export default function Display() {
       <Head>
         <title>Book書易</title>
       </Head>
-      <Member_info />
+      {/* <Member_info /> */}
       <MemberNav />
       <MemberBreadcrumbs_2 />
 

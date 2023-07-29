@@ -22,36 +22,36 @@ export default function UsedUpCheck({
           二手書資訊
         </div>
         <div
-          className={`textp-20px mt-3 pb-1 letter-spacing ${css.text_line_sm}  `}
+          className={`textp-20px mt-3 pb-1 letter-spacing ${css.text_line_sm} ${css.used_text} `}
         >
           二手書流水號: {postData.used_id}
         </div>
         <div
-          className={`textp-20px mt-3 pb-1 letter-spacing ${css.text_line_sm}  `}
+          className={`textp-20px mt-3 pb-1 letter-spacing ${css.text_line_sm} ${css.used_text} `}
         >
           ISBN: {postData.ISBN}
         </div>
         <div
-          className={`textp-20px mt-3 pb-1 letter-spacing ${css.text_line_sm}  `}
+          className={`textp-20px mt-3 pb-1 letter-spacing ${css.text_line_sm} ${css.used_text} `}
         >
           書名: {postData.book_name}
         </div>
         <div
-          className={`textp-20px mt-3 pb-1 letter-spacing ${css.text_line_sm}  `}
+          className={`textp-20px mt-3 pb-1 letter-spacing ${css.text_line_sm} ${css.used_text}  `}
         >
           會員名稱: {postData.name}
         </div>
         <div
-          className={`textp-20px mt-3 pb-1 letter-spacing ${css.text_line_sm}  `}
+          className={`textp-20px mt-3 pb-1 letter-spacing ${css.text_line_sm} ${css.used_text}  `}
         >
           Email: {postData.email}
         </div>
         <div
-          className={`textp-20px mt-3 pb-1 letter-spacing ${css.text_line_sm}  `}
+          className={`textp-20px mt-3 pb-1 letter-spacing ${css.text_line_sm}  ${css.used_text} `}
         >
           地址: {postData.city + postData.district + postData.address}
         </div>
-        <div className={`textp-20px mt-3 pb-1 letter-spacing  `}>
+        <div className={`textp-20px mt-3 pb-1 letter-spacing ${css.used_text} `}>
           **請列印上表資訊並與該二手書一同寄回
           106台北市大安區復興南路一段390號2樓
         </div>
@@ -66,13 +66,13 @@ export default function UsedUpCheck({
 
       <div className="d-flex justify-content-around mt-5  ">
         <button
-          className="textp-20px btn btn-secondary  border-radius-5px  "
+          className={`textp-20px btn btn-secondary  border-radius-5px ${css.used_text}` }
           onClick={print_btn}
         >
           確認並列印
         </button>
         <button
-          className="textp-20px btn btn-secondary  border-radius-5px "
+          className={`textp-20px btn btn-secondary  border-radius-5px ${css.used_text} `}
           onClick={cancel_btn}
         >
           我要取消
