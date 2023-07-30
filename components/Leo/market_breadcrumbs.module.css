@@ -8,7 +8,7 @@ margin: 0;
 padding-top: 20px;
 padding-bottom: 20px;
 display: flex;
-padding-left: 100px;
+padding-left: 80px;
 
 }
 .p{
@@ -20,5 +20,6 @@ padding-left: 100px;
     font-weight: bold;
     color: #3F7F3A;
     border:none;
-    background-color:transparent;   
+    background-color:transparent; 
+    margin-right: 20px;  
 }
