@@ -30,25 +30,27 @@ export default function Home() {
   const [book_down, setbook_down] = useState([])
   //loading
   const [load, setload] = useState(true)
+  //書評
+  const [book_review, setbook_review] = useState([])
+  //部落格
+  const [blog, setblog] = useState([])
   useEffect(() => {
-    if(typeof window !== 'undefined'){
+    if (typeof window !== 'undefined') {
       getbookdata()
-    setMyVideo(
-      <ReactPlayer
-        playing={true}
-        volume={0}
-        width="100%"
-        height="100%"
-        url="/used-img/5th_viedo.mp4"
-        loop={true}
-      ></ReactPlayer>
-    )
-    setTimeout(() => {
-      setload(false)
-    }, 4000)
-
+      setMyVideo(
+        <ReactPlayer
+          playing={true}
+          volume={0}
+          width="100%"
+          height="100%"
+          url="/used-img/5th_viedo.mp4"
+          loop={true}
+        ></ReactPlayer>
+      )
+      setTimeout(() => {
+        setload(false)
+      }, 4000)
     }
-    
   }, [])
 
   //得書本資料
@@ -57,12 +59,15 @@ export default function Home() {
       'http://localhost:3055/used/index/book_info/'
     )
     const getbookdata2 = await getbookdata1.json()
-    console.log(getbookdata2)
-    const getupdata = getbookdata2.slice(0, 30)
-    const getdowndata = getbookdata2.slice(30)
-    console.log(getupdata)
+    // console.log(getbookdata2[0])
+    const getupdata = getbookdata2[0].slice(0, 30)
+    const getdowndata = getbookdata2[0].slice(30)
+    // console.log(getupdata)
     setbook_up(getupdata)
     setbook_down(getdowndata)
+    console.log(getbookdata2[2])
+    setbook_review(getbookdata2[1])
+    setblog(getbookdata2[2])
   }
 
   //監聽視窗大小
@@ -287,33 +292,25 @@ export default function Home() {
                 modules={[Pagination]}
                 className="mySwiper"
               >
-                <SwiperSlide>
-                  <BookHome />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <BookHome />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <BookHome />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <BookHome />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <BookHome />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <BookHome />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <BookHome />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <BookHome />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <BookHome />
-                </SwiperSlide>
+                {book_review.map((v, i) => {
+                  return (
+                    <SwiperSlide key={v.book_review_sid}>
+                      <BookHome
+                        book_review_sid={v.book_review_sid}
+                        nickname={v.nickname}
+                        add_date={v.add_date}
+                        score={v.score}
+                        pic={v.pic}
+                        book_review={v.book_review}
+                        mem_avatar={v.mem_avatar}
+
+
+
+
+                      />
+                    </SwiperSlide>
+                  )
+                })}
               </Swiper>
             </div>
           </div>
@@ -334,33 +331,23 @@ export default function Home() {
               modules={[Pagination]}
               className="mySwiper"
             >
-              <SwiperSlide>
-                <BlogHome />
-              </SwiperSlide>
-              <SwiperSlide>
-                <BlogHome />
-              </SwiperSlide>
-              <SwiperSlide>
-                <BlogHome />
-              </SwiperSlide>
-              <SwiperSlide>
-                <BlogHome />
-              </SwiperSlide>
-              <SwiperSlide>
-                <BlogHome />
-              </SwiperSlide>
-              <SwiperSlide>
-                <BlogHome />
-              </SwiperSlide>
-              <SwiperSlide>
-                <BlogHome />
-              </SwiperSlide>
-              <SwiperSlide>
-                <BlogHome />
-              </SwiperSlide>
-              <SwiperSlide>
-                <BlogHome />
-              </SwiperSlide>
+              {blog.map((v, i) => {
+                return (
+                  <SwiperSlide key={v.blog_sid}>
+                    <BlogHome 
+                    blog_sid={v.blog_sid}
+                    nickname={v.nickname}
+                    add_date={v.add_date}
+                    blog_img={v.blog_img}
+                    blog_post={v.blog_post}
+                    blog_title={v.blog_title}
+                    mem_avatar={v.mem_avatar}
+                   
+
+                     />
+                  </SwiperSlide>
+                )
+              })}
             </Swiper>
           </div>
         </div>

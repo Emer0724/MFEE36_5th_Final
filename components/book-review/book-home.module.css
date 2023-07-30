@@ -1,7 +1,8 @@
 .chenbooksize {
-    width: 150px;
-    height: 200px;
-    bottom: -20px;
+    width: 180px;
+    height: auto;
+    object-fit: cover;
+   
 }
 
 .chendate {
@@ -10,10 +11,22 @@
 .chenstar {
     color: #F2DF7D;
 }
+.chenstar_no {
+    color: #c7c7c3;
+}
+.book_limit{
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 96px;
+}
 
 .bookborder {
     border: 1px;
     border-radius: 5px;
+    height: 350.925px;
 }
 .line-hight{
     line-height: 20px;
@@ -33,5 +46,8 @@
     .card_gap{
         flex-direction: column;
         align-items: center;
+    }
+    .bookborder{
+        height: 560px;
     }
 }
