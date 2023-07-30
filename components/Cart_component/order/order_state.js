@@ -7,7 +7,7 @@ import styles from "@/components/Cart_component/order/orderIcon.module.css"
 import arrow from "@/assets/Order_image/Arrow1.svg"
 import { useRouter } from 'next/router'
 
-export default function OrderIcon({}) {
+export default function OrderIcon() {
   const [icon,setIcon]=useState(cartIconS)
   const router = useRouter()
   const currentPath = router.pathname
@@ -16,6 +16,8 @@ export default function OrderIcon({}) {
   const StateName = ["購物車","資料填寫","訂單完成"]
   const length = StateName.length
   const result = iconrouter.indexOf(currentPath)
+
+
   
   useEffect(()=>{
     if(result===0){

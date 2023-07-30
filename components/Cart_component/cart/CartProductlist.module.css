@@ -45,12 +45,12 @@
 }
 .Prodeucttr{
     vertical-align: middle;
-    transition: all 0.6s ease-in-out;
+    transition: all 0.9s ease-in-out;
 }
 .Prodeucttr:hover{
-    background: linear-gradient(to right, #ffffff, #ffffff, #a6b9c2, #77999c, #52796f);
-  
+    background-color: rgb(234, 233, 233);
 }
+
 .trashbtn{
     border-style: none;
     border-radius: 50%;

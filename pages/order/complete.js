@@ -7,7 +7,32 @@ import { useState,useEffect } from 'react'
 
 export default function complete() {
     const [windowWidth ,setWindowWidth] = useState(null)
+
   useEffect(() => {
+    const storedformData = localStorage.getItem('formData');
+    const formData = JSON.parse(storedformData);
+    console.log(formData)
+
+    const storedcountData = localStorage.getItem('pricedata');
+    const countData=JSON.parse(storedcountData);
+    console.log(countData)
+
+    const storedpriceData = localStorage.getItem('pricefinal');
+    const pricefinal = JSON.parse(storedpriceData);
+    console.log(pricefinal)
+
+     const allData = {formData,countData,pricefinal}
+      console.log(allData);
+
+    fetch(`${process.env.API_SERVER}/cart/cart/complete`,{
+      method:"POST",
+      body:JSON.stringify(allData),
+      headers:{"Content-Type": "application/json" }
+    })
+     .then((response) => response.json())
+    .then((result) => console.log(result))
+    .catch((error) => console.error('Fetch Error:', error));
+
     const handleResize = () => {
       setWindowWidth(window.innerWidth)
     }
@@ -48,6 +73,8 @@ const style3 = {
     gap:"60px",
     color:"var(--color2)"
 }
+
+
 
 
   return (

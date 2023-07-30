@@ -59,7 +59,6 @@ const limitText = (text,maxLength) => {
               )
           })
           }
-          
           </tr>  
       </thead> 
       <tbody>

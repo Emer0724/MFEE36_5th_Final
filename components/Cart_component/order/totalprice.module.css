@@ -32,7 +32,30 @@
 .totalprice::before{
     content: "$";
 }
-
+.finalprice::before{
+    content: "$";
+}
+.shippingprice::before{
+    content: "+$";
+}
+.couponprice::before{
+    content: "-$";
+}
+.tokenprice::before{
+    content: "-$";
+}
+.tokenprice{
+    margin-top:30px;
+}
+.couponprice{
+    margin-top:30px;
+}
+.shippingprice{
+    margin-top:30px;
+}
+.finalprice{
+    margin-top:30px;
+}
 
 
 @media (max-width:400px) {

@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import styles from "@/components/Cart_component/cart/CartTotal.module.css"
 import { useRouter } from 'next/router';
 
-export default function CartTotal({data}) {
+export default function CartTotal({data,usetoken,coupon}) {
 
    if (!Array.isArray(usetoken)) {
       return null;
@@ -16,6 +16,7 @@ export default function CartTotal({data}) {
    const [showCurrencyMenu, setShowCurrencyMenu] = useState(false);
    const [selectedCouponOption, setSelectedCouponOption] = useState(0);
    const [selectedCurrencyOption, setSelectedCurrencyOption] = useState(0);
+   const [selectcoupon,setSelectcoupon] = useState(0)
 
    const eachprice = data.cart.map((v) => {
       return v.price * v.count;
@@ -34,9 +35,11 @@ export default function CartTotal({data}) {
     };
   
     const handleCouponOptionSelect = (option) => {
+      setSelectcoupon(option)
       setSelectedCouponOption(Math.floor(totalprice*(1-option)));
       setShowCouponMenu(false);
     };
+    console.log(selectcoupon);
   
     const handleCurrencyOptionSelect = (option) => {
       setSelectedCurrencyOption(option);
@@ -45,7 +48,8 @@ export default function CartTotal({data}) {
 
     const pricedata = {
       selectedCouponOption,
-      selectedCurrencyOption
+      selectedCurrencyOption,
+      selectcoupon
     };
 
 const handlebtn = ()=>{
@@ -79,6 +83,9 @@ const handlebtn = ()=>{
          <div className={styles.btnmeundiv}>
          {showCouponMenu && (
                   <div className={styles.menuStyle}>
+                  <div className={styles.options}  onClick={() => handleCouponOptionSelect(1)}>
+                         不使用
+                        </div>
                      {coupon.map((v, i) => (
                         <div key={i} className={styles.options}  onClick={() => handleCouponOptionSelect(v.coupon_discount)}>
                          {i+1}.{v.coupon_name}{v.coupon_discount+"折"}
@@ -89,10 +96,10 @@ const handlebtn = ()=>{
          {showCurrencyMenu && (
                   <div className={styles.menuStyle}>
                         <div className={styles.options}  onClick={() => handleCurrencyOptionSelect(0)}>
-                         1.$0
+                         不使用
                         </div>
                         <div className={styles.options}  onClick={() => handleCurrencyOptionSelect(usetoken[0].token)}>
-                          2.${usetoken[0].token}
+                          ${usetoken[0].token}
                         </div>
                     
                   </div>

@@ -14,6 +14,9 @@ export default function checkForm() {
   const [paymentMethod, setPaymentMethod] = useState("linepay");
   const [recipientName, setRecipientName] = useState("");
   const [recipientPhone, setRecipientPhone] = useState("");
+  const [selectcity,setCity] = useState('')
+  const [selectarea,setArea] = useState('')
+  const [writeroad,setWriteroad] = useState('')
   const [recipientAddress, setRecipientAddress] = useState("");
   const [recipientstore, setRecipientstore] = useState("");
   const [shippingCost, setShippingCost] = useState(100);
@@ -47,6 +50,7 @@ export default function checkForm() {
       {area.AreaName}
     </option>
   )});
+  setCity(selectedCity);
   setRecipientAddress(`${selectedCity} ${areaOptions[0].props.value}`);
   setAreaOptions(areaOptions);
 };
@@ -54,12 +58,15 @@ const handleAreaChange = (event) => {
   // 根據所選的區域，更新路名的選項
   const selectedArea = event.target.value;
   const selectedCityData = loc.find((v) => v.CityName === recipientAddress.city);
-  // const selectedAreaData = selectedCityData.AreaList.find(
-  //   (area) => area.ZipCode === selectedArea
-  // );
+  setArea(selectedArea)
   setRecipientAddress(`${recipientAddress.split(' ')[0]} ${selectedArea}`);
 };
-
+const cityroad =(e)=>{
+  setWriteroad(e.target.value);
+  setRecipientAddress(
+    `${recipientAddress.split(' ')[0]} ${recipientAddress.split(' ')[1]} ${e.target.value}`
+  )
+}
 
   const shippingMethodHandle = (event) => {
     if(shippingMethod === "宅配到家+100"){
@@ -86,12 +93,27 @@ const handleAreaChange = (event) => {
       recipientPhone,
       recipientAddress,
       recipientstore,
-      shippingCost
+      shippingCost,
+      selectcity,
+      selectarea,
+      writeroad
+
     };
     const formDataJSON = JSON.stringify(formData);
     localStorage.setItem('formData', formDataJSON);
     router.push('/order/productcheck');
   }
+  useEffect(()=>{
+    const storedData = localStorage.getItem('formData');
+    const formData = JSON.parse(storedData);
+    setShippingMethod(formData.shippingMethod);
+    setRecipientName(formData.recipientName);
+    setRecipientPhone(formData.recipientPhone);
+    setCity(formData.selectcity);
+    setArea(formData.selectarea);
+    setWriteroad(formData.writeroad)
+  },[])
+
 
 
   useEffect(() => {
@@ -167,6 +189,9 @@ const handleAreaChange = (event) => {
     borderRadius: 5,
     color: 'white',
     fontSize:windowWidth && windowWidth > 600?"20px":"16px",
+    position:windowWidth && windowWidth > 1400?"absolute":"",
+    left:windowWidth && windowWidth > 1400?"900px":"",
+    top:windowWidth && windowWidth > 1400?"1750px":"",
   }
   const pos1 = {
     textAlign:"center",
@@ -230,10 +255,7 @@ const handleAreaChange = (event) => {
                             type="text"
                             placeholder="請輸入路名 鄉 鎮 巷 號 樓層"
                             value={recipientAddress.address}
-                            onChange={(e) =>
-                              setRecipientAddress(
-                                `${recipientAddress.split(' ')[0]} ${recipientAddress.split(' ')[1]} ${e.target.value}`
-                              )
+                            onChange={cityroad
                             }
                             style={inputstyle}
                             required

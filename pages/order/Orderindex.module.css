@@ -8,6 +8,7 @@
     align-items:center;
     gap: 360px;
     margin-top:160px;
+    margin-bottom: 50px;
   }
 
 @media(max-width:400px) {
@@ -16,6 +17,7 @@
         flex-direction:column;
         justify-content:space-around;
         align-items:center;
+        margin-top:80px;
         margin-bottom: 50px;
         gap: 10px;
       }
