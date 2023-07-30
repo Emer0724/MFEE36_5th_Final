@@ -103,16 +103,32 @@ const cityroad =(e)=>{
     localStorage.setItem('formData', formDataJSON);
     router.push('/order/productcheck');}
   }
-  useEffect(()=>{
+  useEffect(() => {
+    const initialFormData = {
+      shippingMethod: "宅配到家+100",
+      paymentMethod: "linepay",
+      recipientName: "",
+      recipientPhone: "",
+      selectcity: "",
+      selectarea: "",
+      writeroad: "",
+    };
     const storedData = localStorage.getItem('formData');
-    const formData = JSON.parse(storedData);
-    setShippingMethod(formData.shippingMethod);
-    setRecipientName(formData.recipientName);
-    setRecipientPhone(formData.recipientPhone);
-    setCity(formData.selectcity);
-    setArea(formData.selectarea);
-    setWriteroad(formData.writeroad)
-  },[])
+    if (!storedData) {
+      // 如果localStorage中沒有formData，就存入初始資料
+      const formDataJSON = JSON.stringify(initialFormData);
+      localStorage.setItem('formData', formDataJSON);
+    } else {
+      // 如果已經有formData，就將其解析並設定為表單狀態
+      const formData = JSON.parse(storedData);
+      setShippingMethod(formData.shippingMethod);
+      setRecipientName(formData.recipientName);
+      setRecipientPhone(formData.recipientPhone);
+      setCity(formData.selectcity);
+      setArea(formData.selectarea);
+      setWriteroad(formData.writeroad);
+    }
+  }, []);
 
 
 

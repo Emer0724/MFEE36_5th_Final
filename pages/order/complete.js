@@ -32,9 +32,9 @@ export default function complete() {
      .then((r) => r.json())
      .then((result) => {
       console.log(result);
-      // localStorage.removeItem('formData')
-      // localStorage.removeItem('pricedata')
-      // localStorage.removeItem('pricefinal')
+      localStorage.removeItem('formData')
+      localStorage.removeItem('pricedata')
+      localStorage.removeItem('pricefinal')
     }
     )
     .catch((error) => console.error('Fetch Error:', error));
