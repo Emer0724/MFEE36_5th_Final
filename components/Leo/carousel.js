@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
@@ -10,31 +10,19 @@ import 'swiper/css/free-mode'
 import 'swiper/css/navigation'
 import 'swiper/css/thumbs'
 import css from '@/components/Leo/carousel.module.css'
-import 'swiper/css/pagination'
 
 export default function Carousel() {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
-
   const handleActiveIndexChange = (index) => {
     // console.log(index)
     setActiveSlideIndex(index.realIndex)
   }
-  useEffect(() => {
-    // 使用 setInterval 定時增加 activeSlideIndex 的值
-    const interval = setInterval(() => {
-      setActiveSlideIndex((prevIndex) => (prevIndex + 1) % 7)
-    }, 3000) // 每 3 秒切換一次
-
-    // 在元件即將解除掛載時清除 interval
-    return () => clearInterval(interval)
-  }, [activeSlideIndex]) // 空陣列表示只在元件初次渲染時執行一次
-
   return (
     <>
       <div
         className="d-flex justify-content-center  align-items-center "
         style={{
-          backgroundColor: '#FFFFFF',
+          backgroundColor: '#ffffff',
           height: '400px',
         }}
       >
@@ -55,7 +43,6 @@ export default function Carousel() {
             modifier: 1,
             slideShadows: true,
           }}
-          onSlideChange={(swiper) => setActiveSlideIndex(swiper.realIndex)}
           onActiveIndexChange={handleActiveIndexChange}
         >
           <SwiperSlide>

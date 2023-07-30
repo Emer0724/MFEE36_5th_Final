@@ -190,7 +190,9 @@ const Market_aside_button = ({ handleDisplay, rows }) => {
               {item.items.map((subItem) => (
                 <Menu.Item
                   key={subItem.key}
-                  onClick={() => handleDisplay(subItem.category_id)}
+                  onClick={() =>
+                    handleDisplay(subItem.category_id, subItem.label)
+                  }
                 >
                   {subItem.label}
                 </Menu.Item>
@@ -201,7 +203,7 @@ const Market_aside_button = ({ handleDisplay, rows }) => {
           return (
             <Menu.Item
               key={item.key}
-              onClick={() => handleDisplay(item.category_id)}
+              onClick={() => handleDisplay(item.category_id, item.label)}
             >
               {item.label}
             </Menu.Item>
