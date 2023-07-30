@@ -55,35 +55,7 @@ export default function Products() {
       <div className="container">
         <div className="row">
           <div className="col">
-            <nav aria-label="Page navigation example">
-              <ul className="pagination">
-                {Array(5)
-                  .fill(1)
-                  .map((v, i) => {
-                    const p = data.page - 2 + i;
-                    console.log(p);
-                    const query = { ...router.query };
-                    console.log(query);
-                    if (p < 1 || p > data.totalPages) return;
-                    query.page = p;
-                    return (
-                      <li
-                        className={
-                          `page-item ` + (p === data.page ? "active" : "")
-                        }
-                        key={p}
-                      >
-                        <Link
-                          className="page-link"
-                          href={"?" + new URLSearchParams(query).toString()}
-                        >
-                          {p}
-                        </Link>
-                      </li>
-                    );
-                  })}
-              </ul>
-            </nav>
+            
           </div>
         </div>
         <div className="row">
@@ -142,6 +114,36 @@ export default function Products() {
           </div>
         </div>
       </div>
+      <nav aria-label="Page navigation example">
+              <ul className="pagination">
+                {Array(5)
+                  .fill(1)
+                  .map((v, i) => {
+                    const p = data.page - 2 + i;
+                    console.log(p);
+                    const query = { ...router.query };
+                    console.log(query);
+                    if (p < 1 || p > data.totalPages) return;
+                    query.page = p;
+                    return (
+                      <li
+                        className={
+                          `page-item ` + (p === data.page ? "active" : "")
+                        }
+                        key={p}
+                      >
+                        <Link
+                          className="page-link"
+                          href={"?" + new URLSearchParams(query).toString()}
+                          
+                        >
+                          {p}
+                        </Link>
+                      </li>
+                    );
+                  })}
+              </ul>
+            </nav>
     </>
   );
 }

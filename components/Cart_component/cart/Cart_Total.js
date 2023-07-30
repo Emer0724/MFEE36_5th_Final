@@ -3,6 +3,7 @@ import LightButton from '@/components/common/CBtn/LightGreenBtn';
 import React, { useState } from 'react'
 import styles from "@/components/Cart_component/cart/CartTotal.module.css"
 import { useRouter } from 'next/router';
+import { set } from 'lodash';
 
 export default function CartTotal({data,usetoken,coupon}) {
 
@@ -17,6 +18,8 @@ export default function CartTotal({data,usetoken,coupon}) {
    const [selectedCouponOption, setSelectedCouponOption] = useState(0);
    const [selectedCurrencyOption, setSelectedCurrencyOption] = useState(0);
    const [selectcoupon,setSelectcoupon] = useState(0)
+   const [selectcouponid,setSelectcouponid] = useState(0)
+   const [selectcouponmid,setSelectcouponmid] = useState(0)
 
    const eachprice = data.cart.map((v) => {
       return v.price * v.count;
@@ -34,9 +37,11 @@ export default function CartTotal({data,usetoken,coupon}) {
       setShowCouponMenu(false);
     };
   
-    const handleCouponOptionSelect = (option) => {
-      setSelectcoupon(option)
-      setSelectedCouponOption(Math.floor(totalprice*(1-option)));
+    const handleCouponOptionSelect = (mid,id,coupon_discount) => {
+      setSelectcouponmid(mid)
+      setSelectcoupon(coupon_discount)
+      setSelectcouponid(id)
+      setSelectedCouponOption(Math.floor(totalprice*(1-coupon_discount)));
       setShowCouponMenu(false);
     };
     console.log(selectcoupon);
@@ -49,7 +54,9 @@ export default function CartTotal({data,usetoken,coupon}) {
     const pricedata = {
       selectedCouponOption,
       selectedCurrencyOption,
-      selectcoupon
+      selectcoupon,
+      selectcouponid,
+      selectcouponmid
     };
 
 const handlebtn = ()=>{
@@ -83,12 +90,12 @@ const handlebtn = ()=>{
          <div className={styles.btnmeundiv}>
          {showCouponMenu && (
                   <div className={styles.menuStyle}>
-                  <div className={styles.options}  onClick={() => handleCouponOptionSelect(1)}>
+                     <div className={styles.options}  onClick={() => handleCouponOptionSelect(0,0,1)}>
                          不使用
                         </div>
                      {coupon.map((v, i) => (
-                        <div key={i} className={styles.options}  onClick={() => handleCouponOptionSelect(v.coupon_discount)}>
-                         {i+1}.{v.coupon_name}{v.coupon_discount+"折"}
+                        <div key={i} className={styles.options}  onClick={() => handleCouponOptionSelect(v.coupon_mid,v.coupon_id,v.coupon_discount)}>
+                        <span style={{display:"none"}}>{v.coupon_mid}{v.coupon_id}</span>{i+1}.{v.coupon_name}{v.coupon_discount+"折"}
                         </div>
                      ))}
                   </div>

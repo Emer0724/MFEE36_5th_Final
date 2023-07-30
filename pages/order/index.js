@@ -86,6 +86,7 @@ const cityroad =(e)=>{
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
+  if(isNameRight && iscellphoneRight){
     const formData = {
       shippingMethod,
       paymentMethod,
@@ -97,11 +98,10 @@ const cityroad =(e)=>{
       selectcity,
       selectarea,
       writeroad
-
     };
     const formDataJSON = JSON.stringify(formData);
     localStorage.setItem('formData', formDataJSON);
-    router.push('/order/productcheck');
+    router.push('/order/productcheck');}
   }
   useEffect(()=>{
     const storedData = localStorage.getItem('formData');

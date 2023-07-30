@@ -1,4 +1,4 @@
-import CartTitle from '@/components/Cart_component/Cart_title'
+import s from '@/pages/order/complete.module.css'
 import OrderState from '@/components/Cart_component/order/order_state'
 import DeepButton from '@/components/common/CBtn/DeepgreenBtn'
 import { useState,useEffect } from 'react'
@@ -29,8 +29,14 @@ export default function complete() {
       body:JSON.stringify(allData),
       headers:{"Content-Type": "application/json" }
     })
-     .then((response) => response.json())
-    .then((result) => console.log(result))
+     .then((r) => r.json())
+     .then((result) => {
+      console.log(result);
+      // localStorage.removeItem('formData')
+      // localStorage.removeItem('pricedata')
+      // localStorage.removeItem('pricefinal')
+    }
+    )
     .catch((error) => console.error('Fetch Error:', error));
 
     const handleResize = () => {
@@ -80,7 +86,7 @@ const style3 = {
   return (
     <>
       <OrderState/>
-      <div style={style2}>
+      <div style={style2} >
         <div style={style3}>
             <h1>訂單已完成</h1>
             <h3>等候5-7個工作天幫您送達</h3>
