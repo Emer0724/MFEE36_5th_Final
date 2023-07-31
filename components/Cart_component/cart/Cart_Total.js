@@ -3,7 +3,6 @@ import LightButton from '@/components/common/CBtn/LightGreenBtn';
 import React, { useState } from 'react'
 import styles from "@/components/Cart_component/cart/CartTotal.module.css"
 import { useRouter } from 'next/router';
-import { set } from 'lodash';
 
 export default function CartTotal({data,usetoken,coupon}) {
 
@@ -17,7 +16,7 @@ export default function CartTotal({data,usetoken,coupon}) {
    const [showCurrencyMenu, setShowCurrencyMenu] = useState(false);
    const [selectedCouponOption, setSelectedCouponOption] = useState(0);
    const [selectedCurrencyOption, setSelectedCurrencyOption] = useState(0);
-   const [selectcoupon,setSelectcoupon] = useState(0)
+   const [selectcoupon,setSelectcoupon] = useState(1)
    const [selectcouponid,setSelectcouponid] = useState(0)
    const [selectcouponmid,setSelectcouponmid] = useState(0)
 
