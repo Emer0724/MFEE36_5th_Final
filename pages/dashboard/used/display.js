@@ -35,6 +35,7 @@ export default function Display() {
   const [postData, setPostData] = useState(false)
   const [checkCancel, setCheckCancel] = useState(false)
   const [cancel_result, setCancel_result] = useState(false)
+  const [showQRcode, setshowQRcode] = useState(false)
   // const history = useNavigate()
 
   useEffect(() => {
@@ -174,7 +175,7 @@ export default function Display() {
       <Head>
         <title>Book書易</title>
       </Head>
-      <Member_info />
+      {/* <Member_info /> */}
       <MemberNav />
       <MemberBreadcrumbs_2 />
 
@@ -216,9 +217,12 @@ export default function Display() {
                   <div
                     className="color-bg-6 my-4 "
                     style={{
-                      width: 190,
-                      height: 190,
-                      background: `url('/all_img/book_pic/${book.pic}')`,
+                      width: '190px',
+                      height: '190px',
+
+                      background: `url('/all_img/book_pic/${encodeURIComponent(
+                        book.pic
+                      )}')`,
                       backgroundSize: 'cover',
                       backgroundPosition: 'center',
                     }}
@@ -347,6 +351,7 @@ export default function Display() {
             cancel_btn={cancel_btn}
             print_btn={print_item}
             printref={printref}
+            showQRcode={showQRcode}
           />
         </div>
       ) : (
@@ -368,36 +373,6 @@ export default function Display() {
       ) : (
         ''
       )}
-      {/* <div>
-        <div
-          className={`textp-32px letter-spacing fw-bold  text-center    `}
-          ref={printref}
-        >
-          上架資訊
-        </div>
-        <div className={`textp-20px mt-3 pb-1 letter-spacing   `}>
-          上架流水號: {postData.used_id}
-        </div>
-        <div className={`textp-20px mt-3 pb-1 letter-spacing  `}>
-          ISBN: {postData.ISBN}
-        </div>
-        <div className={`textp-20px mt-3 pb-1 letter-spacing   `}>
-          書名: {postData.book_name}
-        </div>
-        <div className={`textp-20px mt-3 pb-1 letter-spacing  `}>
-          會員名稱: {postData.name}
-        </div>
-        <div className={`textp-20px mt-3 pb-1 letter-spacing   `}>
-          Email: {postData.email}
-        </div>
-        <div className={`textp-20px mt-3 pb-1 letter-spacing  `}>
-          地址: {postData.city + postData.district + postData.address}
-        </div>
-        <div className={`textp-20px mt-3 pb-1 letter-spacing  `}>
-          **請列印上表資訊並與該二手書一同寄回
-          106台北市大安區復興南路一段390號2樓
-        </div>
-      </div> */}
     </>
   )
 }

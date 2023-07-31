@@ -8,18 +8,6 @@ import { useRouter } from 'next/router'
 import Popup_window from '@/components/used/popup_window'
 import Head from 'next/head'
 
-const book_info = {
-  used_id: 18,
-  ISBN: 9789861371955,
-  book_name: '被討厭的勇氣：自我啟發之父「阿德勒」的教導',
-  status: '',
-  state: '2',
-  price: '456',
-  img: 'getImage.webp',
-  updated: '20230708',
-  node: '',
-}
-
 //暫定 1.待兌換 2.代收書 3.退回 4.已兌換
 // const newdata = { ...book_info }
 // if (newdata.state === '1') {
@@ -195,13 +183,14 @@ export default function Usedid() {
               {bookInfo.book_name}
             </h3>
             <div
-              className="color-bg-6 my-5 "
+              className="color-bg-6 my-4 "
               style={{
-                width: 200,
-                height: 200,
-                backgroundSize: 'cover',
-                background: `url('/all_img/book_pic/${bookInfo.pic}')`,
-                backgroundPosition: 'center',
+                width: '190px',
+                height: '190px',
+
+                background: `url('/all_img/book_pic/${encodeURIComponent(
+                  bookInfo.pic
+                )}') center center /cover `,
               }}
             ></div>
           </div>

@@ -3,4 +3,5 @@
 }
 .active{
     background-color: rgb(249, 249, 249);
+    z-index: 0.5;
 }

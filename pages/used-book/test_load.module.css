@@ -12,6 +12,7 @@
   animation-duration:1s;
   animation-delay:4s;
   opacity: 1;
+  z-index: 99999999;
   
 }
 .slogan{

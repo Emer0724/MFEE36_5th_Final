@@ -1,6 +1,7 @@
 .blogimg {
-    width: 100%;
-    height: 250px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
 }
 .chenbread-hole {
     font-size: 12px;
@@ -12,4 +13,19 @@
 .blogborder {
     border: 1px;
     border-radius: 5px;
+    user-select:none;
+}
+.blog_limit{
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.title_limit{
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
