@@ -10,6 +10,8 @@ import UsedUpCheck from '@/components/used/used-upcheck'
 import Popup_window from '@/components/used/popup_window'
 import { useReactToPrint } from 'react-to-print'
 import Head from 'next/head'
+import Image from 'next/image'
+import no_book from '@/assets/used-svg/no_book.svg'
 
 // const books = {
 //   ISBN: 9789861371955,
@@ -36,6 +38,7 @@ export default function Display() {
   const [checkCancel, setCheckCancel] = useState(false)
   const [cancel_result, setCancel_result] = useState(false)
   const [showQRcode, setshowQRcode] = useState(false)
+  const [img, setimg] = useState(true)
   // const history = useNavigate()
 
   useEffect(() => {
@@ -175,7 +178,7 @@ export default function Display() {
       <Head>
         <title>Book書易</title>
       </Head>
-      {/* <Member_info /> */}
+      <Member_info />
       <MemberNav />
       <MemberBreadcrumbs_2 />
 
@@ -214,19 +217,19 @@ export default function Display() {
                     {search_error}
                   </div>
 
-                  <div
-                    className="color-bg-6 my-4 "
-                    style={{
-                      width: '190px',
-                      height: '190px',
-
-                      background: `url('/all_img/book_pic/${encodeURIComponent(
-                        book.pic
-                      )}')`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
+                  <Image
+                    src={
+                      img
+                        ? `/all_img/book_pic/${encodeURIComponent(book.pic)}`
+                        : no_book
+                    }
+                    width={190}
+                    height={190}
+                    alt="book"
+                    onError={() => {
+                      setimg(false)
                     }}
-                  ></div>
+                  />
 
                   <div className="d-flex flex-column align-items-center ">
                     <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center used-search-text-14">

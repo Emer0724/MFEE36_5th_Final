@@ -4,6 +4,8 @@ import { AiFillStar } from 'react-icons/ai'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import Image from 'next/image'
 import Button2 from '../common/button/button2'
+import no_book from '@/assets/used-svg/no_book.svg'
+import React, { useState } from 'react'
 
 export default function BookHome({
   book_review_sid,
@@ -14,6 +16,7 @@ export default function BookHome({
   book_review,
   mem_avatar,
 }) {
+  const [img, setimg] = useState(true)
   return (
     <div
       className={`${style.bookborder} ps-3 pe-3`}
@@ -22,12 +25,23 @@ export default function BookHome({
       <div className="pb-2 pt-4 ">
         <div className={`d-flex ${style.card_gap}`}>
           <div className="d-flex justify-content-center align-items-center">
-            <Image
+            {/* <Image
               src={`/all_img/book_pic/${encodeURIComponent(pic)}`}
               className={`${style.chenbooksize}`}
               width={150}
               height={150}
               alt="book_Img"
+            /> */}
+            <Image
+              src={
+                img ? `/all_img/book_pic/${encodeURIComponent(pic)}` : no_book
+              }
+              width={150}
+              height={150}
+              alt="book"
+              onError={() => {
+                setimg(false)
+              }}
             />
           </div>
           <div>

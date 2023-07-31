@@ -32,11 +32,10 @@ export default function ChangebookMessage() {
   const [usedPrintInfo, setusedPrintInfo] = useState([])
   const [memberinfo, setmemberinfo] = useState([])
   const [qrcode_info, setqrcode_info] = useState([])
-  const [loading, setloading] = useState(false)
+  const [loading, setloading] = useState(true)
   // const [totalpage, setTotalpage] = useState(1)
   // const [nowpage, setnowpage] = useState(1)
   useEffect(() => {
-    setloading(true)
     if (!localStorage.getItem('auth')) {
       router.push('/member/login')
     } else {
@@ -60,7 +59,9 @@ export default function ChangebookMessage() {
     const getdata2 = await getdata1.json()
 
     setData(getdata2)
-    setloading(false)
+    setTimeout(() => {
+      setloading(false)
+    }, 1800)
   }
   const getUsedInfo = async () => {
     const authToken = JSON.parse(localStorage.getItem('auth')).token
@@ -121,7 +122,7 @@ export default function ChangebookMessage() {
       <MemberNav />
       <MemberBreadcrumbs_2 />
       {loading ? (
-        <div>
+        <div style={{ paddingTop: '100px' }}>
           <Loading />
         </div>
       ) : (

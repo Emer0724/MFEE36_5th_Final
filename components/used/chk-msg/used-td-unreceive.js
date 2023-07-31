@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import { LuMoreHorizontal } from 'react-icons/lu'
 
 export default function UsedTdUnreceive({
   snumber,
@@ -28,7 +29,7 @@ export default function UsedTdUnreceive({
             href={`/dashboard/used/book-edit/${used_id}`}
             style={{ color: '#52796F' }}
           >
-            詳細資料
+            <LuMoreHorizontal className="fs-3" />
           </Link>
         </td>
       </tr>
