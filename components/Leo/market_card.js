@@ -16,7 +16,7 @@ export default function MarketCard(data) {
     cardRef.current.classList.remove(car.hovered)
   }
   const { rows } = data
-  const { book_name, pic, price } = rows
+  const { book_name, pic, price, ISBN } = rows
 
   // console.log(book_name)
   // console.log(pic)
@@ -33,7 +33,7 @@ export default function MarketCard(data) {
         <div className={`${car.card}`}>
           <div className={`market-card d-flex ${car.no}`}>
             <div>
-              <Link href="/">
+              <Link href={`/product/${ISBN}`}>
                 <Image
                   src={imageUrl}
                   className={`bk-img`}
