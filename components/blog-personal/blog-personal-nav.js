@@ -9,7 +9,7 @@ export default function BlogPersonalNav() {
     const track = '/blog/track'
 
   return (
-    <>
+    <div className={`${style.chendis}`}>
             <div className={`${style.chenblognav} d-flex pb-5 pt-5`}>
                 <div>
                     <Link href={Work} className={`text-black fs-5 text-decoration-none`}>作品</Link>
@@ -24,6 +24,6 @@ export default function BlogPersonalNav() {
                     <Link href={track} className={`text-black fs-5 text-decoration-none`}>追蹤</Link>
                 </div>
             </div>
-    </>
+    </div>
   )
 }

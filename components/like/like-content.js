@@ -2,7 +2,7 @@ import Avatar2 from '../book-review/blogavatar2'
 import Image from 'next/image'
 import Link from 'next/link'
 import style from '@/components/blog/blog_content.module.css'
-import shadowverse from '@/public/blogimg/shadowverse.jpg'
+import shadowverse from '@/public/blog-img/shadowverse.jpg'
 import Button11 from '../common/button/button11'
 
 export default function LikeContent() {

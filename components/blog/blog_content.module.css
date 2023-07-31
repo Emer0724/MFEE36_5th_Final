@@ -11,6 +11,9 @@
 .blogtitle {
     font-size: 18px;
 }
+.chenfs {
+    font-size: 24px;
+}
 
 .chenover {
     display: -webkit-box;
@@ -29,5 +32,8 @@
     }
     .chenover {
         font-size: 14px;
+    }
+    .chenfs {
+        font-size: 18px;
     }
 }

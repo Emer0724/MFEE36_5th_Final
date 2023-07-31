@@ -2,11 +2,11 @@ import Button12 from "../common/button/button12"
 import Link from "next/link"
 import Image from "next/image"
 import style from '@/components/blog/follow-columndown.module.css'
-import img1 from '@/public/blogimg/1.jpg'
-import img2 from '@/public/blogimg/2.jpg'
-import img3 from '@/public/blogimg/3.jpg'
-import img5 from '@/public/blogimg/5.jpg'
-import images from '@/public/blogimg/images.jpg'
+import img1 from '@/public/blog-img/1.jpg'
+import img2 from '@/public/blog-img/2.jpg'
+import img3 from '@/public/blog-img/3.jpg'
+import img5 from '@/public/blog-img/5.jpg'
+import images from '@/public/blog-img/images.jpg'
 
 
 export default function FollowColumnDown() {

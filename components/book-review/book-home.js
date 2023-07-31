@@ -3,10 +3,13 @@ import style from '@/components/book-review/book-home.module.css'
 import { AiFillStar } from 'react-icons/ai'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import Image from 'next/image'
-import imgbook1 from '@/public/blogimg/book1.jpg'
+import imgbook1 from '@/public/blog-img/book1.jpg'
 import Button2 from '../common/button/button2'
 
 export default function BookHome() {
+
+
+
   return (
     <div
       className={`${style.bookborder} ps-3 pe-3`}

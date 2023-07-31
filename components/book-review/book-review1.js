@@ -5,7 +5,7 @@ import style from '@/components/book-review/book-review1.module.css'
 
 export default function BookReview() {
   return (
-    <div class={`${style.card_gap} container d-flex pt-5`}>
+    <div className={`${style.card_gap} container d-flex pt-5`}>
       <ToolBar />
       <BookContent />
       <FollowColumn />

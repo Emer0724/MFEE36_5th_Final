@@ -2,46 +2,102 @@ import Avatar2 from '../book-review/blogavatar2'
 import Image from 'next/image'
 import Link from 'next/link'
 import style from '@/components/blog/blog_content.module.css'
-import shadowverse from '@/public/blogimg/shadowverse.jpg'
+import shadowverse from '@/public/blog-img/shadowverse.jpg'
+import { useState, useEffect } from 'react'
+
+const blogcontent = '/blog/recommend'
 
 export default function BlogContent() {
-  const blogcontent = '/blog/recommend'
+  const [blogs, setBlogs] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [offset, setOffset] = useState(0)
+
+  useEffect(() => {
+    fetchData()
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  const fetchData = async () => {
+    setIsLoading(true)
+    try {
+      const response = await fetch(
+        `http://localhost:3055/blog/blog?offset=${offset}`
+      )
+      if (!response.ok) {
+        throw new Error('沒有資料')
+      }
+      const data = await response.json()
+      setBlogs((prevBlogs) => [...prevBlogs, ...data])
+      setOffset((prevOffset) => prevOffset + 10)
+    } catch (error) {
+      console.error('沒有資料', error)
+    }
+    setIsLoading(false)
+  }
+
+  const handleScroll = () => {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement
+    if (scrollTop + clientHeight >= scrollHeight - 10 && !isLoading) {
+      fetchData()
+    }
+  }
+
+  const formatDateString = (dateString) => {
+    const date = new Date(dateString)
+    return date.toISOString().split('T')[0]
+  }
+
   return (
     <>
-      <div className='row'>
-        <div className="pt-4 pb-4">
-          <Link
-            href={blogcontent}
-            className={`${style.blogtitle} text-black text-decoration-none`}
-          >
-            <span>吐槽日常語言裡的歸納法思想</span>
-          </Link>
-        </div>
-        <div className="d-flex">
-          <Avatar2 />
-        </div>
-        <div className="pt-3">
-          <div>
-            <Image src={shadowverse} className={`${style.blogimg}`} />
+      <div className="row">
+        {blogs.map((blog) => (
+          <div key={blog.blog_sid}>
+            <Link
+              href={blogcontent}
+              className={`${style.blogtitle} pb-3 text-black text-decoration-none`}
+            >
+              <span className={`${style.chenfs}`}>{blog.blog_title}</span>
+            </Link>
+            <div className="d-flex pt-3">
+              <Avatar2 nickname={blog.nickname} />
+            </div>
+            <div className="pt-3">
+              {blog.blog_img ? (
+                <Image
+                  src={`all_img/img/${blog.blog_img}`}
+                  width={450}
+                  height={250}
+                  className={style.blogimg}
+                />
+              ) : (
+                <Image
+                  src="/all_img/img/noimg.jpg"
+                  width={450}
+                  height={250}
+                  className={style.blogimg}
+                />
+              )}
+            </div>
+            <div className="pt-3">
+              <Link
+                href={blogcontent}
+                className={`${style.chenover}  text-black text-decoration-none`}
+              >
+                <p>{blog.blog_post}</p>
+              </Link>
+            </div>
+            <div className="pb-3 pt-3">
+              <div className={`border-bottom ${style.chendate}`}>
+                <span>{formatDateString(blog.add_date)}</span>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="pt-3">
-          <Link
-            href={blogcontent}
-            className={`${style.chenover}  text-black text-decoration-none`}
-          >
-            <p>
-              疫情好轉，各國開關，有些馬特市民外出遊走，也有的在自己的市內散步，不論你在哪裡，都有美麗的風景、交雜的心情，以及想要分享的事物。最近
-              Matty 發現很多市民不約而同的分享了他／她們散步的故事
-            </p>
-          </Link>
-        </div>
-        <div className="pb-3 pt-3">
-          <div className={`border-bottom ${style.chendate}`}>
-            <span>2023 年 6 月 9 號</span>
-          </div>
-        </div>
+        ))}
       </div>
+      {isLoading && <div>Loading...</div>}
     </>
   )
 }
