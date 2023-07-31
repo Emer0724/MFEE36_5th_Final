@@ -5,17 +5,15 @@ import { AiOutlineShoppingCart } from 'react-icons/ai'
 import Image from 'next/image'
 import Button2 from '../common/button/button2'
 
-export default function BookHome({book_review_sid,
+export default function BookHome({
+  book_review_sid,
   nickname,
   add_date,
   score,
   pic,
   book_review,
-  mem_avatar}
-) {
-  
-  
- 
+  mem_avatar,
+}) {
   return (
     <div
       className={`${style.bookborder} ps-3 pe-3`}
@@ -24,14 +22,17 @@ export default function BookHome({book_review_sid,
       <div className="pb-2 pt-4 ">
         <div className={`d-flex ${style.card_gap}`}>
           <div className="d-flex justify-content-center align-items-center">
-            <Image src={`/all_img/book_pic/${encodeURIComponent(pic) }`} 
-            className={`${style.chenbooksize}`}
-            width={150}
-            height={150} />
+            <Image
+              src={`/all_img/book_pic/${encodeURIComponent(pic)}`}
+              className={`${style.chenbooksize}`}
+              width={150}
+              height={150}
+              alt="book_Img"
+            />
           </div>
           <div>
             <div className="d-flex ms-3 pt-2">
-              <Avatar2 />
+              <Avatar2 nickname={nickname} mem_avatar={mem_avatar} />
               <span className={`${style.chendate} pt-2 pb-2 ms-3`}>
                 {add_date}
               </span>
@@ -40,29 +41,47 @@ export default function BookHome({book_review_sid,
               <div className={` ${style.chenstar}`}>
                 <AiFillStar />
               </div>
-              <div className={`  ${parseInt(score)>=2 ? style.chenstar : style.chenstar_no}`}>
+              <div
+                className={`  ${
+                  parseInt(score) >= 2 ? style.chenstar : style.chenstar_no
+                }`}
+              >
                 <AiFillStar />
               </div>
-              <div className={` ${parseInt(score)>=3 ? style.chenstar : style.chenstar_no}`}>
+              <div
+                className={` ${
+                  parseInt(score) >= 3 ? style.chenstar : style.chenstar_no
+                }`}
+              >
                 <AiFillStar />
               </div>
-              <div className={` ${parseInt(score)>=4 ? style.chenstar : style.chenstar_no}`}>
+              <div
+                className={` ${
+                  parseInt(score) >= 4 ? style.chenstar : style.chenstar_no
+                }`}
+              >
                 <AiFillStar />
               </div>
-              <div className={` ${parseInt(score)===5 ? style.chenstar : style.chenstar_no}`}>
+              <div
+                className={` ${
+                  parseInt(score) === 5 ? style.chenstar : style.chenstar_no
+                }`}
+              >
                 <AiFillStar />
               </div>
             </div>
             <div className="ms-3 pt-2">
-              <div className={`textp-16px line-hight text-hidden pe-5 ${style.book_limit}`}>
-               {book_review}
+              <div
+                className={`textp-16px line-hight text-hidden pe-5 ${style.book_limit}`}
+              >
+                {book_review}
               </div>
             </div>
-            <div  className='d-flex justify-content-center'>
-            <div className="ms-3 pt-4 d-flex justify-content-start gap-5  pb-3">
-              <Button2 />
-              <AiOutlineShoppingCart />
-            </div>
+            <div className="d-flex justify-content-center">
+              <div className="ms-3 pt-4 d-flex justify-content-start gap-5  pb-3">
+                <Button2 />
+                <AiOutlineShoppingCart />
+              </div>
             </div>
           </div>
           {/* <div className="d-flex flex-column justify-content-between">

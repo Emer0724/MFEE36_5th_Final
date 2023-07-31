@@ -27,6 +27,7 @@
     border: 1px;
     border-radius: 5px;
     height: 350.925px;
+    user-select:none;
 }
 .line-hight{
     line-height: 20px;

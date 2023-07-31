@@ -13,10 +13,18 @@
 .blogborder {
     border: 1px;
     border-radius: 5px;
+    user-select:none;
 }
 .blog_limit{
     display: -webkit-box;
     -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.title_limit{
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -2,17 +2,17 @@ import Avatar2 from '../book-review/blogavatar2'
 import Image from 'next/image'
 import Link from 'next/link'
 import style from '@/components/blog/blog-home.module.css'
-import shadowverse from '@/public/blogimg/shadowverse.jpg'
+// import shadowverse from '@/public/blogimg/shadowverse.jpg'
 
-export default function BlogHome({ blog_sid,
+export default function BlogHome({
+  blog_sid,
   nickname,
   add_date,
   blog_img,
   blog_post,
   blog_title,
-  mem_avatar,}
- 
-) {
+  mem_avatar,
+}) {
   return (
     <div
       className={`${style.blogborder} ps-5 pe-5`}
@@ -20,16 +20,26 @@ export default function BlogHome({ blog_sid,
     >
       <div className={`pt-4 pb-2`}>
         <Link href="#" className="text-black text-decoration-none text-center">
-          <h4>{blog_title}</h4>
+          <h4 className={style.title_limit}>{blog_title}</h4>
         </Link>
       </div>
       <div className="d-flex justify-content-between   align-items-center">
-        <Avatar2 />
+        <Avatar2 nickname={nickname} mem_avatar={mem_avatar} />
         <div className="pt-3">
-        <div className="d-flex justify-content-center ">
-          <Image src={shadowverse} className={`${style.blogimg}`} />
+          <div className="d-flex justify-content-center ">
+            {blog_img ? (
+              <Image
+                src={`/all_img/img/${blog_img}`}
+                className={`${style.blogimg}`}
+                width={100}
+                height={100}
+                alt="Img"
+              />
+            ) : (
+              <div style={{ width: '100px', height: '100px' }}></div>
+            )}
+          </div>
         </div>
-      </div>
       </div>
 
       <div className="pt-3 w-100">
@@ -37,9 +47,7 @@ export default function BlogHome({ blog_sid,
           href="#"
           className="text-black text-decoration-none text-center w-100"
         >
-          <p className={style.blog_limit}>
-            {blog_post}
-          </p>
+          <p className={style.blog_limit}>{blog_post}</p>
         </Link>
       </div>
       <div className="pb-3">

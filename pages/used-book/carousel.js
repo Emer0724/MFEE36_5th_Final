@@ -12,6 +12,7 @@ import 'swiper/css/thumbs'
 import css from '@/pages/used-book/carousel.module.css'
 import UsedPrint from '@/components/used/used_print'
 import UsedPintInfo from '@/components/used/used_printinfo'
+import Loading from '@/components/common/loading'
 
 export default function Carousel() {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
@@ -172,7 +173,8 @@ export default function Carousel() {
         </Swiper>
       </div> */}
       {/* <UsedPrint /> */}
-      <UsedPintInfo/>
+      {/* <UsedPintInfo /> */}
+      <Loading />
     </>
   )
 }

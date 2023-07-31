@@ -19,19 +19,19 @@ import { check } from 'prettier'
 //   { used: 1057, book_name: '重置人生：你還是16歲時的那個自己嗎？12' },
 // ]
 
-export default function UsedPrint({usedInfo,printALL}) {
+export default function UsedPrint({ usedInfo, printALL }) {
   const [checkedValues, setCheckedValues] = useState([])
   const [data, setdata] = useState(usedInfo)
   const [pagedata, setPagedate] = useState([])
   const [page1, setpage1] = useState(1)
   const [selectAll, setSelectAll] = useState(false)
-  const [canprint,setcanprint]=useState(true)
+  const [canprint, setcanprint] = useState(true)
 
   useEffect(() => {
     getcheck()
   }, [])
   useEffect(() => {
-   printabout(data)
+    printabout(data)
   }, [data])
 
   //初始化
@@ -47,7 +47,7 @@ export default function UsedPrint({usedInfo,printALL}) {
   //點擊 checkbox 改變狀態
   const checkitem = (data, id, page, perPage) => {
     // const value = e.target.value
-    
+
     const newdata = data.map((v, i) => {
       if (parseInt(v.used_id) === parseInt(id)) {
         //改變狀態
@@ -61,7 +61,7 @@ export default function UsedPrint({usedInfo,printALL}) {
     getpage(newdata, page, perPage)
   }
 
-//改變頁數
+  //改變頁數
   const getpage = (data, page, pageSize) => {
     const pagedata = data.filter((v, i) => {
       if (i >= (page - 1) * pageSize && i < page * pageSize) {
@@ -71,7 +71,7 @@ export default function UsedPrint({usedInfo,printALL}) {
     setPagedate(pagedata)
     setpage1(page)
   }
-//設定全選
+  //設定全選
   const getAllitem = (selectAll, e, data, page1, pageSize) => {
     let newdata = []
 
@@ -89,23 +89,24 @@ export default function UsedPrint({usedInfo,printALL}) {
     getpage(newdata, page1, pageSize)
   }
   //是否列印
-  const printabout=(data)=>{
-const newdata=data.filter((v,i)=>{
-  if(v.checked)return v
-})
-if(!newdata[0]) {
-  // console.log(newdata[0])
-  setcanprint(true)
-}else{
-  setcanprint(false)
-}
+  const printabout = (data) => {
+    const newdata = data.filter((v, i) => {
+      if (v.checked) return v
+    })
+    if (!newdata[0]) {
+      // console.log(newdata[0])
+      setcanprint(true)
+    } else {
+      setcanprint(false)
+    }
   }
- 
 
   return (
     // <div className={css.used_bg}>
     <div className={`${css.used_whitebg} used_display_chkbox`}>
-      <div className="textp-32px d-flex justify-content-center used-search-text-20">二手書資訊</div>
+      <div className="textp-32px d-flex justify-content-center used-search-text-20">
+        二手書資訊
+      </div>
       <table className="table used_table_layout ">
         <thead>
           <tr>
@@ -127,11 +128,14 @@ if(!newdata[0]) {
                     value={v.used_id}
                     onClick={(e) => {
                       checkitem(data, e.target.value, page1, 5)
-                  
                     }}
                   />
                 </th>
-                <td className={`textp-20px letter-spacing used_chk_msg_book_name ${css.used_text}` }>{v.book_name}</td>
+                <td
+                  className={`textp-20px letter-spacing used_chk_msg_book_name ${css.used_text}`}
+                >
+                  {v.book_name}
+                </td>
               </tr>
             )
           })}
@@ -145,13 +149,12 @@ if(!newdata[0]) {
           defaultPageSize={5}
           onChange={(page, pageSize) => getpage(data, page, pageSize)}
         />
-        <button className="textp-20px letter-spacing btn  color-bg-2 border-radius-5px color-tx-7 "
-        onClick={()=>printALL(data)}
-        disabled={canprint}
-
+        <button
+          className="textp-20px letter-spacing btn  color-bg-2 border-radius-5px color-tx-7 "
+          onClick={() => printALL(data)}
+          disabled={canprint}
         >
           列印
-          
         </button>
       </div>
     </div>

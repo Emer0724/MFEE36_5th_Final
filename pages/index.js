@@ -303,10 +303,6 @@ export default function Home() {
                         pic={v.pic}
                         book_review={v.book_review}
                         mem_avatar={v.mem_avatar}
-
-
-
-
                       />
                     </SwiperSlide>
                   )
@@ -334,17 +330,15 @@ export default function Home() {
               {blog.map((v, i) => {
                 return (
                   <SwiperSlide key={v.blog_sid}>
-                    <BlogHome 
-                    blog_sid={v.blog_sid}
-                    nickname={v.nickname}
-                    add_date={v.add_date}
-                    blog_img={v.blog_img}
-                    blog_post={v.blog_post}
-                    blog_title={v.blog_title}
-                    mem_avatar={v.mem_avatar}
-                   
-
-                     />
+                    <BlogHome
+                      blog_sid={v.blog_sid}
+                      nickname={v.nickname}
+                      add_date={v.add_date}
+                      blog_img={v.blog_img}
+                      blog_post={v.blog_post}
+                      blog_title={v.blog_title}
+                      mem_avatar={v.mem_avatar}
+                    />
                   </SwiperSlide>
                 )
               })}
