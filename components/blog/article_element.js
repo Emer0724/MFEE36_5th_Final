@@ -6,8 +6,6 @@ export default function ArticleElement() {
     <div className={`col-xl-7 px-xl-5 d-flex flex-column`}>
       <BreadCrumbs />
       <BlogContent />
-      <BlogContent />
-      <BlogContent />
     </div>
   )
 }

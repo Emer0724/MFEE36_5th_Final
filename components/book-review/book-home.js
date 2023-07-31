@@ -7,6 +7,9 @@ import imgbook1 from '@/public/blog-img/book1.jpg'
 import Button2 from '../common/button/button2'
 
 export default function BookHome() {
+
+
+
   return (
     <div
       className={`${style.bookborder} ps-3 pe-3`}

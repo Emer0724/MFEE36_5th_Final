@@ -2,8 +2,10 @@ import stlye from '@/components/book-review/blogavatar.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
 import img1 from '@/public/blog-img/images.jpg'
+import { useState,useEffect } from 'react'
 
 export default function Avatar() {
+
   return (
     <>
       <div>

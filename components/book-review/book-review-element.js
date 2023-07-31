@@ -1,39 +1,75 @@
-import Avatar2 from './blogavatar2'
+import React from 'react'
+import BookAvatar from './bookavatar'
 import style from '@/components/book-review/book-review-element.module.css'
-import {AiFillStar} from 'react-icons/ai'
+import { AiFillStar } from 'react-icons/ai'
 import Image from 'next/image'
 import imgbook1 from '@/public/blog-img/book1.jpg'
-
+import { useState, useEffect } from 'react'
 
 export default function BookReviewElement() {
-    return (
-        <>
-            <div className='border-bottom pb-2 pt-4'>
-                <div className='d-flex'>
-                    <div>
-                        <Image src={imgbook1} className={`${style.chenbooksize}`}/>
-                    </div>
-                    <div>
-                        <div className='d-flex ps-3 pt-2'>
-                            <Avatar2/>            
-                        </div>
-                        <div className='d-flex ps-3 pt-3 fw-bold'>
-                            <span>名言佳句</span>            
-                        </div>
-                        <div className='d-flex ps-3 pt-3'>
-                            <div className={`pe-2 ${style.chenstar}`}><AiFillStar/></div>
-                            <div className={`pe-2 ${style.chenstar}`}><AiFillStar/></div>
-                            <div className={`pe-2 ${style.chenstar}`}><AiFillStar/></div>
-                            <div className={`pe-2 ${style.chenstar}`}><AiFillStar/></div>
-                            <div className={`pe-2 ${style.chenstar}`}><AiFillStar/></div>
-                        </div>
-                        <div className='ps-3 pt-3'>
-                            <span>這本書是一個關於人際關係和溝通技巧的指南，通過各種實例和故事，教導讀者如何與他人建立良好的關係、解決衝突並提升領導力。</span>
-                        </div>
-                    </div>
-                    <span className={`${style.chendate} pt-3 pb-3`}>2023.2.21</span>
-                </div>
+  const [Book, setBook] = useState([])
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://localhost:3055/blog/bookreview')
+      if (!response.ok) {
+        throw new Error('沒有資料')
+      }
+      const data = await response.json()
+      setBook(data);
+    } catch (error) {
+      console.error('沒有資料', error)
+    }
+  }
+
+  const renderStarRating = (rating) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      if (i <= rating) {
+        stars.push(<AiFillStar key={i} className={style.chenstar} />)
+      } else {
+        stars.push(<AiFillStar key={i} className={style.chenstar_empty} />)
+      }
+    }
+    return stars
+  }
+
+  // 轉換日期格式，只保留年月日
+  const formatDateString = (dateString) => {
+    const date = new Date(dateString)
+    return date.toISOString().split('T')[0]
+  }
+
+  return (
+    <>
+      <div className="pb-5 pt-4">
+        {Book.map((book_review) => (
+          <div key={book_review.book_review_sid} className="border-bottom d-flex">
+            <div className="pt-3">
+              <Image src={imgbook1} className={`${style.chenbooksize}`} />
             </div>
-        </>
-    )
+            <div className="pt-3">
+              <div className="d-flex ps-3">
+                <BookAvatar nickname={book_review.nickname}/>
+              </div>
+              <div className="d-flex ps-3 pt-3 fw-bold">
+                <span>{book_review.book_name}</span>
+              </div>
+              <div className="d-flex ps-3 pt-3">{renderStarRating(book_review.score)}</div>
+              <div className="ps-3 pt-3">
+                <span>{book_review.book_review}</span>
+              </div>
+            </div>
+            <span className={`${style.chendate} pt-3 pb-3`}>
+              {formatDateString(book_review.add_date)}
+            </span>
+          </div>
+        ))}
+      </div>
+    </>
+  )
 }

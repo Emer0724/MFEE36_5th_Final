@@ -3,7 +3,7 @@ import Image from 'next/image'
 import stlye from '@/components/book-review/blogavatar2.module.css'
 import img1 from '@/public/blog-img/images.jpg'
 
-export default function Avatar2({nickname}) {
+export default function BookAvatar({nickname}) {
 
   return (
     <>

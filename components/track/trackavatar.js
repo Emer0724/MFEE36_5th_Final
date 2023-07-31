@@ -3,7 +3,7 @@ import Image from 'next/image'
 import stlye from '@/components/book-review/blogavatar2.module.css'
 import img1 from '@/public/blog-img/images.jpg'
 
-export default function Avatar2({nickname}) {
+export default function TrackAvatar() {
 
   return (
     <>
@@ -18,7 +18,7 @@ export default function Avatar2({nickname}) {
           href=""
           className={`align-items-center fw-bold ${stlye.editbutton} text-black text-decoration-none`}
         >
-          {nickname}
+          阿巴
         </Link>
       </div>
     </>

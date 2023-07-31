@@ -8,7 +8,7 @@ export default function Avatar3() {
     return (
         <>
             <div>
-                <Link href="#" className="pe-2"><Image src={img1} class={`${stlye.chenheadimg} text-decoration-none`}/></Link>
+                <Link href="#" className="pe-2"><Image src={img1} className={`${stlye.chenheadimg} text-decoration-none`}/></Link>
                 <Link href="#" className={`align-items-center fw-bold ${stlye.editbutton2} text-black text-decoration-none`}>馬卡巴卡</Link>
             </div>
         </>
