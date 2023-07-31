@@ -1,5 +1,5 @@
 import React from 'react'
-import Wish from '@/components/Leo/market_wish'
+import Wish from '@/components/Leo/market_breadcrumbs'
 import L from '@/components/Leo/Left'
 import R from '@/components/Leo/Right'
 const square = {

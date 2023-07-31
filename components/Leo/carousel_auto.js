@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/effect-coverflow'
 import 'swiper/css/pagination'
-import { Pagination } from 'swiper/modules'
+import { Pagination, Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/free-mode'
 import 'swiper/css/navigation'
@@ -30,11 +30,15 @@ export default function Carousel() {
           slidesPerView={3}
           spaceBetween={50}
           centeredSlides={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
           pagination={{
             clickable: true,
           }}
           loop={true}
-          modules={[Pagination]}
+          modules={[Autoplay, Pagination]}
           className="mySwiper"
           coverflowEffect={{
             rotate: 0,
