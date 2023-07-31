@@ -44,8 +44,6 @@ export default function CartTotal({data,usetoken,coupon}) {
       setSelectedCouponOption(Math.floor(totalprice*(1-coupon_discount)));
       setShowCouponMenu(false);
     };
-    console.log(selectcoupon);
-  
     const handleCurrencyOptionSelect = (option) => {
       setSelectedCurrencyOption(option);
       setShowCurrencyMenu(false);

@@ -7,6 +7,7 @@ import { useState,useEffect } from 'react'
 
 export default function complete() {
     const [windowWidth ,setWindowWidth] = useState(null)
+    const [waternum,setWaternum] = useState(0)
 
   useEffect(() => {
     const storedformData = localStorage.getItem('formData');
@@ -23,7 +24,7 @@ export default function complete() {
 
      const allData = {formData,countData,pricefinal}
       console.log(allData);
-
+if(formData!=null){
     fetch(`${process.env.API_SERVER}/cart/cart/complete`,{
       method:"POST",
       body:JSON.stringify(allData),
@@ -32,12 +33,15 @@ export default function complete() {
      .then((r) => r.json())
      .then((result) => {
       console.log(result);
-      localStorage.removeItem('formData')
-      localStorage.removeItem('pricedata')
-      localStorage.removeItem('pricefinal')
+      console.log(result.insertid);
+      setWaternum(result.insertid);
+      // localStorage.removeItem('formData')
+      // localStorage.removeItem('pricedata')
+      // localStorage.removeItem('pricefinal')
     }
     )
     .catch((error) => console.error('Fetch Error:', error));
+  }
 
     const handleResize = () => {
       setWindowWidth(window.innerWidth)
@@ -91,7 +95,7 @@ const style3 = {
             <h1>訂單已完成</h1>
             <h3>等候5-7個工作天幫您送達</h3>
             <h3>感謝您的支持</h3>
-            <h1>訂單編號#987654</h1>
+            <h1>訂單編號#{waternum}</h1>
         </div>
         <div style={style1}>
             <DeepButton DeepButtoncontent={"訂單查詢"} route='../dashboard/order'/>

@@ -15,6 +15,8 @@ export default function orderlist() {
     const createddates = ['2022.08.27','2022.08.28','2022.08.29']
     const totalprice = [2000,888,777]
     const waterlist = [111111,222222,333333]
+
+    
   return (
     <div className={s.listcontain}>
        <div className={s.listrow}>
@@ -47,7 +49,7 @@ export default function orderlist() {
                             <h4>已送達</h4>
                         </div>
                     </div>
-                    <div className={s.orderbtn}><div onClick={() => opendetailhandle(i)} className={s.orderbtntext}>商品細節</div></div>
+                    <div className={s.orderbtn}><div onClick={() => opendetailhandle(i)} className={s.orderbtntext}>訂單細節</div></div>
                 </div>
                 <div className={s.detaillocation}>
                 {openedIndexes.includes(i) && <Orderdetail />}
