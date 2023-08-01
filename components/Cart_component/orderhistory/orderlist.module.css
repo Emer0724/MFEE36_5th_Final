@@ -21,13 +21,19 @@
 .listcol:hover {
     background-color: #f5f5f5;
 }
+.listdivct{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap:60px
+}
 .listnum{
     margin: 20px 0;
     text-align: center;
 }
 .orderbtn{
     background-color: var(--color2);
-    border-radius: 40px;  
+    border-radius: 8px;  
     padding: 12px 18px;
     cursor: pointer;
     color: white;
@@ -35,7 +41,11 @@
 
 .listdiv{
     display: flex;
-    gap: 20px;
+    margin: 10px 0;
+}
+.listtext{
+    color: var(--color2);
+    display: flex;
     margin: 10px 0;
 }
 .detaillocation{
@@ -52,6 +62,12 @@
         border: 1px solid #ddd;
         padding: 10px;
         transition: none;
+    }
+    .listdivct{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap:30px;
     }
     .orderbtn{
         background-color: var(--color2);
