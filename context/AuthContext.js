@@ -1,6 +1,8 @@
 import { createContext, useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 const AuthContext = createContext({})
+
 export default AuthContext
 
 export const noLoginState = {
@@ -24,7 +26,9 @@ export const AuthContextProvider = function ({ children }) {
       try {
         const obj = JSON.parse(str)
         setAuth(obj)
-      } catch (ex) {}
+      } catch (ex) {
+        console.log(`error:ex`)
+      }
     }
   }, [])
 

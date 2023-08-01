@@ -65,9 +65,20 @@
     display: flex;
     justify-content: flex-end;  /* Align icons to the right */
     align-items: center;
+    position: relative;
 }
 .Licon{
     cursor:pointer ;
+}
+.notify{
+    position: absolute;
+    border-radius: 50% 50%;
+    width: 10px;
+    height: 10px;
+    background-color: #dc2525;
+    z-index:10;
+    bottom:0;
+    right: 15px;
 }
 @media(max-width:400px){
 
@@ -138,6 +149,7 @@
   /* Add style for loginWrapper */
 .loginWrapper {
     margin-left: auto;  /* Push this element to the right */
+    position: relative;
 }
 
 @media(max-width:400px){

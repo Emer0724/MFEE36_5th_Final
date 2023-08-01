@@ -94,7 +94,7 @@ export default function ChangebookMessage() {
     })
 
     setusedPrintInfo(printrow)
-    setqrcode_info(qrcode_infodata)
+    setqrcode_info(JSON.stringify(qrcode_infodata))
   }
 
   useEffect(() => {

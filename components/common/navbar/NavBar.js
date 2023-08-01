@@ -9,8 +9,11 @@ import Membericon from '@/assets/Nav_Image/Subtract.svg'
 import Searchbar from './searchbar'
 import DropdownMenu from './dropdown-menu'
 import { set } from 'lodash'
+import AuthContext from '@/context/AuthContext'
+import { useContext } from 'react'
 
 export default function NavBar1() {
+  const { auth, logout } = useContext(AuthContext)
   const NavctName = ['商城', '二手書', '部落格', '關於我們']
   const NavEnName = ['STORE', 'USEDSTORE', 'BLOG', 'ABOUTUS']
   const navrouter = [
@@ -19,6 +22,7 @@ export default function NavBar1() {
     '/blog/blog-home-page',
     '/#aboutUs',
   ]
+  // console.log(auth.notify)
 
   useEffect(() => {
     if (localStorage.getItem('auth')) {
@@ -36,9 +40,12 @@ export default function NavBar1() {
   // Correctly set initial isLoggedIn state to false
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  const logout = () => {
+  const gologout = () => {
     // Logout logic here
-    setIsLoggedIn(false) // Set isLoggedIn to false on logout
+    if (logout) {
+      logout()
+      setIsLoggedIn(false) // Set isLoggedIn to false on logout
+    }
   }
   const [Dropdown, setDropdown] = useState(false)
   const isDropdown = (Dropdown) => {
@@ -110,10 +117,16 @@ export default function NavBar1() {
                   onClick={() => isDropdown(Dropdown)}
                   role="presentation"
                 />
+                {auth?.notify !== 0 ? (
+                  <div className={styles.notify}></div>
+                ) : (
+                  ''
+                )}
+
                 {Dropdown && (
                   <DropdownMenu
                     isLoggedIn={isLoggedIn}
-                    logout={logout}
+                    gologout={gologout}
                     nickname={nickname}
                   />
                 )}

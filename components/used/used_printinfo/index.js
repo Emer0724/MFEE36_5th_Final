@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { QRCodeSVG } from 'qrcode.react'
 
-export default function UsedPintInfo({ usedPrintInfo, memberinfo, printref,qrcode_info }) {
-  
+export default function UsedPintInfo({
+  usedPrintInfo,
+  memberinfo,
+  printref,
+  qrcode_info,
+}) {
   // console.log(usedPrintInfo)
   // console.log(memberinfo)
+  // console.log(qrcode_info)
 
- 
   return (
     <div ref={printref} className="mx-2">
       <div className={`textp-32px letter-spacing fw-bold  text-center    `}>
