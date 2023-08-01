@@ -1,15 +1,15 @@
 import stlye from '@/components/book-review/blogavatar.module.css'
 import Image from 'next/image'
-import img1 from '@/public/blog-img/images.jpg'
+import people from '@/assets/used-svg/people.svg'
 
-export default function BlogPersonalAvatar() {
+export default function BlogPersonalAvatar({ nickname, mem_avatar }) {
     return (
         <>
             <div>
                 <div className={`${stlye.chenpersonal} d-flex`}>
                     <div>
                         <div>
-                            <Image src={img1} className={stlye.chenheadimg}/>
+                            <Image src={mem_avatar ? mem_avatar : people} className={stlye.chenheadimg}/>
                         </div>
                     </div>
                     <div className={`text-decoration-none`}>
