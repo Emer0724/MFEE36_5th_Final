@@ -1,21 +1,28 @@
 import style from '@/components/blog/bread-crumbs.module.css'
 import Link from 'next/link'
-import { useState } from 'react'
-
-
+import { useState , useEffect } from 'react'
 
 export default function BreadCrumbs() {
 
     const [date , setDate] = useState([])
+    const [sort, setSort] = useState('newest')
+
+    useEffect(() => {
+        fetchBlogs(sort);
+      }, [sort]);
 
     const fetchBlogs = async (sort) => {
         try {
-          const response = await fetch(`/api/blogs?sort=${sort}`);
+          const response = await fetch(`http://localhost:3055/blog/blogsort?sort=${sort}`);
           const data = await response.json();
           setDate(data);
         } catch (error) {
           console.error('獲取資料時出錯：', error);
         }
+      }
+      const handleLinkClick = (event, sortOption) => {
+        event.preventDefault();
+        setSort(sortOption);
       }
 
     return (
@@ -29,10 +36,10 @@ export default function BreadCrumbs() {
             </div>
             <div className={`${style.chenjc} d-flex pb-3`}>
                 <div className='pe-4'>
-                    <Link href="#" className={`${style.chenp} fs-5 text-black text-decoration-none`}>最新</Link>
+                    <Link href="#"  onClick={(event) => handleLinkClick(event, 'newest')} className={`${style.chenp} fs-5 text-black text-decoration-none`}>最新</Link>
                 </div>
                 <div>
-                    <Link href="#" className={`fs-5 text-black text-decoration-none`}>最舊</Link>
+                    <Link href="#"  onClick={(event) => handleLinkClick(event, 'oldest')} className={`fs-5 text-black text-decoration-none`}>最舊</Link>
                 </div>
             </div>
         </>
