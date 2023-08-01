@@ -25,7 +25,6 @@ export default function Products() {
     fetch(`${process.env.API_SERVER}/cart/test1?${usp.toString()}`)
       .then((r) => r.json())
       .then((data) => {
-        console.log(data);
         setData(data);
       });
   }, [router.query]);
@@ -40,7 +39,7 @@ export default function Products() {
     })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data.message);
+          alert("成功加入購物車喔");
         })
         .catch((error) => {
           console.error("錯誤訊息:", error);
