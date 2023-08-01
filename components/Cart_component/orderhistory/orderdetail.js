@@ -4,8 +4,6 @@ import Image from 'next/image'
 
 export default function orderdetail({data1}) {
 
-  
-   
   return (
     <div className={s.detailcontain}>
       <div className={s.detailrow}>
