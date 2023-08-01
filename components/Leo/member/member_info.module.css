@@ -54,3 +54,15 @@
     right: 25px;
     bottom: 25px;
 }
+@media screen and (max-width: 767.98px){
+    .box_member_main{
+        flex-direction: column;
+        width: 100%;
+    }
+    .member_info_detail{
+        width: 100%;
+    }
+    .box_member_info{
+        margin-top: 20px;
+    }
+}

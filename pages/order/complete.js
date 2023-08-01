@@ -12,18 +12,16 @@ export default function complete() {
   useEffect(() => {
     const storedformData = localStorage.getItem('formData');
     const formData = JSON.parse(storedformData);
-    console.log(formData)
 
     const storedcountData = localStorage.getItem('pricedata');
     const countData=JSON.parse(storedcountData);
-    console.log(countData)
 
     const storedpriceData = localStorage.getItem('pricefinal');
     const pricefinal = JSON.parse(storedpriceData);
-    console.log(pricefinal)
+    //以上處理localstorage的東西
 
      const allData = {formData,countData,pricefinal}
-      console.log(allData);
+     //在匯集一起送後端
 if(formData!=null){
     fetch(`${process.env.API_SERVER}/cart/cart/complete`,{
       method:"POST",
@@ -32,12 +30,12 @@ if(formData!=null){
     })
      .then((r) => r.json())
      .then((result) => {
-      console.log(result);
-      console.log(result.insertid);
-      setWaternum(result.insertid);
-      // localStorage.removeItem('formData')
-      // localStorage.removeItem('pricedata')
-      // localStorage.removeItem('pricefinal')
+      setWaternum(result.order_id);
+      //取得創建的流水碼
+      localStorage.removeItem('formData')
+      localStorage.removeItem('pricedata')
+      localStorage.removeItem('pricefinal')
+      //清空localstorage
     }
     )
     .catch((error) => console.error('Fetch Error:', error));
@@ -95,7 +93,7 @@ const style3 = {
             <h1>訂單已完成</h1>
             <h3>等候5-7個工作天幫您送達</h3>
             <h3>感謝您的支持</h3>
-            <h1>訂單編號#{waternum}</h1>
+            <h1>訂單編號  #{waternum}</h1>
         </div>
         <div style={style1}>
             <DeepButton DeepButtoncontent={"訂單查詢"} route='../dashboard/order'/>

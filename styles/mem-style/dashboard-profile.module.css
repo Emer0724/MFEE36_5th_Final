@@ -10,22 +10,23 @@
   
 .outer-container{
     align-items:center;
+    justify-content: center;
     max-width: 50%;
     padding-bottom: 50px;
     min-width: 500px;
   }
   
 .profile-title{
-    font-size: 20px;
+    font-size: 24px;
     color: var(--color2);
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-top: 30px;
     font-weight: 800;
     font-family: 'Noto Serif TC', serif;
   }
   
 .profile-items{
-    font-size: 16px;
+    font-size: 20px;
     color: var(--color11);
     margin-bottom: 5px;
     font-family: 'Noto Serif TC', serif;
@@ -61,10 +62,12 @@
     background: #52796F;
     border-radius: 5px;
     width: 300px;
-    margin-top: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     border: none;
     color: #fff;
     font-family: 'Noto Serif TC', serif;
+    font-size: 20px;
   }
 @media (max-width: 600px) {
   .outer-container {

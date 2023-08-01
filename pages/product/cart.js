@@ -23,6 +23,7 @@ useEffect(() => {
     .then((r) => r.json())
     .then((data) => {
       setData(data);
+      console.log(data);
     }); 
   fetch(`${process.env.API_SERVER}/cart/cart/coupon`)
   .then((r) => r.json())
@@ -46,7 +47,6 @@ useEffect(() => {
           selectedRecommand.push(selectedBook);
         }
     setrecommand(selectedRecommand);
-    console.log(recommand);
 }
     }); 
 }, []);
@@ -119,13 +119,28 @@ const deleteitem = (ISBN) =>{
     }
   })
 }
+const style1 = {
+  display:"flex",
+  flexDirection:"column",
+  justifyContent:"space-around",
+  alignItems:"center",
+  margin:"300px,0px"
+
+}
 
   return (
-    <div>
+    <div style={style1}>
         <OrderIcon />
-        <CartTitle titlecontent={"找到喜歡的東西，就快下單吧"}/>
-        <Productlist data={data} addcount={addcount} cutcount={cutcount} deleteitem={deleteitem}/> 
+        { data.cart.length>0
+        ?
+        <div>
+        <CartTitle titlecontent={"找到喜歡的東西，就來下單吧"}/>
+        <Productlist data={data} addcount={addcount} cutcount={cutcount} deleteitem={deleteitem}/>
         <CartTotal data={data} coupon={coupon} usetoken={usetoken}/>
+        </div>
+        :
+        <CartTitle titlecontent={"日久見真情，欲速則不達，慢慢挑"}/>
+        }
         <CartRecommend recommand={recommand}/>
     </div>
   )

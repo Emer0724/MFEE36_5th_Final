@@ -1,42 +1,15 @@
-import React from 'react'
 import s from '@/components/Cart_component/orderhistory/orderdetail.module.css'
 import fake from "@/assets/Cart_Image/fake.svg"
 import Image from 'next/image'
 
-export default function orderdetail() {
-    const product = [
-        {Productname:"買了好多貴死人",
-          ISBN:98997203123,
-          img:123,
-          price:199,
-          count:1,
-        },
-       {  Productname:"我就喜歡花錢",
-          ISBN:98997203123,
-          img:123,
-          price:199,
-          count:1,
-        } ,
-        {Productname:"專題做不完",
-          ISBN:98997203123,
-          img:123,
-          price:199,
-          count:1,
-        },
-        {
-          Productname:"我不行,別人也不行,爽啦!",
-          ISBN:98997203123,
-          img:123,
-          price:199,
-          count:1,
-      }
-    ]
+export default function orderdetail({data1}) {
+
   return (
     <div className={s.detailcontain}>
       <div className={s.detailrow}>
-        {product.map((v,i)=>{
+        {data1.map((v,i)=>{
             return(
-                <div className={s.detaillist1}>
+                <div className={s.detaillist1} key={i}>
                     <div className={s.detailphoto}><Image src={fake} alt='icon' className={s.detailimg}/></div>
                     <div className={s.detaillist2}>
                         <h5 className={s.detailname}>{v.Productname}</h5>
