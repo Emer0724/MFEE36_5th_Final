@@ -1,30 +1,56 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import styles from '../../styles/mem-style/login.module.css'
 import { Container, Button } from 'react-bootstrap'
 import { useRouter } from 'next/router'
+import AuthContext, { AuthContextProvider } from '@/context/AuthContext'
 
-const Login = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+export default function Login() {
+  const router = useRouter()
+  const { auth, setAuth } = useContext(AuthContext)
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  })
+
+  const changeUser = (e) => {
+    setUser((old) => ({
+      ...old,
+      [e.target.id]: e.target.value,
+    }))
+  }
+
+  const doLogin = (e) => {
+    e.preventDefault()
+    fetch(process.env.API_SERVER + '/login', {
+      method: 'POST',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        console.log(data)
+        if (data.success) {
+          const obj = { ...data.data }
+          localStorage.setItem('auth', JSON.stringify(obj))
+          setAuth(obj)
+          alert('登入成功')
+          router.push('/')
+        } else {
+          alert(data.error || '帳密錯誤')
+        }
+      })
+  }
+
+  // const [email, setEmail] = useState('')
+  // const [password, setPassword] = useState('')
   const [emailError, setEmailError] = useState(false)
   const [passwordError, setPasswordError] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('Email:', email)
-    console.log('Password:', password)
-
-    if (email === '') {
-      setEmailError(true)
-    } else {
-      setEmailError(false)
-    }
-
-    if (password === '') {
-      setPasswordError(true)
-    } else {
-      setPasswordError(false)
-    }
+    doLogin(e)
   }
 
   const handleEmailFocus = () => {
@@ -38,8 +64,6 @@ const Login = () => {
   const handleGoogleLogin = () => {
     // google login
   }
-
-  const router = useRouter()
 
   const handleJoinMember = () => {
     router.push('/member/register')
@@ -70,9 +94,9 @@ const Login = () => {
                     placeholder="email"
                     type="email"
                     id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    onFocus={handleEmailFocus} // 新增 onFocus 事件處理函式
+                    value={user.email}
+                    onChange={changeUser}
+                    onFocus={handleEmailFocus}
                     className={`${styles['form-control']} ${
                       emailError ? styles['error'] : ''
                     }`}
@@ -86,9 +110,9 @@ const Login = () => {
                     placeholder="密碼"
                     type="password"
                     id="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    onFocus={handlePasswordFocus} // 新增 onFocus 事件處理函式
+                    value={user.password}
+                    onChange={changeUser}
+                    onFocus={handlePasswordFocus}
                     className={`${styles['form-control']} ${
                       passwordError ? styles['error'] : ''
                     }`}
@@ -132,5 +156,3 @@ const Login = () => {
     </div>
   )
 }
-
-export default Login
