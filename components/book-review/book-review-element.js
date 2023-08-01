@@ -1,5 +1,5 @@
 import React from 'react'
-import BookAvatar from './bookavatar'
+import Avatar2 from './blogavatar2'
 import style from '@/components/book-review/book-review-element.module.css'
 import { AiFillStar } from 'react-icons/ai'
 import Image from 'next/image'
@@ -50,11 +50,16 @@ export default function BookReviewElement() {
         {Book.map((book_review) => (
           <div key={book_review.book_review_sid} className="border-bottom d-flex">
             <div className="pt-3">
-              <Image src={imgbook1} className={`${style.chenbooksize}`} />
+                <Image
+                  src={`/all_img/book_pic/${book_review.pic}`}
+                  width={150}
+                  height={200}
+                  className={style.blogimg}
+                />
             </div>
             <div className="pt-3">
               <div className="d-flex ps-3">
-                <BookAvatar nickname={book_review.nickname}/>
+                <Avatar2 nickname={book_review.nickname}/>
               </div>
               <div className="d-flex ps-3 pt-3 fw-bold">
                 <span>{book_review.book_name}</span>

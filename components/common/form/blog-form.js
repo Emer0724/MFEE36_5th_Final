@@ -4,9 +4,11 @@ import { useState } from 'react'
 
 export default function BlogForm() {
   const [title, setTitle] = useState('')
+  const [tag, setTag] = useState('')
   const [image, setImage] = useState('')
   const [content, setContent] = useState('')
   const [titleError, setTitleError] = useState('')
+  const [tagError, setTagError] = useState('')
   const [contentError, setContentError] = useState('')
 
   const Titledata = (e) => {
@@ -14,42 +16,89 @@ export default function BlogForm() {
     setTitleError('')
   }
 
+  const Tagdata = (e) => {
+    setTag(e.target.value)
+    setTagError('')
+  }
+
   const Imagedata = (e) => {
     setImage(e.target.value)
   }
 
-  const Contentdata = (e) => {
-    setContent(e.target.value)
-    setContentError('');
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0]
+
+    if (selectedFile) {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setImage(reader.result)
+      }
+      reader.readAsDataURL(selectedFile)
+    } else {
+      setImage(null)
+    }
   }
 
-  const BlogSubmit = (event) => {
-    event.preventDefault();
+  const Contentdata = (e) => {
+    setContent(e.target.value)
+    setContentError('')
+  }
 
-    console.log('Title:', title)
-    console.log('Image:', image)
-    console.log('Content:', content)
+  const BlogSubmit = async (event) => {
+    event.preventDefault()
 
-    let isValid = true;
+    let isValid = true
 
     if (!title) {
-        setTitleError('請輸入標題!!');
-        isValid = false;
-      }
+      setTitleError('請輸入標題!!')
+      isValid = false
+    }
+
+    if (!tag) {
+      setTagError('請選擇TAG!!')
+      isValid = false
+    }
 
     if (!content) {
-        setContentError('請輸入文章內容!!');
-        isValid = false;
+      setContentError('請輸入文章內容!!')
+      isValid = false
     }
 
     if (!isValid) {
-        return;
+      return
     }
 
-    // 清空表单字段
-    setTitle('')
-    setImage('')
-    setContent('')
+    try {
+      const formData = {
+        title: title,
+        tag: tag,
+        image: image,
+        content: content,
+      }
+
+      console.log(formData)
+      console.log(JSON.stringify(formData))
+
+      // 使用fetch將表單數據發送到後端API
+      const response = await fetch('http://localhost:3055/blog/blogupload', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+      console.log('從後端收到的響應：', data)
+
+      // 清空表單字段
+      setTitle('')
+      setTag('')
+      setImage('')
+      setContent('')
+    } catch (error) {
+      console.error('發送數據到後端時出錯：', error)
+    }
   }
 
   return (
@@ -57,7 +106,7 @@ export default function BlogForm() {
       <div className="row d-flex justify-content-center">
         <div className="col-xl-7">
           <form onSubmit={BlogSubmit}>
-            <h3 className='d-flex justify-content-center pb-5'>寫作品</h3>
+            <h3 className="d-flex justify-content-center pb-5">寫作品</h3>
             <div className={`mb-3 pt-3 ${titleError ? 'has-error' : ''}`}>
               <label
                 htmlFor="exampleFormControlInput1"
@@ -73,7 +122,43 @@ export default function BlogForm() {
                 onChange={Titledata}
                 placeholder="請輸入標題"
               />
-              {titleError && <div style={{fontSize:'16px'}} className="text-danger ps-2 pt-3">{titleError}</div>}
+              {titleError && (
+                <div
+                  style={{ fontSize: '16px' }}
+                  className="text-danger ps-2 pt-3"
+                >
+                  {titleError}
+                </div>
+              )}
+            </div>
+            <div className="pb-3 pt-3">
+              <label
+                htmlFor="exampleFormControlInput1"
+                className="form-label fs-4"
+              >
+                TAG
+              </label>
+              <select
+                className={`form-select ${titleError ? 'is-invalid' : ''}`}
+                aria-label="Default select example"
+                onChange={Tagdata}
+              >
+                <option selected>選擇TAG</option>
+                <option value="1">愛情</option>
+                <option value="2">旅遊</option>
+                <option value="3">生活</option>
+                <option value="4">工作</option>
+                <option value="5">教育</option>
+                <option value="6">書</option>
+              </select>
+              {tagError && (
+                <div
+                  style={{ fontSize: '16px' }}
+                  className="text-danger ps-2 pt-3"
+                >
+                  {tagError}
+                </div>
+              )}
             </div>
             <div className="mb-3 pt-3">
               <label htmlFor="formFile" className="form-label fs-4">
@@ -83,9 +168,18 @@ export default function BlogForm() {
                 className="form-control"
                 type="file"
                 id="formFile"
-                onChange={Imagedata}
-                value={image}
+                onChange={(e) => {
+                  Imagedata(e)
+                  handleFileChange(e)
+                }}
               />
+              {image && (
+                <img
+                  src={image}
+                  alt="預覽圖片"
+                  style={{ width: '400px', marginTop: '10px' }}
+                />
+              )}
             </div>
             <div className="mb-3 pt-5">
               <label
@@ -102,7 +196,14 @@ export default function BlogForm() {
                 value={content}
                 rows="6"
               ></textarea>
-               {contentError && <div style={{fontSize:'16px'}} className="text-danger ps-2 pt-3">{contentError}</div>}
+              {contentError && (
+                <div
+                  style={{ fontSize: '16px' }}
+                  className="text-danger ps-2 pt-3"
+                >
+                  {contentError}
+                </div>
+              )}
             </div>
             <div className="d-flex justify-content-between pt-5">
               <div>

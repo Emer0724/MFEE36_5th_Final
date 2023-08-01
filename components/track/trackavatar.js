@@ -10,7 +10,6 @@ export default function TrackAvatar() {
       <div>
         <Link href="" className="pe-3">
           <Image
-            src={img1}
             className={`${stlye.headblogimg} text-decoration-none`}
           />
         </Link>

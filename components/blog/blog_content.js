@@ -2,7 +2,6 @@ import Avatar2 from '../book-review/blogavatar2'
 import Image from 'next/image'
 import Link from 'next/link'
 import style from '@/components/blog/blog_content.module.css'
-import shadowverse from '@/public/blog-img/shadowverse.jpg'
 import { useState, useEffect } from 'react'
 
 const blogcontent = '/blog/recommend'
@@ -67,7 +66,7 @@ export default function BlogContent() {
             <div className="pt-3">
               {blog.blog_img ? (
                 <Image
-                  src={`all_img/img/${blog.blog_img}`}
+                  src={`/all_img/img/${blog.blog_img}`}
                   width={450}
                   height={250}
                   className={style.blogimg}
