@@ -1,9 +1,23 @@
 import style from '@/components/blog/bread-crumbs.module.css'
 import Link from 'next/link'
+import { useState } from 'react'
 
 
 
 export default function BreadCrumbs() {
+
+    const [date , setDate] = useState([])
+
+    const fetchBlogs = async (sort) => {
+        try {
+          const response = await fetch(`/api/blogs?sort=${sort}`);
+          const data = await response.json();
+          setDate(data);
+        } catch (error) {
+          console.error('獲取資料時出錯：', error);
+        }
+      }
+
     return (
         <>
             <div className={`${style.bread}`}>
