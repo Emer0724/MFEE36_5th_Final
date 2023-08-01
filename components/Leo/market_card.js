@@ -1,10 +1,7 @@
 import React, { useRef } from 'react'
 import Image from 'next/image'
-// import bk from '@/public/Leo-image/心流.webp'
 import car from '@/components/Leo/market_card.module.css'
 import Link from 'next/link'
-// import cl from '@/public/Leo-image/cancle.svg'
-// import LeoContext from '@/context/LeoContext'
 
 export default function MarketCard(data) {
   const cardRef = useRef(null)

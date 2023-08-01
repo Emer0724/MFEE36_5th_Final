@@ -5,10 +5,12 @@ import Image from 'next/image'
 import bk from '@/public/Leo-image/心流.webp'
 import styles from '@/components/Leo/Left.module.css'
 
-export default function L() {
+export default function L(data) {
   const btntitle1 = '加入購物車'
   const btntitle2 = '找二手書'
 
+  console.log('媽洗媽洗_l')
+  console.log(data)
   return (
     <>
       <div className={styles.container}>

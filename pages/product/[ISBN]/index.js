@@ -13,7 +13,7 @@ export default function Isbn() {
   useEffect(() => {
     if (ISBN) {
       fetch(`${process.env.API_SERVER}/market/detail?ISBN=${ISBN}`)
-        .then((res) => res.json)
+        .then((res) => res.json())
         .then((data) => {
           setData(data)
           console.log('後端回傳結果:', data)
@@ -23,6 +23,7 @@ export default function Isbn() {
         })
     }
   }, [ISBN]) //[ISBN] 當ISBN發生變化時重新取值
+  console.log(data)
   console.log('八嘎nono')
   console.log(ISBN)
   return (
@@ -30,10 +31,10 @@ export default function Isbn() {
       <Bcs />
       <div className={styles.square}>
         <div className={styles.l_box}>
-          <Left />
+          <Left data={data} />
         </div>
         <div className={styles.r_box}>
-          <Right />
+          <Right data={data} />
         </div>
       </div>
       <p>{router.query.ISBN}</p>

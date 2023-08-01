@@ -2,7 +2,9 @@ import React from 'react'
 import styles from '@/components/Leo/Right.module.css'
 // import UsedList from '@/components/used/used-list/index'
 
-export default function R() {
+export default function R(data) {
+  console.log('媽洗媽洗_r')
+  console.log(data)
   return (
     <>
       <div className={`${styles.content} ${styles.scrollable} `}>
