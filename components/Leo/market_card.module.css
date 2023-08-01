@@ -1,21 +1,23 @@
 .card{
-    transition: transform 0.4s ease;
+    transition: transform 3s ease;
+    display: flex;
 }
 .card:hover{
     height: 170px;
-    width: 400px;
+    width: 380px;
 }
 .extra{
     display: none;
-    position: relative
+    position: relative;
+    background-color: white;
 }
 .card:hover .extra {
     display: block;
     background-color: white;
 }
-.no{
+/* .no{
     border: 0px,none !important;
-}
+} */
 .p{
     font-size: 20px;
 }
@@ -25,7 +27,4 @@
     border: none;
     background-color: transparent;
     position: absolute;
-    
-  
-
 }

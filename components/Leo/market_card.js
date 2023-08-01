@@ -25,13 +25,13 @@ export default function MarketCard(data) {
   return (
     <>
       <div
-        className={`col ${car.cardWrapper}`}
+        className={`${car.cardWrapper}`}
         ref={cardRef}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className={`${car.card}`}>
-          <div className={`market-card d-flex ${car.no}`}>
+        <div>
+          <div className={car.card}>
             <div>
               <Link href={`/product/${ISBN}`}>
                 <Image
@@ -43,7 +43,7 @@ export default function MarketCard(data) {
                 />
               </Link>
             </div>
-            <div className={`w-100 color-bg-1 h-100 ${car.extra}`}>
+            <div className={car.extra}>
               <p className={car.p}>{book_name}</p>
               <p className={car.p}>價格:{price}元</p>
             </div>
