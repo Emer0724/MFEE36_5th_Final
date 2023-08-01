@@ -4,26 +4,21 @@ import Orderdetail from './orderdetail'
 import Orderman from './orderman';
 
 export default function orderlist() {
-  const [openedDetailIndexes, setOpenedDetailIndexes] = useState([]);
-  const [openedOrderIndexes, setOpenedOrderIndexes] = useState([]);
+  const [openedDetailIndexes, setOpenedDetailIndexes] = useState(false);
+  const [openedOrderIndexes, setOpenedOrderIndexes] = useState(false);
   const [data,setData] = useState([])
   const [data1,setData1] = useState([])
 
-    const opendetailhandle = (index) => {
-      if (openedDetailIndexes.includes(index)) {
-        setOpenedDetailIndexes(openedDetailIndexes.filter((i) => i !== index));
-      } else {
-        setOpenedDetailIndexes([...openedDetailIndexes, index]);
-      }
-    };
-  
-    const openorderhandle = (index) => {
-      if (openedOrderIndexes.includes(index)) {
-        setOpenedOrderIndexes(openedOrderIndexes.filter((i) => i !== index));
-      } else {
-        setOpenedOrderIndexes([...openedOrderIndexes, index]);
-      }
-    };
+  const opendetailhandle = () => {
+    setOpenedDetailIndexes((prev)=>!prev)
+    setOpenedOrderIndexes(false)
+  };
+
+  const openorderhandle = () => {
+    setOpenedOrderIndexes((prev)=>!prev)
+    setOpenedDetailIndexes(false)
+
+  };
   
     useEffect(() => {
       fetch(`${process.env.API_SERVER}/cart/order`)
@@ -96,12 +91,12 @@ export default function orderlist() {
                             </div>
                         </div>
                       </div>
-                    <div className={s.orderbtn}><div onClick={() => { handleSelectOrder(v.order_id); opendetailhandle(i); }} className={s.orderbtntext}>商品細節</div></div>
-                    <div className={s.orderbtn}><div onClick={() => { handleSelectOrder(v.order_id); openorderhandle(i); }} className={s.orderbtntext}>寄件資料</div></div>
+                    <div className={s.orderbtn}><div onClick={() => { handleSelectOrder(v.order_id); opendetailhandle;}} className={s.orderbtntext}>商品細節</div></div>
+                    <div className={s.orderbtn}><div onClick={() => { handleSelectOrder(v.order_id); openorderhandle; }} className={s.orderbtntext}>寄件資料</div></div>
                 </div>
                 <div className={s.detaillocation}>
-                {openedDetailIndexes.includes(i) && <Orderdetail data1={data1}/>}
-                {openedOrderIndexes.includes(i) && <Orderman data1={data1}/>}
+                {openedDetailIndexes && <Orderdetail data1={data1} />}
+                {openedOrderIndexes && <Orderman data1={data1} />}
                 </div>
             </div>
         )
