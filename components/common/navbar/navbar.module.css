@@ -3,11 +3,12 @@
     height:100%;
 }
 .HeaderNavbar{
-   display: flex;   
-   align-items: center;
-   justify-content: space-around;
-   padding-top: 10px;
-}
+    display: flex;   
+    align-items: center;
+    justify-content: space-between;  /* Change space-around to space-between */
+    padding-top: 10px;
+    padding-right: 50px;  /* Add padding to right side */
+ }
 .logoname{
     width: 100%;
     display: none;
@@ -22,8 +23,9 @@
     flex-direction: column;
     justify-content: center;
     width: 40%;
-   height:100%;
+    height:100%;
     transition: all 0.5s ease-in;
+    white-space:nowrap;/*設定文字不換行*/
 }
 .navlinkdiv:hover{
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -61,7 +63,7 @@
 .Icongroup{  
     width: 10%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;  /* Align icons to the right */
     align-items: center;
 }
 @media(max-width:400px){
@@ -71,7 +73,7 @@
         border-bottom: 1px solid  var(--color2); 
         display: flex;   
         align-items: center;
-        justify-content: flex-start; 
+        justify-content: space-around; 
         padding: 20px 10px;
      }
     .NavbarRoute{
@@ -94,8 +96,68 @@
         width:25px;
         margin-left: 10px;
     }
-    .Icongroup{
-        width: 100px;
-    }
-    
 }
+
+/* 登入按鈕的自定義樣式 */
+.loginBtn {
+    display: inline-block;
+    font-size: 24px;
+    border: none;
+    color: #84a98c;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s;
+    width: 48px;
+}
+
+
+  
+  /* 登入按鈕的下底線動畫效果 */
+  .loginBtn::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: #84a98c;
+    transition: width 0.8s;
+  }
+  
+  .loginBtn:hover {
+    color: #84a98c;
+  }
+  
+  .loginBtn:hover::after {
+    width: 100%;
+  }
+  
+  /* Add style for loginWrapper */
+.loginWrapper {
+    margin-left: auto;  /* Push this element to the right */
+}
+
+@media(max-width:400px){
+/*...*/
+    .HeaderNavbar{
+        height: 40px;
+        border-bottom: 1px solid  var(--color2); 
+        display: flex;   
+        align-items: center;
+        justify-content: flex-start; 
+        padding: 20px 10px;
+     }
+
+     /*...*/
+
+     /* Modify style for loginWrapper on smaller screens */
+    .loginWrapper {
+        margin-left: 10px;  /* Adjust the margin on smaller screens */
+    }
+}
+
+/*
+TODO: 
+手機版 logo漢堡圖
+手機版 navbar樣式
+*/
