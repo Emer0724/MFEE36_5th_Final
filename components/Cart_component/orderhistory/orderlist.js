@@ -8,7 +8,6 @@ export default function orderlist() {
   const [openedOrderIndexes, setOpenedOrderIndexes] = useState([]);
   const [data,setData] = useState([])
   const [data1,setData1] = useState([])
-  // console.log(data1);
 
     const opendetailhandle = (index) => {
       if (openedDetailIndexes.includes(index)) {
@@ -32,11 +31,12 @@ export default function orderlist() {
         .then((result) => {
           setData(result);
         }); 
+           
+          fetch(`${process.env.API_SERVER}/cart/orderdetail`,{
 
-          fetch(`${process.env.API_SERVER}/cart/orderdetail`)
+          })
             .then((r) => r.json())
             .then((r1) => {
-              console.log(r1);
               setData1(r1);
             }); 
          })
