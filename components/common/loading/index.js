@@ -8,7 +8,7 @@ const AppContainer = styled('div', {
   height: `calc(100vh - 204.67px)`,
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center',
+  //   alignItems: 'center',
 })
 
 const Container = styled('div', {
@@ -56,6 +56,8 @@ const item_front = ['B', 'O', 'O', 'K', '', '書', '易']
 export default function Loading() {
   const [trail, api] = useTrail(items.length, () => ({
     rotateX: 0,
+    // loop: true,
+    immediate: true,
   }))
 
   const isFlipped = useRef(false)
@@ -74,10 +76,11 @@ export default function Loading() {
         isFlipped.current = true
       }
     }
+    handleClick()
 
     const timmer = setInterval(() => {
       handleClick()
-    }, 1500)
+    }, 1800)
     return () => clearInterval(timmer)
   }, [])
 
