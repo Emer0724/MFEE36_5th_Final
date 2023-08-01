@@ -25,21 +25,28 @@ export default function orderlist() {
       }
     };
   
-  useEffect(() => {
+    useEffect(() => {
       fetch(`${process.env.API_SERVER}/cart/order`)
         .then((r) => r.json())
         .then((result) => {
           setData(result);
-        }); 
-           
-          fetch(`${process.env.API_SERVER}/cart/orderdetail`,{
-
-          })
-            .then((r) => r.json())
-            .then((r1) => {
-              setData1(r1);
-            }); 
-         })
+        });
+    }, []);
+    const handleSelectOrder = (orderid) => {
+      console.log(orderid);
+      fetch(`${process.env.API_SERVER}/cart/orderdetail`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ orderid }),
+      })
+      .then((r) => r.json())
+      .then((result)=>{
+      console.log(result);
+        setData1(result);
+      })
+    }
     
   return (
     <div className={s.listcontain}>
@@ -89,8 +96,8 @@ export default function orderlist() {
                             </div>
                         </div>
                       </div>
-                    <div className={s.orderbtn}><div onClick={() => opendetailhandle(i)} className={s.orderbtntext}>商品細節</div></div>
-                    <div className={s.orderbtn}><div onClick={() => openorderhandle(i)} className={s.orderbtntext}>寄件資料</div></div>
+                    <div className={s.orderbtn}><div onClick={() => { handleSelectOrder(v.order_id); opendetailhandle(i); }} className={s.orderbtntext}>商品細節</div></div>
+                    <div className={s.orderbtn}><div onClick={() => { handleSelectOrder(v.order_id); openorderhandle(i); }} className={s.orderbtntext}>寄件資料</div></div>
                 </div>
                 <div className={s.detaillocation}>
                 {openedDetailIndexes.includes(i) && <Orderdetail data1={data1}/>}
