@@ -1,8 +1,8 @@
 /* Styles for the dropdown menu */
 .dropdownMenu {
     position: absolute;
-    top: 100%;
-    left: 0;
+    top: 10%;
+    right:1% ;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 4px;

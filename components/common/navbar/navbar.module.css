@@ -66,6 +66,9 @@
     justify-content: flex-end;  /* Align icons to the right */
     align-items: center;
 }
+.Licon{
+    cursor:pointer ;
+}
 @media(max-width:400px){
 
     .HeaderNavbar{

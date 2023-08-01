@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './navbar.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -8,6 +8,7 @@ import Carticon from '@/assets/Nav_Image/Vector.svg'
 import Membericon from '@/assets/Nav_Image/Subtract.svg'
 import Searchbar from './searchbar'
 import DropdownMenu from './dropdown-menu'
+import { set } from 'lodash'
 
 export default function NavBar1() {
   const NavctName = ['商城', '二手書', '部落格', '關於我們']
@@ -19,6 +20,14 @@ export default function NavBar1() {
     '/#aboutUs',
   ]
 
+  useEffect(() => {
+    if (localStorage.getItem('auth')) {
+      setnickname(JSON.parse(localStorage.getItem('auth')).nickname)
+      // console.log(JSON.parse(localStorage.getItem('auth')).nickname)
+      setIsLoggedIn(true)
+    }
+  }, [])
+  const [nickname, setnickname] = useState('')
   const [searchbaropen, setSearchbaropen] = useState(false)
   const toggleSearch = () => {
     setSearchbaropen(!searchbaropen)
@@ -30,6 +39,10 @@ export default function NavBar1() {
   const logout = () => {
     // Logout logic here
     setIsLoggedIn(false) // Set isLoggedIn to false on logout
+  }
+  const [Dropdown, setDropdown] = useState(false)
+  const isDropdown = (Dropdown) => {
+    setDropdown(!Dropdown)
   }
 
   return (
@@ -62,7 +75,11 @@ export default function NavBar1() {
           })}
         </div>
         <div className={styles.Icongroup}>
-          <div onClick={toggleSearch} className={styles.naviconbtn}>
+          <div
+            role="presentation"
+            onClick={toggleSearch}
+            className={styles.naviconbtn}
+          >
             <Image
               src={Searchicon}
               width={60}
@@ -83,15 +100,24 @@ export default function NavBar1() {
           {/* Add a class to separate login button from other icons */}
           <div className={styles.loginWrapper}>
             {isLoggedIn ? (
-              <Link href="/dashboard/profile" className={styles.navlink2}>
+              <>
                 <Image
                   src={Membericon}
                   width={60}
                   height={30}
                   className={styles.Licon}
                   alt="icon"
+                  onClick={() => isDropdown(Dropdown)}
+                  role="presentation"
                 />
-              </Link>
+                {Dropdown && (
+                  <DropdownMenu
+                    isLoggedIn={isLoggedIn}
+                    logout={logout}
+                    nickname={nickname}
+                  />
+                )}
+              </>
             ) : (
               <Link href="/member/login">
                 <span className={styles.loginBtn}>登入</span>
@@ -101,8 +127,13 @@ export default function NavBar1() {
         </div>
         {searchbaropen && <Searchbar />}
         {/* Render the DropdownMenu component */}
-        {isLoggedIn && <DropdownMenu isLoggedIn={isLoggedIn} logout={logout} />}
       </div>
     </div>
   )
+}
+{
+  /* <Link href="/dashboard/profile" className={styles.navlink2}> */
+}
+{
+  /* </Link> */
 }
