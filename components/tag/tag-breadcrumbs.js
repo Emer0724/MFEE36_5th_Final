@@ -31,11 +31,27 @@ export default function TagBreadCrumbs() {
               熱門
             </Link>
           </div>
-            <TagContent />
-            <TagContent />
-            <TagContent />
-            <TagContent />
-            <TagContent />
+          <div className='row'>
+                <div className={`d-flex justify-content-around pt-5 pb-5`}>
+                    <span style={{cursor:"pointer"}} className='fs-4'>#愛情</span>
+                    
+                    <span style={{cursor:"pointer"}} className='fs-4'>#旅遊</span>                 
+                </div>
+            </div>
+            <div className='row'>
+                <div className={`d-flex justify-content-around pt-5 pb-5`}>
+                    <span style={{cursor:"pointer"}} className='fs-4'>#生活</span>
+                    
+                    <span style={{cursor:"pointer"}} className='fs-4'>#工作</span>                 
+                </div>
+            </div>
+            <div className='row'>
+                <div className={`d-flex justify-content-around pt-5 pb-5`}>
+                    <span style={{cursor:"pointer"}} className='fs-4'>#教育</span>
+                    
+                    <span style={{cursor:"pointer"}} className='fs-4'>#書</span>                 
+                </div>
+            </div>     
         </div>
       </div>
     </>

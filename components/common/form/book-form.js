@@ -3,16 +3,16 @@ import Button9 from '../button/button9'
 import { useState } from 'react'
 
 export default function BookForm() {
-  const [title, setTitle] = useState('')
+  const [isbn, setIsbn] = useState('')
   const [score, setScore] = useState('')
   const [content, setContent] = useState('')
-  const [titleError, setTitleError] = useState('')
+  const [isbnError, setIsbnError] = useState('')
   const [scoreError, setScoreError] = useState('')
   const [contentError, setContentError] = useState('')
 
   const Titledata = (e) => {
-    setTitle(e.target.value)
-    setTitleError('')
+    setIsbn(e.target.value)
+    setIsbnError('')
   }
 
   const Scoredata = (e) => {
@@ -25,17 +25,17 @@ export default function BookForm() {
     setContentError('')
   }
 
-  const BookSubmit = (event) => {
+  const BookSubmit = async (event) => {
     event.preventDefault()
 
-    console.log('Title:', title)
+    console.log('ISBN:', isbn)
     console.log('Score:', score)
     console.log('Content:', content)
 
     let isValid = true
 
-    if (!title) {
-      setTitleError('請輸入書的ISBN!!')
+    if (!isbn) {
+      setIsbnError('請輸入書的ISBN!!')
       isValid = false
     }
 
@@ -52,11 +52,36 @@ export default function BookForm() {
     if (!isValid) {
       return
     }
+    
+
+    try {
+      const formData = {
+        ISBN: isbn,
+        score: score,
+        content: content,
+      }
+
+      console.log(formData)
+
+      // 使用fetch將表單數據發送到後端API
+      const response = await fetch('http://localhost:3055/blog/bookreviewupload', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+      console.log('從後端收到的響應：', data)
 
     // 清空表单字段
-    setTitle('')
+    setIsbn('')
     setScore('')
     setContent('')
+    } catch (error) {
+      console.error('發送數據到後端時出錯：', error)
+    }
   }
 
   return (
@@ -65,7 +90,7 @@ export default function BookForm() {
         <div className="col-xl-7">
           <form onSubmit={BookSubmit}>
             <h3 className='d-flex justify-content-center pb-5'>寫書評</h3>
-            <div className={`mb-3 pt-3 ${titleError ? 'has-error' : ''}`}>
+            <div className={`mb-3 pt-3 ${isbnError ? 'has-error' : ''}`}>
               <label
                 htmlFor="exampleFormControlInput1"
                 className="form-label fs-4"
@@ -74,18 +99,18 @@ export default function BookForm() {
               </label>
               <input
                 type="text"
-                className={`form-control ${titleError ? 'is-invalid' : ''}`}
+                className={`form-control ${isbnError ? 'is-invalid' : ''}`}
                 id="exampleFormControlInput1"
-                value={title}
+                value={isbn}
                 onChange={Titledata}
                 placeholder="請輸入書的ISBN"
               />
-              {titleError && (
+              {isbnError && (
                 <div
                   style={{ fontSize: '16px' }}
                   className="text-danger ps-2 pt-2"
                 >
-                  {titleError}
+                  {isbnError}
                 </div>
               )}
             </div>

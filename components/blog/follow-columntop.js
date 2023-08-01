@@ -13,19 +13,19 @@
             </div>
             <div className={`${style.chenmt} pt-2`}>
                 <div className="pb-3">
+                    <Link href="#" className={`${style.chenwd} text-black text-decoration-none`}><span>#愛情</span></Link>
+                </div>
+                <div className="pb-3">
+                    <Link href="#" className={`${style.chenwd} text-black text-decoration-none`}><span>#旅遊</span></Link>
+                </div>
+                <div className="pb-3">
                     <Link href="#" className={`${style.chenwd} text-black text-decoration-none`}><span>#生活</span></Link>
                 </div>
                 <div className="pb-3">
-                    <Link href="#" className={`${style.chenwd} text-black text-decoration-none`}><span>#休閒</span></Link>
-                </div>
-                <div className="pb-3">
-                    <Link href="#" className={`${style.chenwd} text-black text-decoration-none`}><span>#娛樂</span></Link>
-                </div>
-                <div className="pb-3">
-                    <Link href="#" className={`${style.chenwd} text-black text-decoration-none`}><span>#健身</span></Link>
-                </div>
-                <div className="pb-3">
                     <Link href="#" className={`${style.chenwd} text-black text-decoration-none`}><span>#工作</span></Link>
+                </div>
+                <div className="pb-3">
+                    <Link href="#" className={`${style.chenwd} text-black text-decoration-none`}><span>#教育</span></Link>
                 </div>
             </div>
         </>
