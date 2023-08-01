@@ -162,7 +162,7 @@
 
 
 .googlelogin-btn {
-  display: flex;
+  display: none;/*隱藏google登入btn,若有要開發可再打開display:flex*/
   justify-content: center;
   align-items: center;
   height: 40px;
