@@ -2,16 +2,16 @@ import React from 'react'
 import styles from './dropdown-menu.module.css'
 import Link from 'next/link'
 
-const DropdownMenu = ({ isLoggedIn, logout }) => {
+const DropdownMenu = ({ isLoggedIn, logout, nickname }) => {
   return (
     <div className={styles.dropdownMenu}>
       {isLoggedIn ? (
         <>
-          <p className={styles.menuItem}>Hi, (會員名稱)</p>
+          <p className={styles.menuItem}>Hi, {nickname}</p>
           <Link href="/dashboard/profile" className={styles.menuItem}>
             會員資料
           </Link>
-          <p className={styles.menuItem} onClick={logout}>
+          <p className={styles.menuItem} role="presentation" onClick={logout}>
             登出
           </p>
         </>

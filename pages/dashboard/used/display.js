@@ -282,7 +282,7 @@ export default function Display() {
               <div>
                 {/* //member-info */}
                 <div className="d-flex flex-column w-100   ">
-                  <div className="textp-20px fw-bold letter-spacing mb-5 mt-3 used-search-text-14  ">
+                  <div className="textp-24px fw-bold letter-spacing mb-5 mt-3 used-search-text-14 color-tx-2  ">
                     基本資料
                   </div>
                   <div className="textp-20px fw-bold letter-spacing mt-5 used-search-text-14 ">
