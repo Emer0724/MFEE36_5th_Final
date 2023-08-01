@@ -40,7 +40,7 @@ export default function Login() {
           const obj = { ...data.data }
           localStorage.setItem('auth', JSON.stringify(obj))
           setAuth(obj)
-          // alert('登入成功')
+          alert('登入成功')
           router.push('/')
         } else {
           alert(data.error || '帳密錯誤')
