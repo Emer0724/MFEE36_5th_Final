@@ -1,8 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ww from '@/components/Leo/market_breadcrumbs.module.css'
 
-export default function Bcs(data) {
-  const { category_id, label } = data
+export default function Bcs(props) {
+  let { category_id } = props
+  console.log(category_id)
+  const [data, setData] = useState({ rows: [] })
+  useEffect(() => {
+    if (category_id) {
+      fetch(`${process.env.API_SERVER}/market/bcs?category_id=${category_id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log('後端回傳結果:', data)
+          setData(data)
+        })
+        .catch((err) => {
+          console.error('資料讀取錯誤', err)
+        })
+    }
+  }, [category_id])
+  let category_name = ''
+  if (data.rows && data.rows.length > 0) {
+    category_name = data.rows[0].category_name
+  }
+  const label = category_name
+  console.log(data)
+  // console.log('我好想睡')
+  console.log(label)
+  // const { category_id, label } = result
   let parent_category = ''
   if (
     category_id === '2' ||
@@ -93,7 +117,7 @@ export default function Bcs(data) {
   // console.log('麵包屑')
   // console.log(label)
   // console.log(category_id)
-  // console.log(data)
+  // console.log(result)
   // console.log(parent_category)
   // console.log(typeof label)
   return (

@@ -34,12 +34,12 @@ export default function Product() {
     setCurrentPage(pageNumber) // 更新目前所在頁數
     handleDisplay(category_id, label, pageNumber) // 調用 handleDisplay 函式，更新商品資料並切換到指定頁數
   }
-  console.log()
+  console.log(category_id)
   // console.log(totalRows)
   return (
     <>
       <CarouselComponent />
-      <Bcs category_id={category_id} label={label} />
+      <Bcs category_id={category_id} />
       <div style={{ display: 'flex', marginTop: '0px', width: '100%' }}>
         <Aside handleDisplay={handleDisplay} rows={rows} />
         <div

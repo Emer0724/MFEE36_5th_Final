@@ -31,9 +31,11 @@ export default function Isbn() {
         })
     }
   }, [ISBN]) //[ISBN] 當ISBN發生變化時重新取值
-  // console.log(data)
+  console.log(data)
   // console.log('八嘎nono')
-  // console.log(ISBN)
+  console.log('')
+  const { category_id } =
+    data && data.rows && data.rows.length > 0 ? data.rows[0] : {}
 
   if (data === null || !data.rows) {
     const load = {
@@ -53,7 +55,7 @@ export default function Isbn() {
   }
   return (
     <>
-      <Bcs />
+      <Bcs category_id={category_id} />
       {/* <div style={{ display: 'flex' }}>
         <div style={load}>
           <Loading />
