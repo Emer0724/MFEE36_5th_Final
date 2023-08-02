@@ -9,37 +9,8 @@ export default function Favorite(result) {
   // const member_id = id.toString()
   const [mark, setMark] = useState(false)
 
-  const checkMark = () => {
-    fetch(`${process.env.API_SERVER}/market/recommand`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ ISBN: ISBN, member_id: id }),
-    })
-      .then((res) => res.json())
-      .then((datas) => {
-        console.log('後端回傳結果:', datas)
-        // 根據收藏資料來更新按鈕的狀態
-        setMark(datas.rows.length > 0)
-      })
-      .catch((error) => {
-        console.error('請求發送錯誤', error)
-      })
-  }
   useEffect(() => {
-    checkMark()
-  }, [])
-
-  const check = () => {
-    const user = localStorage.getItem('auth')
-    return user !== null
-  }
-  //click事件
-  const recommand = () => {
-    const userLogInStatus = check()
-
-    if (userLogInStatus) {
+    const checkMark = () => {
       fetch(`${process.env.API_SERVER}/market/recommand`, {
         method: 'POST',
         headers: {
@@ -50,17 +21,58 @@ export default function Favorite(result) {
         .then((res) => res.json())
         .then((datas) => {
           console.log('後端回傳結果:', datas)
-          checkMark()
-          console.log(datas.rows.length)
-          if (datas.rows.length > 0) {
-            setMark(true)
-          } else {
-            setMark(false)
-          }
+          // 根據收藏資料來更新按鈕的狀態
+          setMark(datas.rows.length > 0)
         })
         .catch((error) => {
           console.error('請求發送錯誤', error)
         })
+    }
+    checkMark()
+  }, [ISBN, id]) //當 ISBN 或 id 發生變化時，useEffect重新運行
+  //確認是否已登入
+  const check = () => {
+    const user = localStorage.getItem('auth')
+    return user !== null
+  }
+  //click事件
+  const recommand = () => {
+    const userLogInStatus = check()
+    if (userLogInStatus) {
+      if (mark) {
+        // 已經收藏，發送刪除資料的請求
+        fetch(`${process.env.API_SERVER}/market/recommand`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ ISBN: ISBN, member_id: id }),
+        })
+          .then((res) => res.json())
+          .then((datas) => {
+            console.log('取消收藏後端回傳結果:', datas)
+            setMark(false) // 取消收藏後，將按鈕狀態設為 false
+          })
+          .catch((error) => {
+            console.error('請求發送錯誤', error)
+          })
+      } else {
+        fetch(`${process.env.API_SERVER}/market/recommand`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ ISBN: ISBN, member_id: id }),
+        })
+          .then((res) => res.json())
+          .then((datas) => {
+            console.log('後端回傳結果:', datas)
+            setMark(true)
+          })
+          .catch((error) => {
+            console.error('請求發送錯誤', error)
+          })
+      }
     } else {
       const confirmResult = window.confirm('您尚未登入，是否要前往登入頁面？')
       if (confirmResult) {
