@@ -26,6 +26,7 @@ export default function UsedPrint({ usedInfo, printALL }) {
   const [page1, setpage1] = useState(1)
   const [selectAll, setSelectAll] = useState(false)
   const [canprint, setcanprint] = useState(true)
+  const [nodata, setnodata] = useState(false)
 
   useEffect(() => {
     getcheck()
@@ -36,6 +37,9 @@ export default function UsedPrint({ usedInfo, printALL }) {
 
   //初始化
   const getcheck = () => {
+    if (data.length < 1) {
+      setnodata(true)
+    }
     const needata = data.map((v, i) => {
       return { ...v, checked: false }
     })
@@ -102,62 +106,68 @@ export default function UsedPrint({ usedInfo, printALL }) {
   }
 
   return (
-    // <div className={css.used_bg}>
-    <div className={`${css.used_whitebg} used_display_chkbox`}>
-      <div className="textp-32px d-flex justify-content-center used-search-text-20">
-        二手書資訊
-      </div>
-      <table className="table used_table_layout ">
-        <thead>
-          <tr>
-            <th className="text-center">
-              <Checkbox
-                onChange={(e) => getAllitem(selectAll, e, data, page1, 5)}
-              />
-            </th>
-            <th className={`col-10  textp-20px ${css.used_text}`}>全選</th>
-          </tr>
-        </thead>
-        <tbody>
-          {pagedata.map((v, i) => {
-            return (
-              <tr key={v.used_id}>
+    <>
+      {pagedata.length > 0 ? (
+        <div className={`${css.used_whitebg} used_display_chkbox`}>
+          <div className="textp-32px d-flex justify-content-center used-search-text-20">
+            二手書資訊
+          </div>
+          <table className="table used_table_layout ">
+            <thead>
+              <tr>
                 <th className="text-center">
                   <Checkbox
-                    checked={v.checked}
-                    value={v.used_id}
-                    onClick={(e) => {
-                      checkitem(data, e.target.value, page1, 5)
-                    }}
+                    onChange={(e) => getAllitem(selectAll, e, data, page1, 5)}
                   />
                 </th>
-                <td
-                  className={`textp-20px letter-spacing used_chk_msg_book_name ${css.used_text}`}
-                >
-                  {v.book_name}
-                </td>
+                <th className={`col-10  textp-20px ${css.used_text}`}>全選</th>
               </tr>
-            )
-          })}
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+              {pagedata.map((v, i) => {
+                return (
+                  <tr key={v.used_id}>
+                    <th className="text-center">
+                      <Checkbox
+                        checked={v.checked}
+                        value={v.used_id}
+                        onClick={(e) => {
+                          checkitem(data, e.target.value, page1, 5)
+                        }}
+                      />
+                    </th>
+                    <td
+                      className={`textp-20px letter-spacing used_chk_msg_book_name ${css.used_text}`}
+                    >
+                      {v.book_name}
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
 
-      <div className="d-flex justify-content-between mt-3 ">
-        <Pagination
-          defaultCurrent={1}
-          total={usedInfo.length}
-          defaultPageSize={5}
-          onChange={(page, pageSize) => getpage(data, page, pageSize)}
-        />
-        <button
-          className="textp-20px letter-spacing btn  color-bg-2 border-radius-5px color-tx-7 "
-          onClick={() => printALL(data)}
-          disabled={canprint}
-        >
-          列印
-        </button>
-      </div>
-    </div>
-    // </div>
+          <div className="d-flex justify-content-between mt-3 ">
+            <Pagination
+              defaultCurrent={1}
+              total={usedInfo.length}
+              defaultPageSize={5}
+              onChange={(page, pageSize) => getpage(data, page, pageSize)}
+            />
+            <button
+              className="textp-20px letter-spacing btn  color-bg-2 border-radius-5px color-tx-7 "
+              onClick={() => printALL(data)}
+              disabled={canprint}
+            >
+              列印
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className={`${css.used_whitebg} used_display_chkbox `}>
+          <div className="textp-24px text-center">暫無二手書資料</div>
+        </div>
+      )}
+    </>
   )
 }

@@ -11,8 +11,11 @@ import DropdownMenu from './dropdown-menu'
 import { set } from 'lodash'
 import AuthContext from '@/context/AuthContext'
 import { useContext } from 'react'
+import { BsBellFill } from 'react-icons/bs'
+import { useRouter } from 'next/router'
 
 export default function NavBar1() {
+  const router = useRouter()
   const { auth, logout } = useContext(AuthContext)
   const NavctName = ['商城', '二手書', '部落格', '關於我們']
   const NavEnName = ['STORE', 'USEDSTORE', 'BLOG', 'ABOUTUS']
@@ -42,15 +45,18 @@ export default function NavBar1() {
 
   const gologout = () => {
     // Logout logic here
-    if (logout) {
-      logout()
-      setIsLoggedIn(false) // Set isLoggedIn to false on logout
+
+    localStorage.removeItem('auth')
+    if (router.asPath.includes('dashboard')) {
+      router.push('/')
     }
+    setIsLoggedIn(false) // Set isLoggedIn to false on logout
   }
   const [Dropdown, setDropdown] = useState(false)
   const isDropdown = (Dropdown) => {
     setDropdown(!Dropdown)
   }
+  // console.log(auth?.notify)
 
   return (
     <div className={styles.Header}>
@@ -117,8 +123,13 @@ export default function NavBar1() {
                   onClick={() => isDropdown(Dropdown)}
                   role="presentation"
                 />
-                {auth?.notify !== 0 ? (
-                  <div className={styles.notify}></div>
+                {JSON.parse(localStorage.getItem('auth')).notify >= 1 ? (
+                  <div className={styles.notify}>
+                    {' '}
+                    <div className={styles.bell}>
+                      <BsBellFill className={{ color: 'white' }} />
+                    </div>
+                  </div>
                 ) : (
                   ''
                 )}

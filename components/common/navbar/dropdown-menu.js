@@ -11,7 +11,11 @@ const DropdownMenu = ({ isLoggedIn, gologout, nickname }) => {
           <Link href="/dashboard/profile" className={styles.menuItem}>
             會員資料
           </Link>
-          <p className={styles.menuItem} role="presentation" onClick={gologout}>
+          <p
+            className={styles.menuItem}
+            role="presentation"
+            onClick={() => gologout()}
+          >
             登出
           </p>
         </>

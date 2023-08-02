@@ -14,6 +14,7 @@ import UsedPrint from '@/components/used/used_print'
 import UsedPintInfo from '@/components/used/used_printinfo'
 import { useReactToPrint } from 'react-to-print'
 import Loading from '@/components/common/loading'
+import Popup_window from '@/components/used/popup_window'
 
 export default function ChangebookMessage() {
   const printref = useRef()
@@ -33,6 +34,7 @@ export default function ChangebookMessage() {
   const [memberinfo, setmemberinfo] = useState([])
   const [qrcode_info, setqrcode_info] = useState([])
   const [loading, setloading] = useState(true)
+  const [nodata, setnodata] = useState(false)
   // const [totalpage, setTotalpage] = useState(1)
   // const [nowpage, setnowpage] = useState(1)
   useEffect(() => {
@@ -74,6 +76,7 @@ export default function ChangebookMessage() {
       }
     )
     const getUsedInfo12 = await getUsedInfo1.json()
+
     setusedInfo(getUsedInfo12[0])
     setmemberinfo(getUsedInfo12[1][0])
     setusedlist(true)

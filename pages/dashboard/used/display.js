@@ -105,7 +105,7 @@ export default function Display() {
     const getbook_detal2 = await getbook_detal1.json()
 
     setbooks(getbook_detal2[0])
-    console.log(getbook_detal2.length)
+    // console.log(getbook_detal2.length)
     if (getbook_detal2.length === 0) {
       setSearch_error('查無此本書')
     }

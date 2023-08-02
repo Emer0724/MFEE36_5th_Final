@@ -46,6 +46,10 @@
     
   
 }
+.notice{
+    font-size: 16px;
+    color: brown;
+}
 
 @media screen and (max-width:700px) {
     .mnav_button{
