@@ -1,0 +1,34 @@
+/* .ture{
+    font-size: 45px;
+    width: 50px;;
+    height: 80px;
+    background-image: url(../../public/Leo-image/實心書籤.svg);
+    background-position: 20px,;
+    background-repeat: no-repeat;
+    background-size: 50px,80px;
+}
+.false{
+    font-size: 45px;
+    width: 50px;;
+    height: 80px;
+    background-image: url(../../public/Leo-image/空心書籤.svg);
+    background-position: 20px,;
+    background-repeat: no-repeat;
+    background-size: 50px,80px;
+} */
+
+.i{
+    font-size: 45px;
+    width: 50px;;
+    height: 80px;
+    background-image: url(../../public/Leo-image/空心書籤.svg);
+    background-position: 20px,;
+    background-repeat: no-repeat;
+    background-size: 50px,80px;
+}
+
+
+.fbtn{
+    border: none;
+    background-color: transparent;
+}
