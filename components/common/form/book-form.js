@@ -1,6 +1,6 @@
 import Button8 from '../button/button8'
 import Button9 from '../button/button9'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function BookForm() {
   const [isbn, setIsbn] = useState('')
@@ -9,6 +9,17 @@ export default function BookForm() {
   const [isbnError, setIsbnError] = useState('')
   const [scoreError, setScoreError] = useState('')
   const [contentError, setContentError] = useState('')
+  const [memberData, setMemberData] = useState([])
+
+  useEffect(() => {
+    // 從本地儲存空間獲取會員資料
+    const storedMemberData = localStorage.getItem('auth')
+
+    if (storedMemberData) {
+      const parsedMemberData = JSON.parse(storedMemberData)
+      setMemberData(parsedMemberData)
+    }
+  }, [])
 
   const Titledata = (e) => {
     setIsbn(e.target.value)
@@ -39,9 +50,9 @@ export default function BookForm() {
       isValid = false
     }
 
-    if(!score) {
-        setScoreError('請選擇評分')
-        isValid = false
+    if (!score) {
+      setScoreError('請選擇評分')
+      isValid = false
     }
 
     if (!content) {
@@ -52,10 +63,10 @@ export default function BookForm() {
     if (!isValid) {
       return
     }
-    
 
     try {
       const formData = {
+        memberData: memberData.member_id,
         ISBN: isbn,
         score: score,
         content: content,
@@ -64,21 +75,28 @@ export default function BookForm() {
       console.log(formData)
 
       // 使用fetch將表單數據發送到後端API
-      const response = await fetch('http://localhost:3055/blog/bookreviewupload', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
+      const response = await fetch(
+        'http://localhost:3055/blog/bookreview/upload',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        }
+      )
 
       const data = await response.json()
       console.log('從後端收到的響應：', data)
 
-    // 清空表单字段
-    setIsbn('')
-    setScore('')
-    setContent('')
+      setIsbn('')
+      setScore('')
+      setContent('')
+      
+      setTimeout(() => {
+        window.location.href = 'http://localhost:3000/blog/blog-home-page'
+      }, 2000)
+
     } catch (error) {
       console.error('發送數據到後端時出錯：', error)
     }
@@ -89,7 +107,7 @@ export default function BookForm() {
       <div className="row d-flex justify-content-center">
         <div className="col-xl-7">
           <form onSubmit={BookSubmit}>
-            <h3 className='d-flex justify-content-center pb-5'>寫書評</h3>
+            <h3 className="d-flex justify-content-center pb-5">寫書評</h3>
             <div className={`mb-3 pt-3 ${isbnError ? 'has-error' : ''}`}>
               <label
                 htmlFor="exampleFormControlInput1"
@@ -121,11 +139,12 @@ export default function BookForm() {
               >
                 評分
               </label>
-              <select 
-              className={`form-select ${scoreError ? 'is-invalid' : ''}`} 
-              aria-label="Default select example"
-              value={score}
-              onChange={Scoredata}>
+              <select
+                className={`form-select ${scoreError ? 'is-invalid' : ''}`}
+                aria-label="Default select example"
+                value={score}
+                onChange={Scoredata}
+              >
                 <option selected>選擇評分</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -133,7 +152,14 @@ export default function BookForm() {
                 <option value="4">4</option>
                 <option value="5">5</option>
               </select>
-              {scoreError && <div style={{ fontSize: '16px' }} className="invalid-feedback ps-2 pt-2">{scoreError}</div>}
+              {scoreError && (
+                <div
+                  style={{ fontSize: '16px' }}
+                  className="invalid-feedback ps-2 pt-2"
+                >
+                  {scoreError}
+                </div>
+              )}
             </div>
             <div className="mb-3 pt-5">
               <label

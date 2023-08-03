@@ -5,5 +5,10 @@
     background-color: #84A98C;
     border: 3px solid #52796F;
     color: white;
-    box-shadow: 1px 1px 1px 1px #ADADAD;
+    box-shadow: 1px 1px 1px 1px #c2c2c2c2;
+}
+
+
+.chenbut {
+    width: 400px;
 }

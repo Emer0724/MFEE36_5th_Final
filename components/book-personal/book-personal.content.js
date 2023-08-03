@@ -1,11 +1,11 @@
 import Avatar2 from '../book-review/blogavatar2'
-import style from '@/components/book-review/book-review-element.module.css'
+import style from '@/components/book-review/book-element.module.css'
 import { AiFillStar } from 'react-icons/ai'
 import Image from 'next/image'
 import imgbook1 from '@/public/blog-img/book1.jpg'
 import Button15 from '../common/button/button15'
 import Button14 from '../common/button/button14'
-import people from '@/assets/used-svg/people.svg'
+
 
 export default function BookPersonalContent() {
     return (

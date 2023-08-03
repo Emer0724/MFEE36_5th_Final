@@ -14,7 +14,7 @@ export default function FollowColumnDown() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:3055/blog/follow')
+      const response = await fetch('http://localhost:3055/blog/nav/follow')
       if (!response.ok) {
         throw new Error('沒有資料')
       }
@@ -36,21 +36,21 @@ export default function FollowColumnDown() {
 
       {follow.map((followDown) => (
         <>
-          <div className="d-flex pb-3">
+          <div className="d-flex pb-3" key={followDown.blog_sid}>
             <Link
-              href="#"
-              key={followDown.blog_sid}
+              href={`/blog/${follow.blog_sid}`}
               className={`pe-3 text-decoration-none`}
             >
               <Image
                 src={followDown.mem_avatar ? followDown.mem_avatar : people}
                 className={`${style.chenheadblogimg}`}
+                alt={'img'}
               />
             </Link>
             <div>
               <div className="pb-2">
                 <Link
-                  href="#"
+                  href={`/blog/${followDown.blog_sid}`}
                   className={`text-decoration-none d-flex align-items-center fw-bold ${style.editbutton} text-black`}
                 >
                   {followDown.nickname}
@@ -58,7 +58,7 @@ export default function FollowColumnDown() {
               </div>
               <div>
                 <Link
-                  href="#"
+                  href={`/blog/${followDown.blog_sid}`}
                   className={`${style.editbutton} text-decoration-none text-black`}
                 >
                   {followDown.blog_title}
@@ -70,59 +70,4 @@ export default function FollowColumnDown() {
       ))}
     </>
   )
-}
-
-{
-  /* <div className="d-flex pb-3">
-<Link href="#" className={`text-decoration-none pe-3`}>
-    <Image src={img2} className={`${style.chenheadblogimg}`}/>
-</Link>
-<div>
-    <div className="pb-2">
-        <Link href="#" className={`text-decoration-none d-flex align-items-center fw-bold ${style.editbutton} text-black`}>李楊</Link>
-    </div>
-    <div>
-        <Link href="#" className={`${style.editbutton} text-decoration-none text-black`}>甚麼都由好奇而起，甚麼都慢過人，只懂寫字</Link>
-    </div>
-</div>
-</div>
-<div className="d-flex pb-3">
-<Link href="#" className={`text-decoration-none pe-3`}>
-    <Image src={img3} className={`${style.chenheadblogimg}`}/>
-</Link>
-<div>
-    <div className="pb-2">
-        <Link href="#" className={`text-decoration-none d-flex align-items-center fw-bold ${style.editbutton} text-black`}>龍二</Link>
-    </div>
-    <div>
-        <Link href="#" className={`${style.editbutton} text-decoration-none text-black`}>| 天蠍男 | 媒體人 | 愛閱讀 | 寫生活 | 寫城市 |</Link>
-    </div>
-</div>
-</div>
-<div className="d-flex pb-3">
-<Link href="#" className={`text-decoration-none pe-3`}>
-    <Image src={img5} className={`${style.chenheadblogimg}`}/>
-</Link>
-<div>
-    <div className="pb-2">
-        <Link href="#" className={`text-decoration-none d-flex align-items-center fw-bold ${style.editbutton} text-black`}>阿飛</Link>
-    </div>
-    <div>
-        <Link href="#" className={`${style.editbutton} text-decoration-none text-black`}>work in progress</Link>
-    </div>
-</div>
-</div>
-<div className="d-flex pb-3">
-<Link href="#" className={`text-decoration-none pe-3`}>
-    <Image src={images} className={`${style.chenheadblogimg}`}/>
-</Link>
-<div>
-    <div className="pb-2">
-        <Link href="#" className={`d-flex align-items-center fw-bold ${style.editbutton} text-decoration-none text-black`}>小戴</Link>
-    </div>
-    <div>
-        <Link href="#" className={`${style.chena} ${style.editbutton} text-decoration-none text-black`}>人在少年夢中不覺醒後要歸去</Link>
-    </div>
-</div>
-</div> */
 }

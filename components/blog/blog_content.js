@@ -66,10 +66,11 @@ export default function BlogContent() {
             <div className="pt-3">
               {blog.blog_img ? (
                 <Image
-                  src={`/all_img/img/${blog.blog_img}`}
+                  src={`all_img/blog-img/${blog.blog_img}`}
                   width={450}
                   height={250}
                   className={style.blogimg}
+                  alt={'img'}
                 />
               ) : (
                 <Image
@@ -77,6 +78,7 @@ export default function BlogContent() {
                   width={450}
                   height={250}
                   className={style.blogimg}
+                  alt={'img'}
                 />
               )}
             </div>

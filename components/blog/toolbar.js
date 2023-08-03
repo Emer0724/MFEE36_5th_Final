@@ -27,7 +27,19 @@ export default function ToolBar() {
   const personalClick = '/blog/personal-page/work'
 
   const [selectedIcon, setSelectedIcon] = useState(null)
+  const [memberData, setMemberData] = useState([])
 
+  useEffect(() => {
+    // 從本地儲存空間獲取會員資料
+    const storedMemberData = localStorage.getItem('auth');
+
+    if (storedMemberData) {
+      const parsedMemberData = JSON.parse(storedMemberData);
+      setMemberData(parsedMemberData);
+      console.log(parsedMemberData)
+    }
+  }, [])
+  
   useEffect(() => {
     const storedIcon = localStorage.getItem('selectedIcon')
     if (storedIcon) {
@@ -47,7 +59,8 @@ export default function ToolBar() {
     <div className="row">
       <div className={`${style.toolbarContainer} ${style.nav}`}>
         <div className={`${style.stickyLeft} col-2`}>
-          <Avatar />
+          <Avatar 
+          nickname={memberData.nickname}/>
           <div
             className={`flex-column align-items-center justify-content-center d-flex pt-5 ${
               selectedIcon === 'blog' ? style.selected : ''
