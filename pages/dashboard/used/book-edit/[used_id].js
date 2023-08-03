@@ -9,6 +9,7 @@ import Popup_window from '@/components/used/popup_window'
 import Head from 'next/head'
 import AuthContext from '@/context/AuthContext'
 import { useContext } from 'react'
+import ExchangeAnime from '@/components/used/exchange_anime'
 
 //暫定 1.待兌換 2.代收書 3.退回 4.已兌換
 // const newdata = { ...book_info }
@@ -337,7 +338,7 @@ export default function Usedid() {
         ''
       )}
       {excehange_success ? (
-        <Popup_window text={'成功兌換'} no_botton={true} icon={true} />
+       <ExchangeAnime number={bookInfo.price}/>
       ) : (
         ''
       )}

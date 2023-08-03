@@ -1,0 +1,178 @@
+.border_card_back{
+    background-color:#747272d5;
+    width: 100vw;
+    height: 100vmax;
+    position: fixed;
+    top: 0 ;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    /* padding-top: 200px; */
+    z-index: 12;
+  }
+.money{
+    position: absolute;
+    top: -350px;
+    left: 50%;
+    transform: translate(-50%);
+    animation-name: getmoney;
+    animation-duration: 2s;
+    animation-timing-function:cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation-fill-mode:forwards;
+    z-index: 21;
+}
+
+.pig{
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 55;
+
+}
+.money1{
+    position: absolute;
+    /* top: -50%; */
+    left: 50%;
+    transform: translate(-1%,300%);
+    transform: rotate(10);
+    z-index: 20;
+    animation-name: rightmoney;
+    animation-delay: 1.5s;
+    animation-duration: 1s;
+    animation-fill-mode:forwards;
+   
+    
+
+}
+.money2{
+    position: absolute;
+    /* top: 35%; */
+    left: 50%;
+    transform: translate(-130%,290%);
+  
+    z-index: 20;
+    animation-name: leftmoney;
+    animation-delay: 1.5s;
+    animation-duration: 1s;
+    animation-fill-mode:forwards;
+    
+}
+.money3{
+    position: absolute;
+    /* top: 35%; */
+    left: 50%;
+    transform: translate(-80%,290%);
+
+    animation-name: backmoney;
+    animation-delay: 1.5s;
+    animation-duration: 1s;
+    animation-fill-mode:forwards;
+}
+.money4{
+    position: absolute;
+    /* top: 35%; */
+    left: 50%;
+    transform: translate(10%,270%);
+    
+}
+.money5{
+    position: absolute;
+    /* top: 35%; */
+    left: 50%;
+    transform: translate(-150%,260%);
+    
+}
+.money6{
+    position: absolute;
+    /* top: 35%; */
+    left: 50%;
+    transform: translate(-150%,230%);
+    
+}
+.money7{
+    position: absolute;
+    /* top: 35%; */
+    left: 50%;
+    transform: translate(10%,240%);
+    
+}
+.money8{
+    position: absolute;
+    /* top: 35%; */
+    left: 50%;
+    transform: translate(-50%,230%);
+    
+}
+.block{
+    position: relative;
+    top: 20%;
+   
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.pigblock{
+    position: relative;
+    top: 15%;
+}
+.text{
+    position: absolute;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 10px;
+    left: 50%;
+    transform: translate(-50%,-50%);
+opacity: 0;
+    animation-name: text;
+    animation-delay: 1s;
+    animation-duration: 1s;
+    animation-fill-mode:forwards;
+    color: aliceblue;
+}
+
+@keyframes getmoney{
+    0%{
+        transform: translate(-50px,0);
+    }
+    20%{
+        transform: translate(-50px,0);
+    }
+    100%{
+        transform: translate(-50px,590px);
+    }
+ 
+}
+@keyframes leftmoney{
+    0%{
+        transform: translate(-130%,290%);
+        
+    }
+    100%{
+        transform: translate(-145%,260%);
+        
+    }
+
+
+}
+
+@keyframes rightmoney {
+    0%{
+        transform: translate(-1%,300%);
+    }
+    20%{
+        transform: translate(-1%,300%);
+    }
+    100%{
+        transform: translate(10%,270%);
+    }
+    
+    
+}
+@keyframes text {
+    0%{
+        opacity: 0;
+    }
+    
+    100%{
+        opacity: 1;
+    }}

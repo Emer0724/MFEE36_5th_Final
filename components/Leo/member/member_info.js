@@ -43,6 +43,13 @@ export default function Member_info() {
         console.log(data)
         console.log(data[0].filename)
         setnewimg(data[0].filename)
+        const auth_old = JSON.parse(localStorage.getItem('auth'))
+        const auth_old_new = JSON.stringify({
+          ...auth_old,
+          mem_avatar: data[0].filename,
+        })
+        localStorage.setItem('auth', auth_old_new)
+        
       })
       .catch((error) => {
         // 處理錯誤
@@ -53,7 +60,7 @@ export default function Member_info() {
     <div className={x.box_member_info}>
       <div className={x.box_member_main}>
         <div className={x.member_info_avatar}>
-          <div className={x.avatar_img}>
+        
             {img ? (
               <Image
                 src={`${process.env.API_SERVER}/avatar/${img}`}
@@ -63,9 +70,11 @@ export default function Member_info() {
                 height={190}
               />
             ) : (
+              <div className={x.avatar_img}>
               <Image src={people} alt="people" className={x.img_img} />
+              </div>
             )}
-          </div>
+          
 
           <Image
             className={x.camera_icon}
