@@ -1,25 +1,16 @@
 import DeepButton from '@/components/common/CBtn/DeepgreenBtn'
 import LightButton from '@/components/common/CBtn/LightGreenBtn';
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect, use } from 'react'
 import styles from "@/components/Cart_component/cart/CartTotal.module.css"
 import { useRouter } from 'next/router';
 
-export default function CartTotal({data}) {
+export default function CartTotal({data,totalAmount}) {
    const [coupon, setCoupon] = useState({});
    const [usetoken, setusetoken] = useState({});
    const member1 = data[0].member_id
-   const [totalAmount, setTotalAmount] = useState(0);
+   
 
    
-   useEffect(() => {
-      const eachprice = data.map((v) => {
-        return v.price * v.count;
-      });
-      const totalprice = eachprice.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-      // 更新總金額
-      setTotalAmount(totalprice);
-    }, [data]);
-
    useEffect(() => {
    fetch(`${process.env.API_SERVER}/cart/cart/coupon?member=${member1}`)
    .then((r) => r.json())
@@ -41,6 +32,8 @@ export default function CartTotal({data}) {
    const [selectcoupon,setSelectcoupon] = useState(1)
    const [selectcouponid,setSelectcouponid] = useState(0)
    const [selectcouponmid,setSelectcouponmid] = useState(0)
+   const [judgetotal,setJudgetotal] = useState(false)
+
    const router = useRouter();
    
    
@@ -55,11 +48,15 @@ export default function CartTotal({data}) {
     };
   
     const handleCouponOptionSelect = (mid,id,coupon_discount) => {
-      setSelectcouponmid(mid)
+      if(totalAmount<0){
+         
+      }
+      {
+       setSelectcouponmid(mid)
       setSelectcoupon(coupon_discount)
       setSelectcouponid(id)
       setSelectedCouponOption(Math.floor(totalAmount*(1-coupon_discount)));
-      setShowCouponMenu(false);
+      setShowCouponMenu(false);}
     };
     const handleCurrencyOptionSelect = (option) => {
       setSelectedCurrencyOption(option);
@@ -127,6 +124,7 @@ const handlebtn = ()=>{
                   </div>
                   )}
          </div>
+         {/* {要判斷是否金額大於} */}
          <div className={styles.CartTotalBtnNext}>
             <DeepButton DeepButtoncontent='下一步，前往付款' onClick={handlebtn} />
          </div>
