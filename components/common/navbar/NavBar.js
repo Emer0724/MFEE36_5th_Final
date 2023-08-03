@@ -125,9 +125,9 @@ export default function NavBar1() {
             )}
           </div>
         </div>
-        {searchbaropen && <Searchbar />}
         {/* Render the DropdownMenu component */}
       </div>
+        {searchbaropen && <Searchbar />}
     </div>
   )
 }

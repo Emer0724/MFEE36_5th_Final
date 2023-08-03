@@ -1,16 +1,19 @@
 import  { useEffect, useState} from 'react'
-import Table from 'react-bootstrap/Table';
 import Image from 'next/image'
 import Trash from "@/assets/Nav_Image/trashcan.svg"
 import styles from "@/components/Cart_component/cart/CartProductlist.module.css"
-import fake from "@/assets/Cart_Image/fake.svg"
 import { useRouter } from 'next/router';
 
 
 
-export default function CurtProduct({data,addcount,cutcount,deleteitem}) {
+export default function CurtProduct({data,handleDataChange}) {
+  const [data1,setData1] = useState(data);
+  const member1 = data[0].member_id;
   const router = useRouter()
   const isCartPage = router.pathname === "/product/cart";
+  useEffect(() => {
+    setData1(data);
+  }, [data]);
   const Countcut = {
     textAlign: "center",
     border: "1px solid var(--color6)",
@@ -30,6 +33,73 @@ export default function CurtProduct({data,addcount,cutcount,deleteitem}) {
     textAlign:"center",
     fontSize:"var(--txp24)"
   }
+
+
+  const addcount = async (ISBN, member) => {
+    try {
+      const res = await fetch(`${process.env.API_SERVER}/cart/cart/plus`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ISBN: ISBN, member }),
+      });
+      const result = await res.json();
+      setData1((prevData) =>
+        prevData.map((item) =>
+          item.ISBN === ISBN ? { ...item, count: item.count + 1 } : item
+        )
+      );
+      handleDataChange(data1);
+    } catch (error) {
+      console.error("錯誤訊息:", error);
+    }
+  };
+  
+  const cutcount = async (ISBN, member) => {
+    try {
+      const res = await fetch(`${process.env.API_SERVER}/cart/cart/cut`, {
+        method: "PUT",
+        body: JSON.stringify({ ISBN, member }),
+        headers: { "Content-Type": "application/json" },
+      });
+      const resultcut = await res.json();
+      if (resultcut.message === "商品已減少") {
+        setData1((prevData) => prevData.filter((item) => item.ISBN !== ISBN));
+      } else {
+        setData1((prevData) =>
+          prevData.map((item) =>
+            item.ISBN === ISBN ? { ...item, count: item.count - 1 } : item
+          )
+        );
+      }
+      handleDataChange(data1);
+    } catch (error) {
+      console.error("錯誤訊息:", error);
+    }
+  }
+
+  const deleteitem = (ISBN,member) =>{
+    fetch(`${process.env.API_SERVER}/cart/cart/delete`,{
+      method:"POST",
+      body:JSON.stringify({ISBN:ISBN,member}),
+      headers: { "Content-Type": "application/json" }
+    })
+    .then((r)=>r.json())
+    .then((resultdel)=>{
+      if(resultdel.message === "Item deleted from cart."){
+        setData1((prevData)=>(
+          prevData.filter((item) => item.ISBN !== ISBN),
+          handleDataChange(data1)
+        ))
+      }
+    })
+    .then(()=>{
+      handleDataChange(data1)
+    })
+  }
+
+
 
 const limitText = (text,maxLength) => {
     if (text.length > maxLength) {
@@ -62,7 +132,7 @@ const limitText = (text,maxLength) => {
           </tr>  
       </thead> 
       <tbody>
-      {data.cart.map((v,i)=>{
+      {data1.map((v,i)=>{
         const truncatedBookName = limitText(v.book_name,10);
           return(
           <tr key={i} className={styles.Prodeucttr}>
@@ -72,9 +142,9 @@ const limitText = (text,maxLength) => {
               <td>
                  {isCartPage?
                  <div className={styles.CountBlock}>
-                    <button style={Countcut} className={styles.Countcut} onClick={() => cutcount(v.ISBN)}>-</button>
+                    <button style={Countcut} className={styles.Countcut} onClick={() => cutcount(v.ISBN,member1)}>-</button>
                     <div className={styles.Countvalue}>{v.count}</div>
-                    <button style={Countplus} className={styles.Countplus} onClick={() => addcount(v.ISBN)}>+</button>
+                    <button style={Countplus} className={styles.Countplus} onClick={() => addcount(v.ISBN,member1)}>+</button>
                   </div>
                   :
                   <div className={styles.CountBlock}>
@@ -84,7 +154,7 @@ const limitText = (text,maxLength) => {
               </td> 
               <td className={styles.ProdeuctBlock}><span className={styles.totalprice}>{v.price*v.count}</span></td>
               {isCartPage?
-              <td className={styles.ProdeuctBlock}><button className={styles.trashbtn}  onClick={() => deleteitem(v.ISBN)}><Image src={Trash} width={40} height={40} alt='icon'/></button></td>
+              <td className={styles.ProdeuctBlock}><button className={styles.trashbtn}  onClick={() => deleteitem(v.ISBN,member1)}><Image src={Trash} width={40} height={40} alt='icon'/></button></td>
               :
               ""
               }
@@ -92,7 +162,7 @@ const limitText = (text,maxLength) => {
       })}
       </tbody>
     </table>
-    {data.cart.map((v,i)=>{
+    {data1.map((v,i)=>{
       const truncatedBookName = limitText(v.book_name,20);
         return(
           <div className={styles.CProductlist} key={i}>
@@ -103,9 +173,9 @@ const limitText = (text,maxLength) => {
                 <h6 className={styles.Clisttext}>{v.ISBN}</h6>
                 {isCartPage?
                 <div className={styles.CountBlock}>
-                    <button  className={styles.Countcut} onClick={() => cutcount(v.ISBN)} >-</button>
+                    <button  className={styles.Countcut} onClick={() => cutcount(v.ISBN,member1)} >-</button>
                     <div className={styles.Countvalue}>{v.count}</div>
-                    <button  className={styles.Countplus} onClick={() => addcount(v.ISBN)}>+</button>
+                    <button  className={styles.Countplus} onClick={() => addcount(v.ISBN,member1)}>+</button>
                 </div>
                 :
                 <div className={styles.CountBlock}>
@@ -115,7 +185,7 @@ const limitText = (text,maxLength) => {
               </div>
               {isCartPage?
               <div className={styles.CProductlist3}>
-                <button className={styles.trashbtn} onClick={() => deleteitem(v.ISBN)}><Image src={Trash} width={30} height={30} alt='icon'/></button>
+                <button className={styles.trashbtn} onClick={() => deleteitem(v.ISBN,member1)}><Image src={Trash} width={30} height={30} alt='icon'/></button>
               </div>
               :
               ""
