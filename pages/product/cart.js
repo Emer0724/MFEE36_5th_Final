@@ -9,6 +9,8 @@ import CartTitle from '@/components/Cart_component/Cart_title'
 
 export default function Cart() {
 const [data, setData] = useState([]);
+const [totalAmount, setTotalAmount] = useState(0);
+
 const handleDataChange = (newData) => {
   setData(newData);
 };
@@ -28,7 +30,16 @@ useEffect(() => {
       console.log(result);
       setData(result);
     });
-}, [setData]);
+}, []);
+
+useEffect(() => {
+  const eachprice = data.map((v) => {
+    return v.price * v.count;
+  });
+  const totalprice = eachprice.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  // 更新總金額
+  setTotalAmount(totalprice);
+}, [data]);
 
 
 const style1 = {
@@ -37,20 +48,22 @@ const style1 = {
   justifyContent:"space-around",
   alignItems:"center",
   margin:"300px,0px"
-
+}
+const style2 = {
+ width:"100%"
 }
   return (
     <div style={style1}>
         <OrderIcon />
         { data.length>0
         ?
-        <div>
+        <div style={style2}>
         <CartTitle titlecontent={"找到喜歡的東西，就來下單吧"}/>
         <Productlist data={data} handleDataChange={handleDataChange} />
-        <CartTotal data={data}  />
+        <CartTotal data={data}  totalAmount={totalAmount}/>
         </div>
         :
-        <CartTitle titlecontent={"日久見真情，欲速則不達，慢慢挑"}/>
+        <CartTitle titlecontent={"購物車目前是空的"}/>
         }
         <CartRecommend />
     </div>

@@ -11,9 +11,11 @@ export default function CurtProduct({data,handleDataChange}) {
   const member1 = data[0].member_id;
   const router = useRouter()
   const isCartPage = router.pathname === "/product/cart";
+
   useEffect(() => {
     setData1(data);
   }, [data]);
+
   const Countcut = {
     textAlign: "center",
     border: "1px solid var(--color6)",
@@ -45,12 +47,11 @@ export default function CurtProduct({data,handleDataChange}) {
         body: JSON.stringify({ ISBN: ISBN, member }),
       });
       const result = await res.json();
-      setData1((prevData) =>
+      handleDataChange((prevData) =>
         prevData.map((item) =>
           item.ISBN === ISBN ? { ...item, count: item.count + 1 } : item
         )
       );
-      handleDataChange(data1);
     } catch (error) {
       console.error("錯誤訊息:", error);
     }
@@ -64,22 +65,22 @@ export default function CurtProduct({data,handleDataChange}) {
         headers: { "Content-Type": "application/json" },
       });
       const resultcut = await res.json();
-      if (resultcut.message === "商品已減少") {
-        setData1((prevData) => prevData.filter((item) => item.ISBN !== ISBN));
-      } else {
-        setData1((prevData) =>
+      if (resultcut.message === '商品已刪除') {
+        handleDataChange((prevData) => prevData.filter((item) => item.ISBN !== ISBN));
+      } 
+      else {
+        handleDataChange((prevData) =>
           prevData.map((item) =>
             item.ISBN === ISBN ? { ...item, count: item.count - 1 } : item
           )
         );
       }
-      handleDataChange(data1);
     } catch (error) {
       console.error("錯誤訊息:", error);
     }
   }
-
-  const deleteitem = (ISBN,member) =>{
+  
+  const deleteitem = (ISBN, member) =>{
     fetch(`${process.env.API_SERVER}/cart/cart/delete`,{
       method:"POST",
       body:JSON.stringify({ISBN:ISBN,member}),
@@ -88,17 +89,15 @@ export default function CurtProduct({data,handleDataChange}) {
     .then((r)=>r.json())
     .then((resultdel)=>{
       if(resultdel.message === "Item deleted from cart."){
-        setData1((prevData)=>(
-          prevData.filter((item) => item.ISBN !== ISBN),
-          handleDataChange(data1)
+        handleDataChange((prevData)=>(
+          prevData.filter((item) => item.ISBN !== ISBN)
         ))
       }
     })
-    .then(()=>{
-      handleDataChange(data1)
-    })
+    .catch((error) => {
+      console.error("錯誤訊息:", error);
+    });
   }
-
 
 
 const limitText = (text,maxLength) => {
@@ -136,7 +135,7 @@ const limitText = (text,maxLength) => {
         const truncatedBookName = limitText(v.book_name,10);
           return(
           <tr key={i} className={styles.Prodeucttr}>
-              <td className={styles.Prodeuctpn}><Image src={`/all_img/book_pic/${encodeURIComponent(v.pic)}`} width={100} height={100} alt='icon'/>{truncatedBookName}</td>
+              <td className={styles.Prodeuctpn}><Image className={styles.imagebook} src={`/all_img/book_pic/${encodeURIComponent(v.pic)}`} width={100} height={100} alt='icon'/>{truncatedBookName}</td>
               <td className={styles.ProdeuctBlock}>{v.ISBN}</td>
               <td className={styles.ProdeuctBlock}><span className={styles.oneprice}>{v.price}</span></td>
               <td>
@@ -163,7 +162,7 @@ const limitText = (text,maxLength) => {
       </tbody>
     </table>
     {data1.map((v,i)=>{
-      const truncatedBookName = limitText(v.book_name,20);
+      const truncatedBookName = limitText(v.book_name,15);
         return(
           <div className={styles.CProductlist} key={i}>
             <div className={styles.CProductlist1} >
