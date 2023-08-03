@@ -32,7 +32,7 @@ export default function CartTotal({data,totalAmount}) {
    const [selectcoupon,setSelectcoupon] = useState(1)
    const [selectcouponid,setSelectcouponid] = useState(0)
    const [selectcouponmid,setSelectcouponmid] = useState(0)
-   const [judgetotal,setJudgetotal] = useState(false)
+   const [judgetotal,setJudgetotal] = useState(true)
 
    const router = useRouter();
    
@@ -40,42 +40,47 @@ export default function CartTotal({data,totalAmount}) {
    const toggleCouponMenu = () => {
       setShowCouponMenu((prev) => !prev);
       setShowCurrencyMenu(false);
-    };
-  
-    const toggleCurrencyMenu = () => {
-      setShowCurrencyMenu((prev) => !prev);
-      setShowCouponMenu(false);
-    };
-  
-    const handleCouponOptionSelect = (mid,id,coupon_discount) => {
-      if(totalAmount<0){
-         
-      }
-      {
-       setSelectcouponmid(mid)
-      setSelectcoupon(coupon_discount)
-      setSelectcouponid(id)
-      setSelectedCouponOption(Math.floor(totalAmount*(1-coupon_discount)));
-      setShowCouponMenu(false);}
-    };
-    const handleCurrencyOptionSelect = (option) => {
-      setSelectedCurrencyOption(option);
+   };
+
+   const toggleCurrencyMenu = () => {
+   setShowCurrencyMenu((prev) => !prev);
+   setShowCouponMenu(false);
+   };
+
+   const handleCouponOptionSelect = (mid,id,coupon_discount) => {
+   setSelectcouponmid(mid)
+   setSelectcoupon(coupon_discount)
+   setSelectcouponid(id)
+   setSelectedCouponOption(Math.floor(totalAmount*(1-coupon_discount)));
+   setShowCouponMenu(false);
+   };
+
+   const handleCurrencyOptionSelect = (option) => {
+   if(totalAmount-selectedCouponOption<option){
+      setJudgetotal(false);
       setShowCurrencyMenu(false);
-    };
+      setSelectedCurrencyOption(option);
+   }
+   else{
+   setSelectedCurrencyOption(option);
+   setShowCurrencyMenu(false);
+   setJudgetotal(true);}
+   };
 
-    const pricedata = {
-      selectedCouponOption,
-      selectedCurrencyOption,
-      selectcoupon,
-      selectcouponid,
-      selectcouponmid
-    };
+   const pricedata = {
+   selectedCouponOption,
+   selectedCurrencyOption,
+   selectcoupon,
+   selectcouponid,
+   selectcouponmid
+   };
 
-const handlebtn = ()=>{
-   const pricedataJSON = JSON.stringify(pricedata)
-   localStorage.setItem('pricedata',pricedataJSON)
-   router.push('../order')
-}
+   const handlebtn = ()=>{
+      if(judgetotal===true){
+      const pricedataJSON = JSON.stringify(pricedata)
+      localStorage.setItem('pricedata',pricedataJSON)
+      router.push('../order')}
+   }
 
   return (
     <div className={styles.CartTotalContain}>
@@ -124,7 +129,7 @@ const handlebtn = ()=>{
                   </div>
                   )}
          </div>
-         {/* {要判斷是否金額大於} */}
+            {judgetotal? "" : <h5 className={styles.warningtext} >折抵金額大於商品金額</h5>}
          <div className={styles.CartTotalBtnNext}>
             <DeepButton DeepButtoncontent='下一步，前往付款' onClick={handlebtn} />
          </div>
