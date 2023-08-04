@@ -1,0 +1,12 @@
+.buttonStyle_l {
+    background-color: #52796F;
+    width: 180px;
+    height: 65px;
+    border-radius: 5px;
+    color: white;
+    font-size: 28px;
+}
+.btnctstyle {
+    display: flex;
+    justify-content: center;
+}

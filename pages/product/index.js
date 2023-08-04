@@ -9,7 +9,6 @@ export default function Product() {
   const [data, setdata] = useState([]) //更新data 預設值為空陣列
   const [currentPage, setCurrentPage] = useState(1) //更新目前頁數 預設為第一頁
   const handleDisplay = (category_id, label, page = 1) => {
-    //
     fetch(
       `${process.env.API_SERVER}/market/display?category_id=${category_id}&label=${label}&page=${page}`
     )

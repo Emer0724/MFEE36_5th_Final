@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import Bcs from '@/components/Leo/market_breadcrumbs'
 import Left from '@/components/Leo/Left'
@@ -10,14 +10,16 @@ export default function Isbn() {
   const router = useRouter()
   const [data, setData] = useState(null)
   const ISBN = router.query.ISBN
-  // const load = {
-  //   height: '1200px',
-  //   weight: '1920px',
-  //   display: 'flex',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   backgroundColor: 'pink',
-  // }
+  const usedAreaRef = useRef()
+
+  const toUsedArea = (e) => {
+    e.preventDefault()
+
+    const targetElement = document.getElementById('usedArea')
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
   useEffect(() => {
     if (ISBN) {
       fetch(`${process.env.API_SERVER}/market/detail?ISBN=${ISBN}`)
@@ -28,14 +30,22 @@ export default function Isbn() {
         })
         .catch((err) => {
           console.error('資料讀取錯誤', err)
+          setData([])
         })
     }
-  }, [ISBN]) //[ISBN] 當ISBN發生變化時重新取值
+  }, [ISBN])
+  //無資料時的呈現畫面
+  if (!data || !data.rows) {
+    return (
+      <div>
+        <Loading />
+      </div>
+    )
+  }
+  //[ISBN] 當ISBN發生變化時重新取值
   console.log(data)
-  // console.log('八嘎nono')
-  console.log('')
-  const { category_id } =
-    data && data.rows && data.rows.length > 0 ? data.rows[0] : {}
+  console.log(ISBN)
+  const { category_id } = data.rows[0] || {}
 
   if (data === null || !data.rows) {
     const load = {
@@ -56,17 +66,12 @@ export default function Isbn() {
   return (
     <>
       <Bcs category_id={category_id} />
-      {/* <div style={{ display: 'flex' }}>
-        <div style={load}>
-          <Loading />
-        </div>
-      </div> */}
       <div className={styles.square}>
         <div className={styles.l_box}>
-          <Left data={data} />
+          <Left result={data} toUsedArea={toUsedArea} />
         </div>
         <div className={styles.r_box}>
-          <Right data={data} />
+          <Right result={data} usedAreaRef={usedAreaRef} />
         </div>
       </div>
     </>

@@ -112,7 +112,7 @@ export default function Bcs(props) {
     parent_category = ' '
   }
   const backhome = () => {
-    window.location.reload()
+    window.location.replace('/product')
   }
   // console.log('麵包屑')
   // console.log(label)

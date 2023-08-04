@@ -5,10 +5,15 @@ export default function Favorite(result) {
   const ISBN = result.ISBN
   // const member_id =
   const user_info = JSON.parse(localStorage.getItem('auth')) //localStorage.getItem('auth') 取得的是字串 先轉成JSON
-  let id = null //先創建id 以免發生不符合if條件 後續id讀不到if 內宣告的情況
+  let info = null
+  let id = null
+  //先創建info、id 以免發生不符合if條件 後續info、id讀不到if 內宣告的情況，以及避免id undefined的狀況
   if (user_info !== null) {
-    id = user_info
+    info = user_info
+    id = info.id
+    // const { id } = info
   }
+  console.log(info)
 
   // const member_id = id.toString()
   const [mark, setMark] = useState(false)
