@@ -1,6 +1,6 @@
 import Button8 from '../button/button8'
 import Button9 from '../button/button9'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function BlogForm() {
   const [title, setTitle] = useState('')
@@ -10,6 +10,17 @@ export default function BlogForm() {
   const [titleError, setTitleError] = useState('')
   const [tagError, setTagError] = useState('')
   const [contentError, setContentError] = useState('')
+  const [memberData, setMemberData] = useState([])
+
+  useEffect(() => {
+    // 從本地儲存空間獲取會員資料
+    const storedMemberData = localStorage.getItem('auth')
+
+    if (storedMemberData) {
+      const parsedMemberData = JSON.parse(storedMemberData)
+      setMemberData(parsedMemberData)
+    }
+  }, [])
 
   const Titledata = (e) => {
     setTitle(e.target.value)
@@ -70,6 +81,7 @@ export default function BlogForm() {
 
     try {
       const formData = {
+        member_id: memberData.member_id,
         title: title,
         tag: tag,
         image: image,
@@ -80,7 +92,7 @@ export default function BlogForm() {
       console.log(JSON.stringify(formData))
 
       // 使用fetch將表單數據發送到後端API
-      const response = await fetch('http://localhost:3055/blog/blogupload', {
+      const response = await fetch('http://localhost:3055/blog/blog/upload', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -91,11 +103,14 @@ export default function BlogForm() {
       const data = await response.json()
       console.log('從後端收到的響應：', data)
 
-      // 清空表單字段
       setTitle('')
       setTag('')
       setImage('')
       setContent('')
+
+      setTimeout(() => {
+        window.location.href = 'http://localhost:3000/blog/blog-home-page'
+      }, 2000)
     } catch (error) {
       console.error('發送數據到後端時出錯：', error)
     }

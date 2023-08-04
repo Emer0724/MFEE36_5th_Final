@@ -4,26 +4,31 @@ import { useState , useEffect } from 'react'
 
 export default function BreadCrumbs() {
 
-    const [date , setDate] = useState([])
-    const [sort, setSort] = useState('newest')
+    const [date, setDate] = useState([]);
 
     useEffect(() => {
-        fetchBlogs(sort);
-      }, [sort]);
+        fetchLatestBlogs();
+      }, []);
 
-    const fetchBlogs = async (sort) => {
+      const fetchLatestBlogs = async () => {
         try {
-          const response = await fetch(`http://localhost:3055/blog/blogsort?sort=${sort}`);
+          const response = await fetch('http://localhost:3055/blog/blogsort/ASC')
           const data = await response.json();
-          setDate(data);
+          setDate(data)
         } catch (error) {
-          console.error('獲取資料時出錯：', error);
+          console.error('錯誤', error);
         }
-      }
-      const handleLinkClick = (event, sortOption) => {
-        event.preventDefault();
-        setSort(sortOption);
-      }
+      };
+
+      const fetchOldestBlogs = async () => {
+        try {
+          const response = await fetch('http://localhost:3055/blog/blogsort/DESC')
+          const data = await response.json();
+          setDate(data)
+        } catch (error) {
+          console.error('錯誤：', error);
+        }
+      };
 
     return (
         <>
@@ -36,10 +41,10 @@ export default function BreadCrumbs() {
             </div>
             <div className={`${style.chenjc} d-flex pb-3`}>
                 <div className='pe-4'>
-                    <Link href="#"  onClick={(event) => handleLinkClick(event, 'newest')} className={`${style.chenp} fs-5 text-black text-decoration-none`}>最新</Link>
+                    <Link href="" onClick={fetchLatestBlogs} className={`${style.chenp} fs-5 text-black text-decoration-none`}>最新</Link>
                 </div>
                 <div>
-                    <Link href="#"  onClick={(event) => handleLinkClick(event, 'oldest')} className={`fs-5 text-black text-decoration-none`}>最舊</Link>
+                    <Link href="" onClick={fetchOldestBlogs} className={`fs-5 text-black text-decoration-none`}>最舊</Link>
                 </div>
             </div>
         </>

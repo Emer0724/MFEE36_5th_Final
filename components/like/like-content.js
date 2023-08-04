@@ -1,34 +1,117 @@
-import Avatar2 from '../book-review/blogavatar2'
-import Image from 'next/image'
 import Link from 'next/link'
+import people from '@/assets/used-svg/people.svg'
+import Image from 'next/image'
 import style from '@/components/blog/blog_content.module.css'
-import shadowverse from '@/public/blog-img/shadowverse.jpg'
 import Button11 from '../common/button/button11'
+import { useState, useEffect } from 'react'
 
 export default function LikeContent() {
-    const blog = '/blog/recommend'
-    return (
+  const [data, setData] = useState([])
+  const [memberData, setMemberData] = useState([])
+
+  useEffect(() => {
+    // 從本地儲存空間獲取會員資料
+    const storedMemberData = localStorage.getItem('auth')
+
+    if (storedMemberData) {
+      const parsedMemberData = JSON.parse(storedMemberData)
+      setMemberData(parsedMemberData)
+    }
+  }, [])
+
+  const user = memberData.member_id
+
+  useEffect(() => {
+    fetch(`http://localhost:3055/blog/looklike/${user}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // 將數據保存在組件的狀態中
+        setData(data)
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error)
+      })
+  }, [user])
+  const formatDateString = (dateString) => {
+    const date = new Date(dateString)
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const day = String(date.getDate()).padStart(2, '0')
+    return `${year}-${month}-${day}`
+  }
+
+  return (
+    <>
+      {data.map((like, i) => (
         <>
-            <div className="pt-4 pb-4">
-                <Link href={blog} className="text-black text-decoration-none"><h4>吐槽日常語言裡的歸納法思想</h4></Link>
+          <div key={i} className="pt-4 pb-4">
+            <Link href={`/blog/${like.blog_id}`} className="text-black text-decoration-none">
+              <h4>{like.blog_title}</h4>
+            </Link>
+          </div>
+          <div className="d-flex">
+            {like.mem_avatar ? (
+              <Link href="" className="pe-3">
+                <Image
+                  src={like.mem_avatar}
+                  className={`${style.headblogimg} text-decoration-none`}
+                  alt="member_avatar"
+                />
+              </Link>
+            ) : (
+              <Image
+                src={people}
+                className={`${style.headblogimg} text-decoration-none`}
+                alt="default_avatar"
+              />
+            )}
+            <Link
+              href={`/blog/${like.blog_id}`}
+              className={`d-flex align-items-center fw-bold ${style.editbutton} text-black text-decoration-none ps-3`}
+            >
+              {like.nickname}
+            </Link>
+          </div>
+
+          <div className="pt-3">
+            <div>
+              {like.blog_img ? (
+                <Image
+                  src={`/all_img/img/${like.blog_img}`}
+                  width={450}
+                  height={250}
+                  className={style.blogimg}
+                  alt={'img'}
+                />
+              ) : (
+                <Image
+                  src="/all_img/img/noimg.jpg"
+                  width={450}
+                  height={250}
+                  className={style.blogimg}
+                  alt={'img'}
+                />
+              )}
             </div>
-            <div className='d-flex'>
-                <Avatar2/>
+          </div>
+          <div className="pt-3 pb-3">
+            <Link
+              href={`/blog/${like.blog_id}`}
+              className={`${style.chenover} text-black text-decoration-none`}
+            >
+              <p>{like.blog_post}</p>
+            </Link>
+          </div>
+          <div className="pb-3 d-flex align-items-center justify-content-between border-bottom">
+            <div className={`d-flex ${style.chendate} pt-1`}>
+              <span>{formatDateString(like.add_date)}</span>
             </div>
-            <div className="pt-3">
-                <div><Image src={shadowverse} className={`${style.blogimg}`}/></div>
+            <div>
+              <Button11 blog_id={like.blog_id}/>
             </div>
-            <div className="pt-3 pb-3">
-                <Link href={blog} className={`${style.chenover} text-black text-decoration-none`}><p>疫情好轉，各國開關，有些馬特市民外出遊走，也有的在自己的市內散步，不論你在哪裡，都有美麗的風景、交雜的心情，以及想要分享的事物。最近 Matty 發現很多市民不約而同的分享了他／她們散步的故事</p></Link>
-            </div>
-            <div className='pb-3 d-flex align-items-center justify-content-between border-bottom'>
-                <div className={ `d-flex ${style.chendate} pt-1`}>
-                    <span>2023 年 6 月 9 號</span>
-                </div>
-                <div>
-                    <Button11/>
-                </div>
-            </div>
+          </div>
         </>
-    )
+      ))}
+    </>
+  )
 }
