@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 
 export default function CurtProduct({data,handleDataChange}) {
   const [data1,setData1] = useState(data);
+  console.log(data1);
   const member1 = data[0].member_id;
   const router = useRouter()
   const isCartPage = router.pathname === "/product/cart";
@@ -98,36 +99,28 @@ export default function CurtProduct({data,handleDataChange}) {
       console.error("錯誤訊息:", error);
     });
   }
-
-
-const limitText = (text,maxLength) => {
-    if (text.length > maxLength) {
+  const limitText = (text, maxLength) => {
+    if (text && text.length > maxLength) {
       return text.slice(0, maxLength) + '...';
     }
     return text;
-  }
+  };
+
+
+
 
   const PLheader = ["產品","ISBN","價格","數量","小計","刪除"]
-  const PLheader2 = ["產品","ISBN","價格","數量","小計"]
-  
   return (
   <>
     <table className={styles.tablecontain}>
       <thead className={styles.tablehead}>
         <tr>
-          {isCartPage?
+          {
           PLheader.map((v,i)=>{
           return(
               <th key={i}  style={Header1}>{v}</th>
               )
-          })
-          :
-          PLheader2.map((v,i)=>{
-          return(
-              <th key={i}  style={Header1}>{v}</th>
-              )
-          })
-          }
+          })}
           </tr>  
       </thead> 
       <tbody>
@@ -152,11 +145,8 @@ const limitText = (text,maxLength) => {
                  }
               </td> 
               <td className={styles.ProdeuctBlock}><span className={styles.totalprice}>{v.price*v.count}</span></td>
-              {isCartPage?
+       
               <td className={styles.ProdeuctBlock}><button className={styles.trashbtn}  onClick={() => deleteitem(v.ISBN,member1)}><Image src={Trash} width={40} height={40} alt='icon'/></button></td>
-              :
-              ""
-              }
           </tr>)
       })}
       </tbody>
@@ -170,25 +160,16 @@ const limitText = (text,maxLength) => {
               <div className={styles.CProductlist2}>
                 <h6 className={styles.Clisttext}>{truncatedBookName}</h6>
                 <h6 className={styles.Clisttext}>{v.ISBN}</h6>
-                {isCartPage?
+                
                 <div className={styles.CountBlock}>
                     <button  className={styles.Countcut} onClick={() => cutcount(v.ISBN,member1)} >-</button>
                     <div className={styles.Countvalue}>{v.count}</div>
                     <button  className={styles.Countplus} onClick={() => addcount(v.ISBN,member1)}>+</button>
                 </div>
-                :
-                <div className={styles.CountBlock}>
-                    <div className={styles.Countvalue2}><span className={styles.counttext}>{v.count}</span></div>
-                </div>
-                }
               </div>
-              {isCartPage?
               <div className={styles.CProductlist3}>
                 <button className={styles.trashbtn} onClick={() => deleteitem(v.ISBN,member1)}><Image src={Trash} width={30} height={30} alt='icon'/></button>
               </div>
-              :
-              ""
-              }
             </div>
             <div className={styles.CPtotaltext}>
               <p><span className={styles.totalprice}>{v.price*v.count}</span></p>

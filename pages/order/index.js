@@ -25,6 +25,7 @@ export default function checkForm() {
   const [selectedArea, setSelectedArea] = useState('');
   const [selectedRoad, setSelectedRoad] = useState('');
   const [areaOptions, setAreaOptions] = useState([]);
+  const[member,setMember] = useState(0)
 
   const addresscity=loc.map((v)=>v.CityName)
   const city = addresscity.map(
@@ -40,21 +41,16 @@ export default function checkForm() {
       label: area.AreaName,
     }));
     setSelectedArea(''); // 清空選擇的區域
-    setAreaOptions(areaOptions); // 新增這行
+    setAreaOptions(areaOptions);
   };
-
-  
   const handleAreaChange = (event) => {
     const selectedArea = event.target.value;
     setSelectedArea(selectedArea);
   };
-  
   const cityroad = (e) => {
     setSelectedRoad(e.target.value);
   };
   
-
-
 
   const judgename = () => {
     const chineseNameRegExp = /^[\u4e00-\u9fa5]{2,4}$/;
@@ -81,28 +77,40 @@ export default function checkForm() {
   const paymentMethodHandle = (event) => {
     setPaymentMethod(event.target.value);
   };
-  
+
+
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-  if(isNameRight && iscellphoneRight){
-    const formData = {
-      shippingMethod,
-      paymentMethod,
-      recipientName,
-      recipientPhone,
-      recipientAddress,
-      recipientstore,
-      shippingCost,
-      selectedCity,
-      selectedArea,
-      selectedRoad
-    };
-    const formDataJSON = JSON.stringify(formData);
-    localStorage.setItem('formData', formDataJSON);
-    router.push('/order/productcheck');}
-  }
+    if (isNameRight && iscellphoneRight) {
+      let fullAddress = ""; // 完整地址
+      if (shippingMethod === "宅配到家+100") {
+        fullAddress = `${selectedCity}${selectedArea}${selectedRoad}`;
+      } else {
+        fullAddress = recipientstore;
+      }
+      const formData = {
+        shippingMethod,
+        paymentMethod,
+        recipientName,
+        recipientPhone,
+        recipientAddress: fullAddress, // 使用完整地址
+        recipientstore,
+        shippingCost,
+        selectedCity,
+        selectedArea,
+        selectedRoad,
+      };
+      const formDataJSON = JSON.stringify(formData);
+      localStorage.setItem('formData', formDataJSON);
+      router.push('/order/productcheck');
+    }
+  };
   useEffect(() => {
+    const storedData1 = localStorage.getItem('auth');
+    const formData1 = JSON.parse(storedData1);
+    setMember(formData1.member_id)
+    
     const initialFormData = {
       shippingMethod: "宅配到家+100",
       paymentMethod: "linepay",
@@ -128,6 +136,42 @@ export default function checkForm() {
       setSelectedRoad(formData.selectedRoad);
     }
   }, []);
+const [showcity,setshowcity] = useState(false)
+  const handleSameCheckbox = (event) => {
+    const isChecked = event.target.checked;
+    if (isChecked) {
+      fetchRecipientInfo();
+      setshowcity(true);
+    } else {
+      // Reset the form fields if needed
+      setRecipientName("");
+      setRecipientPhone("");
+      setSelectedCity("");
+      setSelectedArea("");
+      setSelectedRoad("");
+    }
+  };
+  const fetchRecipientInfo = () => {
+    fetch(`${process.env.API_SERVER}/cart/cartmember?member=${member}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data); // 確認資料是否正確
+        setRecipientName(data[0].name);
+        setRecipientPhone(data[0].mobile);
+        setSelectedCity(data[0].city);
+        setSelectedArea(data[0].district);
+        setSelectedRoad(data[0].address);
+      })
+      .catch((error) => {
+        console.error("Error fetching recipient info:", error);
+      });
+  };
+
 
 
 
@@ -146,6 +190,7 @@ export default function checkForm() {
       }
     }
   }, [])
+
   const Formstyles1 ={
     display:"flex",
     flexDirection: "column",
@@ -244,6 +289,10 @@ export default function checkForm() {
                       <option>信用卡付款</option>
                   </select>
                 </div> 
+                <div>
+                <input type="checkbox" name="same" onChange={handleSameCheckbox} />
+                <label htmlFor="same">同寄件人資訊</label>
+                </div>
                 <div style={blockstyle1}>
                     <label style={labelstyle1} name={"custname"}>收件人姓名</label>
                     <input type="text" style={inputstyle} name={"custname"} placeholder="請輸入中文姓名" value={recipientName} onChange={(e) => setRecipientName(e.target.value)} onBlur={judgename}  required/>
@@ -260,20 +309,34 @@ export default function checkForm() {
                     <label style={labelstyle1}>收件人地址</label>
                           <div style={address}>
                             <select style={selectstyle1} value={selectedCity} onChange={handleCityChange}>
+                            {showcity
+                              ?
+                              <option value={selectedCity}>{selectedCity}</option>
+                              :
+                              <>
                               <option value="">請選擇</option>
                               {city}
+                              </>
+                            }
                             </select>
                             <select style={selectstyle1} value={selectedArea} onChange={handleAreaChange}>
-                            {selectedCity === "" ? (
-                                <option value=""></option>
+                              {showcity ? (
+                                <option value={selectedArea}>{selectedArea}</option>
                               ) : (
                                 <>
                                   <option value="">請選擇</option>
-                                  {areaOptions.map((area) => (
-                                    <option key={area.value} value={area.value}>
-                                      {area.label}
-                                    </option>
-                                  ))}
+                                  {selectedCity === "" ? (
+                                    <option value=""></option>
+                                  ) : (
+                                    <>
+                                      <option value="">請選擇</option>
+                                      {areaOptions.map((area) => (
+                                        <option key={area.value} value={area.value}>
+                                          {area.label}
+                                        </option>
+                                      ))}
+                                    </>
+                                  )}
                                 </>
                               )}
                             </select>

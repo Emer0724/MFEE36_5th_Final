@@ -10,6 +10,10 @@ export default function complete() {
     const [waternum,setWaternum] = useState(0)
 
   useEffect(() => {
+    const storedData1 = localStorage.getItem('auth');
+    const formData1 = JSON.parse(storedData1);
+    const member1 = formData1.member_id;
+
     const storedformData = localStorage.getItem('formData');
     const formData = JSON.parse(storedformData);
 
@@ -22,10 +26,10 @@ export default function complete() {
 
      const allData = {formData,countData,pricefinal}
      //在匯集一起送後端
-if(formData!=null){
+    if(formData!=null){
     fetch(`${process.env.API_SERVER}/cart/cart/complete`,{
       method:"POST",
-      body:JSON.stringify(allData),
+      body:JSON.stringify(allData,member1),
       headers:{"Content-Type": "application/json" }
     })
      .then((r) => r.json())
