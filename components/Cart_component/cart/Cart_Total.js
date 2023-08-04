@@ -125,7 +125,6 @@ export default function CartTotal({data,totalAmount}) {
                         <div className={styles.options}  onClick={() => handleCurrencyOptionSelect(usetoken[0].token)}>
                           ${usetoken[0].token}
                         </div>
-                    
                   </div>
                   )}
          </div>

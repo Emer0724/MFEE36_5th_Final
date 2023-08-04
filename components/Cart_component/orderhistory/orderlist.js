@@ -28,12 +28,22 @@ export default function orderlist() {
   };
 
     useEffect(() => {
-      fetch(`${process.env.API_SERVER}/cart/order`)
+      const storedData1 = localStorage.getItem('auth');
+      const formData1 = JSON.parse(storedData1);
+      const member1 = formData1.member_id;
+      fetch(`${process.env.API_SERVER}/cart/order?member=${member1}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
         .then((r) => r.json())
         .then((result) => {
           setData(result);
         });
     }, []);
+
+
     const handleSelectOrder = (orderid) => {
       console.log(orderid);
       fetch(`${process.env.API_SERVER}/cart/orderdetail`, {
@@ -60,23 +70,23 @@ export default function orderlist() {
                       <div className={s.listnum}><h3>訂單編號</h3><h3>{v.order_id}</h3></div>
                       <div className={s.listdivct}>
                         <div>
-                            <div className={s.listdiv}>
-                                <h4>訂單日期</h4>
+                            <div className={s.listdiv1}>
+                                <h5>訂單日期</h5>
                             </div>
-                            <div className={s.listdiv}>
-                                <h4>訂單總金額</h4>
+                            <div className={s.listdiv1}>
+                                <h5>訂單總金額</h5>
                               
                             </div>
-                            <div className={s.listdiv}>
-                                <h4>知音幣使用</h4>
+                            <div className={s.listdiv1}>
+                                <h5>知音幣使用</h5>
                                 
                             </div>
-                            <div className={s.listdiv}>
-                                <h4>折價卷使用</h4>
+                            <div className={s.listdiv1}>
+                                <h5>折價卷使用</h5>
                               
                             </div>
-                            <div className={s.listdiv}>
-                                <h4>訂單狀態</h4>
+                            <div className={s.listdiv1}>
+                                <h5>訂單狀態</h5>
                               
                             </div>
                         </div>
@@ -98,12 +108,12 @@ export default function orderlist() {
                             </div>
                         </div>
                       </div>
-                    <div className={s.orderbtn}><div onClick={() => { handleSelectOrder(v.order_id); opendetailhandle(i); }} className={s.orderbtntext}>商品細節</div></div>
-                    <div className={s.orderbtn}><div onClick={() => { handleSelectOrder(v.order_id); openorderhandle(i); }} className={s.orderbtntext}>寄件資料</div></div>
+                    <div className={s.orderbtn} onClick={() => { handleSelectOrder(v.order_id); opendetailhandle(i); }}><h4>商品細節</h4></div>
+                    <div className={s.orderbtn} onClick={() => { handleSelectOrder(v.order_id); openorderhandle(i); }}><h4>寄件資料</h4></div>
                 </div>
                 <div className={s.detaillocation}>
-                {openedDetailIndex === i && <Orderdetail data1={data1} />}
-                {openedOrderIndex === i && <Orderman data1={data1} />}
+                {openedDetailIndex === i && <Orderdetail  data1={data1} />}
+                {openedOrderIndex === i && <Orderman  data1={data1} />}
                 </div>
           </div>
         )

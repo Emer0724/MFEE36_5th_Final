@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 export default function productcheck() {
   const router = useRouter();
 const style1 ={
-    marginBottom:"40px"
+    marginBottom:"60px"
 }
 const style2 ={
     display:"flex",

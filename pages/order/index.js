@@ -26,6 +26,7 @@ export default function checkForm() {
   const [selectedRoad, setSelectedRoad] = useState('');
   const [areaOptions, setAreaOptions] = useState([]);
   const[member,setMember] = useState(0)
+  const [showcity,setshowcity] = useState(false)
 
   const addresscity=loc.map((v)=>v.CityName)
   const city = addresscity.map(
@@ -134,9 +135,10 @@ export default function checkForm() {
       setSelectedCity(formData.selectedCity);
       setSelectedArea(formData.selectedArea);
       setSelectedRoad(formData.selectedRoad);
+      setshowcity(true)
     }
   }, []);
-const [showcity,setshowcity] = useState(false)
+
   const handleSameCheckbox = (event) => {
     const isChecked = event.target.checked;
     if (isChecked) {
@@ -149,6 +151,7 @@ const [showcity,setshowcity] = useState(false)
       setSelectedCity("");
       setSelectedArea("");
       setSelectedRoad("");
+      setshowcity(false);
     }
   };
   const fetchRecipientInfo = () => {

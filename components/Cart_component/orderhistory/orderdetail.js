@@ -2,6 +2,9 @@ import s from '@/components/Cart_component/orderhistory/orderdetail.module.css'
 import Image from 'next/image'
 
 export default function orderdetail({data1}) {
+  if (!data1 || data1.length === 0) {
+    return <div>訂單資料載入中</div>;
+  }
 
   return (
     <div className={s.detailcontain}>

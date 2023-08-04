@@ -34,11 +34,14 @@
 .orderbtn{
     background-color: var(--color2);
     border-radius: 8px;  
-    padding: 12px 18px;
+    padding: 25px 25px 20px 25px;
     cursor: pointer;
     color: white;
 }
-
+.listdiv1{
+    display: flex;
+    margin: 15px 0;
+}
 .listdiv{
     display: flex;
     margin: 10px 0;
@@ -54,6 +57,8 @@
     padding: 30px 0;
     gap: 60px;
 }
+
+
 @media (max-width:400px) {
     .listcol{
         display: flex;
@@ -72,9 +77,11 @@
     }
     .orderbtn{
         background-color: var(--color2);
-        border-radius: 40px;  
+        border-radius: 8px;  
         padding: auto 15px;
         margin: 20px 0;
-        cursor: pointer;
+    }
+    .listdiv{
+        font-size: 16px;
     }
 }

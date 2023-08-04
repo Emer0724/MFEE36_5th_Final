@@ -2,10 +2,12 @@ import s from '@/pages/order/complete.module.css'
 import OrderState from '@/components/Cart_component/order/order_state'
 import DeepButton from '@/components/common/CBtn/DeepgreenBtn'
 import { useState,useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 
 
 export default function complete() {
+  const router = useRouter();
     const [windowWidth ,setWindowWidth] = useState(null)
     const [waternum,setWaternum] = useState(0)
 
@@ -13,6 +15,7 @@ export default function complete() {
     const storedData1 = localStorage.getItem('auth');
     const formData1 = JSON.parse(storedData1);
     const member1 = formData1.member_id;
+    console.log(member1);
 
     const storedformData = localStorage.getItem('formData');
     const formData = JSON.parse(storedformData);
@@ -24,12 +27,12 @@ export default function complete() {
     const pricefinal = JSON.parse(storedpriceData);
     //以上處理localstorage的東西
 
-     const allData = {formData,countData,pricefinal}
+     const allData = {formData,countData,pricefinal,member1}
      //在匯集一起送後端
     if(formData!=null){
     fetch(`${process.env.API_SERVER}/cart/cart/complete`,{
       method:"POST",
-      body:JSON.stringify(allData,member1),
+      body:JSON.stringify(allData),
       headers:{"Content-Type": "application/json" }
     })
      .then((r) => r.json())
@@ -86,7 +89,12 @@ const style3 = {
     color:"var(--color2)"
 }
 
-
+const btn1 =()=>{
+  router.push('../dashboard/order')
+}
+const btn2 =()=>{
+  router.push('../product/')
+}
 
 
   return (
@@ -100,8 +108,8 @@ const style3 = {
             <h1>訂單編號  #{waternum}</h1>
         </div>
         <div style={style1}>
-            <DeepButton DeepButtoncontent={"訂單查詢"} route='../dashboard/order'/>
-            <DeepButton DeepButtoncontent={"返回商城"} route='../product/'/>
+            <DeepButton DeepButtoncontent={"訂單查詢"} onClick={btn1}/>
+            <DeepButton DeepButtoncontent={"返回商城"} onClick={btn2}/>
         </div>
       </div>
     </>
