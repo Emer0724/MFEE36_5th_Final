@@ -37,6 +37,9 @@
     font-size: var(--txi24);
     padding: 25px;
 }
+.imagebook{
+    margin-right: 10px;
+}
 .Prodeuctpn{
     width: 40%;
     text-align:left;

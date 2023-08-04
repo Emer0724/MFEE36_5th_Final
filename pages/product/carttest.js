@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import PopUp from "@/components/common/popup/popup";
 
 export default function Products() {
   const router = useRouter();
+  const [showI,setShowI] = useState(false)
+  const [member,setMember1] = useState(0)
   const [data, setData] = useState({
     redirect: "",
     totalRows: 0,
@@ -15,9 +18,7 @@ export default function Products() {
     page: 1,
     rows: [],
   });
-  console.log('router.query:', router.query);
   const usp = new URLSearchParams(router.asPath.split('?')[1]);
-  console.log('router.asPath:', router.asPath);
   const [keyword, setKeyword] = useState(usp.get('keyword') || "");
 
   useEffect(() => {
@@ -26,24 +27,37 @@ export default function Products() {
       .then((r) => r.json())
       .then((data) => {
         setData(data);
+         // 如果已經有formData，就將其解析並設定為表單狀態
+      const storedData = localStorage.getItem('auth');
+      const formData = JSON.parse(storedData);
+      setMember1(formData.member_id);
       });
+      
   }, [router.query]);
 
-  const addToCart = (ISBN) => {
-    fetch(`${process.env.API_SERVER}/cart/addToCart`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ ISBN: ISBN }),
-    })
-        .then((res) => res.json())
-        .then((data) => {
-          alert("成功加入購物車喔");
-        })
-        .catch((error) => {
-          console.error("錯誤訊息:", error);
-        })
+//以下為購物車
+  const addToCart = (ISBN,member) => {
+    const storedData = localStorage.getItem('auth');
+    if(!storedData){
+      router.push(`../member/login?redirect=${encodeURIComponent(router.asPath)}`);
+      console.log(router.asPath);
+    }
+    {
+      fetch(`${process.env.API_SERVER}/cart/addToCart`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ISBN: ISBN,member:member }),
+      })
+          .then((res) => res.json())
+          .then((data) => {
+            setShowI(true);
+          })
+          .catch((error) => {
+            console.error("錯誤訊息:", error);
+          })
+        }
   }
 
   return (
@@ -51,10 +65,10 @@ export default function Products() {
       <Head>
         <title>abcd</title>
       </Head>
+
       <div className="container">
         <div className="row">
           <div className="col">
-            
           </div>
         </div>
         <div className="row">
@@ -105,7 +119,7 @@ export default function Products() {
                     <td>{i.author}</td>
                     <td>{i.publish}</td>
                     <td>{i.price}</td>
-                    <td><button onClick={() => addToCart(i.ISBN)}>加入購物車</button></td>
+                    <td><button onClick={() => addToCart(i.ISBN,member)}>加入購物車</button></td>
                   </tr>
                 ))}
               </tbody>
