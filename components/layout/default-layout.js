@@ -11,12 +11,12 @@ export default function DefaultLayout({ children }) {
   }
   return (
     <>
-      <AuthContextProvider>
-        <NavBar1 />
-        <main>{children}</main>
-        <UnderNavbar />
-        <Footer />
-      </AuthContextProvider>
+      {/* <AuthContextProvider> */}
+      <NavBar1 />
+      <main>{children}</main>
+      <UnderNavbar />
+      <Footer />
+      {/* </AuthContextProvider> */}
     </>
   )
 }

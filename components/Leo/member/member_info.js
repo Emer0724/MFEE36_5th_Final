@@ -44,7 +44,7 @@ export default function Member_info() {
     })
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data)
+        console.log(data)
         // console.log(data[0].filename)
         setnewimg(data[0].filename)
         const auth_old = JSON.parse(localStorage.getItem('auth'))
@@ -53,7 +53,7 @@ export default function Member_info() {
           mem_avatar: data[0].filename,
         })
         localStorage.setItem('auth', auth_old_new)
-        setphoto()
+        setphoto(data[0].filename)
         // router.reload()
       })
       .catch((error) => {

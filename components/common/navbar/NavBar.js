@@ -36,12 +36,11 @@ export default function NavBar1() {
       setIsLoggedIn(true)
     }
   }, [])
-  useEffect(() => {
-    if (auth) {
-      setnewimg(auth.mem_avatar)
-      console.log(auth.mem_avatar)
-    }
-  }, [auth])
+  console.log(photo)
+  // useEffect(() => {
+  //   if
+  //   setphoto(photo)
+  // }, [photo])
 
   const [nickname, setnickname] = useState('')
   const [searchbaropen, setSearchbaropen] = useState(false)
@@ -123,10 +122,10 @@ export default function NavBar1() {
           <div className={styles.loginWrapper}>
             {isLoggedIn ? (
               <>
-                {newimg ? (
+                {photo ? (
                   <div className={styles.avatar}>
                     <Image
-                      src={`${process.env.API_SERVER}/avatar/${newimg}`}
+                      src={`${process.env.API_SERVER}/avatar/${photo}`}
                       width={30}
                       height={30}
                       className={`${styles.Licon} ${styles.avatar}`}
@@ -175,7 +174,7 @@ export default function NavBar1() {
         </div>
         {/* Render the DropdownMenu component */}
       </div>
-        {searchbaropen && <Searchbar />}
+      {searchbaropen && <Searchbar />}
     </div>
   )
 }
