@@ -28,32 +28,44 @@ export default function L(props) {
   console.log(user_info)
   console.log(ISBN)
   console.log(id)
-  let cartData
+
+  const check = () => {
+    const user = localStorage.getItem('auth')
+    return user !== null
+  }
+
+  //先做出變數來存放值
+  //cart fetch
   const cart = (ISBN, id) => {
     console.log('我好想睡')
-    console.log(ISBN)
-    console.log(id)
-    if (!ISBN || !id) {
-      console.error('ISBN 和 id 必須有有效值')
-      return
+    console.log(ISBN) //變數作用域的關係 傳不進來，要透過onClick 以參數方式送進來
+    const userLogInStatus = check()
+    if (userLogInStatus) {
+      fetch(`${process.env.API_SERVER}/market/addToCart`, {
+        method: 'POST',
+        body: JSON.stringify({ member_id: id, ISBN: ISBN }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((response) => response.json())
+        .then((cartData) => {
+          // 根據伺服器回傳的資料處理相應的動作
+          console.log(cartData)
+          alert(`成功加入購物車`)
+        })
+        .catch((error) => {
+          console.error('Error:', error)
+        })
+    } else {
+      const confirmResult = window.confirm('您尚未登入，是否要前往登入頁面？')
+      if (confirmResult) {
+        window.location.href = '/member/login'
+      } else {
+        console.log('留在當前頁面')
+      }
     }
-    fetch(`${process.env.API_SERVER}/market/addToCart`, {
-      method: 'POST',
-      body: JSON.stringify({ member_id: id, ISBN: ISBN }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => response.json())
-      .then((cartData) => {
-        // 根據伺服器回傳的資料處理相應的動作
-        console.log(cartData)
-      })
-      .catch((error) => {
-        console.error('Error:', error)
-      })
   }
-  console.log(cartData)
 
   return (
     <>
@@ -91,7 +103,11 @@ export default function L(props) {
           </div>
         </div>
         <div className={styles.btn_set}>
-          <ButtonStyle_l t1={'加入購物車'} onClick={cart} ISBN={ISBN} />
+          <ButtonStyle_l
+            t1={'加入購物車'}
+            onClick={() => cart(ISBN, id)}
+            ISBN={ISBN}
+          />
           <ButtonStyle_l t1={'找二手書'} onClick={toUsedArea} />
         </div>
       </div>
