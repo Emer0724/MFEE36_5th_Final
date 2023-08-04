@@ -23,7 +23,25 @@ export default function Button3({ member_id }) {
     if (storedFollowStatus) {
       setIsFollowed(JSON.parse(storedFollowStatus));
     }
-  }, [member_id])
+
+    // 查詢資料庫檢查追蹤狀態
+    fetch(`http://localhost:3055/blog/checktrack/${member_id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('auth')}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data && data.isFollowed) {
+          setIsFollowed(true);
+          localStorage.setItem(`follow_${member_id}`, JSON.stringify(true));
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }, [member_id]);
 
   const handleButtonClick = () => {
     const requestData = { member_id: member_id, user: user };
@@ -40,7 +58,7 @@ export default function Button3({ member_id }) {
         .then((data) => {
           setIsFollowed(false);
           // 刪除追蹤後，同時也刪除本地儲存中的狀態
-          localStorage.removeItem(`follow_${member_id}`)
+          localStorage.removeItem(`follow_${member_id}`);
         })
         .catch((error) => {
           console.error('Error:', error);
@@ -55,22 +73,19 @@ export default function Button3({ member_id }) {
       })
         .then((response) => response.json())
         .then((data) => {
-          setIsFollowed(true)
+          setIsFollowed(true);
           // 追蹤後，同時保存狀態到本地儲存
-          localStorage.setItem(`follow_${member_id}`, JSON.stringify(true))
+          localStorage.setItem(`follow_${member_id}`, JSON.stringify(true));
         })
         .catch((error) => {
-          console.error('Error:', error)
-        })
+          console.error('Error:', error);
+        });
     }
-  }
+  };
 
   return (
     <>
-      <button
-        className={`${style.chenbutton3}`}
-        onClick={handleButtonClick}
-      >
+      <button className={`${style.chenbutton3}`} onClick={handleButtonClick}>
         {isFollowed ? '取 消 追 踪' : '追 蹤'}
       </button>
     </>

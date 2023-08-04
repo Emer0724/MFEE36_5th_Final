@@ -11,12 +11,6 @@ export default function TrackContent1() {
         <BlogPersonalNav/>
         <TrackNav />
         <TrackContent />
-        <TrackContent />
-        <TrackContent />
-        <TrackContent />
-        <TrackContent />
-        <TrackContent />
-        <TrackContent />
       </div>
     </div>
   )

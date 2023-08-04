@@ -10,11 +10,6 @@ export default function LikeContent1() {
           <BlogPersonalNav/>
           <LikeNav/>         
           <LikeContent/>
-          <LikeContent/>
-          <LikeContent/>
-          <LikeContent/>
-          <LikeContent/>
-          <LikeContent/>
         </div>
     )
 }

@@ -5,9 +5,22 @@ import Image from 'next/image'
 import imgbook1 from '@/public/blog-img/book1.jpg'
 import Button15 from '../common/button/button15'
 import Button14 from '../common/button/button14'
+import { useState,useEffect } from 'react'
 
 
 export default function BookPersonalContent() {
+    const [memberData, setMemberData] = useState([])
+
+    useEffect(() => {
+      // 從本地儲存空間獲取會員資料
+      const storedMemberData = localStorage.getItem('auth')
+  
+      if (storedMemberData) {
+        const parsedMemberData = JSON.parse(storedMemberData)
+        setMemberData(parsedMemberData)
+      }
+    }, [])
+    
     return (
         <>
             <div className='border-bottom pb-2 pt-4'>

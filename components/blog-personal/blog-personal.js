@@ -1,4 +1,3 @@
-import BlogPersonalAvatar from "./blog-personal-avatar"
 import BlogPersonalContent from "./blog-personal-content"
 import style from '@/components/book-personal/book-personal.module.css'
 import Link from "next/link"
@@ -13,14 +12,9 @@ export default function BlogPersonal() {
         <div className="col-xl-7 px-xl-5 d-flex flex-column pb-5">
         <div>
             <div>
-                <BlogPersonalAvatar/>
                 <BlogPersonal2Nav/>
                 <BlogPersonalNav/>
-                <BlogPersonalContent/>
-                <BlogPersonalContent/>
-                <BlogPersonalContent/>
-                <BlogPersonalContent/>
-                <BlogPersonalContent/>         
+                <BlogPersonalContent/>     
             </div>
         </div>
         </div>
