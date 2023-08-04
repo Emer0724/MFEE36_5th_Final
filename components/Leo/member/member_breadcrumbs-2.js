@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import c from './member_breadcrumbs.module.css'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import AuthContext from '@/context/AuthContext'
+import { useContext } from 'react'
 
 export default function MemberBreadcrumbs_2() {
+  const { auth } = useContext(AuthContext)
   const router = useRouter()
-  console.log(router.asPath)
-  console.log(router.asPath === '/dashboard/used/display')
+  const [notify, setnotify] = useState('')
+  useEffect(() => {
+    setnotify(JSON.parse(localStorage.getItem('auth')).notify)
+  }, [])
+  // console.log(router.asPath)
+  // console.log(router.asPath === '/dashboard/used/display')
 
   return (
     <div className={`${c.crumbs_box} justify-content-start`}>
@@ -31,7 +38,10 @@ export default function MemberBreadcrumbs_2() {
               : c.unselected
           } `}
         >
-          <p>二手書進度</p>
+          <p>
+            二手書進度
+            {notify ? <span className={c.notify}>{`(${notify})`}</span> : ''}
+          </p>
         </Link>
       </div>
     </div>

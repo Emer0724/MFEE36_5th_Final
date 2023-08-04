@@ -13,6 +13,8 @@ import css from '@/pages/used-book/carousel.module.css'
 import UsedPrint from '@/components/used/used_print'
 import UsedPintInfo from '@/components/used/used_printinfo'
 import Loading from '@/components/common/loading'
+import ExchangeAnime from '@/components/used/exchange_anime'
+// import { number } from 'prop-types'
 
 export default function Carousel() {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
@@ -174,7 +176,8 @@ export default function Carousel() {
       </div> */}
       {/* <UsedPrint /> */}
       {/* <UsedPintInfo /> */}
-      <Loading />
+      {/* <Loading /> */}
+      <ExchangeAnime number={450}/>
     </>
   )
 }

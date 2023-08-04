@@ -51,7 +51,9 @@ export default function UsedUpCheck({
         >
           地址: {postData.city + postData.district + postData.address}
         </div>
-        <div className={`textp-20px mt-3 pb-1 letter-spacing ${css.used_text} `}>
+        <div
+          className={`textp-20px mt-3 pb-1 letter-spacing ${css.used_text} `}
+        >
           **請列印上表資訊並與該二手書一同寄回
           106台北市大安區復興南路一段390號2樓
         </div>
@@ -60,13 +62,13 @@ export default function UsedUpCheck({
           className={`d-flex justify-content-end me-5 qr-code d-none
           `}
         >
-          <QRCodeSVG value={JSON.stringify(postData)} />
+          <QRCodeSVG value={JSON.stringify(postData.used_id)} />
         </div>
       </div>
 
       <div className="d-flex justify-content-around mt-5  ">
         <button
-          className={`textp-20px btn btn-secondary  border-radius-5px ${css.used_text}` }
+          className={`textp-20px btn btn-secondary  border-radius-5px ${css.used_text}`}
           onClick={print_btn}
         >
           確認並列印

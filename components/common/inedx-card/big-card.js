@@ -26,7 +26,10 @@ export default function BigCard({ pic, book_name, author, ISBN }) {
     <>
       <div className={styles.index_card_hight}>
         <div className={`${styles.card_all} me-3 ms-3`}>
-          <Link href="#" className={styles.index_book_card_text}>
+          <Link
+            href={`/product/${ISBN}`}
+            className={styles.index_book_card_text}
+          >
             {/* <div
               style={{
                 width: '150px',

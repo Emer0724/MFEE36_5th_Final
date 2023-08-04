@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import NavBar1 from '../common/navbar/NavBar'
 import UnderNavbar from '../common/navbar/Under_navbar'
 import Footer from '../common/footer/footer'
+import { AuthContextProvider } from '@/context/AuthContext'
 
 export default function DefaultLayout({ children }) {
   const router = useRouter()
@@ -10,10 +11,12 @@ export default function DefaultLayout({ children }) {
   }
   return (
     <>
-      <NavBar1 />
-      <main>{children}</main>
-      <UnderNavbar />
-      <Footer />
+      <AuthContextProvider>
+        <NavBar1 />
+        <main>{children}</main>
+        <UnderNavbar />
+        <Footer />
+      </AuthContextProvider>
     </>
   )
 }

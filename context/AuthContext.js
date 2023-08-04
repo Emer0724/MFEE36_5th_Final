@@ -1,6 +1,8 @@
 import { createContext, useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 const AuthContext = createContext({})
+
 export default AuthContext
 
 export const noLoginState = {
@@ -12,6 +14,7 @@ export const noLoginState = {
 
 export const AuthContextProvider = function ({ children }) {
   const [auth, setAuth] = useState({ ...noLoginState })
+  const [photo, setphoto] = useState()
 
   const logout = () => {
     localStorage.removeItem('auth')
@@ -24,12 +27,21 @@ export const AuthContextProvider = function ({ children }) {
       try {
         const obj = JSON.parse(str)
         setAuth(obj)
-      } catch (ex) {}
+      } catch (ex) {
+        console.log(`error:ex`)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    if (localStorage.getItem(auth)) {
+      const img = JSON.parse(localStorage.getItem(auth).mem_avatar)
+      setphoto(img)
     }
   }, [])
 
   return (
-    <AuthContext.Provider value={{ auth, setAuth, logout }}>
+    <AuthContext.Provider value={{ auth, setAuth, logout, setphoto, photo }}>
       {children}
     </AuthContext.Provider>
   )
