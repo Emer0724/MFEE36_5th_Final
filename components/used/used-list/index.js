@@ -1,7 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 
-export default function UsedList({ datas, ISBN }) {
+export default function UsedList({ ISBN }) {
+  const [datas, setDatas] = useState([])
+
+  useEffect(() => {
+    if (ISBN) {
+      fetch(`${process.env.API_SERVER}/market/usedList?ISBN=${ISBN}`)
+        .then((res) => res.json())
+        .then((datas) => {
+          setDatas(datas)
+          console.log('後端回傳結果:', datas)
+        })
+        .catch((err) => {
+          console.error('資料讀取錯誤', err)
+          setDatas([])
+        })
+    }
+  }, [ISBN])
   // console.log(datas)
   if (datas[0] === 'noUsedBook') {
     return (

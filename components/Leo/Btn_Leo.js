@@ -1,31 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'next/link'
+// import Link from 'next/link'
+import styles from '@/components/Leo/Btn_Leo.module.css'
 
-const buttonStyle_l = {
-  backgroundColor: '#52796F',
-  width: 180,
-  height: 65,
-  borderRadius: 5,
-  color: 'white',
-  fontSize: 28,
-}
-const btnctstyle = {
-  display: 'flex',
-  justifyContent: 'center',
-}
-
-export default function DeepButton({ t1 }) {
+export default function ButtonStyle_l({ t1, onClick, ISBN }) {
+  
   return (
-    <div style={btnctstyle}>
-      <Link href={''}>
-        <button style={buttonStyle_l}>{t1}</button>
-      </Link>
+    <div className={styles.btnctstyle}>
+      {/* <Link href={`/product/${ISBN}`} passHref> */}
+      <button className={styles.buttonStyle_l} onClick={onClick}>
+        {t1}
+      </button>
+      {/* </Link> */}
     </div>
   )
 }
 
-DeepButton.propTypes = {
-  content: PropTypes.string,
-  route: PropTypes.string,
+ButtonStyle_l.propTypes = {
+  t1: PropTypes.string,
+  onClick: PropTypes.func,
 }

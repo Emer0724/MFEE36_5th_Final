@@ -2,21 +2,65 @@ import React from 'react'
 import ButtonStyle_l from '@/components/Leo/Btn_Leo'
 import Favorite from './favorite'
 import Image from 'next/image'
-import bk from '@/public/Leo-image/心流.webp'
 import styles from '@/components/Leo/Left.module.css'
 
-export default function L(data) {
-  const btntitle1 = '加入購物車'
-  const btntitle2 = '找二手書'
-
-  console.log('媽洗媽洗_l')
+export default function L(props) {
+  const { result, toUsedArea } = props || []
+  const data = result.rows[0] || {}
+  const { ISBN, book_name, pic, publish, price, author, category_id } =
+    data || {}
+  const imageUrl = `/all_img/book_pic/${pic}`
+  console.log(category_id)
   console.log(data)
+  console.log(result)
+  console.log(pic)
+  //登入驗證
+  const user_info = JSON.parse(localStorage.getItem('auth'))
+  let info = null
+  let id = null
+  if (user_info !== null) {
+    info = user_info
+    id = info.id
+  } else {
+    // 如果用戶未登入，則提示用戶登入
+    console.log('請先登入')
+  }
+  console.log(user_info)
+  console.log(ISBN)
+  console.log(id)
+  let cartData
+  const cart = (ISBN, id) => {
+    console.log('我好想睡')
+    console.log(ISBN)
+    console.log(id)
+    if (!ISBN || !id) {
+      console.error('ISBN 和 id 必須有有效值')
+      return
+    }
+    fetch(`${process.env.API_SERVER}/market/addToCart`, {
+      method: 'POST',
+      body: JSON.stringify({ member_id: id, ISBN: ISBN }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((cartData) => {
+        // 根據伺服器回傳的資料處理相應的動作
+        console.log(cartData)
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+      })
+  }
+  console.log(cartData)
+
   return (
     <>
       <div className={styles.container}>
         <div className={styles.pic_box}>
           <Image
-            src={bk}
+            src={imageUrl}
             className={`bk-img`}
             alt="..."
             width={500}
@@ -30,23 +74,25 @@ export default function L(data) {
               justifyContent: 'center',
             }}
           >
-            <h3 className={{ fontWeight: 'bold' }}>書名:心流</h3>
+            <h3 className={styles.bookName}>書名:{book_name}</h3>
           </div>
-          <Favorite />
+          <div className={styles.icon}>
+            <Favorite ISBN={ISBN} />
+          </div>
         </div>
         <div className={styles.content_box}>
           <div className={styles.content}>
-            <h5>ISBN:9786267244036</h5>
-            <h5>作者: 米哈里．契克森米哈伊</h5>
+            <h5>ISBN:{ISBN}</h5>
+            <h5>作者: {author}</h5>
           </div>
           <div className={styles.content}>
-            <h5>出版社:行路 </h5>
-            <h5>售價:580元</h5>
+            <h5>出版社:{publish} </h5>
+            <h5>售價:{price}元</h5>
           </div>
         </div>
         <div className={styles.btn_set}>
-          <ButtonStyle_l t1={btntitle1} />
-          <ButtonStyle_l t1={btntitle2} />
+          <ButtonStyle_l t1={'加入購物車'} onClick={cart} ISBN={ISBN} />
+          <ButtonStyle_l t1={'找二手書'} onClick={toUsedArea} />
         </div>
       </div>
     </>
