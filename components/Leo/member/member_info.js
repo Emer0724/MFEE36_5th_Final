@@ -1,16 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useContext } from 'react'
 import Image from 'next/image'
 import x from './member_info.module.css'
 import camera from '@/assets/leo-svg/camera-solid.svg'
 import people from '@/assets/used-svg/people.svg'
+import { useRouter } from 'next/router'
+import AuthContext from '@/context/AuthContext'
 
 export default function Member_info() {
-  const [auth, setAuth] = useState([])
+  const { auth, setAuth, photo, setphoto } = useContext(AuthContext)
+  const router = useRouter()
+  const [auth1, setAuth1] = useState([])
   const [img, setnewimg] = useState([])
   useEffect(() => {
     const getauth = () => {
       const auth = JSON.parse(localStorage.getItem('auth'))
-      setAuth(auth)
+      setAuth1(auth)
       setnewimg(auth.mem_avatar)
     }
     getauth()
@@ -40,8 +44,8 @@ export default function Member_info() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
-        console.log(data[0].filename)
+        // console.log(data)
+        // console.log(data[0].filename)
         setnewimg(data[0].filename)
         const auth_old = JSON.parse(localStorage.getItem('auth'))
         const auth_old_new = JSON.stringify({
@@ -49,7 +53,8 @@ export default function Member_info() {
           mem_avatar: data[0].filename,
         })
         localStorage.setItem('auth', auth_old_new)
-        
+        setphoto()
+        // router.reload()
       })
       .catch((error) => {
         // 處理錯誤
@@ -60,8 +65,8 @@ export default function Member_info() {
     <div className={x.box_member_info}>
       <div className={x.box_member_main}>
         <div className={x.member_info_avatar}>
-        
-            {img ? (
+          {img ? (
+            <div className={x.avatar_img_1}>
               <Image
                 src={`${process.env.API_SERVER}/avatar/${img}`}
                 alt="people"
@@ -69,12 +74,12 @@ export default function Member_info() {
                 width={190}
                 height={190}
               />
-            ) : (
-              <div className={x.avatar_img}>
+            </div>
+          ) : (
+            <div className={x.avatar_img}>
               <Image src={people} alt="people" className={x.img_img} />
-              </div>
-            )}
-          
+            </div>
+          )}
 
           <Image
             className={x.camera_icon}
@@ -102,8 +107,8 @@ export default function Member_info() {
           </form>
         </div>
         <div className={x.member_info_detail}>
-          <h2 className={x.detail_name}>{auth.name}</h2>
-          <h2 className={x.detail_nickname}>{auth.nickname}</h2>
+          <h2 className={x.detail_name}>{auth1.name}</h2>
+          <h2 className={x.detail_nickname}>{auth1.nickname}</h2>
         </div>
       </div>
     </div>

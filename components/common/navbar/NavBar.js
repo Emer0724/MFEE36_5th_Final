@@ -16,7 +16,9 @@ import { useRouter } from 'next/router'
 
 export default function NavBar1() {
   const router = useRouter()
-  const { auth, logout } = useContext(AuthContext)
+  const { auth, setAuth, logout, setphoto, photo } = useContext(AuthContext)
+  const [newimg, setnewimg] = useState('')
+
   const NavctName = ['商城', '二手書', '部落格', '關於我們']
   const NavEnName = ['STORE', 'USEDSTORE', 'BLOG', 'ABOUTUS']
   const navrouter = [
@@ -34,6 +36,13 @@ export default function NavBar1() {
       setIsLoggedIn(true)
     }
   }, [])
+  useEffect(() => {
+    if (auth) {
+      setnewimg(auth.mem_avatar)
+      console.log(auth.mem_avatar)
+    }
+  }, [auth])
+
   const [nickname, setnickname] = useState('')
   const [searchbaropen, setSearchbaropen] = useState(false)
   const toggleSearch = () => {
@@ -114,15 +123,30 @@ export default function NavBar1() {
           <div className={styles.loginWrapper}>
             {isLoggedIn ? (
               <>
-                <Image
-                  src={Membericon}
-                  width={60}
-                  height={30}
-                  className={styles.Licon}
-                  alt="icon"
-                  onClick={() => isDropdown(Dropdown)}
-                  role="presentation"
-                />
+                {newimg ? (
+                  <div className={styles.avatar}>
+                    <Image
+                      src={`${process.env.API_SERVER}/avatar/${newimg}`}
+                      width={30}
+                      height={30}
+                      className={`${styles.Licon} ${styles.avatar}`}
+                      alt="icon"
+                      onClick={() => isDropdown(Dropdown)}
+                      role="presentation"
+                    />
+                  </div>
+                ) : (
+                  <Image
+                    src={Membericon}
+                    width={60}
+                    height={30}
+                    className={styles.Licon}
+                    alt="icon"
+                    onClick={() => isDropdown(Dropdown)}
+                    role="presentation"
+                  />
+                )}
+
                 {JSON.parse(localStorage.getItem('auth')).notify >= 1 ? (
                   <div className={styles.notify}>
                     {' '}

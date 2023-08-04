@@ -169,7 +169,7 @@ export default function Usedid() {
         notify()
 
         router.push('/dashboard/used/changebook-message')
-      }, 2000)
+      }, 3500)
     }
   }
 
@@ -328,7 +328,9 @@ export default function Usedid() {
       )}
       {exchange_confirm ? (
         <Popup_window
-          text={`確定要兌換 ${bookInfo.price} 知音幣 ?`}
+          text={'確定要兌換'}
+          text2={true}
+          text2_info={bookInfo.price + '知音幣 ?'}
           botton_text_left={'確定'}
           botton_text_right={'取消'}
           botton_right={cancel_exchange}
@@ -337,11 +339,7 @@ export default function Usedid() {
       ) : (
         ''
       )}
-      {excehange_success ? (
-       <ExchangeAnime number={bookInfo.price}/>
-      ) : (
-        ''
-      )}
+      {excehange_success ? <ExchangeAnime number={bookInfo.price} /> : ''}
     </>
   )
 }

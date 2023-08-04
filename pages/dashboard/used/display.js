@@ -174,11 +174,18 @@ export default function Display() {
     }
   }
 
+  const handleAfterPrint = () => {
+    setPostData(false) // Update the state when onAfterPrint is triggered
+    setbooks('')
+    setInputValue('')
+  }
+
   //確認列印
 
   const print_item = useReactToPrint({
     content: () => printref.current,
     documentTitle: '上架資訊',
+    onAfterPrint: handleAfterPrint,
   })
 
   return (

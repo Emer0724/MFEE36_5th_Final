@@ -1,5 +1,5 @@
 .border_card_back{
-    background-color:#747272d5;
+    background-color:#747272ef;
     width: 100vw;
     height: 100vmax;
     position: fixed;
@@ -34,8 +34,8 @@
     position: absolute;
     /* top: -50%; */
     left: 50%;
-    transform: translate(-1%,300%);
-    transform: rotate(10);
+    transform: rotate(10deg) translate(-1%,300%);
+    /* transform:  */
     z-index: 20;
     animation-name: rightmoney;
     animation-delay: 1.5s;
@@ -157,13 +157,13 @@ opacity: 0;
 
 @keyframes rightmoney {
     0%{
-        transform: translate(-1%,300%);
+        transform: rotate(10deg) translate(-1%,300%);
     }
     20%{
-        transform: translate(-1%,300%);
+        transform: rotate(10deg) translate(-10%,300%);
     }
     100%{
-        transform: translate(10%,270%);
+        transform:  translate(10%,270%);
     }
     
     

@@ -82,6 +82,11 @@
     right: 5px;
 }
 
+.avatar{
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 @media(max-width:400px){
 
     .HeaderNavbar{

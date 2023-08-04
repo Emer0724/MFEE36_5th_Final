@@ -1,9 +1,12 @@
 import React from 'react'
 import styles from '@/components/used/popup_window/popup_window.module.css'
 import { BsCheckCircleFill } from 'react-icons/bs'
+import { BsCoin } from 'react-icons/bs'
 
 export default function Popup_window({
   text,
+  text2 = false,
+  text2_info,
   botton_text_left,
   botton_text_right,
   botton_left,
@@ -26,8 +29,16 @@ export default function Popup_window({
             ''
           )}
 
-          <div className="textp-28px letter-spacing text-center pb-5">
+          <div className="textp-28px letter-spacing text-center pb-5 d-flex align-items-center justify-content-center">
             {text}
+            {text2 ? (
+              <>
+                <BsCoin />
+                {text2_info}
+              </>
+            ) : (
+              ''
+            )}
           </div>
           {no_botton ? (
             ''
