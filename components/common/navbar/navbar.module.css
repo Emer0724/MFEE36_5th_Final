@@ -40,7 +40,12 @@
     line-height:60px;
     letter-spacing: 8px;
 }
-    
+.carticon{
+    position: absolute;
+    right: 60px;
+    top:20px
+}
+
 .linktext{
     color:#666666;
     font-size: var(--txp16);
@@ -116,6 +121,11 @@
     .Licon{
         width:25px;
         margin-left: 10px;
+    }
+    .carticon{
+        position: absolute;
+        right: 28px;
+        top:15px
     }
 }
 

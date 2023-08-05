@@ -109,7 +109,7 @@ export default function CurtProduct({data,handleDataChange}) {
 
 
 
-  const PLheader = ["產品","ISBN","價格","數量","小計","刪除"]
+  const PLheader = ["產品","書名","ISBN","價格","數量","小計","刪除"]
   return (
   <>
     <table className={styles.tablecontain}>
@@ -128,19 +128,25 @@ export default function CurtProduct({data,handleDataChange}) {
         const truncatedBookName = limitText(v.book_name,10);
           return(
           <tr key={i} className={styles.Prodeucttr}>
-              <td className={styles.Prodeuctpn}><Image className={styles.imagebook} src={`/all_img/book_pic/${encodeURIComponent(v.pic)}`} width={100} height={100} alt='icon'/>{truncatedBookName}</td>
+              <td className={styles.ProdeuctBlock}><Image className={styles.imagebook} src={`/all_img/book_pic/${encodeURIComponent(v.pic)}`} width={100} height={100} alt='icon'/></td>
+              <td className={styles.ProdeuctBlock}>{truncatedBookName}</td>
               <td className={styles.ProdeuctBlock}>{v.ISBN}</td>
-              <td className={styles.ProdeuctBlock}><span className={styles.oneprice}>{v.price}</span></td>
+              {v.used_id>0
+              ?
+              <td className={styles.ProdeuctBlock}>特惠<span className={styles.usedprice}>${v.price}</span></td>
+              :
+              <td className={styles.ProdeuctBlock}><span className={styles.oneprice}>{v.price}</span></td>}
               <td>
-                 {isCartPage?
+                 {v.used_id>0
+                 ?
                  <div className={styles.CountBlock}>
-                    <button style={Countcut} className={styles.Countcut} onClick={() => cutcount(v.ISBN,member1)}>-</button>
-                    <div className={styles.Countvalue}>{v.count}</div>
-                    <button style={Countplus} className={styles.Countplus} onClick={() => addcount(v.ISBN,member1)}>+</button>
+                    <div className={styles.Countvalue1}>{v.count}</div>
                   </div>
                   :
                   <div className={styles.CountBlock}>
-                    <div className={styles.Countvalue1}>{v.count}</div>
+                    <button style={Countcut} className={styles.Countcut} onClick={() => cutcount(v.ISBN,member1)}>-</button>
+                    <div className={styles.Countvalue}>{v.count}</div>
+                    <button style={Countplus} className={styles.Countplus} onClick={() => addcount(v.ISBN,member1)}>+</button>
                   </div>
                  }
               </td> 
@@ -160,12 +166,18 @@ export default function CurtProduct({data,handleDataChange}) {
               <div className={styles.CProductlist2}>
                 <h6 className={styles.Clisttext}>{truncatedBookName}</h6>
                 <h6 className={styles.Clisttext}>{v.ISBN}</h6>
-                
+                {v.used_id>0
+                 ?
+                <div className={styles.CountBlock}>
+                    <div className={styles.Countvalue}>{v.count}</div>
+                </div>
+                :
                 <div className={styles.CountBlock}>
                     <button  className={styles.Countcut} onClick={() => cutcount(v.ISBN,member1)} >-</button>
                     <div className={styles.Countvalue}>{v.count}</div>
                     <button  className={styles.Countplus} onClick={() => addcount(v.ISBN,member1)}>+</button>
                 </div>
+                }
               </div>
               <div className={styles.CProductlist3}>
                 <button className={styles.trashbtn} onClick={() => deleteitem(v.ISBN,member1)}><Image src={Trash} width={30} height={30} alt='icon'/></button>

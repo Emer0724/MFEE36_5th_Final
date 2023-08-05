@@ -18,6 +18,9 @@
 .oneprice::before{
     content: "$";
 }
+.usedprice{
+   color:red
+}
 .Countvalue{
     text-align: center;
     border: 1px solid var(--color5);

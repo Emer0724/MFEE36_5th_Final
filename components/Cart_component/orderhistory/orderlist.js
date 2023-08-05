@@ -45,7 +45,6 @@ export default function orderlist() {
 
 
     const handleSelectOrder = (orderid) => {
-      console.log(orderid);
       fetch(`${process.env.API_SERVER}/cart/orderdetail`, {
         method: 'POST',
         headers: {
@@ -55,7 +54,6 @@ export default function orderlist() {
       })
       .then((r) => r.json())
       .then((result)=>{
-      console.log(result);
         setData1(result);
       })
     }
@@ -113,7 +111,7 @@ export default function orderlist() {
                 </div>
                 <div className={s.detaillocation}>
                 {openedDetailIndex === i && <Orderdetail  data1={data1} />}
-                {openedOrderIndex === i && <Orderman  data1={data1} />}
+                 {openedOrderIndex === i && <Orderman  data1={data1} />}
                 </div>
           </div>
         )
