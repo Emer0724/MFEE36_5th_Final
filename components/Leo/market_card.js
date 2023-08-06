@@ -4,6 +4,7 @@ import car from '@/components/Leo/market_card.module.css'
 import Link from 'next/link'
 
 export default function MarketCard(data) {
+  console.log(data)
   const cardRef = useRef(null)
 
   const handleMouseEnter = () => {

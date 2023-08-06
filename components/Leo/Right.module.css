@@ -3,11 +3,16 @@
     padding: 20PX;
 }
 .content{
+    flex:1;
     width: 100%;
     word-wrap: break-word;
     word-break: break-all;
     white-space: pre-wrap;
     margin-top: 20px;
+}
+.container{
+  display: flex;
+  flex-direction: column;
 }
 .p{
     margin-top: 50px;
@@ -17,10 +22,6 @@
     white-space: pre-line;
     text-align: center; 
     
-  }
-  .scrollable {
-    overflow-y: auto;
-    max-height: 400px; /* 設置適當的最大高度，讓內容超過時才出現滾動條 */
   }
   .used{
     width: 100%;

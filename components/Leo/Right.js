@@ -18,17 +18,19 @@ export default function Right({ result, usedAreaRef }) {
 
   return (
     <>
-      <div className={`${styles.content}  ${styles.scrollable}`}>
-        <h1 className={styles.title}>內容描述</h1>
-        <pre className={`${styles.p} ${styles.verticalExpand}`}>
-          {description}
-        </pre>
-      </div>
-      <div className={styles.used}>
-        <h1 className={styles.title} id="usedArea">
-          二手書
-        </h1>
-        <UsedList datas={data} ISBN={ISBN} />
+      <div className={`${styles.container}`}>
+        <div className={`${styles.content}`}>
+          <h1 className={styles.title}>內容描述</h1>
+          <pre className={`${styles.p} ${styles.verticalExpand}`}>
+            {description}
+          </pre>
+        </div>
+        <div className={styles.usedbox}>
+          <h1 className={`${styles.title} ${styles.used}`} id="usedArea">
+            二手書
+          </h1>
+          <UsedList datas={data} ISBN={ISBN} />
+        </div>
       </div>
     </>
   )

@@ -18,7 +18,7 @@
     /* border: 1px solid green; */
 }
 .pic_box{
-    height: 655px;
+    height: 600px;
     display: flex;
     justify-content: center;
 }

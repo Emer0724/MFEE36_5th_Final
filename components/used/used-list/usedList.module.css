@@ -1,0 +1,19 @@
+.font{
+    font-size: 20px;
+}
+.container{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+}
+.table-container {
+    display: grid;
+    justify-items: center;
+  }
+  .btn{
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    color: #52796f;
+  }
