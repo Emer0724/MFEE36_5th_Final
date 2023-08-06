@@ -13,9 +13,12 @@ export default function Member_info() {
   const [img, setnewimg] = useState([])
   useEffect(() => {
     const getauth = () => {
-      const auth = JSON.parse(localStorage.getItem('auth'))
-      setAuth1(auth)
-      setnewimg(auth.mem_avatar)
+      if(localStorage.getItem('auth')){
+        const auth = JSON.parse(localStorage.getItem('auth'))
+        setAuth1(auth)
+        setnewimg(auth.mem_avatar)
+      }
+     
     }
     getauth()
   }, [])

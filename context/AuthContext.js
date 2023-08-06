@@ -18,7 +18,7 @@ export const AuthContextProvider = function ({ children }) {
   const [photo, setphoto] = useState('')
   const [first, setfirst] = useState(false)
 
-  console.log('photo', photo)
+  // console.log('photo', photo)
 
   const logout = () => {
     localStorage.removeItem('auth')
@@ -46,7 +46,7 @@ export const AuthContextProvider = function ({ children }) {
     if (storedAuth) {
       const img = JSON.parse(localStorage.getItem('auth')).mem_avatar
       if (img) {
-        console.log('這是' + img)
+        // console.log('這是' + img)
         setphoto(img)
       }
     }

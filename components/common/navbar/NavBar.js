@@ -34,9 +34,13 @@ export default function NavBar1() {
       setnickname(JSON.parse(localStorage.getItem('auth')).nickname)
       // console.log(JSON.parse(localStorage.getItem('auth')).nickname)
       setIsLoggedIn(true)
+    }else{
+      if(router.asPath.includes('dashboard')){
+        router.push('/member/login')
+      }
     }
   }, [])
-  console.log(photo)
+  // console.log(photo)
   // useEffect(() => {
   //   if
   //   setphoto(photo)
