@@ -8,7 +8,6 @@ import Carticon from '@/assets/Nav_Image/Vector.svg'
 import Membericon from '@/assets/Nav_Image/Subtract.svg'
 import Searchbar from './searchbar'
 import DropdownMenu from './dropdown-menu'
-import { set } from 'lodash'
 import AuthContext from '@/context/AuthContext'
 import { useContext } from 'react'
 import { BsBellFill } from 'react-icons/bs'
@@ -46,7 +45,9 @@ export default function NavBar1() {
   }, [auth])
 
   useEffect(()=>{
-    const member1 = JSON.parse(localStorage.getItem('auth')).member_id
+    if (localStorage.getItem('auth')){
+    const member1 = JSON.parse(localStorage.getItem('auth')).member_id;
+    console.log(member1);
     fetch(`${process.env.API_SERVER}/cart/count?member=${member1}`, {
       method: "GET",
       headers: {
@@ -59,7 +60,7 @@ export default function NavBar1() {
        const counter = result.map((v)=>v.count)
         const totalcount = counter.reduce((v,c)=>v+c,0)
         setcount(totalcount);
-      });
+      });}
       //需要一個回呼函式 到商城
   },[])
 

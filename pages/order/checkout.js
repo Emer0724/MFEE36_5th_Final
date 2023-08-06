@@ -15,7 +15,8 @@ export default function OrderCheckout() {
   const paymentmethod = formData.paymentMethod
   setpayment(paymentmethod);
 }, []);
-
+ 
+ 
   const blockstyle1 = {
     display:"flex",
     flexDirection: "column",
@@ -47,7 +48,7 @@ export default function OrderCheckout() {
       <OrderState/>
       <CartTitle titlecontent={"付款完成後，就大功告成啦"} />
       <div>
-        <h1 style={blockstyle1}>linepay支付中請稍候</h1>
+        <h1 style={blockstyle1}>linepay支付中請稍候....</h1>
       </div>
       <div style={{marginBottom:"40px"}}>
         <DeepButton DeepButtoncontent={"完成付款"} onClick={btnhandle}/>

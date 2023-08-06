@@ -22,4 +22,25 @@
 }
 @media (max-width:400px) {
     
+.detailname{
+    font-size: 14px;
+}
+.detailphone{
+    font-size: 14px;
+}
+.detailstore{
+    font-size: 14px;
+}
+.detailaddress{ 
+    font-size: 14px;
+}
+.detailprice{
+    font-size: 14px;
+}
+.detailcount{
+    font-size: 14px;
+}
+.detailtotal{
+    font-size: 14px;
+}
 }

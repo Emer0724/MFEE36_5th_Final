@@ -46,6 +46,7 @@
     display: flex;
     margin: 10px 0;
 }
+
 .listtext{
     color: var(--color2);
     display: flex;
@@ -57,31 +58,70 @@
     padding: 30px 0;
     gap: 60px;
 }
+.listdivtext1{
+    animation: spot 2s ease-in 1s infinite normal none;
+}
+@keyframes spot{
+    0%{opacity:1;}
+    90%{opacity:0;}
+    100%{
+    color:#232323;}
+}
 
 
 @media (max-width:400px) {
+    .listcontain{
+    width: 100%;
+    margin-bottom: 60px;
+    border-radius: 8px;
+    padding: 10px;
+    }
     .listcol{
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
         border: 1px solid #ddd;
-        padding: 10px;
+        padding: 5px;
         transition: none;
     }
     .listdivct{
         display: flex;
         justify-content: center;
         align-items: center;
-        gap:30px;
+        gap:80px;
     }
     .orderbtn{
         background-color: var(--color2);
         border-radius: 8px;  
-        padding: auto 15px;
+        padding: 15px 15px 10px 15px;
         margin: 20px 0;
     }
-    .listdiv{
+    .listdivct1{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:flex-start;
+        gap: 4.5px;
+    }
+    .listdivct2{
+        width: 100%;
+        height: 100%;
+         display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items:flex-start;
+        gap: 13px;
+    }
+    .listdivtext{
+        font-size: 16px;
+    }
+    .listdivtext1{
+        font-size: 16px;
+    }
+    .listdivtext2{
         font-size: 16px;
     }
 }

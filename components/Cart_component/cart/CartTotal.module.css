@@ -94,11 +94,11 @@ content: "$";
 }
 
 @keyframes popupAnimation {
-    0% { opacity: 0; }
-    25% { opacity: 25%; }
-    50% { opacity: 50%; }
-    75% { opacity: 75%; }
-    100% { opacity: 100%; }
+    0% { transform:translateY(0px) }
+    25% { transform:translateY(-30px); }
+    50% { transform:translateY(0px); }
+    75% { transform:translateY(-15px); }
+    100% { transform:translateY(0px); }
 }
 
 @media (max-width:400px) {

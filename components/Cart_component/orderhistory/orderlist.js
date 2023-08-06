@@ -57,52 +57,57 @@ export default function orderlist() {
         setData1(result);
       })
     }
+
     
   return (
     <div className={s.listcontain}>
        <div className={s.listrow}>
        {data.map((v,i)=>{
+        const limitText = (text, maxLength) => {
+          if (text && text.length > maxLength) {
+            return text.slice(0, maxLength);
+          }
+          return text;
+        };
+        const time = limitText(v.createAt,10);
+
         return(
             <div key={i}>
                 <div className={s.listcol} >
                       <div className={s.listnum}><h3>訂單編號</h3><h3>{v.order_id}</h3></div>
                       <div className={s.listdivct}>
-                        <div>
+                        <div className={s.listdivct1}>
                             <div className={s.listdiv1}>
-                                <h5>訂單日期</h5>
+                                <h5  className={s.listdivtext}>訂單金額</h5>                             
                             </div>
                             <div className={s.listdiv1}>
-                                <h5>訂單總金額</h5>
-                              
+                                <h5 className={s.listdivtext}>知音幣</h5>                               
                             </div>
                             <div className={s.listdiv1}>
-                                <h5>知音幣使用</h5>
-                                
+                                <h5 className={s.listdivtext}>折價卷</h5>
                             </div>
                             <div className={s.listdiv1}>
-                                <h5>折價卷使用</h5>
-                              
+                                <h5 className={s.listdivtext}>訂單狀態</h5>
                             </div>
                             <div className={s.listdiv1}>
-                                <h5>訂單狀態</h5>
-                              
+                                <h5 className={s.listdivtext}>建立時間</h5>
                             </div>
                         </div>
-                        <div>
+                        <div className={s.listdivct2}>
                             <div className={s.listdiv}>
-                                <h5>{v.createAt}</h5>
+                                <h3 className={s.listdivtext}>${v.total_price}元</h3>
                             </div>
                             <div className={s.listdiv}>
-                                <h3>${v.total_price}元</h3>
+                                <h4 className={s.listdivtext}>${v.use_token}元</h4>
                             </div>
                             <div className={s.listdiv}>
-                                <h4>${v.use_token}元</h4>
-                            </div>
-                            <div className={s.listdiv}>
-                                <h4>{v.use_coupon}折</h4>
+                                <h4 className={s.listdivtext}>{v.use_coupon}折</h4>
                             </div>
                             <div className={s.listtext}>
-                                <h4>訂單成立</h4>
+                                <h4 className={s.listdivtext1}>訂單成立</h4>
+                            </div>
+                            <div className={s.listdiv}>
+                                <h4 className={s.listdivtext2}>{time}</h4>
                             </div>
                         </div>
                       </div>
@@ -111,7 +116,7 @@ export default function orderlist() {
                 </div>
                 <div className={s.detaillocation}>
                 {openedDetailIndex === i && <Orderdetail  data1={data1} />}
-                 {openedOrderIndex === i && <Orderman  data1={data1} />}
+                {openedOrderIndex === i && <Orderman  data1={data1} />}
                 </div>
           </div>
         )

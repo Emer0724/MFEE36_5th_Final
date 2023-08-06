@@ -1,0 +1,82 @@
+.bodyct{
+    overflow: hidden;
+}
+.container{
+    width: 6000px;
+    display: flex;
+    overflow:scroll;
+    padding-left: 450px;
+}
+.show{
+    display: block;
+}
+.rwdcontainer{
+    display: none;
+}
+.bookContainer {
+    width: 400px;
+    height: 600px;
+    position: relative;
+    perspective: 800px; 
+    margin: 200px auto;
+  }
+  .book {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transition: transform 1.5s;
+  }
+  .page{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: lightblue;
+    z-index:-1;
+    border: 10px solid black;
+    border-radius: 18px;
+  }
+  
+  .frontCover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #06925c;
+    z-index: 2;
+    backface-visibility: hidden;
+    border: 10px solid black;
+    border-radius: 18px;
+  }
+  
+ 
+  .backCover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #001b5b;
+    transform:translateX(-400px) rotateY(-175deg);
+    backface-visibility: hidden;
+    z-index: 1;
+    transform-origin: right; 
+    border: 10px solid black;
+    border-radius: 18px;
+    overflow: scroll;
+  }
+
+  /* 鼠标悬停时展开书页 */
+  .bookContainer:hover .book {
+    transform: rotateY(-180deg)
+ }
+ @media (max-width:400px) {
+    .rwdcontainer{
+        display: block;
+    }
+    .container{
+        display: none;
+    }
+    .show{
+        display: none;
+    }
+    
+ }
