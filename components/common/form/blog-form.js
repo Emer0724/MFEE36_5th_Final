@@ -35,20 +35,24 @@ export default function BlogForm() {
   const Imagedata = (e) => {
     setImage(e.target.value)
   }
-
   const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0]
-
+    const selectedFile = e.target.files[0];
+    
+  
     if (selectedFile) {
-      const reader = new FileReader()
+      const reader = new FileReader();
       reader.onloadend = () => {
-        setImage(reader.result)
-      }
-      reader.readAsDataURL(selectedFile)
+        setImage(reader.result); // 將 base64 圖片數據設定為 image 狀態
+      };
+      reader.readAsDataURL(selectedFile); // 將文件轉換為 base64
+  
+      // 獲取圖片文件名稱
+      const fileName = selectedFile.name;
+      console.log('選擇的圖片文件名稱：', fileName)
     } else {
       setImage(null)
     }
-  }
+  };
 
   const Contentdata = (e) => {
     setContent(e.target.value)
@@ -102,6 +106,7 @@ export default function BlogForm() {
 
       const data = await response.json()
       console.log('從後端收到的響應：', data)
+
 
       setTitle('')
       setTag('')

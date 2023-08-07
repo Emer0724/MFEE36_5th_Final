@@ -1,14 +1,40 @@
 import BackButton from '../button/backbutton'
 import Button13 from '../button/button13'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 
 export default function BookEditForm() {
+  const [data, setData] = useState([])
   const [title, setTitle] = useState('')
   const [score, setScore] = useState('')
   const [content, setContent] = useState('')
   const [titleError, setTitleError] = useState('')
   const [scoreError, setScoreError] = useState('')
   const [contentError, setContentError] = useState('')
+  const [memberData, setMemberData] = useState([])
+
+  useEffect(() => {
+    // 從本地儲存空間獲取會員資料
+    const storedMemberData = localStorage.getItem('auth')
+
+    if (storedMemberData) {
+      const parsedMemberData = JSON.parse(storedMemberData)
+      setMemberData(parsedMemberData)
+    }
+  }, [])
+
+  const user = memberData.member_id
+
+  useEffect(() => {
+    fetch(`http://localhost:3055/blog/edit/lookbook/${user}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // 將數據保存在組件的狀態中
+        setData(data)
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error)
+      })
+  }, [user])
 
   const Titledata = (e) => {
     setTitle(e.target.value)
@@ -52,11 +78,6 @@ export default function BookEditForm() {
     if (!isValid) {
       return
     }
-
-    // 清空表单字段
-    setTitle('')
-    setScore('')
-    setContent('')
   }
 
   return (

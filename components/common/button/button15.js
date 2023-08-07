@@ -3,9 +3,10 @@ import { useRouter } from 'next/router'
 
 export default function Button15() {
 
+
     const router = useRouter('')
     const editBook = ()=>{
-        router.push('/blog/upload/book-edit')
+        router.push(`/blog/upload/book-edit`)
     }
 
     return (

@@ -4,7 +4,7 @@ import Image from 'next/image'
 import style from '@/components/blog/blog_content.module.css'
 import { useState, useEffect } from 'react'
 
-export default function ArticleElement() {
+export default function TagContentWork() {
   const [blogSort, setBlogSort] = useState('desc')
   const [cblog, setcBlog] = useState([])
 
@@ -14,7 +14,7 @@ export default function ArticleElement() {
 
   const fetchBlogList = async () => {
     try {
-      const response = await fetch(`http://localhost:3055/blog/${blogSort}`)
+      const response = await fetch(`http://localhost:3055/blog/tagwork/${blogSort}`)
       const data = await response.json()
       setcBlog(data)
     } catch (error) {

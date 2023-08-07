@@ -106,7 +106,7 @@ export default function BookContent() {
           >
             <div className="pt-3">
               <Image
-                src={`/all_img/book_pic/${book_review.pic}`}
+                src={`http://localhost:3055/book_pic/${book_review.pic}`}
                 width={150}
                 height={200}
                 className={style.blogimg}

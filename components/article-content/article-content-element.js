@@ -101,7 +101,7 @@ export default function ArticleContentElement() {
           <div className="pb-3">
             {article.length !== 0 && article[0][0].blog_img ? (
               <Image
-                src={`/all_img/img/${encodeURIComponent(
+                src={`http://localhost:3055/blogimg/${encodeURIComponent(
                   article.length !== 0 && article[0][0].blog_img
                 )}`}
                 width={650}

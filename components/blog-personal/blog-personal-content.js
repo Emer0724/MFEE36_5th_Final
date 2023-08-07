@@ -3,11 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import style from '@/components/blog/blog_content.module.css'
 import Button10 from '../common/button/button10'
-import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 
 export default function BlogPersonalContent() {
-  const router = useRouter('')
   const [data, setData] = useState([])
   const [memberData, setMemberData] = useState([])
 
@@ -43,6 +41,7 @@ export default function BlogPersonalContent() {
     return `${year}-${month}-${day}`
   }
 
+
   return (
     <>
       {data.map((psblog, i) => (
@@ -59,7 +58,7 @@ export default function BlogPersonalContent() {
             <div>
               {psblog.blog_img ? (
                 <Image
-                  src={`/all_img/img/${psblog.blog_img}`}
+                  src={`http://localhost:3055/blogimg/${psblog.blog_img}`}
                   width={450}
                   height={250}
                   className={style.blogimg}
@@ -67,7 +66,7 @@ export default function BlogPersonalContent() {
                 />
               ) : (
                 <Image
-                  src="/all_img/img/noimg.jpg"
+                  src="http://localhost:3055/blogimg/noimg.jpg"
                   width={450}
                   height={250}
                   className={style.blogimg}
@@ -81,9 +80,7 @@ export default function BlogPersonalContent() {
               href=""
               className={`${style.chenover} text-black text-decoration-none`}
             >
-              <p>
-                {psblog.blog_post}
-              </p>
+              <p>{psblog.blog_post}</p>
             </Link>
           </div>
           <div className="pb-3 d-flex align-items-center justify-content-between border-bottom">
