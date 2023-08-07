@@ -47,7 +47,7 @@ export default function BlogPersonalContent() {
       {data.map((psblog, i) => (
         <>
           <div key={i} className="pt-4 pb-4">
-            <Link href="" className="text-black text-decoration-none">
+            <Link href={`/blog/${psblog.blog_sid}`} className="text-black text-decoration-none">
               <h4>{psblog.blog_title}</h4>
             </Link>
           </div>
@@ -77,7 +77,7 @@ export default function BlogPersonalContent() {
           </div>
           <div className="pt-3">
             <Link
-              href=""
+              href={`/blog/${psblog.blog_sid}`}
               className={`${style.chenover} text-black text-decoration-none`}
             >
               <p>{psblog.blog_post}</p>
@@ -88,7 +88,7 @@ export default function BlogPersonalContent() {
               <span>{formatDateString(psblog.add_date)}</span>
             </div>
             <div className="pt-3">
-              <Button10 />
+              <Button10 blog_sid={psblog.blog_sid}/>
             </div>
           </div>
         </>

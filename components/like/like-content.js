@@ -61,6 +61,8 @@ export default function LikeContent() {
             ) : (
               <Image
                 src={people}
+                width={60}
+                height={60}
                 className={`${style.headblogimg} text-decoration-none`}
                 alt="default_avatar"
               />

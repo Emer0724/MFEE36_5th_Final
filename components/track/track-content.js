@@ -50,6 +50,8 @@ export default function TrackContent() {
               ) : (
                 <Image
                   src={people}
+                  width={60}
+                  height={60}
                   className={`${stlye.headblogimg} text-decoration-none`}
                   alt="default_avatar"
                 />

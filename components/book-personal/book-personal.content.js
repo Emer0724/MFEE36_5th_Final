@@ -137,7 +137,7 @@ export default function BookPersonalContent() {
                   </span>
                 </div>
                 <div className={`d-flex justify-content-center`}>
-                  <Button15 />
+                  <Button15 book_review_sid={psbook.book_review_sid}/>
                 </div>
               </div>
             </div>

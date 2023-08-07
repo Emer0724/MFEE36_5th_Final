@@ -22,6 +22,8 @@ export default function BlogForm() {
     }
   }, [])
 
+  console.log(memberData.member_id)
+
   const Titledata = (e) => {
     setTitle(e.target.value)
     setTitleError('')
@@ -36,23 +38,18 @@ export default function BlogForm() {
     setImage(e.target.value)
   }
   const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0];
-    
-  
+    const selectedFile = e.target.files[0]
+
     if (selectedFile) {
-      const reader = new FileReader();
+      const reader = new FileReader()
       reader.onloadend = () => {
-        setImage(reader.result); // 將 base64 圖片數據設定為 image 狀態
-      };
-      reader.readAsDataURL(selectedFile); // 將文件轉換為 base64
-  
-      // 獲取圖片文件名稱
-      const fileName = selectedFile.name;
-      console.log('選擇的圖片文件名稱：', fileName)
+        setImage(reader.result) // 將 base64 圖片數據設定為 image 狀態
+      }
+      reader.readAsDataURL(selectedFile) // 將文件轉換為 base64
     } else {
       setImage(null)
     }
-  };
+  }
 
   const Contentdata = (e) => {
     setContent(e.target.value)
@@ -88,7 +85,7 @@ export default function BlogForm() {
         member_id: memberData.member_id,
         title: title,
         tag: tag,
-        image: image,
+        image: image ? image : null,
         content: content,
       }
 
@@ -107,7 +104,6 @@ export default function BlogForm() {
       const data = await response.json()
       console.log('從後端收到的響應：', data)
 
-
       setTitle('')
       setTag('')
       setImage('')
@@ -125,7 +121,12 @@ export default function BlogForm() {
     <div className="container pt-5 pb-5">
       <div className="row d-flex justify-content-center">
         <div className="col-xl-7">
-          <form onSubmit={BlogSubmit}>
+          <form 
+          onSubmit={BlogSubmit}
+          action={`${process.env.API_SERVER}/blog/upload`}
+          id="uploadForm"
+          method="post"
+          encType="multipart/form-data">
             <h3 className="d-flex justify-content-center pb-5">寫作品</h3>
             <div className={`mb-3 pt-3 ${titleError ? 'has-error' : ''}`}>
               <label
@@ -180,27 +181,27 @@ export default function BlogForm() {
                 </div>
               )}
             </div>
-            <div className="mb-3 pt-3">
-              <label htmlFor="formFile" className="form-label fs-4">
-                上傳圖片
-              </label>
-              <input
-                className="form-control"
-                type="file"
-                id="formFile"
-                onChange={(e) => {
-                  Imagedata(e)
-                  handleFileChange(e)
-                }}
-              />
-              {image && (
-                <img
-                  src={image}
-                  alt="預覽圖片"
-                  style={{ width: '400px', marginTop: '10px' }}
+              <div className="mb-3 pt-3">
+                <label htmlFor="formFile" className="form-label fs-4">
+                  上傳圖片
+                </label>
+                <input
+                  className="form-control"
+                  type="file"
+                  id="formFile"
+                  onChange={(e) => {
+                    Imagedata(e)
+                    handleFileChange(e)
+                  }}
                 />
-              )}
-            </div>
+                {image && (
+                  <img
+                    src={image}
+                    alt="預覽圖片"
+                    style={{ width: '400px', marginTop: '10px' }}
+                  />
+                )}
+              </div>
             <div className="mb-3 pt-5">
               <label
                 htmlFor="exampleFormControlTextarea1"

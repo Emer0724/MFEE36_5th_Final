@@ -1,64 +1,141 @@
-import Button13 from '../button/button13'
-import BackButton from '../button/backbutton'
-import { useState } from 'react'
+import Button8 from '../button/button8'
+import Button9 from '../button/button9'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { BsTagFill } from 'react-icons/bs'
 
-export default function BlogEditForm() {
+export default function BlogForm() {
   const [title, setTitle] = useState('')
-  const [image, setImage] = useState('')
+  const [tag, setTag] = useState('')
+  const [image, setImage] = useState('');
   const [content, setContent] = useState('')
-  const [titleError, setTitleError] = useState('')
-  const [contentError, setContentError] = useState('')
+  const [memberData, setMemberData] = useState([])
+  const [titleChanged, setTitleChanged] = useState(false);
+  const [tagChanged, setTagChanged] = useState(false);
+  const [contentChanged, setContentChanged] = useState(false);
+  const [prevArticleData, setPrevArticleData] = useState({})
+  const router = useRouter('');
+  const {blog_sid} = router.query
+
+
+  useEffect(() => {
+    // 從本地儲存空間獲取會員資料
+    const storedMemberData = localStorage.getItem('auth')
+
+    if (storedMemberData) {
+      const parsedMemberData = JSON.parse(storedMemberData)
+      setMemberData(parsedMemberData)
+    }
+  }, [])
+  const user = memberData.member_id
+
+  
+  useEffect(() => {
+    const fetchPrevArticleData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3055/blog/edit/lookblog/${blog_sid}`
+        )
+        const data = await response.json()
+        setPrevArticleData(data[0])
+      } catch (error) {
+        console.error('获取之前文章数据时出错：', error)
+      }
+    }
+
+    fetchPrevArticleData()
+  }, [])
+
 
   const Titledata = (e) => {
     setTitle(e.target.value)
-    setTitleError('')
+    setTitleChanged(true)
+  }
+
+  const Tagdata = (e) => {
+    setTag(e.target.value)
+    setTagChanged(true)
   }
 
   const Imagedata = (e) => {
     setImage(e.target.value)
   }
 
-  const Contentdata = (e) => {
-    setContent(e.target.value)
-    setContentError('');
+  console.log('title:', title)
+  console.log('img', image)
+  console.log('tag:', tag)
+  console.log('Content:', content)
+
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0]
+
+    if (selectedFile) {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setImage(reader.result) // 將 base64 圖片數據設定為 image 狀態
+      }
+      reader.readAsDataURL(selectedFile) // 將文件轉換為 base64
+    } else {
+      setImage(null)
+    }
   }
 
-  const BlogSubmit = (event) => {
-    event.preventDefault();
+  const Contentdata = (e) => {
+    setContent(e.target.value)
+    setContentChanged(true)
+  }
 
-    console.log('Title:', title)
-    console.log('Image:', image)
-    console.log('Content:', content)
+  const BlogSubmit = async (event) => {
+    event.preventDefault()
 
-    let isValid = true;
+    const title2 = prevArticleData.blog_title
+    const tag2 = prevArticleData.tag_id
+    const content2 = prevArticleData.blog_post
 
-    if (!title) {
-        setTitleError('請輸入標題!!');
-        isValid = false;
+    try {
+      const formData = {
+        member_id: user,
+        title: title || title2,
+        tag: tag || tag2,
+        image: image ? image : null,
+        content: content || content2,
       }
+      
+      console.log(formData)
 
-    if (!content) {
-        setContentError('請輸入文章內容!!');
-        isValid = false;
+      // 使用fetch將表單數據發送到後端API
+      const response = await fetch(`http://localhost:3055/blog/blog/edit/${blog_sid}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+      console.log('從後端收到的響應：', data)
+
+
+      setTimeout(() => {
+        window.location.href = 'http://localhost:3000/blog/personal-page/work'
+      }, 2000)
+    } catch (error) {
+      console.error('發送數據到後端時出錯：', error)
     }
-
-    if (!isValid) {
-        return;
-    }
-
-    // 清空表单字段
-    setTitle('')
-    setImage('')
-    setContent('')
   }
 
   return (
     <div className="container pt-5 pb-5">
       <div className="row d-flex justify-content-center">
         <div className="col-xl-7">
-          <form onSubmit={BlogSubmit}>
-            <h3 className='d-flex justify-content-center pb-5'>編輯作品</h3>
-            <div className={`mb-3 pt-3 ${titleError ? 'has-error' : ''}`}>
+          <form 
+          onSubmit={BlogSubmit}
+          action={`${process.env.API_SERVER}/blog/upload`}
+          id="uploadForm"
+          method="post"
+          encType="multipart/form-data">
+            <h3 className="d-flex justify-content-center pb-5">編輯作品</h3>
+            <div className={`mb-3 pt-3`}>
               <label
                 htmlFor="exampleFormControlInput1"
                 className="form-label fs-4"
@@ -67,49 +144,93 @@ export default function BlogEditForm() {
               </label>
               <input
                 type="text"
-                className={`form-control ${titleError ? 'is-invalid' : ''}`}
+                className={`form-control`}
                 id="exampleFormControlInput1"
-                value={title}
+                value={title || prevArticleData?.blog_title}
                 onChange={Titledata}
                 placeholder="請輸入標題"
               />
-              {titleError && <div style={{fontSize:'16px'}} className="text-danger ps-2 pt-3">{titleError}</div>}
+                <div
+                  style={{ fontSize: '16px' }}
+                  className="text-danger ps-2 pt-3"
+                >
+                </div>
             </div>
-            <div className="mb-3 pt-3">
-              <label htmlFor="formFile" className="form-label fs-4">
-                上傳圖片
+            <div className="pb-3 pt-3">
+              <label
+                htmlFor="exampleFormControlInput1"
+                className="form-label fs-4"
+              >
+                TAG
               </label>
-              <input
-                className="form-control"
-                type="file"
-                id="formFile"
-                onChange={Imagedata}
-                value={image}
-              />
+              <select
+                className={`form-select`}
+                aria-label="Default select example"
+                value={tag || prevArticleData?.tag_id}
+                onChange={Tagdata}
+              >
+                <option selected>選擇TAG</option>
+                <option value="1">愛情</option>
+                <option value="2">旅遊</option>
+                <option value="3">生活</option>
+                <option value="4">工作</option>
+                <option value="5">教育</option>
+                <option value="6">書</option>
+              </select>
+                <div
+                  style={{ fontSize: '16px' }}
+                  className="text-danger ps-2 pt-3"
+                >
+                </div>
             </div>
+              <div className="mb-3 pt-3">
+                <label htmlFor="formFile" className="form-label fs-4">
+                  上傳圖片
+                </label>
+                <input
+                  className="form-control"
+                  type="file"
+                  id="formFile"
+                  onChange={(e) => {
+                    Imagedata(e)
+                    handleFileChange(e)
+                  }}
+                />
+                {image && (
+                  <img
+                    src={image}
+                    alt="預覽圖片"
+                    style={{ width: '400px', marginTop: '10px' }}
+                  />
+                )}
+              </div>
             <div className="mb-3 pt-5">
               <label
                 htmlFor="exampleFormControlTextarea1"
-                className={`form-label fs-4 ${contentError ? 'has-error' : ''}`}
+                className={`form-label fs-4`}
               >
                 文章內容
               </label>
               <textarea
-                className={`form-control ${contentError ? 'is-invalid' : ''}`}
+                className={`form-control`}
                 id="exampleFormControlTextarea1"
                 placeholder="請輸入文章內容"
                 onChange={Contentdata}
-                value={content}
+                value={content || prevArticleData?.blog_post}
                 rows="6"
               ></textarea>
-               {contentError && <div style={{fontSize:'16px'}} className="text-danger ps-2 pt-3">{contentError}</div>}
+                <div
+                  style={{ fontSize: '16px' }}
+                  className="text-danger ps-2 pt-3"
+                >
+                </div>
             </div>
             <div className="d-flex justify-content-between pt-5">
               <div>
-                <Button13 />
+                <Button8 />
               </div>
               <div>
-                <BackButton />
+                <Button9 />
               </div>
             </div>
           </form>

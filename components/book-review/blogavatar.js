@@ -12,6 +12,8 @@ export default function Avatar({ nickname, mem_avatar }) {
           <div>
             <Image
               src={mem_avatar ? mem_avatar : people}
+              width={80}
+              height={80}
               className={stlye.chenheadimg}
               alt="member_avatar"
             />

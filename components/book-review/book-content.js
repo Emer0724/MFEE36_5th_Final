@@ -65,14 +65,14 @@ export default function BookContent() {
             href="#"
             className={`text-body-tertiary text-decoration-none ${style.chenbreadhole}`}
           >
-            部落格
+            書評
           </Link>
           &#062;
           <Link
             href="#"
             className={`text-body-tertiary text-decoration-none ${style.chenbreadhole}`}
           >
-            書評
+            評分最高
           </Link>
         </div>
       </div>
