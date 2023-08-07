@@ -35,7 +35,6 @@ export default function WishList() {
   }
   const [result] = data
 
- 
   console.log(data)
   console.log(result)
   return (
@@ -54,15 +53,21 @@ export default function WishList() {
           style={{ display: 'flex', flexWrap: 'wrap' }}
         >
           {/* 使用 rows 資料進行渲染 */}
-          {result?.map((v, i) => (
-            <div
-              key={i}
-              className={` ${ca.c_row} d-flex`}
-              style={{ flex: '21%', padding: '10px' }}
-            >
-              <Wishcard v={v} />
+          {result && result.length > 0 ? (
+            result.map((v, i) => (
+              <div
+                key={i}
+                className={`${ca.c_row} d-flex`}
+                style={{ flex: '21%', padding: '10px' }}
+              >
+                <Wishcard v={v} />
+              </div>
+            ))
+          ) : (
+            <div>
+              <h1>尚無收藏書籍</h1>
             </div>
-          ))}
+          )}
         </div>
       </div>
     </>

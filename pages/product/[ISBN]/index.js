@@ -27,7 +27,7 @@ export default function Isbn() {
         .then((res) => res.json())
         .then((data) => {
           setData(data)
-          console.log('後端回傳結果:', data)
+          // console.log('後端回傳結果:', data)
         })
         .catch((err) => {
           console.error('資料讀取錯誤', err)
@@ -44,8 +44,8 @@ export default function Isbn() {
     )
   }
 
-  console.log(data)
-  console.log(ISBN)
+  // console.log(data)
+  // console.log(ISBN)
   const { category_id } = data.rows[0] || {}
   //loading畫面
   if (data === null || !data.rows) {

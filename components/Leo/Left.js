@@ -10,10 +10,10 @@ export default function L(props) {
   const { ISBN, book_name, pic, publish, price, author, category_id } =
     data || {}
   const imageUrl = `/all_img/book_pic/${pic}`
-  console.log(category_id)
-  console.log(data)
-  console.log(result)
-  console.log(pic)
+  // console.log(category_id)
+  // console.log(data)
+  // console.log(result)
+  // console.log(pic)
   //登入驗證
   const user_info = JSON.parse(localStorage.getItem('auth'))
   let info = null
@@ -25,9 +25,9 @@ export default function L(props) {
     // 如果用戶未登入，則提示用戶登入
     console.log('請先登入')
   }
-  console.log(user_info)
-  console.log(ISBN)
-  console.log(id)
+  // console.log(user_info)
+  // console.log(ISBN)
+  // console.log(id)
 
   const check = () => {
     const user = localStorage.getItem('auth')
@@ -75,8 +75,8 @@ export default function L(props) {
             src={imageUrl}
             className={`bk-img`}
             alt="..."
-            width={500}
-            height={500}
+            width={400}
+            height={400}
           />
         </div>
         <div className={styles.favor_set}>

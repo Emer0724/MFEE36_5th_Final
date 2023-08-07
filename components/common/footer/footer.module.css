@@ -1,5 +1,6 @@
 .chencolor {
     background-color: #D4E9E2;
+    z-index: 10;
 }
 .chenicon {
     font-size: 24px;

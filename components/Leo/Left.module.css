@@ -1,5 +1,6 @@
 .container{
-    padding:100px 14px;
+    padding:20px 30px;
+  
     /* border: 1px solid pink; */
 }
 .btn_set{
@@ -18,13 +19,16 @@
     /* border: 1px solid green; */
 }
 .pic_box{
-    height: 600px;
+    /* height: 600px; */
     display: flex;
     justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 .bookName{
     word-wrap: break-word;
     font-weight: bold;
+    padding-right: 10px;
 }
 .content>h5{
     font-size: 24px;
