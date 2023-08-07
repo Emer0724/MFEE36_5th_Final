@@ -20,6 +20,7 @@ const style2 ={
 }
 const [data, setData] = useState([])
 const [shippingCost,setshippingCost] = useState(100);
+const [payment,setpayment] = useState("");
 const [finalprice,setFinalprice] = useState(0)
 console.log(finalprice);
 
@@ -40,9 +41,10 @@ useEffect(() => {
  const storedData = localStorage.getItem('formData');
  const  formData = JSON.parse(storedData);
  const shippingCost = formData.shippingCost
+ const paymentmethod = formData.paymentMethod
  setshippingCost(shippingCost);
+ setpayment(paymentmethod);
 }, []);
-
 
 
 // fetch('https://sandbox-api-pay.line.me',{
@@ -60,11 +62,13 @@ const limitText = (text,maxLength) => {
   return text;
 }
 const btnhandle=()=>{
-  router.push("./checkout")
+  if(payment==="linepay"){
+    router.push("./complete")
 }
-
-
-
+  else{
+    router.push("./checkout")
+  }
+}
 
   return (
     <div style={style1}>

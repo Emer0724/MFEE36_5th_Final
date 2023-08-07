@@ -1,0 +1,278 @@
+/* 動畫 */
+.cardcontain{
+    width: 700px;
+    height: 350px;
+    margin: 200px auto;
+    padding:60px 0 70px 0;
+    border-radius: 12px;
+    display: block;
+    position: relative;
+}
+.card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+.imgps{
+    margin-right: 15px;
+}
+.cardcover{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 20px;
+    color: var(--color2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    backface-visibility: hidden;
+    box-shadow: 10px 10px 15px rgb(142, 142, 142);
+}
+.logocover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+}
+.cardback {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 20px;
+    color: var(--color2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    box-shadow: 10px 10px 15px rgb(129, 129, 129);
+}
+
+.cardcover {
+    background-color:var(--color6);
+    border-radius: 12px;
+    z-index: 2;
+}
+
+.cardback{
+    background-color: var(--color6);
+    z-index: 1;
+    border-radius: 12px;
+    transform: rotateY(-180deg); /* 将背面初始状态调整为翻起 */
+}
+
+/* 定义翻书动画 */
+@keyframes flip-book {
+    from {
+        transform: rotateY(0);
+    }
+    to {
+        transform: rotateY(-180deg);
+    }
+}
+@keyframes flip-book1 {
+    from {
+        transform: rotateY(-180deg);
+    }
+    to {
+        transform: rotateY(0);
+    }
+}
+
+/* 鼠标悬停时展开书页 */
+.cardcontain:hover .card {
+    animation: flip-book 1s forwards; /* 应用翻书动画效果，完成后保持状态 */
+}
+.barcode{
+    width: 100%;
+    height: 60px;
+    background-color: black;
+}
+/* end */
+.blockstyle1 {
+    display:flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items:center;
+    margin-bottom:100px;
+  }
+.labelstyle1 {
+    font-size:28px;
+    margin-bottom: 10px;
+  }
+.inputstyle{
+    width:350px;
+    height:60px;
+    border-radius:8px;
+    border:1px solid #52796F;
+    background:#EEEEEE;
+    padding:5px;
+    font-size:20px;
+}
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+}
+.alert{
+    color: red;
+}
+
+
+
+/* 卡號 */
+
+.cardct{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items:center;
+    gap: 80px;
+}
+.creditct{
+    display:flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items:center;
+    gap: 20px;
+    padding: 10px 40px;
+}
+.creditinput{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    gap: 30px;
+}
+
+/* 日期 */
+.creditct2{
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    gap: 255px;
+}
+.dateinput{
+    display: flex;
+    justify-content:space-around;
+    align-items:center;
+    gap: 20px;
+}
+.datestyle{
+    width: 100px;
+    height: 50px;
+    border-radius: 8px;
+    padding-left: 5px;
+}
+.creditstyle{
+    width: 100px;
+    height: 50px;
+    border-radius: 8px;
+    padding-left: 5px;
+}
+/* 安全碼 */
+.securect{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.securestyle{
+    width: 100px;
+    height: 50px;
+    border-radius: 8px;
+    padding-left: 5px;
+}
+
+/* real */
+.realcardct{
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items:flex-start;
+    gap: 70px;
+    margin-right: 280px;
+}
+.realcreditct{
+    display:flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items:flex-start;
+}
+
+.realcreditct2{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap: 60px;
+}
+.btnfor1{
+   margin-bottom:40px;
+}
+@media (max-width:400px) {
+    .cardcontain{
+        display: none;
+    }
+    .realcardct{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items:center;
+        gap: 80px;
+        margin: 40px;
+    }
+    .realcreditct{
+        display: flex;
+        justify-content: center;
+        align-items:center;
+    }
+    .datect{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+    }
+    .securect{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+    }
+    .creditinput{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+    .datestyle{
+        width: 50px;
+        height: 50px;
+        border-radius: 8px;
+        padding-left: 5px;
+    }
+    .creditstyle{
+        width: 50px;
+        height: 50px;
+        border-radius: 8px;
+        padding-left: 5px;
+    }
+    .securestyle{
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    padding-left: 5px;
+}
+.btnfor1{
+   margin-bottom:90px;
+}
+    
+}
