@@ -34,10 +34,10 @@ export default function Text() {
 
   return (
     <>
-      {/* <div className="w-50">
+      <div className="w-50">
         <UsedList datas={datas} ISBN={ISBN}></UsedList>
       </div>
-      <UsedUpCheck />
+      {/* <UsedUpCheck />
       <PopUp content1={12346} content2={'5454646'} onclick1={getsome} /> */}
       <div>
         會員編碼:

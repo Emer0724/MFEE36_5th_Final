@@ -1,6 +1,5 @@
 import {useState,useEffect} from 'react'
-import PropTypes from 'prop-types'
-import Link from 'next/link'
+
 
 
 
@@ -36,9 +35,4 @@ export default function LightButton({ lightbtncontent, onClick={} }) {
         {lightbtncontent}
       </button>
   )
-}
-
-LightButton.propTypes = {
-  content: PropTypes.string,
-  route: PropTypes.string,
 }

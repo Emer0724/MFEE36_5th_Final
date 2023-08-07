@@ -65,7 +65,28 @@
     display: flex;
     justify-content: flex-end;  /* Align icons to the right */
     align-items: center;
+    position: relative;
 }
+.Licon{
+    cursor:pointer ;
+}
+.notify{
+    position: absolute;
+    border-radius: 50% 50%;
+    width: 20px;
+    height: 20px;
+    /* background-color: #dc2525; */
+    color: #dc2525;
+    z-index:10;
+    bottom:-3px;
+    right: 5px;
+}
+
+.avatar{
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 @media(max-width:400px){
 
     .HeaderNavbar{
@@ -135,6 +156,7 @@
   /* Add style for loginWrapper */
 .loginWrapper {
     margin-left: auto;  /* Push this element to the right */
+    position: relative;
 }
 
 @media(max-width:400px){
@@ -145,7 +167,7 @@
         display: flex;   
         align-items: center;
         justify-content: flex-start; 
-        padding: 20px 10px;
+        padding: 25px 10px;
      }
 
      /*...*/

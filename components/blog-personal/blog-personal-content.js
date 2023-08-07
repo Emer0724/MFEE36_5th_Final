@@ -2,39 +2,100 @@ import Avatar2 from '../book-review/blogavatar2'
 import Image from 'next/image'
 import Link from 'next/link'
 import style from '@/components/blog/blog_content.module.css'
-import shadowverse from '@/public/blog-img/shadowverse.jpg'
 import Button10 from '../common/button/button10'
 import { useRouter } from 'next/router'
+import { useState, useEffect } from 'react'
 
 export default function BlogPersonalContent() {
-    const router = useRouter('')
-    const editBlog = ()=>{
-        router.push('/blog/upload/blog-edit')
-    }
+  const router = useRouter('')
+  const [data, setData] = useState([])
+  const [memberData, setMemberData] = useState([])
 
-    const blog = '/blog/recommend'
-    return (
+  useEffect(() => {
+    // 從本地儲存空間獲取會員資料
+    const storedMemberData = localStorage.getItem('auth')
+
+    if (storedMemberData) {
+      const parsedMemberData = JSON.parse(storedMemberData)
+      setMemberData(parsedMemberData)
+    }
+  }, [])
+
+  const user = memberData.member_id
+
+  useEffect(() => {
+    fetch(`http://localhost:3055/blog/lookblog/${user}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // 將數據保存在組件的狀態中
+        setData(data)
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error)
+      })
+  }, [user])
+
+  const formatDateString = (dateString) => {
+    const date = new Date(dateString)
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const day = String(date.getDate()).padStart(2, '0')
+    return `${year}-${month}-${day}`
+  }
+
+  return (
+    <>
+      {data.map((psblog, i) => (
         <>
-            <div className="pt-4 pb-4">
-                <Link href={blog} className="text-black text-decoration-none"><h4>吐槽日常語言裡的歸納法思想</h4></Link>
+          <div key={i} className="pt-4 pb-4">
+            <Link href="" className="text-black text-decoration-none">
+              <h4>{psblog.blog_title}</h4>
+            </Link>
+          </div>
+          <div className="d-flex">
+            <Avatar2 nickname={psblog.nickname} />
+          </div>
+          <div className="pt-3">
+            <div>
+              {psblog.blog_img ? (
+                <Image
+                  src={`/all_img/img/${psblog.blog_img}`}
+                  width={450}
+                  height={250}
+                  className={style.blogimg}
+                  alt={'img'}
+                />
+              ) : (
+                <Image
+                  src="/all_img/img/noimg.jpg"
+                  width={450}
+                  height={250}
+                  className={style.blogimg}
+                  alt={'img'}
+                />
+              )}
             </div>
-            <div className='d-flex'>
-                <Avatar2/>
+          </div>
+          <div className="pt-3">
+            <Link
+              href=""
+              className={`${style.chenover} text-black text-decoration-none`}
+            >
+              <p>
+                {psblog.blog_post}
+              </p>
+            </Link>
+          </div>
+          <div className="pb-3 d-flex align-items-center justify-content-between border-bottom">
+            <div className={`d-flex ${style.chendate} pt-4`}>
+              <span>{formatDateString(psblog.add_date)}</span>
             </div>
             <div className="pt-3">
-                <div><Image src={shadowverse} className={`${style.blogimg}`}/></div>
+              <Button10 />
             </div>
-            <div className="pt-3">
-                <Link href={blog} className={`${style.chenover} text-black text-decoration-none`}><p>疫情好轉，各國開關，有些馬特市民外出遊走，也有的在自己的市內散步，不論你在哪裡，都有美麗的風景、交雜的心情，以及想要分享的事物。最近 Matty 發現很多市民不約而同的分享了他／她們散步的故事</p></Link>
-            </div>
-            <div className='pb-3 d-flex align-items-center justify-content-between border-bottom'>
-                <div className={ `d-flex ${style.chendate} pt-4`}>
-                    <span>2023 年 6 月 9 號</span>
-                </div>
-                <div className='pt-3'>
-                    <Button10/>
-                </div>
-            </div>
+          </div>
         </>
-    )
+      ))}
+    </>
+  )
 }

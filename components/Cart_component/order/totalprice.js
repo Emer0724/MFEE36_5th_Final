@@ -7,24 +7,28 @@ import { useRouter } from 'next/router';
 
 export default function OrderTotalPrice({border1,shippingCost,setFinalprice=()=>{}}){
   const router = useRouter()
-  const [data, setData] = useState({
-    totalcart:0,
-    cart:[],
- }
-);
-useEffect(() => {
-  fetch(`${process.env.API_SERVER}/cart/cart`)
-    .then((r) => r.json())
-    .then((data) => {
-      setData(data);
-    }); 
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const storedData1 = localStorage.getItem('auth');
+    const formData = JSON.parse(storedData1);
+    const member1 = formData.member_id
+    fetch(`${process.env.API_SERVER}/cart/cart?member=${member1}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((r) => r.json())
+      .then((result) => {
+        console.log(result);
+        setData(result);
+      });
 const storedData = localStorage.getItem('pricedata');
 const pricedata = JSON.parse(storedData);
 const couponnew = pricedata.selectedCouponOption;
 const tokennew = pricedata.selectedCurrencyOption;
 console.log(pricedata);
-
-
 setCoupon(couponnew);
 setUsetoken(tokennew);
 }, [router.query]);
@@ -34,7 +38,7 @@ const [usetoken,setUsetoken] = useState(0)
 
 const subprice =["商品金額","貨運費用","折價卷","知音幣"]
 
-const totalprice = data.cart.reduce((r, v) => r + v.price*v.count, 0);
+const totalprice = data.reduce((r, v) => r + v.price*v.count, 0);
 
 const finalcost = totalprice+shippingCost-coupon-usetoken;
 

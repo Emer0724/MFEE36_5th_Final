@@ -73,7 +73,7 @@ color: var(--bgc5) ;
     background-color: white;
     animation-name: card;
     animation-duration: 1s;
-    animation-delay: 3s;
+    animation-delay: 2.5s;
 
 }
 .card_all_thin_tilt{
@@ -88,7 +88,7 @@ color: var(--bgc5) ;
     transform:rotate(-20deg);
     animation-name: card;
     animation-duration: 1s;
-    animation-delay: 3s;
+    animation-delay:2.5s;
 
 }
 .card_all:hover{
@@ -116,7 +116,7 @@ color: var(--bgc5) ;
     transform: translate(0px, 0px);
     animation-name: card;
     animation-duration: 1s;
-    animation-delay: 3s;
+    animation-delay: 2.5s;
 }
 
 @keyframes card{

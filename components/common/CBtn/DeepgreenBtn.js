@@ -1,7 +1,6 @@
 import {useState,useEffect} from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
-import { prototype } from 'ws'
 
 
 
@@ -39,9 +38,9 @@ export default function DeepButton({ DeepButtoncontent, route="",type="",onClick
 
   return (
     <div style={btnctstyle}>
-      <Link href={route}>
-        <button type={type} style={buttonStyle2} onClick={onClick}>{DeepButtoncontent}</button>
-      </Link>
+      <div onClick={onClick}>
+        <button type={type} style={buttonStyle2} >{DeepButtoncontent}</button>
+      </div>
     </div>
   )
 }

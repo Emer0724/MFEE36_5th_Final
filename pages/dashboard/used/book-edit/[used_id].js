@@ -7,6 +7,9 @@ import Member_info from '@/components/Leo/member/member_info'
 import { useRouter } from 'next/router'
 import Popup_window from '@/components/used/popup_window'
 import Head from 'next/head'
+import AuthContext from '@/context/AuthContext'
+import { useContext } from 'react'
+import ExchangeAnime from '@/components/used/exchange_anime'
 
 //暫定 1.待兌換 2.代收書 3.退回 4.已兌換
 // const newdata = { ...book_info }
@@ -21,6 +24,7 @@ import Head from 'next/head'
 // }
 // console.log(newdata)
 export default function Usedid() {
+  const { auth, setAuth } = useContext(AuthContext)
   const router = useRouter()
   const [bookInfo, setbookInfo] = useState({})
   const [postData, setPostData] = useState(false)
@@ -162,9 +166,20 @@ export default function Usedid() {
       setexcehange_success(true)
       setTimeout(() => {
         setexcehange_success(false) // 在指定的等待时间后，更新 message 状态
+        notify()
+
         router.push('/dashboard/used/changebook-message')
-      }, 2000)
+      }, 3500)
     }
+  }
+
+  const notify = () => {
+    const auth_old = JSON.parse(localStorage.getItem('auth'))
+    const auth_old_new = JSON.stringify({
+      ...auth_old,
+      notify: auth_old.notify - 1,
+    })
+    localStorage.setItem('auth', auth_old_new)
   }
 
   return (
@@ -313,7 +328,9 @@ export default function Usedid() {
       )}
       {exchange_confirm ? (
         <Popup_window
-          text={`確定要兌換 ${bookInfo.price} 知音幣 ?`}
+          text={'確定要兌換'}
+          text2={true}
+          text2_info={bookInfo.price + '知音幣 ?'}
           botton_text_left={'確定'}
           botton_text_right={'取消'}
           botton_right={cancel_exchange}
@@ -322,11 +339,7 @@ export default function Usedid() {
       ) : (
         ''
       )}
-      {excehange_success ? (
-        <Popup_window text={'成功兌換'} no_botton={true} icon={true} />
-      ) : (
-        ''
-      )}
+      {excehange_success ? <ExchangeAnime number={bookInfo.price} /> : ''}
     </>
   )
 }

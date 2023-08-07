@@ -44,6 +44,7 @@
   
     .detailname {
       width: 150%;
+      font-size: 16px;
       text-align: end;
     }
     .detailcontain {

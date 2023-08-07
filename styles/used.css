@@ -396,6 +396,9 @@ video {
   .used-search-text-20{
     font-size: var(--txi20) !important;
   }
+  .used_pisplay_backtoprofile_text{
+    font-size: var(--txi16);
+  }
 }
 
 @media screen and (max-width: 400px) {
@@ -414,6 +417,7 @@ video {
     margin-left: auto;
     margin-right: auto;
   }
+  
  }
 
  /* @media print {

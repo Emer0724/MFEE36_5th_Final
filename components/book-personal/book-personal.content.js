@@ -1,12 +1,26 @@
 import Avatar2 from '../book-review/blogavatar2'
-import style from '@/components/book-review/book-review-element.module.css'
+import style from '@/components/book-review/book-element.module.css'
 import { AiFillStar } from 'react-icons/ai'
 import Image from 'next/image'
 import imgbook1 from '@/public/blog-img/book1.jpg'
 import Button15 from '../common/button/button15'
 import Button14 from '../common/button/button14'
+import { useState,useEffect } from 'react'
+
 
 export default function BookPersonalContent() {
+    const [memberData, setMemberData] = useState([])
+
+    useEffect(() => {
+      // 從本地儲存空間獲取會員資料
+      const storedMemberData = localStorage.getItem('auth')
+  
+      if (storedMemberData) {
+        const parsedMemberData = JSON.parse(storedMemberData)
+        setMemberData(parsedMemberData)
+      }
+    }, [])
+    
     return (
         <>
             <div className='border-bottom pb-2 pt-4'>

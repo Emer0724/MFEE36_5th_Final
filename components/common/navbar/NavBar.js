@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './navbar.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -8,8 +8,17 @@ import Carticon from '@/assets/Nav_Image/Vector.svg'
 import Membericon from '@/assets/Nav_Image/Subtract.svg'
 import Searchbar from './searchbar'
 import DropdownMenu from './dropdown-menu'
+import { set } from 'lodash'
+import AuthContext from '@/context/AuthContext'
+import { useContext } from 'react'
+import { BsBellFill } from 'react-icons/bs'
+import { useRouter } from 'next/router'
 
 export default function NavBar1() {
+  const router = useRouter()
+  const { auth, setAuth, logout, setphoto, photo } = useContext(AuthContext)
+  const [newimg, setnewimg] = useState('')
+
   const NavctName = ['商城', '二手書', '部落格', '關於我們']
   const NavEnName = ['STORE', 'USEDSTORE', 'BLOG', 'ABOUTUS']
   const navrouter = [
@@ -18,7 +27,23 @@ export default function NavBar1() {
     '/blog/blog-home-page',
     '/#aboutUs',
   ]
+  // console.log(auth.notify)
 
+  useEffect(() => {
+    if (localStorage.getItem('auth')) {
+      setnickname(JSON.parse(localStorage.getItem('auth')).nickname)
+      // console.log(JSON.parse(localStorage.getItem('auth')).nickname)
+      setIsLoggedIn(true)
+    }
+  }, [])
+  useEffect(() => {
+    if (auth) {
+      setnewimg(auth.mem_avatar)
+      console.log(auth.mem_avatar)
+    }
+  }, [auth])
+
+  const [nickname, setnickname] = useState('')
   const [searchbaropen, setSearchbaropen] = useState(false)
   const toggleSearch = () => {
     setSearchbaropen(!searchbaropen)
@@ -27,10 +52,20 @@ export default function NavBar1() {
   // Correctly set initial isLoggedIn state to false
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  const logout = () => {
+  const gologout = () => {
     // Logout logic here
+
+    localStorage.removeItem('auth')
+    if (router.asPath.includes('dashboard')) {
+      router.push('/')
+    }
     setIsLoggedIn(false) // Set isLoggedIn to false on logout
   }
+  const [Dropdown, setDropdown] = useState(false)
+  const isDropdown = (Dropdown) => {
+    setDropdown(!Dropdown)
+  }
+  // console.log(auth?.notify)
 
   return (
     <div className={styles.Header}>
@@ -62,7 +97,11 @@ export default function NavBar1() {
           })}
         </div>
         <div className={styles.Icongroup}>
-          <div onClick={toggleSearch} className={styles.naviconbtn}>
+          <div
+            role="presentation"
+            onClick={toggleSearch}
+            className={styles.naviconbtn}
+          >
             <Image
               src={Searchicon}
               width={60}
@@ -83,15 +122,50 @@ export default function NavBar1() {
           {/* Add a class to separate login button from other icons */}
           <div className={styles.loginWrapper}>
             {isLoggedIn ? (
-              <Link href="/dashboard/profile" className={styles.navlink2}>
-                <Image
-                  src={Membericon}
-                  width={60}
-                  height={30}
-                  className={styles.Licon}
-                  alt="icon"
-                />
-              </Link>
+              <>
+                {newimg ? (
+                  <div className={styles.avatar}>
+                    <Image
+                      src={`${process.env.API_SERVER}/avatar/${newimg}`}
+                      width={30}
+                      height={30}
+                      className={`${styles.Licon} ${styles.avatar}`}
+                      alt="icon"
+                      onClick={() => isDropdown(Dropdown)}
+                      role="presentation"
+                    />
+                  </div>
+                ) : (
+                  <Image
+                    src={Membericon}
+                    width={60}
+                    height={30}
+                    className={styles.Licon}
+                    alt="icon"
+                    onClick={() => isDropdown(Dropdown)}
+                    role="presentation"
+                  />
+                )}
+
+                {JSON.parse(localStorage.getItem('auth')).notify >= 1 ? (
+                  <div className={styles.notify}>
+                    {' '}
+                    <div className={styles.bell}>
+                      <BsBellFill className={{ color: 'white' }} />
+                    </div>
+                  </div>
+                ) : (
+                  ''
+                )}
+
+                {Dropdown && (
+                  <DropdownMenu
+                    isLoggedIn={isLoggedIn}
+                    gologout={gologout}
+                    nickname={nickname}
+                  />
+                )}
+              </>
             ) : (
               <Link href="/member/login">
                 <span className={styles.loginBtn}>登入</span>
@@ -99,10 +173,15 @@ export default function NavBar1() {
             )}
           </div>
         </div>
-        {searchbaropen && <Searchbar />}
         {/* Render the DropdownMenu component */}
-        {isLoggedIn && <DropdownMenu isLoggedIn={isLoggedIn} logout={logout} />}
       </div>
+        {searchbaropen && <Searchbar />}
     </div>
   )
+}
+{
+  /* <Link href="/dashboard/profile" className={styles.navlink2}> */
+}
+{
+  /* </Link> */
 }

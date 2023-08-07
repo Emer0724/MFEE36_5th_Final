@@ -39,6 +39,7 @@ export default function Display() {
   const [cancel_result, setCancel_result] = useState(false)
   const [showQRcode, setshowQRcode] = useState(false)
   const [img, setimg] = useState(true)
+  const [backtoprofile, setbacktoprofile] = useState(false)
   // const history = useNavigate()
 
   useEffect(() => {
@@ -69,6 +70,13 @@ export default function Display() {
 
     setMember(getmember2[0])
     console.log(getmember2[0])
+    if (
+      !getmember2[0].mobile ||
+      !getmember2[0].city ||
+      !getmember2[0].full_address
+    ) {
+      setbacktoprofile(true)
+    }
   }
 
   //找書
@@ -97,7 +105,7 @@ export default function Display() {
     const getbook_detal2 = await getbook_detal1.json()
 
     setbooks(getbook_detal2[0])
-    console.log(getbook_detal2.length)
+    // console.log(getbook_detal2.length)
     if (getbook_detal2.length === 0) {
       setSearch_error('查無此本書')
     }
@@ -166,11 +174,18 @@ export default function Display() {
     }
   }
 
+  const handleAfterPrint = () => {
+    setPostData(false) // Update the state when onAfterPrint is triggered
+    setbooks('')
+    setInputValue('')
+  }
+
   //確認列印
 
   const print_item = useReactToPrint({
     content: () => printref.current,
     documentTitle: '上架資訊',
+    onAfterPrint: handleAfterPrint,
   })
 
   return (
@@ -181,200 +196,221 @@ export default function Display() {
       <Member_info />
       <MemberNav />
       <MemberBreadcrumbs_2 />
-
-      <div className="container-fliuid mt-5  ">
-        <div className="row">
-          <div className="col-12  col-lg-6 d-flex align-items-center ">
-            <div className="d-flex flex-column align-items-center w-100   ">
-              {book ? (
-                <>
-                  <div className="my-3 d-flex used-display-search ">
-                    <div>
-                      <span className="color-tx-1 fw-bold textp-20px  letter-spacing  used-search-text">
-                        ISBN :
-                      </span>
-                      <input
-                        type="text"
-                        className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px used-search-text"
-                        placeholder="請輸入ISBN"
-                        value={inputValue}
-                        onChange={(e) => {
-                          setInputValue(e.target.value)
-                        }}
-                        size={12}
-                      />
-                    </div>
-
-                    <button
-                      className="btn color-bg-4 border-radius-5px py-0  textp-20px  used-search-text "
-                      // onClick={getbook}
-                      onClick={getbook}
-                    >
-                      搜尋
-                    </button>
-                  </div>
-                  <div className="text-danger letter-spacing">
-                    {search_error}
-                  </div>
-
-                  <Image
-                    src={
-                      img
-                        ? `/all_img/book_pic/${encodeURIComponent(book.pic)}`
-                        : no_book
-                    }
-                    width={190}
-                    height={190}
-                    alt="book"
-                    onError={() => {
-                      setimg(false)
-                    }}
-                  />
-
-                  <div className="d-flex flex-column align-items-center ">
-                    <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center used-search-text-14">
-                      {book.book_name}
-                    </h6>
-                    <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center used-search-text-14">
-                      作者: {book.author}
-                    </h6>
-                    <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center used-search-text-14">
-                      出版社: {book.publish}
-                    </h6>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="my-3 d-flex used-display-search ">
-                    <div>
-                      <span className="color-tx-1 fw-bold textp-20px  letter-spacing  used-search-text">
-                        ISBN :
-                      </span>
-                      <input
-                        type="text"
-                        className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px used-search-text"
-                        placeholder="請輸入ISBN"
-                        value={inputValue}
-                        onChange={(e) => {
-                          setInputValue(e.target.value)
-                        }}
-                        size={12}
-                      />
-                    </div>
-
-                    <button
-                      className="btn color-bg-4 border-radius-5px py-0  textp-20px  used-search-text "
-                      // onClick={getbook}
-                      onClick={getbook}
-                    >
-                      搜尋
-                    </button>
-                  </div>
-                  <div className="text-danger letter-spacing">
-                    {search_error}
-                  </div>
-                </>
-              )}
-            </div>
+      {backtoprofile ? (
+        <div
+          className="w-100 d-flex justify-content-center pt-5  "
+          style={{ height: '320px' }}
+        >
+          <div className="textp-24px used_pisplay_backtoprofile_text">
+            會員資料尚未完全，請前往
+            <Link
+              href="/dashboard/profile"
+              className="color-tx-8 used_pisplay_backtoprofile_text "
+            >
+              修改基本資料
+            </Link>
           </div>
-          <div className="col-12 col-lg-6 border-start border-black used-display-member ">
-            <div className="d-flex justify-content-center   ">
-              <div>
-                {/* //member-info */}
-                <div className="d-flex flex-column w-100   ">
-                  <div className="textp-20px fw-bold letter-spacing mb-5 mt-3 used-search-text-14  ">
-                    基本資料
-                  </div>
-                  <div className="textp-20px fw-bold letter-spacing mt-5 used-search-text-14 ">
-                    姓名: {member.name}
-                  </div>
-                  <div className="textp-20px fw-bold letter-spacing mt-3 used-search-text-14 ">
-                    連絡電話: {member.mobile}
-                  </div>
-                  <div className="textp-20px fw-bold letter-spacing mt-3 used-search-text-14 ">
-                    Email: {member.email}
-                  </div>
-                  <div className="textp-20px fw-bold letter-spacing mt-3 used-search-text-14 ">
-                    退回地址: {member.city + member.district + member.address}
-                  </div>
-                  <div className="textp-16px  letter-spacing mt-3 color-tx-6 used-search-text-14 ">
-                    基本資料有問題嗎? 前往{' '}
-                    <Link href="/dashboard/profile" className="color-tx-8 ">
-                      修改基本資料
-                    </Link>
+        </div>
+      ) : (
+        <>
+          <div className="container-fliuid mt-5  ">
+            <div className="row">
+              <div className="col-12  col-lg-6 d-flex align-items-center ">
+                <div className="d-flex flex-column align-items-center w-100   ">
+                  {book ? (
+                    <>
+                      <div className="my-3 d-flex used-display-search ">
+                        <div>
+                          <span className="color-tx-1 fw-bold textp-20px  letter-spacing  used-search-text">
+                            ISBN :
+                          </span>
+                          <input
+                            type="text"
+                            className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px used-search-text"
+                            placeholder="請輸入ISBN"
+                            value={inputValue}
+                            onChange={(e) => {
+                              setInputValue(e.target.value)
+                            }}
+                            size={12}
+                          />
+                        </div>
+
+                        <button
+                          className="btn color-bg-4 border-radius-5px py-0  textp-20px  used-search-text "
+                          // onClick={getbook}
+                          onClick={getbook}
+                        >
+                          搜尋
+                        </button>
+                      </div>
+                      <div className="text-danger letter-spacing">
+                        {search_error}
+                      </div>
+
+                      <Image
+                        src={
+                          img
+                            ? `/all_img/book_pic/${encodeURIComponent(
+                                book.pic
+                              )}`
+                            : no_book
+                        }
+                        width={190}
+                        height={190}
+                        alt="book"
+                        onError={() => {
+                          setimg(false)
+                        }}
+                      />
+
+                      <div className="d-flex flex-column align-items-center ">
+                        <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center used-search-text-14">
+                          {book.book_name}
+                        </h6>
+                        <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center used-search-text-14">
+                          作者: {book.author}
+                        </h6>
+                        <h6 className="textp-20px mt-3 fw-bold letter-spacing text-center used-search-text-14">
+                          出版社: {book.publish}
+                        </h6>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="my-3 d-flex used-display-search ">
+                        <div>
+                          <span className="color-tx-1 fw-bold textp-20px  letter-spacing  used-search-text">
+                            ISBN :
+                          </span>
+                          <input
+                            type="text"
+                            className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px used-search-text"
+                            placeholder="請輸入ISBN"
+                            value={inputValue}
+                            onChange={(e) => {
+                              setInputValue(e.target.value)
+                            }}
+                            size={12}
+                          />
+                        </div>
+
+                        <button
+                          className="btn color-bg-4 border-radius-5px py-0  textp-20px  used-search-text "
+                          // onClick={getbook}
+                          onClick={getbook}
+                        >
+                          搜尋
+                        </button>
+                      </div>
+                      <div className="text-danger letter-spacing">
+                        {search_error}
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+              <div className="col-12 col-lg-6 border-start border-black used-display-member ">
+                <div className="d-flex justify-content-center   ">
+                  <div>
+                    {/* //member-info */}
+                    <div className="d-flex flex-column w-100   ">
+                      <div className="textp-24px fw-bold letter-spacing mb-5 mt-3 used-search-text-14 color-tx-2  ">
+                        基本資料
+                      </div>
+                      <div className="textp-20px fw-bold letter-spacing mt-5 used-search-text-14 ">
+                        姓名: {member.name}
+                      </div>
+                      <div className="textp-20px fw-bold letter-spacing mt-3 used-search-text-14 ">
+                        連絡電話: {member.mobile}
+                      </div>
+                      <div className="textp-20px fw-bold letter-spacing mt-3 used-search-text-14 ">
+                        Email: {member.email}
+                      </div>
+                      <div className="textp-20px fw-bold letter-spacing mt-3 used-search-text-14 ">
+                        退回地址:{' '}
+                        {member.city + member.district + member.address}
+                      </div>
+                      <div className="textp-16px  letter-spacing mt-3 color-tx-6 used-search-text-14 ">
+                        基本資料有問題嗎? 前往{' '}
+                        <Link href="/dashboard/profile" className="color-tx-8 ">
+                          修改基本資料
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div className="d-flex justify-content-center my-4 ">
-        <div className="d-flex flex-column  align-items-center">
-          {book ? (
-            <>
-              <div className="fw-bold letter-spacing my-4">
-                請確認上述資料是否正確
-              </div>
-              <button
-                className="btn color-bg-2 color-tx-7 fw-bold border-radius-5px  letter-spacing"
-                onClick={post_up}
-              >
-                我要上架
-              </button>
-            </>
+          <div className="d-flex justify-content-center my-4 ">
+            <div className="d-flex flex-column  align-items-center">
+              {book ? (
+                <>
+                  <div className="fw-bold letter-spacing my-4">
+                    請確認上述資料是否正確
+                  </div>
+                  <button
+                    className="btn color-bg-2 color-tx-7 fw-bold border-radius-5px  letter-spacing"
+                    onClick={post_up}
+                  >
+                    我要上架
+                  </button>
+                </>
+              ) : (
+                <div style={{ height: '100px' }}></div>
+              )}
+
+              <div className="used_rwd_botton"></div>
+            </div>
+          </div>
+          {postData ? (
+            <div
+              className="used_display_UsedUpCheck"
+              role="button"
+              tabIndex={0}
+              onClick={
+                closeItem
+                // 在這裡處理點擊事件
+              }
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  closeItem
+
+                  // 在這裡處理回車鍵或空白鍵事件，模擬點擊效果
+                }
+              }}
+              // 此處可以添加其他滑鼠或觸控事件處理程序
+            >
+              <UsedUpCheck
+                postData={postData}
+                cancel_btn={cancel_btn}
+                print_btn={print_item}
+                printref={printref}
+                showQRcode={showQRcode}
+              />
+            </div>
           ) : (
-            <div style={{ height: '100px' }}></div>
+            ''
           )}
-
-          <div className="used_rwd_botton"></div>
-        </div>
-      </div>
-      {postData ? (
-        <div
-          className="used_display_UsedUpCheck"
-          role="button"
-          tabIndex={0}
-          onClick={
-            closeItem
-            // 在這裡處理點擊事件
-          }
-          onKeyDown={(event) => {
-            if (event.key === 'Enter' || event.key === ' ') {
-              closeItem
-
-              // 在這裡處理回車鍵或空白鍵事件，模擬點擊效果
-            }
-          }}
-          // 此處可以添加其他滑鼠或觸控事件處理程序
-        >
-          <UsedUpCheck
-            postData={postData}
-            cancel_btn={cancel_btn}
-            print_btn={print_item}
-            printref={printref}
-            showQRcode={showQRcode}
-          />
-        </div>
-      ) : (
-        ''
-      )}
-      {checkCancel ? (
-        <Popup_window
-          text={'確定要取消嗎?'}
-          botton_text_left={'確定'}
-          botton_text_right={'取消'}
-          botton_right={cancel_thing}
-          botton_left={cancel_data}
-        />
-      ) : (
-        ''
-      )}
-      {cancel_result ? (
-        <Popup_window text={'已成功取消'} no_botton={true} icon={true} />
-      ) : (
-        ''
+          {checkCancel ? (
+            <Popup_window
+              text={'確定要取消嗎?'}
+              botton_text_left={'確定'}
+              botton_text_right={'取消'}
+              botton_right={cancel_thing}
+              botton_left={cancel_data}
+            />
+          ) : (
+            ''
+          )}
+          {cancel_result ? (
+            <Popup_window text={'已成功取消'} no_botton={true} icon={true} />
+          ) : (
+            ''
+          )}
+        </>
       )}
     </>
   )
