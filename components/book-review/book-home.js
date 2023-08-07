@@ -94,7 +94,6 @@ export default function BookHome({
             <div className="d-flex justify-content-center">
               <div className="ms-3 pt-4 d-flex justify-content-start gap-5  pb-3">
                 <Button2 />
-                <AiOutlineShoppingCart />
               </div>
             </div>
           </div>

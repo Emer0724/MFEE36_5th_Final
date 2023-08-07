@@ -14,6 +14,7 @@ export const noLoginState = {
 }
 
 export const AuthContextProvider = function ({ children }) {
+  const router = useRouter
   const [auth, setAuth] = useState({ ...noLoginState })
   const [photo, setphoto] = useState('')
   const [first, setfirst] = useState(false)
@@ -46,11 +47,13 @@ export const AuthContextProvider = function ({ children }) {
     if (storedAuth) {
       const img = JSON.parse(localStorage.getItem('auth')).mem_avatar
       if (img) {
-        // console.log('這是' + img)
+        // console.log(`${process.env.API_SERVER}`)
+        // console.log(`${img}`)
+
         setphoto(img)
       }
     }
-  }, [first])
+  }, [])
 
   return (
     <AuthContext.Provider value={{ auth, setAuth, logout, setphoto, photo }}>

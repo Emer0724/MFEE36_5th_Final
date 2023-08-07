@@ -2,13 +2,19 @@
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    domains: ['via.placeholder.com', 'localhost','7fa6-49-159-4-38.ngrok-free.app'],
+    domains: [
+      'via.placeholder.com',
+      'localhost',
+      '0e79-1-160-5-186.ngrok-free.app',
+    ],
     // domains: ['b363-49-159-4-38.ngrok-free.app'],
   },
   env: {
     API_SERVER: 'http://localhost:3055',
-    WEB: 'https://d87b-49-159-4-38.ngrok-free.app',
-    WEB_IMG: 'https://7fa6-49-159-4-38.ngrok-free.app'
+    WEB: 'https://f394-1-160-5-186.ngrok-free.app',
+    //3055
+    WEB_IMG: 'https://0e79-1-160-5-186.ngrok-free.app',
+    //3000
   },
   // env: {
   //   API_SERVER: 'http://localhost:3002',

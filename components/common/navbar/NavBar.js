@@ -34,8 +34,8 @@ export default function NavBar1() {
       setnickname(JSON.parse(localStorage.getItem('auth')).nickname)
       // console.log(JSON.parse(localStorage.getItem('auth')).nickname)
       setIsLoggedIn(true)
-    }else{
-      if(router.asPath.includes('dashboard')){
+    } else {
+      if (router.asPath.includes('dashboard')) {
         router.push('/member/login')
       }
     }
@@ -69,7 +69,7 @@ export default function NavBar1() {
     setDropdown(!Dropdown)
   }
   // console.log(auth?.notify)
-
+  // console.log(`${process.env.API_SERVER}/avatar/${photo}`)
   return (
     <div className={styles.Header}>
       <div className={styles.HeaderNavbar}>

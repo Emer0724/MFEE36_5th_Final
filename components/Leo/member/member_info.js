@@ -13,12 +13,11 @@ export default function Member_info() {
   const [img, setnewimg] = useState([])
   useEffect(() => {
     const getauth = () => {
-      if(localStorage.getItem('auth')){
+      if (localStorage.getItem('auth')) {
         const auth = JSON.parse(localStorage.getItem('auth'))
         setAuth1(auth)
         setnewimg(auth.mem_avatar)
       }
-     
     }
     getauth()
   }, [])
@@ -32,6 +31,7 @@ export default function Member_info() {
   }
   const getimg = (event) => {
     event.preventDefault() // 阻止預設的表單提交行為
+    console.log(event)
 
     const formData = new FormData() // 建立新的 FormData 物件
     formData.append('avatar', inputimgref.current.files[0]) // 將選擇的檔案加入到 FormData 中

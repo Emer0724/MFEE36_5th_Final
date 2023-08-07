@@ -10,7 +10,6 @@ export default function Backstage() {
   const [input, setinput] = useState('')
   const [data, setdata] = useState([])
 
-
   const getitem = async (input) => {
     console.log(input)
     let inputvalue = []
@@ -20,38 +19,32 @@ export default function Backstage() {
       ISBN: inputvalue,
     }
     console.log(JSON.stringify(data))
-    const getitem1 = await fetch(
-      ` ${process.env.WEB}/used/backstage_info`,
-      {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    )
+    const getitem1 = await fetch(`${process.env.WEB}/used/backstage_info`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
     const getitem12 = await getitem1.json()
     console.log(getitem12)
     setdata(getitem12)
   }
 
   const getitem2 = async (input) => {
-    console.log(input)
-   
+    console.log(input + '123')
+
     const data = {
       ISBN: input,
     }
     console.log(JSON.stringify(data))
-    const getitem1 = await fetch(
-      ` ${process.env.WEB}/used/backstage_info`,
-      {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    )
+    const getitem1 = await fetch(` ${process.env.WEB}/used/backstage_info`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
     const getitem12 = await getitem1.json()
     console.log(getitem12)
     setdata(getitem12)
@@ -71,7 +64,6 @@ export default function Backstage() {
       function success(result) {
         html5QrcodeScanner.clear()
         setQRcoderesult(result)
-       
       }
       function error(err) {
         console.log(err)
@@ -79,12 +71,12 @@ export default function Backstage() {
     }
   }, [qrcode])
 
-  useEffect(()=>{
-    if(QRcoderesult){
+  useEffect(() => {
+    if (QRcoderesult) {
       getitem2(QRcoderesult)
       console.log(QRcoderesult)
     }
-  },[QRcoderesult])
+  }, [QRcoderesult])
 
   // const handleEdit=()=>{
   //   setedit(true)
@@ -112,33 +104,32 @@ export default function Backstage() {
       </div>
       {data.length > 0 ? (
         <>
-        <div    className="accordion accordion-flush "
-                id="accordionFlushExample" >
-          {data.map((v, i) => {
-            return (
-
-              <UsedEdit key={v.used_id} used_id={v.used_id}
-              book_name={v.book_name}
-              pic={v.pic}
-              ISBN={v.ISBN}
-              status_id={v.status_id}
-              original_price={v.original_price}
-              price={v.price}
-              used_state={v.used_state} />
-              
-             
-            )
-          })}
-           </div>
+          <div
+            className="accordion accordion-flush "
+            id="accordionFlushExample"
+          >
+            {data.map((v, i) => {
+              return (
+                <UsedEdit
+                  key={v.used_id}
+                  used_id={v.used_id}
+                  book_name={v.book_name}
+                  pic={v.pic}
+                  ISBN={v.ISBN}
+                  status_id={v.status_id}
+                  original_price={v.original_price}
+                  price={v.price}
+                  used_state={v.used_state}
+                />
+              )
+            })}
+          </div>
         </>
       ) : (
         ''
       )}
 
-
       <div style={{ width: '100%', height: '300px' }}></div>
-
-  
     </>
   )
 }
