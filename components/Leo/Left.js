@@ -37,7 +37,6 @@ export default function L(props) {
   //先做出變數來存放值
   //cart fetch
   const cart = (ISBN, id) => {
-    console.log('我好想睡')
     console.log(ISBN) //變數作用域的關係 傳不進來，要透過onClick 以參數方式送進來
     const userLogInStatus = check()
     if (userLogInStatus) {
@@ -88,9 +87,6 @@ export default function L(props) {
           >
             <h3 className={styles.bookName}>書名:{book_name}</h3>
           </div>
-          <div className={styles.icon}>
-            <Favorite ISBN={ISBN} />
-          </div>
         </div>
         <div className={styles.content_box}>
           <div className={styles.content}>
@@ -109,6 +105,9 @@ export default function L(props) {
             ISBN={ISBN}
           />
           <ButtonStyle_l t1={'找二手書'} onClick={toUsedArea} />
+          <div className={styles.icon}>
+            <Favorite ISBN={ISBN} />
+          </div>
         </div>
       </div>
     </>

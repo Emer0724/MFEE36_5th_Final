@@ -1,7 +1,5 @@
 .container{
     padding:20px 30px;
-  
-    /* border: 1px solid pink; */
 }
 .btn_set{
     display:flex;
@@ -10,7 +8,7 @@
 .content_box{
     display: flex;
     justify-content: space-evenly;
-    margin: 30px;
+    margin: 20px;
 }
 .favor_set{
     /* height:1px; */
