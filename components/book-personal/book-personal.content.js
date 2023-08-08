@@ -98,7 +98,7 @@ export default function BookPersonalContent() {
             <div className="d-flex">
               <div>
                 <Image
-                  src={`http://localhost:3055/book_pic/${psbook.pic}`}
+                  src={`/all_img/book_pic/${psbook.pic}`}
                   width={150}
                   height={200}
                   className={`${style.chenbooksize}`}
