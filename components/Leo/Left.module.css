@@ -1,6 +1,5 @@
 .container{
-    padding:100px 14px;
-    /* border: 1px solid pink; */
+    padding:20px 30px;
 }
 .btn_set{
     display:flex;
@@ -9,7 +8,7 @@
 .content_box{
     display: flex;
     justify-content: space-evenly;
-    margin: 30px;
+    margin: 20px;
 }
 .favor_set{
     /* height:1px; */
@@ -18,13 +17,16 @@
     /* border: 1px solid green; */
 }
 .pic_box{
-    height: 655px;
+    /* height: 600px; */
     display: flex;
     justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 .bookName{
     word-wrap: break-word;
     font-weight: bold;
+    padding-right: 10px;
 }
 .content>h5{
     font-size: 24px;

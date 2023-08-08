@@ -4,6 +4,7 @@ import car from '@/components/Leo/market_card.module.css'
 import Link from 'next/link'
 
 export default function MarketCard(data) {
+  console.log(data)
   const cardRef = useRef(null)
 
   const handleMouseEnter = () => {
@@ -28,9 +29,9 @@ export default function MarketCard(data) {
         onMouseLeave={handleMouseLeave}
       >
         <div>
-          <div className={car.card}>
-            <div>
-              <Link href={`/product/${ISBN}`}>
+          <Link href={`/product/${ISBN}`}>
+            <div className={car.card}>
+              <div className={car.hoverable}>
                 <Image
                   src={imageUrl}
                   className={`bk-img`}
@@ -38,13 +39,16 @@ export default function MarketCard(data) {
                   width={180}
                   height={180}
                 />
-              </Link>
+              </div>
+              <div className={` ${car.overlay}`}>
+                <div
+                  className={`d-flex justify-content-center align-items-center w-100 h-100`}
+                >
+                  <p className={`${car.p}`}>{book_name}</p>
+                </div>
+              </div>
             </div>
-            <div className={car.extra}>
-              <p className={car.p}>{book_name}</p>
-              <p className={car.p}>價格:{price}元</p>
-            </div>
-          </div>
+          </Link>
         </div>
       </div>
     </>

@@ -4,6 +4,7 @@ import styles from '@/components/Leo/favorite.module.css'
 export default function Favorite(result) {
   const ISBN = result.ISBN
   // const member_id =
+
   const user_info = JSON.parse(localStorage.getItem('auth')) //localStorage.getItem('auth') 取得的是字串 先轉成JSON
   let info = null
   let id = null
@@ -11,7 +12,6 @@ export default function Favorite(result) {
   if (user_info !== null) {
     info = user_info
     id = info.id
-    // const { id } = info
   }
   console.log(info)
 

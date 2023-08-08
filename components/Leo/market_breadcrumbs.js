@@ -129,9 +129,13 @@ export default function Bcs(props) {
         {label !== 'undefined' && label !== undefined && (
           <>
             <p className={`${ww.p}`}>{'>'}</p>
-            <p className={`${ww.p}`}>{parent_category}</p>
+            <button className={`${ww.p} ${ww.button}`} onClick={backhome}>
+              {parent_category}
+            </button>
             <p className={`${ww.p}`}>{'>'}</p>
-            <p className={`${ww.p}`}>{label}</p>
+            <button className={`${ww.p} ${ww.button}`} onClick={backhome}>
+              {label}
+            </button>
           </>
         )}
       </div>

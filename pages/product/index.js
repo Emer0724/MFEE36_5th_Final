@@ -28,7 +28,6 @@ export default function Product() {
   }, [])
 
   const { rows, totalRows, category_id, label } = data
-
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber) // 更新目前所在頁數
     handleDisplay(category_id, label, pageNumber) // 調用 handleDisplay 函式，更新商品資料並切換到指定頁數
@@ -52,12 +51,16 @@ export default function Product() {
           <Playground rows={rows} currentPage={currentPage} />
           <div style={{ margin: '20px' }}>
             <Pagination
+              pageSize={16}
               defaultCurrent={1}
               current={currentPage}
               total={totalRows}
               onChange={handlePageChange}
               showSizeChanger={false}
               style={{ fontSize: '24px' }}
+              hideOnSinglePage={true}
+              showLessItems={true}
+              responsive={true}
             />
           </div>
         </div>

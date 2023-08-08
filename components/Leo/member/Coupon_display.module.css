@@ -1,0 +1,13 @@
+.box {
+    width: 1345px;
+    height: 530px;
+    background-color: #EACCA9;
+}
+.coat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.r {
+    margin-top: 75px;
+}

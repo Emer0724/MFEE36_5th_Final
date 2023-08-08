@@ -1,58 +1,68 @@
 import React, { useEffect, useState } from 'react'
 import Member_info from '@/components/Leo/member/member_info'
 import MemberNav from '@/components/common/member-nav/member-nav'
-import Card from '@/components/Leo/member/wishlist_card'
+import Wishcard from '@/components/Leo/member/wishlist_card'
 import ca from '@/components/Leo/market_playground.module.css'
+import styles from './wishlist.module.css'
+import { Pagination } from 'antd'
 
 export default function WishList() {
-  const [wishlistItems, setWishlistItems] = useState([])
-  const d1 = { paddingLeft: '150px' }
-  const d2 = {
-    marginTop: '0px',
+  const [data, setData] = useState([])
+  const [user_info, setUser_info] = useState(null)
+  useEffect(() => {
+    if (typeof localStorage !== 'undefined') {
+      const userInfoFromStorage = JSON.parse(localStorage.getItem('auth'))
+      setUser_info(userInfoFromStorage)
+    }
+  }, [])
+  const { id = null } = user_info || {} //先檢查user_info是否為null
+  // console.log(id)
+  useEffect(() => {
+    if (id !== null) {
+      fetchdata(id)
+    }
+  }, [id])
+  const fetchdata = (member_id) => {
+    fetch(`${process.env.API_SERVER}/market/wishlist?member_id=${member_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data)
+        console.log('後端回傳結果:', data)
+      })
+      .catch((err) => {
+        console.error('無該分類資料', err)
+      })
   }
-  const d3 = {
-    position: 'relative',
-  }
-  const d4 = {
-    marginTop: '40px',
-    marginBottom: '30px',
+  const [result] = data
+
+  const changeresult = (e) => {
+    console.log(e)
   }
   return (
     <>
-      <div style={d1}>
+      <div className={styles.d1}>
         <Member_info />
       </div>
-      <div style={d2}>
+      <div className={styles.d2}>
         <MemberNav />
       </div>
-      <div style={d3}></div>
+      <div className={styles.d3}></div>
 
-      <div style={d4}>
-        <div className={`container ${ca.box}`}>
-          <div className={`row ${ca.c_row} d-flex`}>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-          </div>
-          <div className={`row ${ca.c_row} d-flex`}>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-          </div>
-          <div className={`row ${ca.c_row} d-flex`}>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-          </div>
-          <div className={`row ${ca.c_row} d-flex`}>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-          </div>
+      <div className={styles.d4}>
+        <div
+          className={`container ${ca.box}`}
+          style={{ display: 'flex', flexWrap: 'wrap' }}
+        >
+          {/* 使用 rows 資料進行渲染 */}
+          {result && result.length > 0 ? (
+            result.map((v, i) => (
+              <Wishcard v={v} result={changeresult} key={i} />
+            ))
+          ) : (
+            <div>
+              <h1>尚無收藏書籍</h1>
+            </div>
+          )}
         </div>
       </div>
     </>

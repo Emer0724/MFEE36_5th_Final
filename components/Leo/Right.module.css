@@ -1,29 +1,37 @@
 .title{
     border-bottom: 1px solid black;
     padding: 20PX;
+    
 }
 .content{
+    flex:1;
     width: 100%;
     word-wrap: break-word;
     word-break: break-all;
     white-space: pre-wrap;
-    margin-top: 20px;
+    min-height: 600px;
+
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding:0px 30px;
+  /* background-color:var(--bgc6) ; */
 }
 .p{
     margin-top: 50px;
-    font-size: 20px;
+    font-size: 24px;
 }
 .verticalExpand {
     white-space: pre-line;
-    text-align: center; 
+    text-align: center;
+    font-family:  'Noto Serif TC', serif,  sans-serif ,'Roboto';
     
-  }
-  .scrollable {
-    overflow-y: auto;
-    max-height: 400px; /* 設置適當的最大高度，讓內容超過時才出現滾動條 */
   }
   .used{
     width: 100%;
     position: sticky;
     bottom: 0;
+    z-index: 1;
   }

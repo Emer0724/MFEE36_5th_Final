@@ -10,8 +10,8 @@ export default function Playground({ rows, currentPage }) {
   const currentPageData = rows?.slice(startIndex, endIndex)
   // console.log(currentPage)
   // console.log(23510177)
-  // console.log(rows)
-  // console.log(currentPageData)
+  console.log(rows)
+  console.log(currentPageData)
   return (
     <>
       <div
