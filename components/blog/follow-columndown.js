@@ -27,7 +27,7 @@ export default function FollowColumnDown() {
 
   return (
     <>
-      <div className="d-flex justify-content-between pt-3 pb-3">
+      <div className={`d-flex justify-content-between pt-3 pb-3`}>
         <h5 className="fw-bold d-flex align-items-center">找你想看的</h5>
         <div className="d-flex">
           <Button12 />

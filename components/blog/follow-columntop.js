@@ -4,7 +4,7 @@
  
  export default function FollowColumnTop() {
     return (
-        <>
+        <div>
             <div className={`${style.chenpa} d-flex justify-content-between`}>
                 <h5 className="fw-bold d-flex align-items-center">值得關注</h5>
                 <div className="d-flex">
@@ -28,6 +28,6 @@
                     <Link href="http://localhost:3000/blog/tag/educate" className={`${style.chenwd} text-black text-decoration-none`}><span>#教育</span></Link>
                 </div>
             </div>
-        </>
+        </div>
     )
  }
