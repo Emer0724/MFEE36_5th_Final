@@ -86,7 +86,7 @@ export default function Backstage() {
     <>
       <div className="d-flex justify-content-center flex-column align-self-center mt-5">
         <div className="text-center">
-          <label htmlFor="">上架流水號:</label>
+          <label>上架流水號:</label>
           <input
             type="text"
             size={10}

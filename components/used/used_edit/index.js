@@ -105,17 +105,18 @@ export default function UsedEdit({
             aria-expanded="true"
             aria-controls={`collapse${used_id}`}
           >
-             {status_id || success ? (
+            {status_id || success ? (
               <>
-                <BsCheckCircleFill className="  color-tx-2  me-3 " style={{width:'60px',height:'60px'}} />
+                <BsCheckCircleFill
+                  className="  color-tx-2  me-3 "
+                  style={{ width: '60px', height: '60px' }}
+                />
               </>
             ) : (
               ''
             )}
             <span className="pe-2">{used_id}</span>
             <span className={css.single_ellipsis}> {book_name}</span>
-           
-           
           </button>
         </h2>
         <div
@@ -134,7 +135,7 @@ export default function UsedEdit({
             </div>
 
             <div className="text-center mt-3">ISBN:{ISBN}</div>
-            <div className="text-center mt-3">
+            <div className=" mt-3">
               書況:{' '}
               <Space wrap>
                 <Select
@@ -172,9 +173,9 @@ export default function UsedEdit({
                 {' '}
                 {selectdatainfo ? selectdatainfo : ''}
               </div>
-              <div>
+              <div className="mt-2">
                 原價:{original_price}
-                <div className="ms-2">
+                <div className="mt-2">
                   二手書價:
                   <input
                     disabled={!edit ? true : false}
@@ -226,27 +227,29 @@ export default function UsedEdit({
                   value={booknote}
                 ></input>
               </div>
-              <button
-                className="btn btn-secondary border-radius-5px mt-3 me-3"
-                onClick={() => handleEdit(edit)}
-              >
-                {edit ? '取消' : '修改'}
-              </button>
-              <button
-                className="btn btn-secondary border-radius-5px mt-3"
-                disabled={!edit ? true : false}
-                onClick={() =>
-                  gotodb(
-                    used_id,
-                    newstatus_id,
-                    usedprice,
-                    newused_state,
-                    booknote
-                  )
-                }
-              >
-                送出
-              </button>
+              <div className="d-flex justify-content-center">
+                <button
+                  className="btn btn-secondary border-radius-5px mt-3 me-3"
+                  onClick={() => handleEdit(edit)}
+                >
+                  {edit ? '取消' : '修改'}
+                </button>
+                <button
+                  className="btn btn-secondary border-radius-5px mt-3"
+                  disabled={!edit ? true : false}
+                  onClick={() =>
+                    gotodb(
+                      used_id,
+                      newstatus_id,
+                      usedprice,
+                      newused_state,
+                      booknote
+                    )
+                  }
+                >
+                  送出
+                </button>
+              </div>
             </div>
           </div>
         </div>

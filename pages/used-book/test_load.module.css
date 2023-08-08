@@ -7,7 +7,7 @@
   right: 0;
   left: 0;
   bottom: 0;
-  padding-top: 100px;
+  /* padding-top: 100px; */
   animation-name:container;
   animation-duration:1s;
   animation-delay:4s;
@@ -22,6 +22,10 @@
   animation-name:slogan;
   animation-duration:3s;
   position: absolute;
+  padding-left: 30px;
+  /* left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%); */
   animation-fill-mode:forwards;
   animation-timing-function:ease-in-out;
   /* top:calc((100vh - 600px)/2);
@@ -69,18 +73,24 @@
 
 
 .center{
-  width: 500px;
-  height: 400px;
+   width: 500px;
+  /* height: 400px;  */
   position: absolute;
-  top:calc((100vh - 600px)/2);
-  left: calc((100vw - 500px)/2);
+  /* top:calc((100vh - 600px)/2);
+  left: calc((100vw - 500px + 20px)/2); */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
 }
 .center_1{
   position: relative;
+  width: 100vw;
+  height: 100vh;
+
   display: flex;
   flex-direction: column;
   align-items: center;

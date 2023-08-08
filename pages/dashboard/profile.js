@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../../styles/mem-style/dashboard-profile.module.css'
 import MemberNav from '@/components/common/member-nav/member-nav'
 import Member_info from '@/components/Leo/member/member_info'
 import Form from 'react-bootstrap/Form'
 import Image from 'next/image'
+import { BsCoin } from 'react-icons/bs'
 
 const Profile = () => {
   const [name, setName] = useState('xxx')
@@ -29,6 +30,26 @@ const Profile = () => {
     })
   }
 
+  useEffect(() => {
+    getprofile()
+  }, [])
+  const getprofile = async () => {
+    const authToken = JSON.parse(localStorage.getItem('auth')).token
+    const getprofile1 = await fetch(`${process.env.API_SERVER}/used/profile`, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    })
+    const getprofile2 = await getprofile1.json()
+    setName(getprofile2[0].name)
+    setEmail(getprofile2[0].email)
+    setUsername(getprofile2[0].nickname)
+    setShippingAddress(
+      `${getprofile2[0].city}${getprofile2[0].district}${getprofile2[0].address}`
+    )
+    setMobile(getprofile2[0].mobile)
+    setToken(getprofile2[0].token)
+  }
   return (
     <div>
       <Member_info />
@@ -93,7 +114,7 @@ const Profile = () => {
             </div>
           </div>
 
-          <h1 className={styles['profile-title']}>付款方式</h1>
+          {/* <h1 className={styles['profile-title']}>付款方式</h1>
 
           <div>
             <div>
@@ -130,14 +151,14 @@ const Profile = () => {
                 </div>
               </Form>
 
-              {/* <button
+               <button
                   onClick={() => setPaymentMethod('')}
                   className={styles['edit-btn']}
                 >
                   編輯
-                </button> */}
+                </button> 
             </div>
-          </div>
+          </div> */}
           <div>
             <div>
               <p className={styles['profile-items']}>地址: </p>
@@ -170,7 +191,12 @@ const Profile = () => {
 
           <div>
             <h1 className={styles['profile-title']}>知音幣</h1>
-            <div className={styles['data-line']}>{token}</div>
+            <div className={styles['data-line']}>
+              <div className="d-flex align-self-center  ">
+                <BsCoin className="me-2 fs-4" />
+                {token}
+              </div>
+            </div>
           </div>
           <div className="d-flex justify-content-center mx-5">
             <button onClick={saveData} className={styles['save-btn']}>
