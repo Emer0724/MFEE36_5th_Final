@@ -35,6 +35,7 @@ export default function Isbn() {
         })
     }
   }, [ISBN]) //[ISBN] 當ISBN發生變化時重新取值
+
   //無資料時的呈現畫面
   if (!data || !data.rows) {
     return (
@@ -71,7 +72,12 @@ export default function Isbn() {
         <div className={styles.l_box}>
           <Left result={data} toUsedArea={toUsedArea} />
         </div>
-        <div className={styles.r_box}>
+        <div
+          className={styles.r_box}
+          style={{
+            height: '100%',
+          }}
+        >
           <Right result={data} usedAreaRef={usedAreaRef} />
         </div>
       </div>

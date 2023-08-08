@@ -4,11 +4,11 @@ import MemberNav from '@/components/common/member-nav/member-nav'
 import Wishcard from '@/components/Leo/member/wishlist_card'
 import ca from '@/components/Leo/market_playground.module.css'
 import styles from './wishlist.module.css'
+import { Pagination } from 'antd'
 
 export default function WishList() {
   const [data, setData] = useState([])
   const [user_info, setUser_info] = useState(null)
-
   useEffect(() => {
     if (typeof localStorage !== 'undefined') {
       const userInfoFromStorage = JSON.parse(localStorage.getItem('auth'))
@@ -16,7 +16,7 @@ export default function WishList() {
     }
   }, [])
   const { id = null } = user_info || {} //先檢查user_info是否為null
-  console.log(id)
+  // console.log(id)
   useEffect(() => {
     if (id !== null) {
       fetchdata(id)
@@ -35,8 +35,9 @@ export default function WishList() {
   }
   const [result] = data
 
-  console.log(data)
-  console.log(result)
+  const changeresult = (e) => {
+    console.log(e)
+  }
   return (
     <>
       <div className={styles.d1}>
@@ -55,13 +56,7 @@ export default function WishList() {
           {/* 使用 rows 資料進行渲染 */}
           {result && result.length > 0 ? (
             result.map((v, i) => (
-              <div
-                key={i}
-                className={`${ca.c_row} d-flex`}
-                style={{ flex: '21%', padding: '10px' }}
-              >
-                <Wishcard v={v} />
-              </div>
+              <Wishcard v={v} result={changeresult} key={i} />
             ))
           ) : (
             <div>

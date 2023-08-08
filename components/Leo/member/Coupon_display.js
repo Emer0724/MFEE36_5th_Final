@@ -1,31 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Coupon from './Coupon'
+import d from './Coupon_display.module.css'
 
 export default function Coupon_display() {
-  const box = {
-    width: '1345px',
-    height: '530px',
-    backgroundColor: '#EACCA9',
-  }
-  const coat = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItem: 'center',
-  }
-  const r = {
-    marginTop: '75px',
-  }
+  const [info, setInfo] = useState({})
+  useEffect(() => {
+    const data = localStorage.getItem('auth')
+    setInfo(JSON.parse(data))
+  }, [])
+
+  console.log(info)
+  //可使用區
+  //期、已使用區
   return (
     <>
-      <div style={coat}>
-        <div style={box} className={`container`}>
-          <div className={`row`} style={r}>
+      <div className={d.coat}>
+        <div className={`${d.box} container`}>
+          <div className={`${d.r} row`}>
             <Coupon />
             <Coupon />
             <Coupon />
             <Coupon />
           </div>
-          <div className={`row`} style={r}>
+          <div className={`${d.r} row`}>
             <Coupon />
             <Coupon />
             <Coupon />

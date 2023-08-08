@@ -1,6 +1,7 @@
 .title{
     border-bottom: 1px solid black;
     padding: 20PX;
+    
 }
 .content{
     flex:1;
@@ -16,7 +17,7 @@
   flex-direction: column;
   overflow: hidden;
   padding:0px 30px;
-  background-color:var(--bgc6) ;
+  /* background-color:var(--bgc6) ; */
 }
 .p{
     margin-top: 50px;
@@ -24,7 +25,8 @@
 }
 .verticalExpand {
     white-space: pre-line;
-    text-align: center; 
+    text-align: center;
+    font-family:  'Noto Serif TC', serif,  sans-serif ,'Roboto';
     
   }
   .used{

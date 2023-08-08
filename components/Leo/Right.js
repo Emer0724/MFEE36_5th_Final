@@ -21,7 +21,7 @@ export default function Right({ result, usedAreaRef }) {
       <div className={`${styles.container}`}>
         <div className={`${styles.content}`}>
           <h1 className={styles.title}>內容描述</h1>
-          <pre className={`${styles.p} ${styles.verticalExpand}`}>
+          <pre className={`${styles.p} ${styles.verticalExpand} `}>
             {description}
           </pre>
         </div>

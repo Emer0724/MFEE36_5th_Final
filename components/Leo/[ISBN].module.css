@@ -17,6 +17,7 @@
     top:0;
     overflow-y:auto;
     height: 100%;
+    border-left:2px solid #3f7f3a ;
 }
 .r_box::-webkit-scrollbar {
     display: none;
