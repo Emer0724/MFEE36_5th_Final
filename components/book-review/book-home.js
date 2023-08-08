@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Button2 from '../common/button/button2'
 import no_book from '@/assets/used-svg/no_book.svg'
 import React, { useState } from 'react'
+import Link from 'next/link'
 
 export default function BookHome({
   book_review_sid,
@@ -15,6 +16,7 @@ export default function BookHome({
   pic,
   book_review,
   mem_avatar,
+  ISBN,
 }) {
   const [img, setimg] = useState(true)
   return (
@@ -34,7 +36,7 @@ export default function BookHome({
             /> */}
             <Image
               src={
-                img ? `http://localhost:3055/blogimg/${encodeURIComponent(pic)}` : no_book
+                img ? `/all_img/book_pic/${encodeURIComponent(pic)}` : no_book
               }
               width={150}
               height={150}
@@ -91,9 +93,13 @@ export default function BookHome({
                 {book_review}
               </div>
             </div>
-            <div className="d-flex justify-content-center">
-              <div className="ms-3 pt-4 d-flex justify-content-start gap-5  pb-3">
-                <Button2 />
+            <div className="d-flex justify-content-center pe-5">
+              <div className=" d-flex justify-content-start   pb-3 ">
+                <Link href={`/product/${ISBN}`}>
+                  <button className="btn btn-secondary border-radius-5px ">
+                    了解更多
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
