@@ -33,28 +33,6 @@ export default function TagContentEducate() {
   return (
     <div className={`col-xl-7 px-xl-5 d-flex flex-column`}>
       <div className={`${style.bread}`}>
-        <div className={`${style.chenbreadhole} text-body-tertiary pb-5`}>
-          <Link
-            href="#"
-            className={`text-body-tertiary text-decoration-none ${style.chenbreadhole}`}
-          >
-            首頁
-          </Link>
-          &#062;
-          <Link
-            href="#"
-            className={`text-body-tertiary text-decoration-none ${style.chenbreadhole}`}
-          >
-            部落格
-          </Link>
-          &#062;
-          <Link
-            href="#"
-            className={`text-body-tertiary text-decoration-none ${style.chenbreadhole}`}
-          >
-            熱門
-          </Link>
-        </div>
       </div>
       <div className={`${style.chenjc} d-flex pb-3`}>
         <div className="pe-4 pb-3">

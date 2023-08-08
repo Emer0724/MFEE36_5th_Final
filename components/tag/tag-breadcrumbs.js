@@ -6,30 +6,6 @@ export default function TagBreadCrumbs() {
     <>
       <div className={`col-xl-7 px-xl-5 d-flex flex-column`}>
         <div className="row">
-          <div
-            className={`${style.chenbreadhole} ${style.bread} text-body-tertiary pb-5`}
-          >
-            <Link
-              href="#"
-              className={`text-body-tertiary text-decoration-none ${style.chenbreadhole}`}
-            >
-              首頁
-            </Link>
-            &#062;
-            <Link
-              href="#"
-              className={`text-body-tertiary text-decoration-none ${style.chenbreadhole}`}
-            >
-              部落格
-            </Link>
-            &#062;
-            <Link
-              href="#"
-              className={`text-body-tertiary text-decoration-none ${style.chenbreadhole}`}
-            >
-              熱門
-            </Link>
-          </div>
           <div className="row">
             <div className={`d-flex justify-content-around pt-5 pb-5`}>
               <Link

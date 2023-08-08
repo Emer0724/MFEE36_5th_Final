@@ -18,8 +18,16 @@
 .chends {
     display: none;
 }
+.chendss {
+    display: none;
+    font-size: 12px;
+}
+
 
 @media screen and (max-width: 700px){
+    .chendate {
+        display: none;
+    }
     .cardgap{
         display: block;
     }
@@ -40,6 +48,11 @@
     }
     .chends {
         display: block;
+    }
+    .chendss {
+        display: flex;
+        justify-content: center;
+        font-size: 12px;
     }
     .chenbooksize {
         width: 100px;

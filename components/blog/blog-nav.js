@@ -15,19 +15,19 @@ export default function BlogNav() {
     <>
       <div className={`${style.chennav} justify-content-between pb-3 pt-3`}>
         <div>
-          <Link className="text-decoration-none fw-bold text-black" href="#">
+          <Link className="text-decoration-none fw-bold text-black" href="http://localhost:3000/blog/blog-home-page">
             <BiBook className="pb-1" />
             部落格
           </Link>
         </div>
         <div>
-          <Link className="text-decoration-none fw-bold text-black" href="#">
+          <Link className="text-decoration-none fw-bold text-black" href="http://localhost:3000/blog/book-review">
             <BsPencil className="pb-1" />
             書評
           </Link>
         </div>
         <div>
-          <Link className="text-decoration-none fw-bold text-black" href="#">
+          <Link className="text-decoration-none fw-bold text-black" href="http://localhost:3000/blog/personal-page/work">
             <GoPerson className="pb-1" />
             我的
           </Link>
