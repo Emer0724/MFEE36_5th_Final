@@ -34,7 +34,7 @@ export default function BookHome({
             /> */}
             <Image
               src={
-                img ? `/all_img/book_pic/${encodeURIComponent(pic)}` : no_book
+                img ? `http://localhost:3055/blogimg/${encodeURIComponent(pic)}` : no_book
               }
               width={150}
               height={150}

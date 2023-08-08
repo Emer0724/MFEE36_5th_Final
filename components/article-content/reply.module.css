@@ -5,8 +5,11 @@
     font-size: 18px;
 }
 
+
+
 @media (max-width:400px) {
     .blogcontent {
+        display: flex;
         flex-direction: column;
     }
     .chenre {

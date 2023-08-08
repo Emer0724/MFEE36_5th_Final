@@ -21,6 +21,8 @@ export default function BookForm() {
     }
   }, [])
 
+  
+
   const Titledata = (e) => {
     setIsbn(e.target.value)
     setIsbnError('')
@@ -76,7 +78,7 @@ export default function BookForm() {
 
       // 使用fetch將表單數據發送到後端API
       const response = await fetch(
-        'http://localhost:3055/blog/bookreview/upload',
+        `http://localhost:3055/blog/bookreview/edit/`,
         {
           method: 'POST',
           headers: {

@@ -51,7 +51,7 @@ export default function LikeContent() {
           </div>
           <div className="d-flex">
             {like.mem_avatar ? (
-              <Link href="" className="pe-3">
+              <Link href={`http://localhost:3055/blogimg/${like.blog_img}`} className="pe-3">
                 <Image
                   src={like.mem_avatar}
                   className={`${style.headblogimg} text-decoration-none`}
@@ -61,6 +61,8 @@ export default function LikeContent() {
             ) : (
               <Image
                 src={people}
+                width={60}
+                height={60}
                 className={`${style.headblogimg} text-decoration-none`}
                 alt="default_avatar"
               />

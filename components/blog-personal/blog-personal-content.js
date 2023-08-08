@@ -3,11 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import style from '@/components/blog/blog_content.module.css'
 import Button10 from '../common/button/button10'
-import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 
 export default function BlogPersonalContent() {
-  const router = useRouter('')
   const [data, setData] = useState([])
   const [memberData, setMemberData] = useState([])
 
@@ -43,12 +41,13 @@ export default function BlogPersonalContent() {
     return `${year}-${month}-${day}`
   }
 
+
   return (
     <>
       {data.map((psblog, i) => (
         <>
           <div key={i} className="pt-4 pb-4">
-            <Link href="" className="text-black text-decoration-none">
+            <Link href={`/blog/${psblog.blog_sid}`} className="text-black text-decoration-none">
               <h4>{psblog.blog_title}</h4>
             </Link>
           </div>
@@ -59,7 +58,7 @@ export default function BlogPersonalContent() {
             <div>
               {psblog.blog_img ? (
                 <Image
-                  src={`/all_img/img/${psblog.blog_img}`}
+                  src={`http://localhost:3055/blogimg/${psblog.blog_img}`}
                   width={450}
                   height={250}
                   className={style.blogimg}
@@ -67,7 +66,7 @@ export default function BlogPersonalContent() {
                 />
               ) : (
                 <Image
-                  src="/all_img/img/noimg.jpg"
+                  src="http://localhost:3055/blogimg/noimg.jpg"
                   width={450}
                   height={250}
                   className={style.blogimg}
@@ -78,12 +77,10 @@ export default function BlogPersonalContent() {
           </div>
           <div className="pt-3">
             <Link
-              href=""
+              href={`/blog/${psblog.blog_sid}`}
               className={`${style.chenover} text-black text-decoration-none`}
             >
-              <p>
-                {psblog.blog_post}
-              </p>
+              <p>{psblog.blog_post}</p>
             </Link>
           </div>
           <div className="pb-3 d-flex align-items-center justify-content-between border-bottom">
@@ -91,7 +88,7 @@ export default function BlogPersonalContent() {
               <span>{formatDateString(psblog.add_date)}</span>
             </div>
             <div className="pt-3">
-              <Button10 />
+              <Button10 blog_sid={psblog.blog_sid}/>
             </div>
           </div>
         </>

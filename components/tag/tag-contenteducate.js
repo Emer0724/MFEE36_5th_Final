@@ -4,7 +4,7 @@ import Image from 'next/image'
 import style from '@/components/blog/blog_content.module.css'
 import { useState, useEffect } from 'react'
 
-export default function ArticleElement() {
+export default function TagContentEducate() {
   const [blogSort, setBlogSort] = useState('desc')
   const [cblog, setcBlog] = useState([])
 
@@ -14,7 +14,7 @@ export default function ArticleElement() {
 
   const fetchBlogList = async () => {
     try {
-      const response = await fetch(`http://localhost:3055/blog/${blogSort}`)
+      const response = await fetch(`http://localhost:3055/blog/tageducate/${blogSort}`)
       const data = await response.json()
       setcBlog(data)
     } catch (error) {
@@ -34,7 +34,7 @@ export default function ArticleElement() {
     <div className={`col-xl-7 px-xl-5 d-flex flex-column`}>
       <div className={`${style.bread}`}>
       </div>
-      <div className={`${style.chenjc} ${style.chensp} d-flex pb-3`}>
+      <div className={`${style.chenjc} d-flex pb-3`}>
         <div className="pe-4 pb-3">
           <Link
             href="#"

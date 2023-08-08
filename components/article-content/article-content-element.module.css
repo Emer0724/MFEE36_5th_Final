@@ -18,6 +18,10 @@
 }
 
 @media (max-width:400px) {
+    .blogimg {
+        width: 310px;
+        height: 200px;
+    }
     .chenre {
         display: none;
     }

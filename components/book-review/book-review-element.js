@@ -50,7 +50,7 @@ export default function BookReviewElement() {
           <div key={book_review.book_review_sid} className="border-bottom d-flex">
             <div className="pt-3">
                 <Image
-                  src={`/all_img/book_pic/${book_review.pic}`}
+                  src={`http://localhost:3055/blogimg/${book_review.pic}`}
                   width={150}
                   height={200}
                   className={style.blogimg}

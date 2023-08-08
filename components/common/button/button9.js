@@ -6,7 +6,7 @@ export default function Button9() {
 
 
     const Back = ()=>{
-        router.push('/blog/blog-home-page')    
+        router.push('http://localhost:3000/blog/personal-page/work')    
     }
 
 

@@ -1,81 +1,84 @@
-import style from '@/components/book-review/book-element.module.css'
-import Link from 'next/link'
-import Avatar2 from './blogavatar2'
-import { AiFillStar } from 'react-icons/ai'
-import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import style from '@/components/book-review/book-element.module.css';
+import Link from 'next/link';
+import Avatar2 from './blogavatar2';
+import { AiFillStar } from 'react-icons/ai';
+import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 export default function BookContent() {
-  const [bookSort, setBookSort] = useState('desc')
-  const [Book, setBook] = useState([])
+  const [bookSort, setBookSort] = useState('desc');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [bookData, setBookData] = useState([]);
+
+  const limit = 10; // 每頁顯示的書評數量
 
   useEffect(() => {
-    fetchData()
-  }, [bookSort])
+    fetchData();
+  }, [bookSort, currentPage]);
 
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3055/blog/book/${bookSort}`
-      )
+        `http://localhost:3055/blog/book/${bookSort}?page=${currentPage}`
+      );
       if (!response.ok) {
-        throw new Error('沒有資料')
+        throw new Error('沒有資料');
       }
-      const data = await response.json()
-      setBook(data)
+      const data = await response.json();
+      if (data.length === 0) {
+        setHasMore(false);
+      } else {
+        setBookData((prevData) => [...prevData, ...data]);
+      }
     } catch (error) {
-      console.error('沒有資料', error)
+      console.error('沒有資料', error);
     }
-  }
+  };
 
   const handleSortChange = (sortOption) => {
-    setBookSort(sortOption)
-  }
+    setBookSort(sortOption);
+    setCurrentPage(1); // 切換排序時重置頁碼
+    setBookData([]); // 切換排序時清空書評數據
+    setHasMore(true); // 切換排序時重置無限滾動狀態
+  };
 
   const renderStarRating = (rating) => {
-    const stars = []
+    const stars = [];
     for (let i = 1; i <= 5; i++) {
       if (i <= rating) {
-        stars.push(<AiFillStar key={i} className={style.chenstar} />)
+        stars.push(<AiFillStar key={i} className={style.chenstar} />);
       } else {
-        stars.push(<AiFillStar key={i} className={style.chenstar_empty} />)
+        stars.push(<AiFillStar key={i} className={style.chenstar_empty} />);
       }
     }
-    return stars
+    return stars;
   }
 
-  // 轉換日期格式，只保留年月日
   const formatDateString = (dateString) => {
-    const date = new Date(dateString)
-    return date.toISOString().split('T')[0]
-  }
+    const date = new Date(dateString);
+    return date.toISOString().split('T')[0];
+  };
+
+  const handleScroll = () => {
+    if (
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 100 &&
+      hasMore
+    ) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [hasMore]);
 
   return (
     <div className="col-xl-7 d-flex flex-column px-xl-5 pb-5">
-      <div className={`${style.bread}`}>
-        <div className={`${style.chenbreadhole} text-body-tertiary pb-5`}>
-          <Link
-            href="#"
-            className={`text-body-tertiary text-decoration-none ${style.chenbreadhole}`}
-          >
-            首頁
-          </Link>
-          &#062;
-          <Link
-            href="#"
-            className={`text-body-tertiary text-decoration-none ${style.chenbreadhole}`}
-          >
-            部落格
-          </Link>
-          &#062;
-          <Link
-            href="#"
-            className={`text-body-tertiary text-decoration-none ${style.chenbreadhole}`}
-          >
-            書評
-          </Link>
-        </div>
-      </div>
+      <div className={`${style.bread}`}></div>
       <div className={`${style.chenjc} d-flex`}>
         <div className="pe-4">
           <Link
@@ -99,18 +102,21 @@ export default function BookContent() {
         </div>
       </div>
       <div className="pb-5 pt-4">
-        {Book.map((book_review) => (
+        {bookData.map((book_review) => (
           <div
             key={book_review.book_review_sid}
             className="border-bottom d-flex"
           >
             <div className="pt-3">
               <Image
-                src={`/all_img/book_pic/${book_review.pic}`}
+                src={`http://localhost:3055/book_pic/${book_review.pic}`}
                 width={150}
                 height={200}
                 className={style.blogimg}
               />
+              <span className={`${style.chendss} pt-3 pb-3`}>
+                {formatDateString(book_review.add_date)}
+              </span>
             </div>
             <div className="pt-3">
               <div className="d-flex ps-3">

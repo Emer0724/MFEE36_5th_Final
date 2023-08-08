@@ -10,6 +10,8 @@ export default function Avatar3({ nickname, mem_avatar }) {
         <Link href="#" key={nickname} className="pe-2">
           <Image
             key={nickname}
+            width={60}
+            height={60}
             src={mem_avatar ? mem_avatar : people}
             className={`${stlye.chenheadimg} text-decoration-none`}
           />
