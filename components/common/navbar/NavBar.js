@@ -35,14 +35,17 @@ export default function NavBar1() {
       setnickname(JSON.parse(localStorage.getItem('auth')).nickname)
       // console.log(JSON.parse(localStorage.getItem('auth')).nickname)
       setIsLoggedIn(true)
+    } else {
+      if (router.asPath.includes('dashboard')) {
+        router.push('/member/login')
+      }
     }
   }, [])
-  useEffect(() => {
-    if (auth) {
-      setnewimg(auth.mem_avatar)
-      console.log(auth.mem_avatar)
-    }
-  }, [auth])
+  // console.log(photo)
+  // useEffect(() => {
+  //   if
+  //   setphoto(photo)
+  // }, [photo])
 
   useEffect(()=>{
     if (localStorage.getItem('auth')){
@@ -87,7 +90,7 @@ export default function NavBar1() {
     setDropdown(!Dropdown)
   }
   // console.log(auth?.notify)
-
+  // console.log(`${process.env.API_SERVER}/avatar/${photo}`)
   return (
     <div className={styles.Header}>
       <div className={styles.HeaderNavbar}>
@@ -145,10 +148,10 @@ export default function NavBar1() {
           <div className={styles.loginWrapper}>
             {isLoggedIn ? (
               <>
-                {newimg ? (
+                {photo ? (
                   <div className={styles.avatar}>
                     <Image
-                      src={`${process.env.API_SERVER}/avatar/${newimg}`}
+                      src={`${process.env.API_SERVER}/avatar/${photo}`}
                       width={30}
                       height={30}
                       className={`${styles.Licon} ${styles.avatar}`}
@@ -197,7 +200,7 @@ export default function NavBar1() {
         </div>
         {/* Render the DropdownMenu component */}
       </div>
-        {searchbaropen && <Searchbar />}
+      {searchbaropen && <Searchbar />}
     </div>
   )
 }

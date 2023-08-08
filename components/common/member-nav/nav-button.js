@@ -10,7 +10,10 @@ export default function NavButton({ id, info, url, router1 }) {
   const { auth } = useContext(AuthContext)
   const router = useRouter()
   useEffect(() => {
-    setnotify(JSON.parse(localStorage.getItem('auth')).notify)
+    if(localStorage.getItem('auth')){
+      setnotify(JSON.parse(localStorage.getItem('auth')).notify)
+    }
+   
   }, [])
   //預設分頁
   const pageRouter = useRouter()

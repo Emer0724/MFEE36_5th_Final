@@ -44,7 +44,7 @@ export default function ChangebookMessage() {
       getData()
     }
   }, [router.query])
-  console.log(router.query)
+  // console.log(router.query)
   const getData = async () => {
     const authToken = JSON.parse(localStorage.getItem('auth')).token
 

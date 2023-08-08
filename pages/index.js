@@ -262,7 +262,7 @@ export default function Home() {
         </div>
         {/* section1---end */}
         {/* section2 */}
-        <div className="d-flex justify-content-center ">
+        <div className="d-flex justify-content-center index_index_circle_bg ">
           <div className="index_index_mask ">
             <Link href="/used-book">
               <div className="index_index_circle">

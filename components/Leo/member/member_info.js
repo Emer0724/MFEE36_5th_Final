@@ -13,9 +13,11 @@ export default function Member_info() {
   const [img, setnewimg] = useState([])
   useEffect(() => {
     const getauth = () => {
-      const auth = JSON.parse(localStorage.getItem('auth'))
-      setAuth1(auth)
-      setnewimg(auth.mem_avatar)
+      if (localStorage.getItem('auth')) {
+        const auth = JSON.parse(localStorage.getItem('auth'))
+        setAuth1(auth)
+        setnewimg(auth.mem_avatar)
+      }
     }
     getauth()
   }, [])
@@ -29,6 +31,7 @@ export default function Member_info() {
   }
   const getimg = (event) => {
     event.preventDefault() // 阻止預設的表單提交行為
+    console.log(event)
 
     const formData = new FormData() // 建立新的 FormData 物件
     formData.append('avatar', inputimgref.current.files[0]) // 將選擇的檔案加入到 FormData 中
@@ -44,7 +47,7 @@ export default function Member_info() {
     })
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data)
+        console.log(data)
         // console.log(data[0].filename)
         setnewimg(data[0].filename)
         const auth_old = JSON.parse(localStorage.getItem('auth'))
@@ -53,7 +56,7 @@ export default function Member_info() {
           mem_avatar: data[0].filename,
         })
         localStorage.setItem('auth', auth_old_new)
-        setphoto()
+        setphoto(data[0].filename)
         // router.reload()
       })
       .catch((error) => {

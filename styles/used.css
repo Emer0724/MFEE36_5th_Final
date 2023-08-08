@@ -134,6 +134,9 @@ video {
   background-color: #747272;
 
 }
+/* .index_index_circle_bg{
+  background-image:url("../public/used-img/圈圈背景.jpg")
+} */
 
 .index-index-video-card::before{
   content: '';

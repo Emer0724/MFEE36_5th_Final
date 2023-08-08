@@ -9,7 +9,11 @@ export default function Avatar2({ nickname, mem_avatar }) {
       <div>
         <Link href="" className="pe-3">
           <Image
-            src={mem_avatar ? mem_avatar : people}
+            src={
+              mem_avatar
+                ? `${process.env.API_SERVER}/avatar/${mem_avatar}`
+                : people
+            }
             width={60}
             height={60}
             className={`${stlye.headblogimg} text-decoration-none`}

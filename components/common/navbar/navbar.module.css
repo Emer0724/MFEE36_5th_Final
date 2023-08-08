@@ -91,6 +91,10 @@
     border-radius: 50%;
     object-fit: cover;
 }
+.bell{
+    position: absolute;
+    right: -6px;
+}
 
 @media(max-width:400px){
 
