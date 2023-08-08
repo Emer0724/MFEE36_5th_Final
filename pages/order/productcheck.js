@@ -7,6 +7,7 @@ import DeepButton from '@/components/common/CBtn/DeepgreenBtn'
 import { useState,useEffect} from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { confirmAlert } from 'react-confirm-alert'
 
 export default function productcheck() {
   const router = useRouter();
@@ -23,6 +24,7 @@ const [shippingCost,setshippingCost] = useState(100);
 const [payment,setpayment] = useState("");
 const [finalprice,setFinalprice] = useState(0)
 console.log(finalprice);
+console.log(data);
 
 useEffect(() => {
   const storedData1 = localStorage.getItem('auth');
@@ -46,7 +48,6 @@ useEffect(() => {
  setpayment(paymentmethod);
 }, []);
 
-
 // fetch('https://sandbox-api-pay.line.me',{
    
 // })
@@ -64,6 +65,21 @@ const limitText = (text,maxLength) => {
 const btnhandle=()=>{
   if(payment==="linepay"){
     router.push("./complete")
+  //  confirmAlert({
+  //   title:"確認付款",
+  //   message:"即將前往linepay付款,要繼續嗎?",
+  //   buttons:[
+  //     {
+  //       label:'前往',
+  //       onclick:()=>{
+  //         window.location.href=process.env.REACT_APP_PAYMENT_API_URL
+  //       },
+  //     },{
+  //       label:"取消",
+  //       onclick:()=>{}
+  //     }
+  //   ]
+  //  })
 }
   else{
     router.push("./checkout")

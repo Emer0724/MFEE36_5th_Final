@@ -9,7 +9,7 @@ import Image from 'next/image'
 import ic from '@/assets/Cart_Image/ic.png'
 
 export default function OrderCheckout() {
-  const router = useRouter()
+const router = useRouter()
   
 
 const [card1,setCard1] =useState("")
@@ -19,7 +19,6 @@ const [card4,setCard4] =useState("")
 const [date1,setDate1] =useState("")
 const [date2,setDate2] =useState("")
 const [cvv, setCvv] = useState("");
-
 const [iscardRight,setiscardRight] = useState(true)
 const [IsMonthValid, setIsMonthValid] = useState(true);
 const [IsYearValid, setIsYearValid] = useState(true);
@@ -30,22 +29,26 @@ const judgecard= () => {
   const correctcard = /^[0-9]{13,16}$/;
   setiscardRight(correctcard.test(cardNumber));
 };
+
 const judgemonth= () => {
   const correctMonth = /^(0[1-9]|1[0-2])$/;
   setIsMonthValid(correctMonth.test(date1));
 };
+
 const judgeyear= () => {
   const correctYear = /^[0-9]{2}$/;
   setIsYearValid(correctYear.test(date2));
 };
+
 const judgecvv= () => {
   const correctCvv = /^[0-9]{3}$/; // 三位數的安全碼
   setIsCvvValid(correctCvv.test(cvv));
+};
+
+const btnhandle = () =>{
+  router.push("./complete")
 }
 
-  const btnhandle = () =>{
-    router.push("./complete")
-  }
   return (
     <>
       <OrderState/>
