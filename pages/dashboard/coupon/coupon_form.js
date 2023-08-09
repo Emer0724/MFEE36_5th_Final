@@ -6,6 +6,7 @@ import f from './coupon_form.module.css'
 
 export default function Coupon_form() {
   const [info, setInfo] = useState({})
+  const [datas, setDatas] = useState({})
   useEffect(() => {
     const user_info = JSON.parse(localStorage.getItem('auth'))
     console.log(user_info)
@@ -30,8 +31,10 @@ export default function Coupon_form() {
       .then((res) => res.json())
       .then((datas) => {
         console.log('後端回傳結果:', datas)
+        setDatas(datas)
       })
   }
+  const { success, error } = datas
   return (
     <>
       <div>
@@ -40,6 +43,21 @@ export default function Coupon_form() {
       <div className={f.d2}>
         <MemberNav />
       </div>
+      <div className={f.success}>取得優惠券！</div>
+      {success !== undefined && (
+        <div>
+          {success ? (
+            <div className={f.success}>取得優惠券！</div>
+          ) : (
+            <div className={f.fail}>
+              取得優惠券失敗，請確認輸入的優惠券號碼。
+            </div>
+          )}
+        </div>
+      )}
+      {error && (
+        <div className={f.fail}>取得優惠券失敗，請確認輸入的優惠券號碼。</div>
+      )}
       <div className={f.d3}>
         <MemberBreadcrumbs_3 />
       </div>
