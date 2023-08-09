@@ -8,6 +8,7 @@ import Image from 'next/image'
 import logo from "@/assets/used-svg/LOGO_notext.svg"
 
 export default function OrderHistory() {
+  
   const [data,setData] = useState([])
   const [data1,setData1] = useState([])
   const [data2,setData2] = useState([])
@@ -43,8 +44,35 @@ export default function OrderHistory() {
         setData2([result[0]])
       })
     }
-  
-
+  if(data.length<1){
+    return(
+      <>
+        <Member_info />
+        <MemberNav />
+        <div className={s.container}>
+        <div className={s.bookContainer}>
+                <div className={s.book}>
+                   <div className={s.frontCover}>
+                      <div className={s.frontext}>
+                      <h3>尚無訂單</h3>
+                      <Image src={logo} alt='icon' width={80} height={80}/>
+                    </div>
+                 </div>
+                  <div className={s.backCover}>
+                    <h3 className={s.titletext}>商品細節</h3>
+                     <h5>多看書</h5>
+                  </div>
+               </div>
+                <div className={s.page}>
+                <h3 className={s.titletext}>訂單細節</h3>
+                <h5>有益生心健康</h5>
+                </div>
+           </div>
+        </div>
+      </>
+    )
+  }
+{
   return (
     <div className={s.bodyct}>
       <div className={s.show}>
@@ -52,8 +80,6 @@ export default function OrderHistory() {
       <MemberNav />
       </div>
       <div className={s.container}>
-      
-      
       {data.map((v,i)=>{
         return(
         <div className={s.bookContainer} key={i}>
@@ -82,18 +108,23 @@ export default function OrderHistory() {
                 <div className={s.backdetail} key={i}>
                     <div className={s.backphoto}><Image src={`/all_img/book_pic/${encodeURIComponent(v.pic)}`} width={150} height={150} alt='icon' className={s.detailimg}/></div>
                     <div className={s.backlist}>
-                        <h5 className={s.backname}>{v.book_name}
-                        {v.used_id>0
+                        <h5 className={s.backname}>{v.book_name}</h5>
+                        {v.status_id !== null
                         ?
-                        "(二手書)"
-                        :
-                        ""
-                        }
-                        </h5>
+                        <>
                         <h5 className={s.backisbn}>{v.ISBN}</h5>
-                        <h5 className={s.backprice}>${v.price}元</h5>
+                        <h5 className={s.backprice}>二手價${v.usedprice}元</h5>
+                        <div><h5 className={s.backcount}>{v.count}</h5></div>
+                        <h5 className={s.backtotal}>共${v.usedprice*v.count}元</h5>
+                        </>
+                        :
+                        <>
+                        <h5 className={s.backisbn}>{v.ISBN}</h5>
+                        <h5 className={s.backprice}>${v.bookprice}元</h5>
                         <div><h5 className={s.backcount}>x{v.count}</h5></div>
-                        <h5 className={s.backtotal}>共${v.price*v.count}元</h5>
+                        <h5 className={s.backtotal}>共${v.bookprice*v.count}元</h5>
+                        </>
+                        }
                     </div>
                 </div>)
                 })}
@@ -128,7 +159,9 @@ export default function OrderHistory() {
                         <h5 className={s.detailcount}>物流方式:</h5>
                         <h5 className={s.detailtotal}>貨運費用:</h5>
                         </>
-                        }  
+                        } 
+                        <h5>知音幣折抵</h5>
+                        <h5>折價卷折數</h5>
                     </div>
                     <div className={s.detaillist}>
                         {v.choosestore.length>0
@@ -154,7 +187,9 @@ export default function OrderHistory() {
                         <h5 className={s.detailcount}>全家取貨</h5>
                         <h5 className={s.detailtotal}>$60</h5>
                         </>
-                        }  
+                        }
+                        <h5>{v.use_token}元</h5>
+                        <h5>{v.use_coupon}折</h5>
                     </div>
               </div>
             )
@@ -171,4 +206,5 @@ export default function OrderHistory() {
        </div>
     </div>
   )
+  }
 }

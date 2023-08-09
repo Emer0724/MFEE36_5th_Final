@@ -246,6 +246,7 @@
         flex-direction: column;
         justify-content: center;
         align-items:center;
+        margin-left: 33px;
     }
     .creditinput{
         display: flex;

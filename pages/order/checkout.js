@@ -19,15 +19,29 @@ const [card4,setCard4] =useState("")
 const [date1,setDate1] =useState("")
 const [date2,setDate2] =useState("")
 const [cvv, setCvv] = useState("");
-const [iscardRight,setiscardRight] = useState(true)
+const [iscardRight1,setiscardRight1] = useState(true)
+const [iscardRight2,setiscardRight2] = useState(true)
+const [iscardRight3,setiscardRight3] = useState(true)
+const [iscardRight4,setiscardRight4] = useState(true)
 const [IsMonthValid, setIsMonthValid] = useState(true);
 const [IsYearValid, setIsYearValid] = useState(true);
 const [isCvvValid, setIsCvvValid] = useState(true);
 
-const judgecard= () => {
-  const cardNumber = card1 + card2 + card3 + card4;
-  const correctcard = /^[0-9]{13,16}$/;
-  setiscardRight(correctcard.test(cardNumber));
+const judgecard1= () => {
+  const correctcard = /^[0-9]{4}$/;
+  setiscardRight1(correctcard.test(card1));
+};
+const judgecard2= () => {
+  const correctcard = /^[0-9]{4}$/;
+  setiscardRight2(correctcard.test(card2));
+};
+const judgecard3= () => {
+  const correctcard = /^[0-9]{4}$/;
+  setiscardRight3(correctcard.test(card3));
+};
+const judgecard4= () => {
+  const correctcard = /^[0-9]{4}$/;
+  setiscardRight4(correctcard.test(card4));
 };
 
 const judgemonth= () => {
@@ -95,19 +109,19 @@ const btnhandle = () =>{
               <div className={s.realcreditct}>
                   <label className={s.labelstyle1}>卡號</label>
                   <div className={s.creditinput}>
-                    <input type="text" className={s.creditstyle} onChange={(e) => setCard1(e.target.value)} onBlur={judgecard}  required/>-
-                    <input type="text" className={s.creditstyle} onChange={(e) => setCard2(e.target.value)} onBlur={judgecard}  required/>-
-                    <input type="text" className={s.creditstyle} onChange={(e) => setCard3(e.target.value)} onBlur={judgecard}  required/>-
-                    <input type="text" className={s.creditstyle} onChange={(e) => setCard4(e.target.value)} onBlur={judgecard}  required/>
+                    <input type="text" className={s.creditstyle}  placeholder='xxxx' onChange={(e) => setCard1(e.target.value)} onBlur={judgecard1}  required/>-
+                    <input type="text" className={s.creditstyle} placeholder='xxxx' onChange={(e) => setCard2(e.target.value)} onBlur={judgecard2}  required/>-
+                    <input type="text" className={s.creditstyle} placeholder='xxxx' onChange={(e) => setCard3(e.target.value)} onBlur={judgecard3}  required/>-
+                    <input type="text" className={s.creditstyle} placeholder='xxxx' onChange={(e) => setCard4(e.target.value)} onBlur={judgecard4}  required/>
                   </div>
-                  {iscardRight?"":<p className={s.alert}>請輸入正確卡號</p>}
+                  {iscardRight1&&iscardRight2&iscardRight3&iscardRight4?"":<p className={s.alert}>請輸入正確卡號</p>}
               </div>
               <div className={s.realcreditct2}>
                 <div className={s.datect}>
                     <label className={s.labelstyle1}>日期</label>
                     <div className={s.dateinput}>
-                      <input type="text" className={s.datestyle} value={date1}  onChange={(e) => setDate1(e.target.value)} onBlur={judgemonth} required/>/
-                      <input type="text" className={s.datestyle} value={date2}  onChange={(e) => setDate2(e.target.value)} onBlur={judgeyear} required/>
+                      <input type="text" className={s.datestyle} value={date1} placeholder='MM'  onChange={(e) => setDate1(e.target.value)} onBlur={judgemonth} required/>/
+                      <input type="text" className={s.datestyle} value={date2} placeholder='YY' onChange={(e) => setDate2(e.target.value)} onBlur={judgeyear} required/>
                     </div>
                     <div className={s.dateinput}>
                     {IsMonthValid?"":<p className={s.alert}>請輸入正確月份</p>}
@@ -116,16 +130,12 @@ const btnhandle = () =>{
                 </div>
                 <div className={s.securect}>
                     <label className={s.labelstyle1}>安全碼</label> 
-                    <input type="text" className={s.securestyle} value={cvv} onChange={(e) => setCvv(e.target.value)} onBlur={judgecvv}  required/>
+                    <input type="text" className={s.securestyle} value={cvv} placeholder='CVV' onChange={(e) => setCvv(e.target.value)} onBlur={judgecvv}  required/>
                     <div>{isCvvValid?"":<p className={s.alert}>請輸入正確安全碼</p>}</div>
-                    
                 </div>
               </div>
-                    
         </div>
       </div>
-       
-      
       <div className={s.btnfor1}>
           <DeepButton DeepButtoncontent={"完成付款"} onClick={btnhandle}/>
       </div>  

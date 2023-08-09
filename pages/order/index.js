@@ -314,7 +314,10 @@ export default function checkForm() {
                             <select style={selectstyle1} value={selectedCity} onChange={handleCityChange}>
                             {showcity
                               ?
+                              <>
                               <option value={selectedCity}>{selectedCity}</option>
+                              {city}
+                              </>
                               :
                               <>
                               <option value="">請選擇</option>
@@ -324,22 +327,33 @@ export default function checkForm() {
                             </select>
                             <select style={selectstyle1} value={selectedArea} onChange={handleAreaChange}>
                               {showcity ? (
+                                <>
                                 <option value={selectedArea}>{selectedArea}</option>
+                                {areaOptions.map((area) => (
+                                        <option key={area.value} value={area.value}>
+                                          {area.label}
+                                        </option>
+                                      ))}
+                                </>
                               ) : (
                                 <>
                                   <option value="">請選擇</option>
-                                  {selectedCity === "" ? (
+                                  {selectedCity === "" 
+                                  ? 
+                                  (
                                     <option value=""></option>
-                                  ) : (
+                                  ) 
+                                  : 
+                                  (
                                     <>
-                                      <option value="">請選擇</option>
                                       {areaOptions.map((area) => (
                                         <option key={area.value} value={area.value}>
                                           {area.label}
                                         </option>
                                       ))}
                                     </>
-                                  )}
+                                  )
+                                  }
                                 </>
                               )}
                             </select>
@@ -357,7 +371,7 @@ export default function checkForm() {
               {shippingMethod === "便利商店+60" && (
                 <div style={blockstyle1}>
                     <label style={labelstyle1}>門市選擇</label>
-                    <input type="text" style={inputstyle} value={recipientstore} onChange={(e) => setRecipientstore(e.target.value)}  required/>
+                    <input type="text" style={inputstyle} value={recipientstore} placeholder="請輸入縣市與全家門市名稱" onChange={(e) => setRecipientstore(e.target.value)}  required/>
                   </div>
               )}
               <button style={buttonStyle2} type={"submit"}>下一步，確認商品</button>
