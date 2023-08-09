@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '@/components/Leo/member/Coupon.module.css'
-import { useRouter } from 'next/router'
 
-export default function Coupon() {
-  const router = useRouter()
+export default function Coupon({ props }) {
+  console.log(props)
+  const [time, setTime] = useState('')
+  useEffect(() => {
+    const dt = props.end_time.split('T')
+    setTime(dt[0])
+  }, [])
   const c = {
     display: 'flex',
     justifyContent: 'space-evenly',
@@ -15,21 +19,15 @@ export default function Coupon() {
   return (
     <>
       <div className={`col`} style={c}>
-        <div
-          className={`${
-            router.asPath === '/dashboard/coupon'
-              ? styles.coupon
-              : styles.coupon_ex
-          }`}
-        >
+        <div className={styles.coupon}>
           <div className={styles.c_title}>
-            <p>生日禮</p>
+            <p>{props.coupon_name}</p>
           </div>
           <div className={styles.c_content}>
-            <p>8折</p>
+            <p>{props.coupon_discount * 10 + '折'}</p>
           </div>
           <div style={d}>
-            <p>~2023/08/17</p>
+            <p>~{time}</p>
           </div>
         </div>
       </div>
