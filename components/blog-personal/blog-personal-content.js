@@ -2,6 +2,7 @@ import Avatar2 from '../book-review/blogavatar2'
 import Image from 'next/image'
 import Link from 'next/link'
 import style from '@/components/blog/blog_content.module.css'
+import { LuDelete } from 'react-icons/lu'
 import Button10 from '../common/button/button10'
 import { useState, useEffect } from 'react'
 
@@ -41,18 +42,25 @@ export default function BlogPersonalContent() {
     return `${year}-${month}-${day}`
   }
 
-
   return (
     <>
       {data.map((psblog, i) => (
         <>
           <div key={i} className="pt-4 pb-4">
-            <Link href={`/blog/${psblog.blog_sid}`} className="text-black text-decoration-none">
+            <Link
+              href={`/blog/${psblog.blog_sid}`}
+              className="text-black text-decoration-none"
+            >
               <h4>{psblog.blog_title}</h4>
             </Link>
           </div>
-          <div className="d-flex">
-            <Avatar2 nickname={psblog.nickname} />
+          <div className="d-flex justify-content-between">
+            <div>
+              <Avatar2 nickname={psblog.nickname} />
+            </div>
+            <Link href='#' className={`${style.chenred} fs-3`}>
+              <LuDelete />
+            </Link>
           </div>
           <div className="pt-3">
             <div>
@@ -88,7 +96,7 @@ export default function BlogPersonalContent() {
               <span>{formatDateString(psblog.add_date)}</span>
             </div>
             <div className="pt-3">
-              <Button10 blog_sid={psblog.blog_sid}/>
+              <Button10 blog_sid={psblog.blog_sid} />
             </div>
           </div>
         </>

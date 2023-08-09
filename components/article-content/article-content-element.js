@@ -38,32 +38,8 @@ export default function ArticleContentElement() {
   }
   return (
     <>
-      <div className="col-xl-7 px-xl-5 d-flex flex-column pb-5">
+      <div className={`${style.chenpt} col-xl-7 px-xl-5 d-flex flex-column pb-5`}>
         <div className="row">
-          <div
-            className={`${style.chenbreadhole} ${style.chenre} text-body-tertiary pb-5`}
-          >
-            <Link
-              href="#"
-              className={`text-body-tertiary text-decoration-none ${style.chenbreadhole}`}
-            >
-              首頁
-            </Link>
-            &#062;
-            <Link
-              href="#"
-              className={`text-body-tertiary text-decoration-none ${style.chenbreadhole}`}
-            >
-              部落格
-            </Link>
-            &#062;
-            <Link
-              href="#"
-              className={`text-body-tertiary text-decoration-none ${style.chenbreadhole}`}
-            >
-              熱門
-            </Link>
-          </div>
           <div className="border-bottom border-dark-subtle">
             <div>
               <div className="d-flex justify-content-between">
