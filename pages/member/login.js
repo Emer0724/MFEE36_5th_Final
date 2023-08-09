@@ -5,10 +5,13 @@ import { useRouter } from 'next/router'
 import AuthContext, { AuthContextProvider } from '@/context/AuthContext'
 import Head from 'next/head'
 import Link from 'next/link'
+import Popup_window from '@/components/used/popup_window'
 
 export default function Login() {
   const router = useRouter()
+  const { returnTo } = router.query;
   const { auth, setAuth } = useContext(AuthContext)
+  const [success,sersuccess]=useState(false)
   const [user, setUser] = useState({
     email: '',
     password: '',
@@ -32,14 +35,25 @@ export default function Login() {
     })
       .then((r) => r.json())
       .then((data) => {
-        console.log(data)
+        // console.log(data)
         if (data.success) {
           const obj = { ...data.data }
           localStorage.setItem('auth', JSON.stringify(obj))
           // console.log(obj)
           setAuth(obj)
-          alert('登入成功')
-          router.push('/')
+          sersuccess(true)
+          setTimeout(()=>{
+            sersuccess(false)
+            if(returnTo){
+// console.log(returnTo)
+              router.push(returnTo)
+            }else{
+              router.push('/')
+            }
+            
+          },2000)
+          
+         
         } else {
           alert(data.error || '帳密錯誤')
         }
@@ -164,6 +178,8 @@ export default function Login() {
           </div>
         </div>
       </div>
+      {success?(<Popup_window icon={true} no_botton={true} text={'登入成功'}/>) :''}
+      
     </>
   )
 }

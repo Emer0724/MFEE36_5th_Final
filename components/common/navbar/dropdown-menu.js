@@ -1,11 +1,12 @@
 import React from 'react'
 import styles from './dropdown-menu.module.css'
 import Link from 'next/link'
-import { useRef } from 'react'
+import { useRef,forwardRef } from 'react'
 
-const DropdownMenu = ({ isLoggedIn, gologout, nickname }) => {
+const DropdownMenu = forwardRef(({ isLoggedIn, gologout, nickname },ref) => {
+
   return (
-    <div className={styles.dropdownMenu}>
+    <div className={styles.dropdownMenu} ref={ref}>
       {isLoggedIn ? (
         <>
           <p className={styles.menuItem}>Hi, {nickname ? nickname : '文青'}</p>
@@ -27,6 +28,6 @@ const DropdownMenu = ({ isLoggedIn, gologout, nickname }) => {
       )}
     </div>
   )
-}
+})
 
 export default DropdownMenu

@@ -16,7 +16,9 @@ import { Avatar, Badge } from 'antd'
 
 export default function NavBar1() {
   const router = useRouter()
-  const dropdownRef = useRef()
+  const dropdownRef = useRef(null)
+  const avatarRef = useRef(null)
+  const BellRef = useRef(null)
   const { auth, setAuth, logout, setphoto, photo } = useContext(AuthContext)
   const [newimg, setnewimg] = useState('')
   const [count, setcount] = useState(0)
@@ -33,12 +35,15 @@ export default function NavBar1() {
 
   useEffect(() => {
     if (localStorage.getItem('auth')) {
-      if (JSON.parse(localStorage.getItem('auth')).member_id === 1026) {
+      setIsLoggedIn(true)
+      //轉後台
+      if (JSON.parse(localStorage.getItem('auth')).member_id===1026) {
         router.push(`${process.env.WEB_IMG}/used-book/backstage`)
       }
       setnickname(JSON.parse(localStorage.getItem('auth')).nickname)
       // console.log(JSON.parse(localStorage.getItem('auth')).nickname)
-      setIsLoggedIn(true)
+
+      
     } else {
       if (router.asPath.includes('dashboard')) {
         router.push('/member/login')
@@ -96,8 +101,14 @@ export default function NavBar1() {
   }
 
   const handleDropdown = (event) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-      console.log(123)
+    // console.log(123)
+    if (
+      Dropdown &&
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target) &&
+      !avatarRef.current.contains(event.target) &&
+      !BellRef.current.contains(event.target)
+    ) {
       setDropdown(false)
     }
   }
@@ -108,7 +119,7 @@ export default function NavBar1() {
     return () => {
       window.addEventListener('click', handleDropdown)
     }
-  }, [])
+  }, [Dropdown])
 
   // console.log(auth?.notify)
   // console.log(`${process.env.API_SERVER}/avatar/${photo}`)
@@ -181,6 +192,7 @@ export default function NavBar1() {
                       height={30}
                       className={`${styles.Licon} ${styles.avatar}`}
                       alt="icon"
+                      ref={avatarRef}
                     />
                   </div>
                 ) : (
@@ -200,6 +212,7 @@ export default function NavBar1() {
                     className={styles.notify}
                     onClick={() => isDropdown(Dropdown)}
                     role="presentation"
+                    ref={BellRef}
                   >
                     {' '}
                     <div className={styles.bell}>
@@ -220,7 +233,7 @@ export default function NavBar1() {
                 )}
               </>
             ) : (
-              <Link href="/member/login">
+              <Link href={`/member/login?returnTo=${encodeURIComponent(`${router.asPath}`)}`}>
                 <span className={styles.loginBtn}>登入</span>
               </Link>
             )}

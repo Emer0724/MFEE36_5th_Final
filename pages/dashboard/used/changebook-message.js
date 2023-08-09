@@ -60,6 +60,16 @@ export default function ChangebookMessage() {
     )
     const getdata2 = await getdata1.json()
 
+    
+    // console.log(getdata2)
+    // console.log(getdata2.notify)
+    const auth_old = JSON.parse(localStorage.getItem('auth'))
+    const auth_old_new = JSON.stringify({
+      ...auth_old,
+      notify: getdata2.notify
+    })
+    localStorage.setItem('auth', auth_old_new)
+
     setData(getdata2)
     setTimeout(() => {
       setloading(false)
