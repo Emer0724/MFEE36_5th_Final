@@ -41,7 +41,10 @@ color: var(--bgc5) ;
     flex-direction: column;
     align-items: center;
     /* box-shadow: 3px 4px 4px 0px rgba(0, 0, 0, 0.10); */
-    border-radius: 15px;
+    /* border-radius: 15px; */
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 5px;
     background-color: white;
     box-shadow: inset 10px 0px 4px 0px rgba(0, 0, 0, 0.10);
      border-top: 15px solid rgb(214, 212, 209); 
@@ -72,12 +75,12 @@ color: var(--bgc5) ;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 15px;
+    border-radius: 5px;
     background-color: white;
     animation-name: card;
     animation-duration: 1s;
     animation-delay: 2.5s;
-    border-top: 15px solid rgb(214, 212, 209);
+    border-top: 10px solid rgb(214, 212, 209);
  
 
 }
@@ -88,13 +91,13 @@ color: var(--bgc5) ;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 15px;
+    border-radius: 8px;
     background-color: white;
     transform:rotate(-20deg);
     animation-name: card;
     animation-duration: 1s;
     animation-delay:2.5s;
-    border-top: 15px solid rgb(214, 212, 209); 
+    border-top: 10px solid rgb(214, 212, 209); 
    
 
 }

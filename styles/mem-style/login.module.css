@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: center;
   height: 78vh;
-  width: 90vw;
+  width: 100%;
   overflow: auto;
 }
 
@@ -43,11 +43,12 @@
   .card {
     display: flex;
     flex-direction: column;
-    width: 330px;
+    width: 90%;
     height: 500px;
     margin: 30px auto;
     max-width: 100%;
     max-height: 100%;
+    box-shadow: 0 0px 0px rgba(82, 121, 111, 0.5);
   }
 }
 
@@ -170,6 +171,9 @@
   border: none;
   border-radius: 5px;
   margin-bottom: 5px;
+  padding-left: 20px;
+
+  width: 70%;
 }
 
 .login-title {

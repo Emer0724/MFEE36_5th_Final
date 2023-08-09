@@ -111,7 +111,7 @@ export default function UsedBook() {
             簡易流程，幫舊書找新歸宿
           </div>
           <div className="container-fliuid  color-bg-6 d-flex justify-content-center">
-            <div className="row d-flex justify-content-center">
+            <div className="row d-flex justify-content-center g-0">
               {/* <div className=" w-100 d-flex justify-content-center color-bg-6 py-5"> */}
               {/* <div className="d-flex   justify-content-around w-75"> */}
               {/*circle*/}

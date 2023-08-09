@@ -23,7 +23,7 @@ export default function Login() {
 
   const doLogin = (e) => {
     e.preventDefault()
-    fetch(process.env.API_SERVER + '/login', {
+    fetch(process.env.WEB + '/login', {
       method: 'POST',
       body: JSON.stringify(user),
       headers: {
@@ -136,22 +136,11 @@ export default function Login() {
                     登入
                   </button>
                 </div>
-                <div className={styles['box-center']}>
-                  <button
-                    type="submit"
-                    className={styles['signup-btn']}
-                    onClick={handleJoinMember}
-                  >
-                    加入會員
-                  </button>
-                </div>
+                <div className={styles['box-center']}></div>
               </form>
-              <Link href={'/member/login_back'} className="mt-3">
-                後台登入
-              </Link>
             </div>
 
-            <div className={styles['right-box']}>
+            {/* <div className={styles['right-box']}>
               <h1 className={styles['right-text']}>沒有帳號?</h1>
               <button
                 type="submit"
@@ -160,7 +149,7 @@ export default function Login() {
               >
                 加入會員
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
