@@ -8,19 +8,10 @@ const blogcontent = '/blog/recommend'
 
 export default function BlogContent() {
   const [blogs, setBlogs] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
   const [offset, setOffset] = useState(0)
 
-  useEffect(() => {
-    fetchData()
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
 
   const fetchData = async () => {
-    setIsLoading(true)
     try {
       const response = await fetch(
         `http://localhost:3055/blog/blog?offset=${offset}`
@@ -34,15 +25,8 @@ export default function BlogContent() {
     } catch (error) {
       console.error('沒有資料', error)
     }
-    setIsLoading(false)
   }
 
-  const handleScroll = () => {
-    const { scrollTop, scrollHeight, clientHeight } = document.documentElement
-    if (scrollTop + clientHeight >= scrollHeight - 10 && !isLoading) {
-      fetchData()
-    }
-  }
 
   const formatDateString = (dateString) => {
     const date = new Date(dateString)
@@ -98,7 +82,6 @@ export default function BlogContent() {
           </div>
         ))}
       </div>
-      {isLoading && <div>Loading...</div>}
     </>
   )
 }

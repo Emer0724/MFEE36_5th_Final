@@ -14,6 +14,9 @@ export default function productcheck() {
 const style1 ={
     marginBottom:"60px"
 }
+const style3 ={
+    marginBottom:"130px"
+}
 const style2 ={
     display:"flex",
     justifyContent:"center",
@@ -48,9 +51,6 @@ useEffect(() => {
  setpayment(paymentmethod);
 }, []);
 
-// fetch('https://sandbox-api-pay.line.me',{
-   
-// })
 const PLheader2 = ["產品","ISBN","價格","數量","小計"]
 const Header1={
   textAlign:"center",
@@ -62,17 +62,23 @@ const limitText = (text,maxLength) => {
   }
   return text;
 }
+// fetch('https://sandbox-api-pay.line.me',{
+   
+// })
 const btnhandle=()=>{
-  if(payment==="linepay"){
-    router.push("./complete")
-  //  confirmAlert({
+  // if(payment==="linepay"){
+  //     confirmAlert({
   //   title:"確認付款",
   //   message:"即將前往linepay付款,要繼續嗎?",
   //   buttons:[
   //     {
   //       label:'前往',
   //       onclick:()=>{
-  //         window.location.href=process.env.REACT_APP_PAYMENT_API_URL
+  //         fetch(`${process.env.API_SERVER}/cart/createorder`,{
+  //           method:"POST",
+  //           body:JSON.stringify({data:data,amount:finalprice}),
+  //           headers:{"Content-Type": "application/json" }
+  //         })
   //       },
   //     },{
   //       label:"取消",
@@ -80,6 +86,9 @@ const btnhandle=()=>{
   //     }
   //   ]
   //  })
+  if(payment==="linepay"){
+    router.push("./complete")
+ 
 }
   else{
     router.push("./checkout")
@@ -104,16 +113,30 @@ const btnhandle=()=>{
       {data.map((v,i)=>{
         const truncatedBookName = limitText(v.book_name,10);
           return(
-          <tr key={i} className={styles.Prodeucttr}>
-              <td className={styles.Prodeuctpn}><Image className={styles.imagebook} src={`/all_img/book_pic/${encodeURIComponent(v.pic)}`} width={100} height={100} alt='icon'/>{truncatedBookName}</td>
+            <tr key={i} className={styles.Prodeucttr}>
+              <td className={styles.ProdeuctBlock}><Image className={styles.imagebook} src={`/all_img/book_pic/${encodeURIComponent(v.pic)}`} width={100} height={100} alt='icon'/></td>
+              <td className={styles.ProdeuctBlock}>{truncatedBookName}</td>
               <td className={styles.ProdeuctBlock}>{v.ISBN}</td>
-              <td className={styles.ProdeuctBlock}><span className={styles.oneprice}>{v.price}</span></td>
+              {v.status_id!==null
+              ?
+              <td className={styles.ProdeuctBlock}>特惠$<span className={styles.usedprice}>{v.usedprice}</span></td>
+              :
+              <td className={styles.ProdeuctBlock}><span className={styles.oneprice}>{v.bookprice}</span></td>
+              }
               <td>
-                  <div className={styles.CountBlock}>
-                    <div className={styles.Countvalue1}>{v.count}</div>
-                  </div>
+                <div className={styles.CountBlock}>
+                  <div className={styles.Countvalue1}>{v.count}</div>
+                </div>
               </td> 
-              <td className={styles.ProdeuctBlock}><span className={styles.totalprice}>{v.price*v.count}</span></td>
+              <td className={styles.ProdeuctBlock}>
+              {
+                v.status_id!==null
+                ?
+                <span className={styles.totalprice}>{v.usedprice*v.count}</span>
+                :
+                <span className={styles.totalprice}>{v.bookprice*v.count}</span>
+                }
+              </td>
           </tr>)
       })}
       </tbody>
@@ -128,12 +151,18 @@ const btnhandle=()=>{
                 <h6 className={styles.Clisttext}>{truncatedBookName}</h6>
                 <h6 className={styles.Clisttext}>{v.ISBN}</h6>
                 <div className={styles.CountBlock}>
-                    <div className={styles.Countvalue2}><span className={styles.counttext}>{v.count}</span></div>
+                    <div className={styles.Countvalue}>{v.count}</div>
                 </div>
               </div>
             </div>
             <div className={styles.CPtotaltext}>
-              <p><span className={styles.totalprice}>{v.price*v.count}</span></p>
+              <p>{v.status_id!==null
+              ?
+              <span className={styles.totalprice}>{v.usedprice*v.count}</span>
+              :
+              <span className={styles.totalprice}>{v.bookprice*v.count}</span>
+              }
+              </p>
             </div>
           </div>
         )
@@ -141,7 +170,10 @@ const btnhandle=()=>{
         <div style={style2}>
           <OrderTotalPrice shippingCost={shippingCost} setFinalprice={setFinalprice}/>
         </div>
+        <div style={style3}>
         <DeepButton  DeepButtoncontent={"下一步，前往付款"} onClick={btnhandle} />
+        </div>
+        
     </div>
   )
 }

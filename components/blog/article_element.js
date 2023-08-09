@@ -1,34 +1,67 @@
-import Link from 'next/link'
-import Avatar2 from '../book-review/blogavatar2'
-import Image from 'next/image'
-import style from '@/components/blog/blog_content.module.css'
-import { useState, useEffect } from 'react'
+import Link from 'next/link';
+import Avatar2 from '../book-review/blogavatar2';
+import Image from 'next/image';
+import style from '@/components/blog/blog_content.module.css';
+import { useState, useEffect } from 'react';
 
 export default function ArticleElement() {
-  const [blogSort, setBlogSort] = useState('desc')
-  const [cblog, setcBlog] = useState([])
+  const [blogSort, setBlogSort] = useState('desc');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [blogData, setBlogData] = useState([]);
+
+  const limit = 10; // 每頁顯示的部落格文章數量
 
   useEffect(() => {
-    fetchBlogList()
-  }, [blogSort])
+    fetchBlogList();
+  }, [blogSort, currentPage]);
 
   const fetchBlogList = async () => {
     try {
-      const response = await fetch(`http://localhost:3055/blog/${blogSort}`)
-      const data = await response.json()
-      setcBlog(data)
+      const response = await fetch(
+        `http://localhost:3055/blog/${blogSort}?page=${currentPage}`
+      );
+      if (!response.ok) {
+        throw new Error('获取部落格列表失败');
+      }
+      const data = await response.json();
+      if (data.length === 0) {
+        setHasMore(false);
+      } else {
+        setBlogData((prevData) => [...prevData, ...data]);
+      }
     } catch (error) {
-      console.error('获取部落格列表失败：', error)
+      console.error('获取部落格列表失败：', error);
     }
-  }
+  };
+
   const formatDateString = (dateString) => {
-    const date = new Date(dateString)
-    return date.toISOString().split('T')[0]
-  }
+    const date = new Date(dateString);
+    return date.toISOString().split('T')[0];
+  };
 
   const handleSortChange = (sortOption) => {
-    setBlogSort(sortOption)
-  }
+    setBlogSort(sortOption);
+    setCurrentPage(1); // 切換排序時重置頁碼
+    setBlogData([]); // 切換排序時清空部落格文章數據
+    setHasMore(true); // 切換排序時重置無限滾動狀態
+  };
+
+  const handleScroll = () => {
+    if (
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 100 &&
+      hasMore
+    ) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [hasMore]);
 
   return (
     <div className={`col-xl-7 px-xl-5 d-flex flex-column`}>
@@ -58,7 +91,7 @@ export default function ArticleElement() {
       </div>
       <>
         <div className="row">
-          {cblog.map((blog) => (
+          {blogData.map((blog) => (
             <>
               <div key={blog.blog_sid}>
                 <Link

@@ -262,8 +262,8 @@ export default function Home() {
         </div>
         {/* section1---end */}
         {/* section2 */}
-        <div className="d-flex justify-content-center index_index_circle_bg ">
-          <div className="index_index_mask ">
+        <div className="d-flex justify-content-center  ">
+          <div className="index_index_mask index_index_bg_book ">
             <Link href="/used-book">
               <div className="index_index_circle">
                 <div className="index_index_circle_text">
@@ -277,6 +277,8 @@ export default function Home() {
             </Link>
           </div>
         </div>
+        {/* <div className="index_index_bg_book"></div> */}
+
         {/* section2---end */}
         {/* section3 */}
         <div className=" container-fluid py-4 color-bg-6 ">
@@ -303,6 +305,7 @@ export default function Home() {
                         pic={v.pic}
                         book_review={v.book_review}
                         mem_avatar={v.mem_avatar}
+                        ISBN={v.ISBN}
                       />
                     </SwiperSlide>
                   )

@@ -2,6 +2,13 @@
     font-size: 20px;
 }
 
+.followColumnWrapper {
+    position: sticky;
+    top: 0;
+    float: right;
+    max-width: 100%;
+}
+
 @media (max-width:400px) {
     .chenwd {
         font-size: 16px;

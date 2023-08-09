@@ -37,10 +37,10 @@ export default function BookContent() {
   };
 
   const handleSortChange = (sortOption) => {
-    setBookSort(sortOption);
-    setCurrentPage(1); // 切換排序時重置頁碼
-    setBookData([]); // 切換排序時清空書評數據
-    setHasMore(true); // 切換排序時重置無限滾動狀態
+    setBookSort(sortOption)
+    setCurrentPage(1) // 切換排序時重置頁碼
+    setBookData([]) // 切換排序時清空書評數據
+    setHasMore(true) // 切換排序時重置無限滾動狀態
   };
 
   const renderStarRating = (rating) => {
@@ -52,7 +52,7 @@ export default function BookContent() {
         stars.push(<AiFillStar key={i} className={style.chenstar_empty} />);
       }
     }
-    return stars;
+    return stars
   }
 
   const formatDateString = (dateString) => {
@@ -109,7 +109,7 @@ export default function BookContent() {
           >
             <div className="pt-3">
               <Image
-                src={`http://localhost:3055/book_pic/${book_review.pic}`}
+                src={`/all_img/book_pic/${book_review.pic}`}
                 width={150}
                 height={200}
                 className={style.blogimg}

@@ -16,8 +16,14 @@
 .chensize {
     font-size: 12px;
 }
+.chenpt {
+    padding-top: 20px;
+}
 
 @media (max-width:400px) {
+    .chenpt {
+        padding-top: 20px;
+    }
     .blogimg {
         width: 310px;
         height: 200px;

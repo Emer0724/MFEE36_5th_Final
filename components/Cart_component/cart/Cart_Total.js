@@ -5,6 +5,7 @@ import styles from "@/components/Cart_component/cart/CartTotal.module.css"
 import { useRouter } from 'next/router';
 
 export default function CartTotal({data,totalAmount}) {
+   console.log(totalAmount);
    const [coupon, setCoupon] = useState({});
    const [usetoken, setusetoken] = useState({});
    const member1 = data[0].member_id

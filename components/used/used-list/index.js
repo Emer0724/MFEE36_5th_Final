@@ -66,7 +66,8 @@ export default function UsedList({ ISBN }) {
   const check = () => {
     let user = ''
     if (localStorage.getItem('auth')) {
-      user = localStorage.getItem('auth')
+      user = JSON.parse(localStorage.getItem('auth'))
+   return user
     } else {
       return user !== null
     }
@@ -78,30 +79,18 @@ export default function UsedList({ ISBN }) {
     setpop(false)
   }
 
-  const cartUsed = (ISBN, member_id, used_id) => {
-    // const user_info = JSON.parse(localStorage.getItem('auth'))
-    // let info = null
-    // let id = null
-    // if (user_info !== null) {
-    //   info = user_info
-    //   id = info.id
-    // } else {
-    //   // 如果用戶未登入，則提示用戶登入
-    //   console.log('請先登入')
-    // }
-
-    if (!localStorage.getItem('auth')) {
-      setpop(true)
-    }
-    //變數作用域的關係 傳不進來，要透過onClick 以參數方式送進來
+  const cartUsed = (ISBN, status_id) => {
     const userLogInStatus = check()
+    console.log(userLogInStatus);
+    const member = userLogInStatus.member_id;
+    console.log(member);
     if (userLogInStatus) {
       fetch(`${process.env.API_SERVER}/market/addToCartUsed`, {
         method: 'POST',
         body: JSON.stringify({
-          member_id: member_id,
+          member_id:member,
           ISBN: ISBN,
-          used_id: used_id,
+          status_id:status_id,
         }),
         headers: {
           'Content-Type': 'application/json',
@@ -144,7 +133,7 @@ export default function UsedList({ ISBN }) {
                 <td className={styles.font}>{v.price}</td>
                 <td className={styles.font}>{v.stock}</td>
                 <td className={styles.font}>
-                  <button className={styles.btn} onClick={() => cartUsed(ISBN)}>
+                  <button className={styles.btn} onClick={() => cartUsed(ISBN,v.status_id)}>
                     加入購物車
                   </button>
                 </td>
