@@ -14,7 +14,7 @@ export const noLoginState = {
 }
 
 export const AuthContextProvider = function ({ children }) {
-  const router = useRouter
+  const router = useRouter()
   const [auth, setAuth] = useState({ ...noLoginState })
   const [photo, setphoto] = useState('')
   const [first, setfirst] = useState(false)

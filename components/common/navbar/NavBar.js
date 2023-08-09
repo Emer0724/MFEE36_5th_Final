@@ -48,23 +48,23 @@ export default function NavBar1() {
   // }, [photo])
 
   useEffect(()=>{
-    if (localStorage.getItem('auth')){
-    const member1 = JSON.parse(localStorage.getItem('auth')).member_id;
-    console.log(member1);
-    fetch(`${process.env.API_SERVER}/cart/count?member=${member1}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((r) => r.json())
-      .then((result) => {
-        console.log(result);
-       const counter = result.map((v)=>v.count)
-        const totalcount = counter.reduce((v,c)=>v+c,0)
-        setcount(totalcount);
-      });}
-      //需要一個回呼函式 到商城
+    if (localStorage.getItem('auth') && JSON.parse(localStorage.getItem('auth')).member_id){
+      const member1 = JSON.parse(localStorage.getItem('auth')).member_id;
+      console.log(member1);
+      fetch(`${process.env.API_SERVER}/cart/count?member=${member1}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((r) => r.json())
+        .then((result) => {
+          console.log(result);
+        const counter = result.map((v)=>v.count)
+          const totalcount = counter.reduce((v,c)=>v+c,0)
+          setcount(totalcount);
+        });}
+        //需要一個回呼函式 到商城
   },[])
 
   const [nickname, setnickname] = useState('')

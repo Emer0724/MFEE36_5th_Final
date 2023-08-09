@@ -38,8 +38,17 @@ const [usetoken,setUsetoken] = useState(0)
 
 const subprice =["商品金額","貨運費用","折價卷","知音幣"]
 
-const totalprice = data.reduce((r, v) => r + v.price*v.count, 0);
+const totalNewBookPrice = data
+.filter((v) => v.status_id === null)
+.map((v) => v.bookprice * v.count)
+.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 
+const totalUsedBookPrice = data
+.filter((v) => v.status_id !== null)
+.map((v) => v.usedprice * v.count)
+.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
+const totalprice = totalNewBookPrice + totalUsedBookPrice;
 const finalcost = totalprice+shippingCost-coupon-usetoken;
 
 

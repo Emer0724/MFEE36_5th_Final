@@ -5,9 +5,11 @@ import Productlist from '@/components/Cart_component/cart/Cart_ProductList'
 import CartTotal from '@/components/Cart_component/cart/Cart_Total'
 import CartRecommend from '@/components/Cart_component/cart/Cart_recommend'
 import CartTitle from '@/components/Cart_component/Cart_title'
+import { useRouter } from 'next/router'
 
 
 export default function Cart() {
+const router = useRouter();
 const [data, setData] = useState([]);
 const [totalAmount, setTotalAmount] = useState(0);
 
@@ -16,12 +18,16 @@ const handleDataChange = (newData) => {
 };
 
 useEffect(() => {
-  const storedData = localStorage.getItem('auth');
-  const formData = JSON.parse(storedData);
-  const member1 = formData.member_id
-  fetch(`${process.env.API_SERVER}/cart/cart?member=${member1}`, {
-    method: "GET",
-    headers: {
+  if(!localStorage.getItem('auth')){
+    router.push('/member/login')
+  }
+  else{
+      const storedData = localStorage.getItem('auth');
+      const formData = JSON.parse(storedData);
+      const member1 = formData.member_id
+      fetch(`${process.env.API_SERVER}/cart/cart?member=${member1}`, {
+      method: "GET",
+      headers: {
       "Content-Type": "application/json",
     },
   })
@@ -30,13 +36,22 @@ useEffect(() => {
       console.log(result);
       setData(result);
     });
+
+    }
 }, []);
 
 useEffect(() => {
-  const eachprice = data.map((v) => {
-    return v.price * v.count;
-  });
-  const totalprice = eachprice.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  const totalNewBookPrice = data
+    .filter((v) => v.status_id === null)
+    .map((v) => v.bookprice * v.count)
+    .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
+  const totalUsedBookPrice = data
+    .filter((v) => v.status_id !== null)
+    .map((v) => v.usedprice * v.count)
+    .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
+  const totalprice = totalNewBookPrice + totalUsedBookPrice;
   // 更新總金額
   setTotalAmount(totalprice);
 }, [data]);

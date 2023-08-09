@@ -2,16 +2,20 @@ import React, { useState,useEffect } from 'react'
 import Link from 'next/link'
 import styles from "@/components/Cart_component/Cart/REBook.module.css"
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 export default function Recommend() {
-  
+  const router = useRouter();
   const [recommand,setrecommand] =useState([]);
   
   useEffect(() => {
+    if(!localStorage.getItem('auth')){
+      router.push('/member/login')
+    }
+   else {
     const storedData = localStorage.getItem('auth');
     const formData = JSON.parse(storedData);
     const member1 = formData.member_id
-    console.log(member1);
       fetch(`${process.env.API_SERVER}/cart/cart/recommand?member=${member1}`, {
         method: "GET",
         headers: {
@@ -28,9 +32,9 @@ export default function Recommend() {
           if (!selectedRecommand.some((item) => item.ISBN === selectedBook.ISBN)) {
             selectedRecommand.push(selectedBook);
           }
-      setrecommand(selectedRecommand);
-  }
-      }); 
+      setrecommand(selectedRecommand);}
+      });
+    }
   }, []);
   
   return (

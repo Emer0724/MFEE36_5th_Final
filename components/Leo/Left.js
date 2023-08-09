@@ -20,7 +20,7 @@ export default function L(props) {
   let id = null
   if (user_info !== null) {
     info = user_info
-    id = info.id
+    id = info.member_id
   } else {
     // 如果用戶未登入，則提示用戶登入
     console.log('請先登入')
