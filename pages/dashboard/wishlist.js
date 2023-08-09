@@ -15,13 +15,14 @@ export default function WishList() {
       setUser_info(userInfoFromStorage)
     }
   }, [])
-  const { id = null } = user_info || {} //先檢查user_info是否為null
-  // console.log(id)
+  const { member_id = null } = user_info || {} //先檢查user_info是否為null
+  console.log(member_id)
   useEffect(() => {
-    if (id !== null) {
-      fetchdata(id)
+    if (member_id !== null) {
+      fetchdata(member_id)
     }
-  }, [id])
+  }, [member_id])
+  console.log(user_info)
   const fetchdata = (member_id) => {
     fetch(`${process.env.API_SERVER}/market/wishlist?member_id=${member_id}`)
       .then((res) => res.json())

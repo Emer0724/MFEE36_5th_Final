@@ -55,7 +55,7 @@ export default function MarketCard(props) {
         })
     }
   }
-
+  //if無收藏
   useEffect(() => {
     if (data && data.rows && data.rows.length > 0) {
       console.log('全部書籍都被刪除')

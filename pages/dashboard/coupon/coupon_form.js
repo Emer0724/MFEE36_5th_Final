@@ -35,6 +35,38 @@ export default function Coupon_form() {
       })
   }
   const { success, error } = datas
+
+  if (success !== undefined) {
+    if (success) {
+      const leave = window.confirm('取得優惠券！')
+      if (leave) {
+        window.location.href = '/dashboard/coupon'
+      } else {
+        console.log('留在當前頁面')
+      }
+    } else {
+      window.alert('取得優惠券失敗，請確認輸入的優惠券號碼。')
+    }
+  } else if (error) {
+    window.alert('取得優惠券失敗，請確認輸入的優惠券號碼。')
+  }
+
+  // {
+  //   success !== undefined && (
+  //     <div>
+  //       {success ? (
+  //         <div className={f.success}>取得優惠券！</div>
+  //       ) : (
+  //         <div className={f.fail}>取得優惠券失敗，請確認輸入的優惠券號碼。</div>
+  //       )}
+  //     </div>
+  //   )
+  // }
+  // {
+  //   error && (
+  //     <div className={f.fail}>取得優惠券失敗，請確認輸入的優惠券號碼。</div>
+  //   )
+  // }
   return (
     <>
       <div>
@@ -43,21 +75,6 @@ export default function Coupon_form() {
       <div className={f.d2}>
         <MemberNav />
       </div>
-      <div className={f.success}>取得優惠券！</div>
-      {success !== undefined && (
-        <div>
-          {success ? (
-            <div className={f.success}>取得優惠券！</div>
-          ) : (
-            <div className={f.fail}>
-              取得優惠券失敗，請確認輸入的優惠券號碼。
-            </div>
-          )}
-        </div>
-      )}
-      {error && (
-        <div className={f.fail}>取得優惠券失敗，請確認輸入的優惠券號碼。</div>
-      )}
       <div className={f.d3}>
         <MemberBreadcrumbs_3 />
       </div>
