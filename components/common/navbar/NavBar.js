@@ -12,13 +12,13 @@ import AuthContext from '@/context/AuthContext'
 import { useContext } from 'react'
 import { BsBellFill } from 'react-icons/bs'
 import { useRouter } from 'next/router'
-import { Avatar, Badge } from 'antd';
+import { Avatar, Badge } from 'antd'
 
 export default function NavBar1() {
   const router = useRouter()
   const { auth, setAuth, logout, setphoto, photo } = useContext(AuthContext)
   const [newimg, setnewimg] = useState('')
-  const [count,setcount] = useState(0)
+  const [count, setcount] = useState(0)
 
   const NavctName = ['商城', '二手書', '部落格', '關於我們']
   const NavEnName = ['STORE', 'USEDSTORE', 'BLOG', 'ABOUTUS']
@@ -47,25 +47,26 @@ export default function NavBar1() {
   //   setphoto(photo)
   // }, [photo])
 
-  useEffect(()=>{
-    if (localStorage.getItem('auth') && JSON.parse(localStorage.getItem('auth')).member_id){
-      const member1 = JSON.parse(localStorage.getItem('auth')).member_id;
-      console.log(member1);
+  useEffect(() => {
+    if (localStorage.getItem('auth')) {
+      const member1 = JSON.parse(localStorage.getItem('auth')).member_id
+      console.log(member1)
       fetch(`${process.env.API_SERVER}/cart/count?member=${member1}`, {
-        method: "GET",
+        method: 'GET',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       })
         .then((r) => r.json())
         .then((result) => {
-          console.log(result);
-        const counter = result.map((v)=>v.count)
-          const totalcount = counter.reduce((v,c)=>v+c,0)
-          setcount(totalcount);
-        });}
-        //需要一個回呼函式 到商城
-  },[])
+          console.log(result)
+          const counter = result.map((v) => v.count)
+          const totalcount = counter.reduce((v, c) => v + c, 0)
+          setcount(totalcount)
+        })
+    }
+    //需要一個回呼函式 到商城
+  }, [])
 
   const [nickname, setnickname] = useState('')
   const [searchbaropen, setSearchbaropen] = useState(false)
@@ -134,16 +135,16 @@ export default function NavBar1() {
               alt="icon"
             />
           </div>
-            <Link href="/product/cart" className={styles.navlink2}>
-              <Image
-                src={Carticon}
-                width={60}
-                height={30}
-                className={styles.Licon}
-                alt="icon"
-              />
-            </Link>
-               <Badge className={styles.carticon} count={count}></Badge>
+          <Link href="/product/cart" className={styles.navlink2}>
+            <Image
+              src={Carticon}
+              width={60}
+              height={30}
+              className={styles.Licon}
+              alt="icon"
+            />
+          </Link>
+          <Badge className={styles.carticon} count={count}></Badge>
           {/* Add a class to separate login button from other icons */}
           <div className={styles.loginWrapper}>
             {isLoggedIn ? (

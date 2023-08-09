@@ -1,19 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import Coupon from './Coupon'
+import Coupon from './Coupon_expired'
 import d from './Coupon_display.module.css'
 
 export default function Coupon_display() {
-  const [info, setInfo] = useState({})
-  const [datas, setDatas] = useState({})
-
-  useEffect(() => {
-    const data = localStorage.getItem('auth')
-    setInfo(JSON.parse(data))
-  }, [])
-
-  console.log(info)
-  const { member_id } = info
-  console.log(member_id)
+  const [datas, setDatas] = useState([])
 
   useEffect(() => {
     const couponData = () => {
@@ -24,24 +14,20 @@ export default function Coupon_display() {
         .then((res) => res.json())
         .then((datas) => {
           setDatas(datas)
-          console.log('後端回傳結果:', datas)
+          console.log(datas)
+          console.log('後端回傳結果:', datas[1])
         })
     }
     couponData()
   }, [])
-
-  console.log(datas)
-  const dataNot = datas[0]
-  const dataAva = datas[1]
-  console.log(dataNot)
-  console.log(dataAva)
-
   return (
     <>
       <div className={d.coat}>
         <div className={`${d.box} container`}>
           <div className={`${d.r} row`}>
-            <Coupon />
+            {datas[1]?.map((v) => {
+              return <Coupon props={v} key={v.coupon_mid} />
+            })}
           </div>
         </div>
       </div>

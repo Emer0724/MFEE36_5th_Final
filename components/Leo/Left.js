@@ -17,17 +17,17 @@ export default function L(props) {
   //登入驗證
   const user_info = JSON.parse(localStorage.getItem('auth'))
   let info = null
-  let id = null
+  let member_id = null
   if (user_info !== null) {
     info = user_info
-    id = info.member_id
+    member_id = info.member_id
   } else {
     // 如果用戶未登入，則提示用戶登入
     console.log('請先登入')
   }
   // console.log(user_info)
   // console.log(ISBN)
-  // console.log(id)
+  console.log(member_id)
 
   const check = () => {
     const user = localStorage.getItem('auth')
@@ -36,13 +36,13 @@ export default function L(props) {
 
   //先做出變數來存放值
   //cart fetch
-  const cart = (ISBN, id) => {
+  const cart = (ISBN, member_id) => {
     console.log(ISBN) //變數作用域的關係 傳不進來，要透過onClick 以參數方式送進來
     const userLogInStatus = check()
     if (userLogInStatus) {
       fetch(`${process.env.API_SERVER}/market/addToCart`, {
         method: 'POST',
-        body: JSON.stringify({ member_id: id, ISBN: ISBN }),
+        body: JSON.stringify({ member_id: member_id, ISBN: ISBN }),
         headers: {
           'Content-Type': 'application/json',
         },
@@ -101,7 +101,7 @@ export default function L(props) {
         <div className={styles.btn_set}>
           <ButtonStyle_l
             t1={'加入購物車'}
-            onClick={() => cart(ISBN, id)}
+            onClick={() => cart(ISBN, member_id)}
             ISBN={ISBN}
           />
           <ButtonStyle_l t1={'找二手書'} onClick={toUsedArea} />

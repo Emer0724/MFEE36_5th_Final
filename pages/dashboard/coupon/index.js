@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import Member_info from '@/components/Leo/member/member_info'
 import MemberNav from '@/components/common/member-nav/member-nav'
 import MemberBreadcrumbs_3 from '@/components/Leo/member/member_breadcrumbs-3'
-import Coupon_display from '@/components/Leo/member/Coupon_display'
+import Coupon_display from '@/components/Leo/member/Coupon_display0'
 import c from './coupon.module.css'
 
 export default function CouponPage() {

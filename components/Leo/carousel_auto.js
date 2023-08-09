@@ -133,20 +133,6 @@ export default function Carousel() {
               className={activeSlideIndex === 5 ? css.active : css.no_active}
             ></div>
           </SwiperSlide>
-          <SwiperSlide>
-            {' '}
-            <div
-              style={{
-                width: '100%',
-                height: '300px',
-                borderRadius: '15px',
-                backgroundImage: `url('/Leo-image/carousel-7.jpg')`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }}
-              className={activeSlideIndex === 6 ? css.active : css.no_active}
-            ></div>
-          </SwiperSlide>
         </Swiper>
       </div>
     </>
