@@ -21,7 +21,7 @@ export default function NavBar1() {
   const [count, setcount] = useState(0)
 
   const NavctName = ['商城', '二手書', '部落格', '關於我們']
-  const NavEnName = ['STORE', 'USEDSTORE', 'BLOG', 'ABOUTUS']
+  const NavEnName = ['STORE', 'USED STORE', 'BLOG', 'ABOUT US']
   const navrouter = [
     '/product/',
     '/used-book/',
@@ -32,6 +32,9 @@ export default function NavBar1() {
 
   useEffect(() => {
     if (localStorage.getItem('auth')) {
+      if (JSON.parse(localStorage.getItem('auth')).member_id === 1026) {
+        router.push(`${process.env.WEB_IMG}/used-book/backstage`)
+      }
       setnickname(JSON.parse(localStorage.getItem('auth')).nickname)
       // console.log(JSON.parse(localStorage.getItem('auth')).nickname)
       setIsLoggedIn(true)

@@ -53,7 +53,7 @@ export const AuthContextProvider = function ({ children }) {
         setphoto(img)
       }
     }
-  }, [])
+  }, [first])
 
   return (
     <AuthContext.Provider value={{ auth, setAuth, logout, setphoto, photo }}>
