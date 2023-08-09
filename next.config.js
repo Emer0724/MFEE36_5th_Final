@@ -5,7 +5,7 @@ const nextConfig = {
     domains: [
       'via.placeholder.com',
       'localhost',
-      'https://2d0a-1-160-34-215.ngrok-free.app',
+      '2d0a-1-160-34-215.ngrok-free.app',
     ],
     // domains: ['b363-49-159-4-38.ngrok-free.app'],
   },

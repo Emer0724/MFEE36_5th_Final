@@ -85,6 +85,7 @@
     z-index:10;
     bottom:-3px;
     right: 5px;
+    cursor: pointer;
 }
 
 .avatar{

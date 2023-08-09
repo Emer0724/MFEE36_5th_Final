@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './dropdown-menu.module.css'
 import Link from 'next/link'
+import { useRef } from 'react'
 
 const DropdownMenu = ({ isLoggedIn, gologout, nickname }) => {
   return (

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './navbar.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -16,6 +16,7 @@ import { Avatar, Badge } from 'antd'
 
 export default function NavBar1() {
   const router = useRouter()
+  const dropdownRef = useRef()
   const { auth, setAuth, logout, setphoto, photo } = useContext(AuthContext)
   const [newimg, setnewimg] = useState('')
   const [count, setcount] = useState(0)
@@ -93,6 +94,22 @@ export default function NavBar1() {
   const isDropdown = (Dropdown) => {
     setDropdown(!Dropdown)
   }
+
+  const handleDropdown = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      console.log(123)
+      setDropdown(false)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('click', handleDropdown)
+
+    return () => {
+      window.addEventListener('click', handleDropdown)
+    }
+  }, [])
+
   // console.log(auth?.notify)
   // console.log(`${process.env.API_SERVER}/avatar/${photo}`)
   return (
@@ -153,15 +170,17 @@ export default function NavBar1() {
             {isLoggedIn ? (
               <>
                 {photo ? (
-                  <div className={styles.avatar}>
+                  <div
+                    className={styles.avatar}
+                    onClick={() => isDropdown(Dropdown)}
+                    role="presentation"
+                  >
                     <Image
                       src={`${process.env.API_SERVER}/avatar/${photo}`}
                       width={30}
                       height={30}
                       className={`${styles.Licon} ${styles.avatar}`}
                       alt="icon"
-                      onClick={() => isDropdown(Dropdown)}
-                      role="presentation"
                     />
                   </div>
                 ) : (
@@ -177,7 +196,11 @@ export default function NavBar1() {
                 )}
 
                 {JSON.parse(localStorage.getItem('auth')).notify >= 1 ? (
-                  <div className={styles.notify}>
+                  <div
+                    className={styles.notify}
+                    onClick={() => isDropdown(Dropdown)}
+                    role="presentation"
+                  >
                     {' '}
                     <div className={styles.bell}>
                       <BsBellFill className={{ color: 'white' }} />
@@ -192,6 +215,7 @@ export default function NavBar1() {
                     isLoggedIn={isLoggedIn}
                     gologout={gologout}
                     nickname={nickname}
+                    ref={dropdownRef}
                   />
                 )}
               </>
