@@ -18,29 +18,16 @@ export default function OrderCheckout() {
   const [date1, setDate1] = useState('')
   const [date2, setDate2] = useState('')
   const [cvv, setCvv] = useState('')
-  const [iscardRight1, setiscardRight1] = useState(true)
-  const [iscardRight2, setiscardRight2] = useState(true)
-  const [iscardRight3, setiscardRight3] = useState(true)
-  const [iscardRight4, setiscardRight4] = useState(true)
+  const [iscardRight, setiscardRight] = useState(true)
+
   const [IsMonthValid, setIsMonthValid] = useState(true)
   const [IsYearValid, setIsYearValid] = useState(true)
   const [isCvvValid, setIsCvvValid] = useState(true)
 
-  const judgecard1 = () => {
-    const correctcard = /^[0-9]{4}$/
-    setiscardRight1(correctcard.test(card1))
-  }
-  const judgecard2 = () => {
-    const correctcard = /^[0-9]{4}$/
-    setiscardRight2(correctcard.test(card2))
-  }
-  const judgecard3 = () => {
-    const correctcard = /^[0-9]{4}$/
-    setiscardRight3(correctcard.test(card3))
-  }
-  const judgecard4 = () => {
-    const correctcard = /^[0-9]{4}$/
-    setiscardRight4(correctcard.test(card4))
+  const judgecard = () => {
+    const number = card1 + card2 + card3 + card4
+    const correctcard = /^[0-9]{16}$/
+    setiscardRight(correctcard.test(number))
   }
 
   const judgemonth = () => {
@@ -171,7 +158,6 @@ export default function OrderCheckout() {
                   }
                   setCard1(e.target.value)
                 }}
-                onBlur={judgecard1}
                 required
               />
               -
@@ -188,7 +174,6 @@ export default function OrderCheckout() {
                   }
                   setCard2(e.target.value)
                 }}
-                onBlur={judgecard2}
                 required
               />
               -
@@ -205,7 +190,6 @@ export default function OrderCheckout() {
                   }
                   setCard3(e.target.value)
                 }}
-                onBlur={judgecard3}
                 required
               />
               -
@@ -217,16 +201,11 @@ export default function OrderCheckout() {
                 id="card4"
                 value={card4}
                 onChange={(e) => setCard4(e.target.value)}
-                onBlur={judgecard4}
+                onBlur={judgecard}
                 required
               />
             </div>
-
-            {iscardRight1 && iscardRight2 & iscardRight3 & iscardRight4 ? (
-              ''
-            ) : (
-              <p className={s.alert}>請輸入正確卡號</p>
-            )}
+            {iscardRight ? '' : <p className={s.alert}>請輸入正確卡號</p>}
           </div>
           <div className={s.realcreditct2}>
             <div className={s.datect}>
