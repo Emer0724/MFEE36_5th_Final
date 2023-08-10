@@ -39,7 +39,7 @@ export const CountContextProvider = function ({ children }) {
   
 
   return (
-    <AuthContext.Provider value={{ }}>
+    <AuthContext.Provider value={{getcount}}>
       {children}
     </AuthContext.Provider>
   )

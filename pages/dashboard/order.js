@@ -81,6 +81,13 @@ export default function OrderHistory() {
       </div>
       <div className={s.container}>
       {data.map((v,i)=>{
+        const limitText = (text, maxLength) => {
+          if (text && text.length > maxLength) {
+            return text.slice(0, maxLength);
+          }
+          return text;
+        };
+        const time = limitText(v.createAt,10);
         return(
         <div className={s.bookContainer} key={i}>
           <div className={s.book}>
@@ -93,10 +100,12 @@ export default function OrderHistory() {
                   <div className={s.fontman1}>
                   <h5>收件者</h5>
                   <h5>收件電話</h5>
+                  <h5>建立時間</h5>
                   </div>
                   <div className={s.fontman1}>
                   <h5>{v.customer_name}</h5>
                   <h5>{v.customer_phone}</h5>
+                  <h5>{time}</h5>
                   </div>
                 </div>
              </div>
@@ -136,7 +145,7 @@ export default function OrderHistory() {
             return(
               <div className={s.pagecontain} key={i}>
                     <div className={s.detaillist}>
-                        {v.choosestore.length>0
+                        {v.choosestore!=""
                         ?
                         <h5 className={s.detailstore}>寄貨門市:</h5>
                         :
@@ -164,7 +173,7 @@ export default function OrderHistory() {
                         <h5>折價卷折數</h5>
                     </div>
                     <div className={s.detaillist}>
-                        {v.choosestore.length>0
+                        {v.choosestore!=""
                         ?
                         <h5 className={s.detailstore}>{v.choosestore}</h5>
                         :

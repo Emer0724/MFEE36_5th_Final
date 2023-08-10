@@ -37,6 +37,7 @@ export default function complete() {
     })
      .then((r) => r.json())
      .then((result) => {
+      console.log(result);
       setWaternum(result.order_id);
       //取得創建的流水碼
       localStorage.removeItem('formData')
