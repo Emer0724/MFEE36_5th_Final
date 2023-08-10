@@ -16,6 +16,7 @@ export default function Product() {
       .then((data) => {
         setdata(data)
         setCurrentPage(page)
+        console.log(page)
         console.log('後端回傳結果:', data)
       })
       .catch((err) => {

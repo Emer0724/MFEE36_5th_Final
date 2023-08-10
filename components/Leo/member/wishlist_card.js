@@ -24,6 +24,10 @@ export default function MarketCard(props) {
   }
 
   console.log(data)
+  //detail頁
+  const detail = () => {
+    window.location.href = `/product/${ISBN}`
+  }
   //移除收藏的fetch
   const removeWish = () => {
     if (ISBN) {
@@ -90,13 +94,6 @@ export default function MarketCard(props) {
   const imageUrl = `/all_img/book_pic/${pic}`
   if (!data || !data.rows || data.rows.length === 0) {
     if (!showCard) {
-      // 只在 showCard 為 true 時顯示 "尚無收藏書籍"
-      return (
-        <div>
-          <h1>尚無收藏書籍</h1>
-        </div>
-      )
-    } else {
       return null // 不顯示任何內容
     }
   }
@@ -114,18 +111,23 @@ export default function MarketCard(props) {
           key={ISBN}
         >
           <div className={`${car.card}`}>
-            <div className={`market-card d-flex `}>
+            <div className={`market-card d-flex`}>
               <div className={car.hoverable}>
                 <Image
                   src={imageUrl}
-                  className={`bk-img`}
+                  className={`${car.img}`}
                   alt="..."
                   width={180}
                   height={180}
                 />
               </div>
               <div className={`w-100 color-bg-1 h-100 ${car.overlay}`}>
-                <p className={car.p}>{book_name}</p>
+                <div className={car.contentBox}>
+                  <p className={car.p}>{book_name}</p>
+                </div>
+                <button onClick={detail} className={car.btn}>
+                  詳細頁
+                </button>
                 <button
                   className={car.x}
                   onClick={() => removeWish(ISBN, member_id, data)}

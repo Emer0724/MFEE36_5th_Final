@@ -34,7 +34,7 @@ export default function MarketCard(data) {
               <div className={car.hoverable}>
                 <Image
                   src={imageUrl}
-                  className={`bk-img`}
+                  className={`${car.img}`}
                   alt="..."
                   width={180}
                   height={180}
