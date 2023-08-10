@@ -11,7 +11,7 @@ export default function Product() {
   const handleDisplay = (category_id, label, page = 1) => {
     fetch(
       `${process.env.API_SERVER}/market/display?category_id=${category_id}&label=${label}&page=${page}`
-    )
+    ) //提供分類id、分類名稱、頁數
       .then((res) => res.json())
       .then((data) => {
         setdata(data)

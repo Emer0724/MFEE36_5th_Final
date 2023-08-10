@@ -40,6 +40,7 @@ export default function WishList() {
         console.log(member_id)
         console.log(data.rows)
         console.log(data.totalRows)
+        console.log(data.totalPage)
       })
       .catch((err) => {
         console.error('無該分類資料', err)
