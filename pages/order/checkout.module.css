@@ -14,9 +14,7 @@
     height: 100%;
     transform-style: preserve-3d;
 }
-.imgps{
-    margin-right: 15px;
-}
+
 .cardcover{
     position: absolute;
     width: 100%;
@@ -63,8 +61,15 @@
     background-color: var(--color6);
     z-index: 1;
     border-radius: 12px;
-    transform: rotateY(-180deg); /* 将背面初始状态调整为翻起 */
+    transform: rotateY(-180deg);
 }
+.cardcontain:hover .card {
+    animation: flip-book 1.2s forwards; /* 应用翻书动画效果，完成后保持状态 */
+}
+.cardcontain:not(:hover) .card {
+    animation: flip-book1 1.5s forwards; /* 应用翻书动画效果，完成后保持状态 */
+}
+
 
 /* 定义翻书动画 */
 @keyframes flip-book {
@@ -84,16 +89,15 @@
     }
 }
 
-/* 鼠标悬停时展开书页 */
-.cardcontain:hover .card {
-    animation: flip-book 1s forwards; /* 应用翻书动画效果，完成后保持状态 */
-}
+
+
 .barcode{
     width: 100%;
     height: 60px;
     background-color: black;
 }
 /* end */
+
 .blockstyle1 {
     display:flex;
     flex-direction: column;
@@ -198,7 +202,7 @@
     justify-content: space-around;
     align-items:flex-start;
     gap: 70px;
-    margin-right: 280px;
+    margin-right: 80px;
 }
 .realcreditct{
     display:flex;

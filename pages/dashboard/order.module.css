@@ -1,6 +1,14 @@
 .bodyct{
     overflow: hidden;
 }
+.selectv{
+    margin: 10px;
+    border:1px solid #52796F;
+    border-radius: 12px;
+    padding:10px 20px;
+    font-size:20px;
+    cursor: pointer;
+}
 .container{
     width: 100%;
     display: flex;
@@ -20,7 +28,7 @@
     width: 600px;
     height: 700px;
     position: relative;
-    perspective: 800px; 
+    perspective: 2100px; 
     margin: 200px auto;
     margin-right: 400px;
   }
