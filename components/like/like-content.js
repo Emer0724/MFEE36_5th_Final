@@ -32,6 +32,7 @@ export default function LikeContent() {
         console.error('Error fetching data:', error)
       })
   }, [user])
+  
   const formatDateString = (dateString) => {
     const date = new Date(dateString)
     const year = date.getFullYear()

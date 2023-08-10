@@ -62,14 +62,14 @@ export default function BookPersonalContent() {
 
   return (
     <>
-      <div className={`${style.chenjc}`}>
-        <div className={` d-flex pb-3 pt-5`}>
+      <div className={`${style.chenjc} ${style.bread}`}>
+        <div className={`d-flex pb-3`}>
           <div className="pe-4">
             <Link
               href={Work}
               style={{
                 color: selectedLink === 'work' ? '#52796F' : 'black',
-                fontSize: '18px',
+                fontSize: '20px',
                 textDecoration: 'none',
               }}
               onClick={() => setSelectedLink('work')}
@@ -82,7 +82,7 @@ export default function BookPersonalContent() {
               href={Bookrw}
               style={{
                 color: selectedLink === 'review' ? '#52796F' : 'black',
-                fontSize: '18px',
+                fontSize: '20px',
                 textDecoration: 'none',
               }}
               onClick={() => setSelectedLink('review')}

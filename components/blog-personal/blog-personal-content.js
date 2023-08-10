@@ -58,9 +58,6 @@ export default function BlogPersonalContent() {
             <div>
               <Avatar2 nickname={psblog.nickname} />
             </div>
-            <Link href='#' className={`${style.chenred} fs-3`}>
-              <LuDelete />
-            </Link>
           </div>
           <div className="pt-3">
             <div>

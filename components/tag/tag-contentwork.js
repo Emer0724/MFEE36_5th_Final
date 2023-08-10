@@ -31,10 +31,9 @@ export default function TagContentWork() {
   }
 
   return (
-    <div className={`col-xl-7 px-xl-5 d-flex flex-column`}>
-      <div className={`${style.bread}`}>
-      </div>
-      <div className={`${style.chenjc} d-flex pb-3`}>
+    <>
+    <div className={`col-xl-7 px-xl-5 d-flex flex-column`}> 
+      <div className={`${style.chenjc} ${style.chensp} d-flex pb-3`}>
         <div className="pe-4 pb-3">
           <Link
             href="#"
@@ -108,5 +107,6 @@ export default function TagContentWork() {
         </div>
       </>
     </div>
+    </>
   )
 }

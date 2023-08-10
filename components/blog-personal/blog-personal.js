@@ -1,6 +1,4 @@
 import BlogPersonalContent from "./blog-personal-content"
-import style from '@/components/book-personal/book-personal.module.css'
-import Link from "next/link"
 import BlogPersonalNav from "./blog-personal-nav"
 import BlogPersonal2Nav from "./blog-personal2-nav"
 

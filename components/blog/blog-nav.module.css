@@ -2,8 +2,11 @@
     display: none;
 }
 
-@media (max-width:400px) {
 
+@media (max-width:400px) {
+.chenfs {
+    font-size: 16px;
+}
     .chennav {
         display: flex;
         text-decoration: none;

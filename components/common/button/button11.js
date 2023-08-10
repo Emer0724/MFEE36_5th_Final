@@ -13,7 +13,6 @@ export default function Button11({ blog_id }) {
       setMemberData(parsedMemberData)
     }
   }, [])
-
   const user = memberData.member_id
 
   const handleDeleteTrack = async (user) => {

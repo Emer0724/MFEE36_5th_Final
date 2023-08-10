@@ -10,13 +10,13 @@ export default function BlogPersonal2Nav() {
 
   return (
     <div className={`${style.chenjc}`}>
-      <div className={` d-flex pb-3 pt-5`}>
+      <div className={` d-flex pb-3`}>
         <div className="pe-4">
           <Link
             href={Work}
             style={{
               color: selectedLink === Work ? '#52796F' : "black",
-              fontSize: "18px",
+              fontSize: "20px",
               textDecoration: "none"
             }}
             onClick={() => setSelectedLink(Work)}
@@ -29,7 +29,7 @@ export default function BlogPersonal2Nav() {
             href={Bookrw}
             style={{
               color: selectedLink === Bookrw ? '#52796F' : "black",
-              fontSize: "18px",
+              fontSize: "20px",
               textDecoration: "none"
             }}
             onClick={() => setSelectedLink(Bookrw)}

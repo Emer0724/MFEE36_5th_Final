@@ -1,14 +1,68 @@
-import LikeContent from "./like-content";
-import LikeNav from "./like-nav";
-import BlogPersonalNav from "../blog-personal/blog-personal-nav";
-import PhPersonalAvatar from "../blog-personal/ph-personal-avatar";
+import LikeContent from './like-content'
+import style from '@/components/book-personal/book-personal.module.css'
+import LikeNav from './like-nav'
+import Link from 'next/link'
+import { useState } from 'react'
 
 export default function LikeContent1() {
-    return (
-        <div className="col-xl-7 px-xl-5 d-flex flex-column pb-5">
-          <BlogPersonalNav/>
-          <LikeNav/>         
-          <LikeContent/>
+  const [activeNavItem, setActiveNavItem] = useState('最愛')
+
+  const handleNavItemClick = (item) => {
+    setActiveNavItem(item)
+  }
+
+  const Work = '/blog/personal-page/work'
+  const Bookrw = '/blog/personal-page/review'
+  const like = '/blog/favorite'
+  const track = '/blog/track'
+  return (
+    <div className="col-xl-7 px-xl-5 d-flex flex-column pb-5">
+      <div className={style.chendis}>
+        <div className={`${style.chenblognav} d-flex pb-5 pt-5`}>
+          <div>
+            <Link
+              onClick={() => handleNavItemClick('作品')}
+              href={Work}
+              style={{ color: activeNavItem === '作品' ? '#52796F' : 'black' }}
+              className={`fs-5 text-decoration-none`}
+            >
+              作品
+            </Link>
+          </div>
+          <div>
+            <Link
+              onClick={() => handleNavItemClick('書評')}
+              href={Bookrw}
+              style={{ color: activeNavItem === '書評' ? '#52796F' : 'black' }}
+              className={`fs-5 text-decoration-none`}
+            >
+              書評
+            </Link>
+          </div>
+          <div>
+            <Link
+              onClick={() => handleNavItemClick('最愛')}
+              href={like}
+              style={{ color: activeNavItem === '最愛' ? '#52796F' : 'black' }}
+              className={`fs-5 text-decoration-none`}
+            >
+              最愛
+            </Link>
+          </div>
+          <div>
+            <Link
+              onClick={() => handleNavItemClick('追蹤')}
+              href={track}
+              style={{ color: activeNavItem === '追蹤' ? '#52796F' : 'black' }}
+              className={`fs-5 text-decoration-none`}
+            >
+              追蹤
+            </Link>
+          </div>
         </div>
-    )
+      </div>
+      <LikeNav />
+      <LikeContent />
+    </div>
+  )
 }
