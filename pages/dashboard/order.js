@@ -118,11 +118,13 @@ export default function OrderHistory() {
                           <div className={s.fontman1}>
                             <h5>收件者</h5>
                             <h5>收件電話</h5>
+                            <h5>總金額</h5>
                             <h5>建立時間</h5>
                           </div>
                           <div className={s.fontman1}>
                             <h5>{v.customer_name}</h5>
                             <h5>{v.customer_phone}</h5>
+                            <h5>{v.total_price}</h5>
                             <h5>{time}</h5>
                           </div>
                         </div>

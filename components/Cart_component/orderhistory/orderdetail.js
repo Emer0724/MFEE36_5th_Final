@@ -12,7 +12,9 @@ export default function orderdetail({data1}) {
         {data1.map((v,i)=>{
             return(
                 <div className={s.detaillist1} key={i}>
-                    <div className={s.detailphoto}><Image src={`/all_img/book_pic/${encodeURIComponent(v.pic)}`} width={100} height={100} alt='icon' className={s.detailimg}/></div>
+                    <div className={s.detailphoto} data-bs-toggle="tooltip"
+                  data-bs-placement="bottom"
+                  title={v.book_name}><Image src={`/all_img/book_pic/${encodeURIComponent(v.pic)}`} width={100} height={100} alt='icon' className={s.detailimg}/></div>
                     <div className={s.detaillist2}>
                     {v.status_id !== null
                         ?

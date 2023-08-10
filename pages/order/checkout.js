@@ -200,7 +200,12 @@ export default function OrderCheckout() {
                 placeholder="xxxx"
                 id="card4"
                 value={card4}
-                onChange={(e) => setCard4(e.target.value)}
+                onChange={(e) => {
+                  if (e.target.value.length === 4) {
+                    document.getElementById('date1').focus()
+                  }
+                  setCard4(e.target.value)
+                }}
                 onBlur={judgecard}
                 required
               />
@@ -215,9 +220,15 @@ export default function OrderCheckout() {
                   type="text"
                   className={s.datestyle}
                   value={date1}
+                  id="date1"
                   maxLength={2}
                   placeholder="MM"
-                  onChange={(e) => setDate1(e.target.value)}
+                  onChange={(e) => {
+                  if (e.target.value.length === 2) {
+                    document.getElementById('date2').focus()
+                  }
+                  setDate1(e.target.value)
+                }}
                   onBlur={judgemonth}
                   required
                 />
@@ -226,9 +237,15 @@ export default function OrderCheckout() {
                   type="text"
                   className={s.datestyle}
                   value={date2}
+                  id="date2"
                   maxLength={2}
                   placeholder="YY"
-                  onChange={(e) => setDate2(e.target.value)}
+                  onChange={(e) => {
+                  if (e.target.value.length === 2) {
+                    document.getElementById('cvv').focus()
+                  }
+                  setDate2(e.target.value)
+                  }}
                   onBlur={judgeyear}
                   required
                 />
@@ -244,6 +261,7 @@ export default function OrderCheckout() {
                 type="text"
                 className={s.securestyle}
                 value={cvv}
+                id="cvv"
                 maxLength={3}
                 placeholder="CVV"
                 onChange={(e) => setCvv(e.target.value)}

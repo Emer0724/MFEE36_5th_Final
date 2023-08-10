@@ -58,7 +58,7 @@ export default function Carousel() {
                   width: '100%',
                   height: '400px',
                   borderRadius: '15px',
-                  backgroundImage: `url('/used-img/banner1 .jpg')`,
+                  backgroundImage: `url('/used-img/banner1.jpg')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
@@ -71,7 +71,7 @@ export default function Carousel() {
                   width: '100%',
                   height: '400px',
                   borderRadius: '15px',
-                  backgroundImage: `url('/used-img/banner2 .jpg')`,
+                  backgroundImage: `url('/used-img/banner2.jpg')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
@@ -85,7 +85,7 @@ export default function Carousel() {
                   width: '100%',
                   height: '400px',
                   borderRadius: '15px',
-                  backgroundImage: `url('/used-img/banner3 .jpg')`,
+                  backgroundImage: `url('/used-img/banner3.jpg')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
@@ -127,7 +127,7 @@ export default function Carousel() {
                   width: '100%',
                   height: '400px',
                   borderRadius: '15px',
-                  backgroundImage: `url('/used-img/banner6 .jpg')`,
+                  backgroundImage: `url('/used-img/banner6.jpg')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}

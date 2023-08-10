@@ -92,14 +92,15 @@ export default function CurtProduct({ data, handleDataChange }) {
     })
       .then((r) => r.json())
       .then((resultdel) => {
+        console.log(resultdel);
         if (resultdel.message === 'Item deleted from cart.') {
           handleDataChange((prevData) =>
             prevData.filter(
               (item) => item.ISBN !== ISBN || item.status_id !== status_id
             )
           )
-          getcount().then((data) => setcount(data))
         }
+        getcount().then((data) => setcount(data))
       })
       .catch((error) => {
         console.error('錯誤訊息:', error)
