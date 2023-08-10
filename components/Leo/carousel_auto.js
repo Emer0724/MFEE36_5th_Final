@@ -58,7 +58,7 @@ export default function Carousel() {
                   width: '100%',
                   height: '400px',
                   borderRadius: '15px',
-                  backgroundImage: `url('/Leo-image/carousel-1.jpg')`,
+                  backgroundImage: `url('/used-img/banner1 .jpg')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
@@ -71,14 +71,12 @@ export default function Carousel() {
                   width: '100%',
                   height: '400px',
                   borderRadius: '15px',
-                  backgroundImage: `url('/Leo-image/carousel-2.jpg')`,
+                  backgroundImage: `url('/used-img/banner2 .jpg')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
                 className={activeSlideIndex === 1 ? css.active : css.no_active}
-              >
-                1
-              </div>
+              ></div>
             </SwiperSlide>
             <SwiperSlide>
               {' '}
@@ -87,7 +85,7 @@ export default function Carousel() {
                   width: '100%',
                   height: '400px',
                   borderRadius: '15px',
-                  backgroundImage: `url('/Leo-image/carousel-3.jpg')`,
+                  backgroundImage: `url('/used-img/banner3 .jpg')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
@@ -101,7 +99,7 @@ export default function Carousel() {
                   width: '100%',
                   height: '400px',
                   borderRadius: '15px',
-                  backgroundImage: `url('/Leo-image/carousel-4.jpg')`,
+                  backgroundImage: `url('/used-img/banner4.jpg')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
@@ -115,7 +113,7 @@ export default function Carousel() {
                   width: '100%',
                   height: '400px',
                   borderRadius: '15px',
-                  backgroundImage: `url('/Leo-image/carousel-5.jpg')`,
+                  backgroundImage: `url('/used-img/banner5.jpg')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
@@ -129,27 +127,27 @@ export default function Carousel() {
                   width: '100%',
                   height: '400px',
                   borderRadius: '15px',
-                  backgroundImage: `url('/Leo-image/carousel-6.jpg')`,
+                  backgroundImage: `url('/used-img/banner6 .jpg')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
                 className={activeSlideIndex === 5 ? css.active : css.no_active}
               ></div>
             </SwiperSlide>
-            <SwiperSlide>
+            {/* <SwiperSlide>
               {' '}
               <div
                 style={{
                   width: '100%',
                   height: '400px',
                   borderRadius: '15px',
-                  backgroundImage: `url('/Leo-image/carousel-7.jpg')`,
+                  backgroundImage: `url('/used-img/banner7.jpg')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
                 className={activeSlideIndex === 6 ? css.active : css.no_active}
               ></div>
-            </SwiperSlide>
+            </SwiperSlide> */}
           </Swiper>
         </div>
       </div>

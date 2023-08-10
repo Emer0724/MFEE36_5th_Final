@@ -10,10 +10,9 @@ export default function MemberBreadcrumbs_2() {
   const router = useRouter()
   const [notify, setnotify] = useState('')
   useEffect(() => {
-    if(localStorage.getItem('auth')){
+    if (localStorage.getItem('auth')) {
       setnotify(JSON.parse(localStorage.getItem('auth')).notify)
     }
-   
   }, [])
   // console.log(router.asPath)
   // console.log(router.asPath === '/dashboard/used/display')

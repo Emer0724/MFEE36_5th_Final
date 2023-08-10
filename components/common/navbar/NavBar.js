@@ -19,6 +19,8 @@ export default function NavBar1() {
   const dropdownRef = useRef(null)
   const avatarRef = useRef(null)
   const BellRef = useRef(null)
+  const defaultavatarRef = useRef()
+  const avatarALLRef = useRef()
   const { auth, setAuth, logout, setphoto, photo } = useContext(AuthContext)
   const [newimg, setnewimg] = useState('')
   const [count, setcount] = useState(0)
@@ -36,14 +38,16 @@ export default function NavBar1() {
   useEffect(() => {
     if (localStorage.getItem('auth')) {
       setIsLoggedIn(true)
+      setnickname(JSON.parse(localStorage.getItem('auth')).nickname)
+      if (JSON.parse(localStorage.getItem('auth')).mem_avatar) {
+        setphoto(JSON.parse(localStorage.getItem('auth')).mem_avatar)
+      }
       //轉後台
-      if (JSON.parse(localStorage.getItem('auth')).member_id===1026) {
+      if (JSON.parse(localStorage.getItem('auth')).member_id === 1026) {
         router.push(`${process.env.WEB_IMG}/used-book/backstage`)
       }
-      setnickname(JSON.parse(localStorage.getItem('auth')).nickname)
-      // console.log(JSON.parse(localStorage.getItem('auth')).nickname)
 
-      
+      // console.log(JSON.parse(localStorage.getItem('auth')).nickname)
     } else {
       if (router.asPath.includes('dashboard')) {
         router.push('/member/login')
@@ -106,13 +110,14 @@ export default function NavBar1() {
       Dropdown &&
       dropdownRef.current &&
       !dropdownRef.current.contains(event.target) &&
-      !avatarRef.current.contains(event.target) &&
-      !BellRef.current.contains(event.target)
+      !avatarALLRef.current.contains(event.target)
     ) {
       setDropdown(false)
     }
   }
-
+  // !avatarRef.current.contains(event.target) &&
+  // !BellRef.current.contains(event.target) &&
+  // !defaultavatarRef.current.contains(event.target)
   useEffect(() => {
     window.addEventListener('click', handleDropdown)
 
@@ -177,7 +182,7 @@ export default function NavBar1() {
           </Link>
           <Badge className={styles.carticon} count={count}></Badge>
           {/* Add a class to separate login button from other icons */}
-          <div className={styles.loginWrapper}>
+          <div className={styles.loginWrapper} ref={avatarALLRef}>
             {isLoggedIn ? (
               <>
                 {photo ? (
@@ -192,7 +197,7 @@ export default function NavBar1() {
                       height={30}
                       className={`${styles.Licon} ${styles.avatar}`}
                       alt="icon"
-                      ref={avatarRef}
+                      // ref={avatarRef}
                     />
                   </div>
                 ) : (
@@ -204,6 +209,7 @@ export default function NavBar1() {
                     alt="icon"
                     onClick={() => isDropdown(Dropdown)}
                     role="presentation"
+                    // ref={defaultavatarRef}
                   />
                 )}
 
@@ -212,7 +218,7 @@ export default function NavBar1() {
                     className={styles.notify}
                     onClick={() => isDropdown(Dropdown)}
                     role="presentation"
-                    ref={BellRef}
+                    // ref={BellRef}
                   >
                     {' '}
                     <div className={styles.bell}>
@@ -233,7 +239,11 @@ export default function NavBar1() {
                 )}
               </>
             ) : (
-              <Link href={`/member/login?returnTo=${encodeURIComponent(`${router.asPath}`)}`}>
+              <Link
+                href={`/member/login?returnTo=${encodeURIComponent(
+                  `${router.asPath}`
+                )}`}
+              >
                 <span className={styles.loginBtn}>登入</span>
               </Link>
             )}

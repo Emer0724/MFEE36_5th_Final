@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef } from 'react'
+import React, { useEffect, useReducer, useRef, useCallback } from 'react'
 import { useState } from 'react'
 import MemberNav from '@/components/common/member-nav/member-nav'
 import Member_info from '@/components/Leo/member/member_info'
@@ -12,6 +12,7 @@ import { useReactToPrint } from 'react-to-print'
 import Head from 'next/head'
 import Image from 'next/image'
 import no_book from '@/assets/used-svg/no_book.svg'
+import useDebounce from '@/hooks/useDebounce'
 
 // const books = {
 //   ISBN: 9789861371955,
@@ -40,6 +41,7 @@ export default function Display() {
   const [showQRcode, setshowQRcode] = useState(false)
   const [img, setimg] = useState(true)
   const [backtoprofile, setbacktoprofile] = useState(false)
+  const [bookinput, setbookinput] = useState([])
   // const history = useNavigate()
 
   useEffect(() => {
@@ -110,6 +112,33 @@ export default function Display() {
       setSearch_error('查無此本書')
     }
   }
+  //input搜尋
+  const f1 = useCallback(() => {
+    getbookinput(inputValue)
+    // console.log('Debounce2 發 request ----------------')
+  }, [inputValue])
+
+  useDebounce(f1, 700)
+
+  const getbookinput = async (inputValue) => {
+    // console.log(inputValue)
+    if (inputValue) {
+      const getbook_detal1 = await fetch(
+        `${process.env.API_SERVER}/used/display/book_info1?ISBN=${inputValue}`
+      )
+
+      const getbook_detal2 = await getbook_detal1.json()
+
+      setbookinput(getbook_detal2)
+    } else {
+      setbookinput([])
+    }
+  }
+
+  // console.log(getbook_detal2.length)
+  // if (getbook_detal2.length === 0) {
+  //   setSearch_error('查無此本書')
+  // }
 
   //新增二手書資料
   const post_up = async () => {
@@ -219,33 +248,58 @@ export default function Display() {
                 <div className="d-flex flex-column align-items-center w-100   ">
                   {book ? (
                     <>
-                      <div className="my-3 d-flex used-display-search ">
-                        <div>
-                          <span className="color-tx-1 fw-bold textp-20px  letter-spacing  used-search-text">
-                            ISBN :
-                          </span>
-                          <input
-                            type="text"
-                            className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px used-search-text"
-                            placeholder="請輸入ISBN"
-                            value={inputValue}
-                            onChange={(e) => {
-                              setInputValue(e.target.value)
-                            }}
-                            size={12}
-                          />
-                        </div>
+                      <div className="used-pisplay-list justify-content-center">
+                        <div className="my-3 d-flex used-display-search justify-content-center ">
+                          <div>
+                            <span className="color-tx-1 fw-bold textp-20px  letter-spacing  used-search-text">
+                              ISBN :
+                            </span>
+                            <input
+                              type="text"
+                              className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px used-search-text"
+                              placeholder="請輸入ISBN"
+                              value={inputValue}
+                              onChange={(e) => {
+                                setInputValue(e.target.value)
+                                // getbookinput(e.target.value)
+                              }}
+                              size={12}
+                            />
+                          </div>
 
-                        <button
-                          className="btn color-bg-4 border-radius-5px py-0  textp-20px  used-search-text "
-                          // onClick={getbook}
-                          onClick={getbook}
-                        >
-                          搜尋
-                        </button>
-                      </div>
-                      <div className="text-danger letter-spacing">
-                        {search_error}
+                          <button
+                            className="btn color-bg-4 border-radius-5px py-0  textp-20px  used-search-text "
+                            // onClick={getbook}
+                            onClick={getbook}
+                          >
+                            搜尋
+                          </button>
+                        </div>
+                        <div className="text-danger letter-spacing">
+                          {search_error}
+                        </div>
+                        {bookinput.length > 1 &&
+                        book.ISBN !== bookinput.ISBN ? (
+                          <div className="w-100 used-display-ltem-position d-flex justify-content-center ">
+                            <ul className="list-group ">
+                              {bookinput.map((v, i) => {
+                                return (
+                                  <li
+                                    className="list-group-item used-display-ltem"
+                                    key={v.ISBN}
+                                    style={{ width: '400px' }}
+                                    role="presentation"
+                                    onClick={() => setInputValue(v.ISBN)}
+                                  >
+                                    {v.book_name}
+                                  </li>
+                                )
+                              })}
+                            </ul>
+                          </div>
+                        ) : (
+                          ''
+                        )}
                       </div>
 
                       <Image
@@ -278,33 +332,57 @@ export default function Display() {
                     </>
                   ) : (
                     <>
-                      <div className="my-3 d-flex used-display-search ">
-                        <div>
-                          <span className="color-tx-1 fw-bold textp-20px  letter-spacing  used-search-text">
-                            ISBN :
-                          </span>
-                          <input
-                            type="text"
-                            className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px used-search-text"
-                            placeholder="請輸入ISBN"
-                            value={inputValue}
-                            onChange={(e) => {
-                              setInputValue(e.target.value)
-                            }}
-                            size={12}
-                          />
-                        </div>
+                      <div className="used-pisplay-list justify-content-center">
+                        <div className="my-3 d-flex used-display-search justify-content-center ">
+                          <div>
+                            <span className="color-tx-1 fw-bold textp-20px  letter-spacing  used-search-text">
+                              ISBN :
+                            </span>
+                            <input
+                              type="text"
+                              className="border-0  color-bg-6 ps-3 mx-3 textp-20px border-radius-5px used-search-text"
+                              placeholder="請輸入ISBN"
+                              value={inputValue}
+                              onChange={(e) => {
+                                setInputValue(e.target.value)
+                                // getbookinput(e.target.value)
+                              }}
+                              size={12}
+                            />
+                          </div>
 
-                        <button
-                          className="btn color-bg-4 border-radius-5px py-0  textp-20px  used-search-text "
-                          // onClick={getbook}
-                          onClick={getbook}
-                        >
-                          搜尋
-                        </button>
-                      </div>
-                      <div className="text-danger letter-spacing">
-                        {search_error}
+                          <button
+                            className="btn color-bg-4 border-radius-5px py-0  textp-20px  used-search-text "
+                            // onClick={getbook}
+                            onClick={getbook}
+                          >
+                            搜尋
+                          </button>
+                        </div>
+                        <div className="text-danger letter-spacing">
+                          {search_error}
+                        </div>
+                        {bookinput.length >= 1 ? (
+                          <div className="w-100 used-display-ltem-position d-flex justify-content-center ">
+                            <ul className="list-group ">
+                              {bookinput.map((v, i) => {
+                                return (
+                                  <li
+                                    className="list-group-item used-display-ltem"
+                                    key={v.ISBN}
+                                    style={{ width: '400px' }}
+                                    role="presentation"
+                                    onClick={() => setInputValue(v.ISBN)}
+                                  >
+                                    {v.book_name}
+                                  </li>
+                                )
+                              })}
+                            </ul>
+                          </div>
+                        ) : (
+                          ''
+                        )}
                       </div>
                     </>
                   )}

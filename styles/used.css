@@ -199,6 +199,23 @@ background-position: bottom;
   padding-top: 200px;
   z-index: 10;
 }
+.used-pisplay-list{
+  position: relative;
+  width: 100%;
+}
+.used-display-ltem-position{
+  position: absolute;
+  z-index: 20;
+}
+.used-display-ltem{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.used-display-ltem:hover{
+background-color: #eeeeee;
+}
 .used_print_only{
   display: none;
 }

@@ -43,7 +43,7 @@ export default function ChangebookMessage() {
     } else {
       getData()
     }
-  }, [router.query])
+  }, [])
   // console.log(router.query)
   const getData = async () => {
     const authToken = JSON.parse(localStorage.getItem('auth')).token
@@ -60,13 +60,12 @@ export default function ChangebookMessage() {
     )
     const getdata2 = await getdata1.json()
 
-    
     // console.log(getdata2)
     // console.log(getdata2.notify)
     const auth_old = JSON.parse(localStorage.getItem('auth'))
     const auth_old_new = JSON.stringify({
       ...auth_old,
-      notify: getdata2.notify
+      notify: getdata2.notify,
     })
     localStorage.setItem('auth', auth_old_new)
 

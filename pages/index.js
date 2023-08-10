@@ -56,7 +56,7 @@ export default function Home() {
   //得書本資料
   const getbookdata = async () => {
     const getbookdata1 = await fetch(
-      'http://localhost:3055/used/index/book_info/'
+      `${process.env.API_SERVER}/used/index/book_info/`
     )
     const getbookdata2 = await getbookdata1.json()
     // console.log(getbookdata2[0])
