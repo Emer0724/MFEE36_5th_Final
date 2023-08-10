@@ -38,7 +38,9 @@ export default function ArticleContentElement() {
   }
   return (
     <>
-      <div className={`${style.chenpt} col-xl-7 px-xl-5 d-flex flex-column pb-5`}>
+      <div
+        className={`${style.chenpt} col-xl-7 px-xl-5 d-flex flex-column pb-5`}
+      >
         <div className="row">
           <div className="border-bottom border-dark-subtle">
             <div>
@@ -81,9 +83,9 @@ export default function ArticleContentElement() {
             <div className="pb-3">
               {article.length !== 0 && article[0][0].blog_img ? (
                 <Image
-                  src={`http://localhost:3055/blogimg/${encodeURIComponent(
+                  src={`http://localhost:3055/blogimg/${
                     article.length !== 0 && article[0][0].blog_img
-                  )}`}
+                  }`}
                   width={650}
                   height={400}
                   className={style.blogimg}

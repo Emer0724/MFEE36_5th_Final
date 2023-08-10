@@ -8,3 +8,12 @@
     font-weight: bold;
     box-shadow: 1px 1px 1px 1px #c2c2c2c2;
 }
+
+@media (max-width:400px) {
+    .chenbutton3 {
+        width: 80px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+}

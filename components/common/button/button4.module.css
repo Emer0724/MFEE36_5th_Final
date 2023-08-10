@@ -12,3 +12,12 @@
 .chenbut {
     width: 400px;
 }
+
+@media (max-width:400px) {
+    .chenbutton3 {
+        width: 80px;
+        height: 30px;
+        font-size: 14px;
+    }
+    
+}
