@@ -13,7 +13,8 @@ export default function Favorite(result) {
     info = user_info
     id = info.member_id
   }
-  console.log(info)
+  console.log(user_info)
+  console.log(id)
 
   // const member_id = id.toString()
   const [mark, setMark] = useState(false)
