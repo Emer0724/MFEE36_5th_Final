@@ -1,9 +1,9 @@
-import style from '@/components/book-personal/book-personal.module.css';
-import { useState } from 'react';
-import Link from 'next/link';
+import style from '@/components/book-personal/book-personal.module.css'
+import { useState } from 'react'
+import Link from 'next/link'
 
 export default function BlogPersonalNav() {
-  const [activeNavItem, setActiveNavItem] = useState('作品'); // 默认值为'作品'
+  const [activeNavItem, setActiveNavItem] = useState('作品')
 
   const handleNavItemClick = (item) => {
     setActiveNavItem(item);

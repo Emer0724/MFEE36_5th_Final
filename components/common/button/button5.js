@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import style from '@/components/common/button/button5.module.css';
+import React, { useState, useEffect } from 'react'
+import style from '@/components/common/button/button5.module.css'
 
 export default function Button5({ blog_sid }) {
-  const [isAddedToFavorites, setIsAddedToFavorites] = useState(false);
-  const [memberData, setMemberData] = useState([]);
+  const [isAddedToFavorites, setIsAddedToFavorites] = useState(false)
+  const [memberData, setMemberData] = useState([])
 
   useEffect(() => {
     // 從本地儲存空間獲取會員資料
-    const storedMemberData = localStorage.getItem('auth');
+    const storedMemberData = localStorage.getItem('auth')
 
     if (storedMemberData) {
-      const parsedMemberData = JSON.parse(storedMemberData);
+      const parsedMemberData = JSON.parse(storedMemberData)
       setMemberData(parsedMemberData);
     }
   }, []);
@@ -58,7 +58,7 @@ export default function Button5({ blog_sid }) {
         .then((response) => response.json())
         .then((data) => {
           setIsAddedToFavorites(false);
-          // 刪除追蹤後，同時也刪除本地儲存中的狀態
+          // 刪除後，同時也刪除本地儲存中的狀態
           localStorage.removeItem(`like_${blog_sid}`);
         })
         .catch((error) => {

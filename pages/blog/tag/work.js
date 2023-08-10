@@ -2,11 +2,14 @@ import TagContentWork from '@/components/tag/tag-contentwork'
 import ToolBar from '@/components/blog/toolbar'
 import FollowColumn from '@/components/blog/follow-column'
 import style from '@/components/book-personal/book-personal.module.css'
-
+import BlogNav from '@/components/blog/blog-nav'
 export default function Love() {
   return (
     <>
-      <div className={`${style.blogcontent} container d-flex pt-5`}>
+      <div className={`${style.blogcontent} container pt-xl-5 d-flex`}>
+        <div className='pb-5'>
+          <BlogNav />
+        </div>
         <ToolBar />
         <TagContentWork />
         <FollowColumn />

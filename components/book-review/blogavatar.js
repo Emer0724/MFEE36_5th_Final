@@ -1,8 +1,6 @@
 import stlye from '@/components/book-review/blogavatar.module.css'
-import Link from 'next/link'
 import Image from 'next/image'
 import people from '@/assets/used-svg/people.svg'
-import { useState, useEffect } from 'react'
 
 export default function Avatar({ nickname, mem_avatar }) {
   return (

@@ -1,5 +1,5 @@
 import BookReview from './book-review1'
-import Link from 'antd/es/typography/Link'
+import Link from 'next/link'
 import Button1 from '../common/button/button1'
 import { useState } from 'react'
 import style from '@/components/blog/blog-nav.module.css'

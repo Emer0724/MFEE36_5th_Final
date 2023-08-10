@@ -1,7 +1,7 @@
 import Like from './like'
 import style from '@/components/blog/blog-nav.module.css'
 import Button1 from '../common/button/button1'
-import Link from 'antd/es/typography/Link'
+import Link from 'next/link'
 import { useState } from 'react'
 //實體圖
 import { BiSolidBook } from 'react-icons/bi'
