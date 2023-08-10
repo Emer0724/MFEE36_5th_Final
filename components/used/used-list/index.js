@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import styles from './usedList.module.css'
 import Popup_window from '../popup_window'
 import { useRouter } from 'next/router'
+import countContext from '@/context/countContext'
 
 export default function UsedList({ ISBN }) {
   console.log(ISBN)
   const router = useRouter()
   const [datas, setDatas] = useState([])
   const [pop, setpop] = useState(false)
+  const { getcount, setcount, count } = useContext(countContext)
 
   //登入驗證
   // const user_info = JSON.parse(localStorage.getItem('auth'))
@@ -67,7 +69,7 @@ export default function UsedList({ ISBN }) {
     let user = ''
     if (localStorage.getItem('auth')) {
       user = JSON.parse(localStorage.getItem('auth'))
-   return user
+      return user
     } else {
       return user !== null
     }
@@ -81,16 +83,16 @@ export default function UsedList({ ISBN }) {
 
   const cartUsed = (ISBN, status_id) => {
     const userLogInStatus = check()
-    console.log(userLogInStatus);
-    const member = userLogInStatus.member_id;
-    console.log(member);
+    console.log(userLogInStatus)
+    const member = userLogInStatus.member_id
+    console.log(member)
     if (userLogInStatus) {
       fetch(`${process.env.API_SERVER}/market/addToCartUsed`, {
         method: 'POST',
         body: JSON.stringify({
-          member_id:member,
+          member_id: member,
           ISBN: ISBN,
-          status_id:status_id,
+          status_id: status_id,
         }),
         headers: {
           'Content-Type': 'application/json',
@@ -101,6 +103,7 @@ export default function UsedList({ ISBN }) {
           // 根據伺服器回傳的資料處理相應的動作
           console.log(cartData)
           alert(`成功加入購物車`)
+          getcount().then((data) => setcount(data))
         })
         .catch((error) => {
           console.error('Error:', error)
@@ -133,7 +136,10 @@ export default function UsedList({ ISBN }) {
                 <td className={styles.font}>{v.price}</td>
                 <td className={styles.font}>{v.stock}</td>
                 <td className={styles.font}>
-                  <button className={styles.btn} onClick={() => cartUsed(ISBN,v.status_id)}>
+                  <button
+                    className={styles.btn}
+                    onClick={() => cartUsed(ISBN, v.status_id)}
+                  >
                     加入購物車
                   </button>
                 </td>

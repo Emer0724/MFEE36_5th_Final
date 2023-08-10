@@ -9,6 +9,7 @@ import Membericon from '@/assets/Nav_Image/Subtract.svg'
 import Searchbar from './searchbar'
 import DropdownMenu from './dropdown-menu'
 import AuthContext from '@/context/AuthContext'
+import countContext from '@/context/countContext'
 import { useContext } from 'react'
 import { BsBellFill } from 'react-icons/bs'
 import { useRouter } from 'next/router'
@@ -17,8 +18,9 @@ import { Avatar, Badge } from 'antd'
 export default function NavBar1() {
   const router = useRouter()
   const { auth, setAuth, logout, setphoto, photo } = useContext(AuthContext)
+  const { getcount, setcount, count } = useContext(countContext)
   const [newimg, setnewimg] = useState('')
-  const [count, setcount] = useState(0)
+  // const [count, setcount] = useState(0)
 
   const NavctName = ['商城', '二手書', '部落格', '關於我們']
   const NavEnName = ['STORE', 'USED STORE', 'BLOG', 'ABOUT US']
@@ -50,26 +52,26 @@ export default function NavBar1() {
   //   setphoto(photo)
   // }, [photo])
 
-  useEffect(() => {
-    if (localStorage.getItem('auth')) {
-      const member1 = JSON.parse(localStorage.getItem('auth')).member_id
-      console.log(member1)
-      fetch(`${process.env.API_SERVER}/cart/count?member=${member1}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then((r) => r.json())
-        .then((result) => {
-          console.log(result)
-          const counter = result.map((v) => v.count)
-          const totalcount = counter.reduce((v, c) => v + c, 0)
-          setcount(totalcount)
-        })
-    }
-    //需要一個回呼函式 到商城
-  }, [])
+  // useEffect(() => {
+  //   if (localStorage.getItem('auth')) {
+  //     const member1 = JSON.parse(localStorage.getItem('auth')).member_id
+  //     console.log(member1)
+  //     fetch(`${process.env.API_SERVER}/cart/count?member=${member1}`, {
+  //       method: 'GET',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     })
+  //       .then((r) => r.json())
+  //       .then((result) => {
+  //         console.log(result)
+  //         const counter = result.map((v) => v.count)
+  //         const totalcount = counter.reduce((v, c) => v + c, 0)
+  //         setcount(totalcount)
+  //       })
+  //   }
+  //   //需要一個回呼函式 到商城
+  // }, [])
 
   const [nickname, setnickname] = useState('')
   const [searchbaropen, setSearchbaropen] = useState(false)
