@@ -6,14 +6,19 @@ import AuthContext from '@/context/AuthContext'
 import { useContext } from 'react'
 
 export default function MemberBreadcrumbs_2() {
-  const { auth } = useContext(AuthContext)
+  const { auth, notify, setnotify } = useContext(AuthContext)
   const router = useRouter()
-  const [notify, setnotify] = useState('')
+  // const [notify, setnotify] = useState('')
+  const [first, setfirst] = useState(false)
+
   useEffect(() => {
-    if (localStorage.getItem('auth')) {
-      setnotify(JSON.parse(localStorage.getItem('auth')).notify)
-    }
+    setfirst(true)
   }, [])
+  // useEffect(() => {
+  //   if (localStorage.getItem('auth')) {
+  //     setnotify(JSON.parse(localStorage.getItem('auth')).notify)
+  //   }
+  // }, [first])
   // console.log(router.asPath)
   // console.log(router.asPath === '/dashboard/used/display')
 

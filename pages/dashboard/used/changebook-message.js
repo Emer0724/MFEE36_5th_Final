@@ -15,8 +15,12 @@ import UsedPintInfo from '@/components/used/used_printinfo'
 import { useReactToPrint } from 'react-to-print'
 import Loading from '@/components/common/loading'
 import Popup_window from '@/components/used/popup_window'
+import { useContext } from 'react'
+import AuthContext from '@/context/AuthContext'
 
 export default function ChangebookMessage() {
+  const { notify, setnotify } = useContext(AuthContext)
+
   const printref = useRef()
   const router = useRouter()
   const [usedlist, setusedlist] = useState(false)
@@ -68,6 +72,7 @@ export default function ChangebookMessage() {
       notify: getdata2.notify,
     })
     localStorage.setItem('auth', auth_old_new)
+    setnotify(getdata2.notify)
 
     setData(getdata2)
     setTimeout(() => {

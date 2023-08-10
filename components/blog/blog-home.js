@@ -28,7 +28,7 @@ export default function BlogHome({
           <div className="d-flex justify-content-center ">
             {blog_img ? (
               <Image
-                src={`/all_img/img/${blog_img}`}
+                src={`${process.env.API_SERVER}/blogimg/${blog_img}`}
                 className={`${style.blogimg}`}
                 width={100}
                 height={100}
@@ -43,7 +43,7 @@ export default function BlogHome({
 
       <div className="pt-3 w-100">
         <Link
-          href="#"
+          href={`/blog/${blog_sid}`}
           className="text-black text-decoration-none text-center w-100"
         >
           <p className={style.blog_limit}>{blog_post}</p>

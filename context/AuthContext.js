@@ -18,6 +18,7 @@ export const AuthContextProvider = function ({ children }) {
   const [auth, setAuth] = useState({ ...noLoginState })
   const [photo, setphoto] = useState('')
   const [first, setfirst] = useState(false)
+  const [notify, setnotify] = useState(0)
 
   // console.log('photo', photo)
 
@@ -55,8 +56,23 @@ export const AuthContextProvider = function ({ children }) {
     }
   }, [first])
 
+  useEffect(() => {
+    const storedAuth = localStorage.getItem('auth')
+    if (storedAuth) {
+      const notify = JSON.parse(localStorage.getItem('auth')).notify
+      if (notify) {
+        // console.log(`${process.env.API_SERVER}`)
+        // console.log(`${img}`)
+
+        setnotify(notify)
+      }
+    }
+  }, [first])
+
   return (
-    <AuthContext.Provider value={{ auth, setAuth, logout, setphoto, photo }}>
+    <AuthContext.Provider
+      value={{ auth, setAuth, logout, setphoto, photo, notify, setnotify }}
+    >
       {children}
     </AuthContext.Provider>
   )

@@ -42,6 +42,7 @@ export default function Display() {
   const [img, setimg] = useState(true)
   const [backtoprofile, setbacktoprofile] = useState(false)
   const [bookinput, setbookinput] = useState([])
+
   // const history = useNavigate()
 
   useEffect(() => {
@@ -118,7 +119,7 @@ export default function Display() {
     // console.log('Debounce2 發 request ----------------')
   }, [inputValue])
 
-  useDebounce(f1, 700)
+  useDebounce(f1, 500)
 
   const getbookinput = async (inputValue) => {
     // console.log(inputValue)
@@ -362,7 +363,8 @@ export default function Display() {
                         <div className="text-danger letter-spacing">
                           {search_error}
                         </div>
-                        {bookinput.length >= 1 ? (
+                        {bookinput.length >= 1 &&
+                        bookinput.some((v) => v.ISBN !== inputValue) ? (
                           <div className="w-100 used-display-ltem-position d-flex justify-content-center ">
                             <ul className="list-group ">
                               {bookinput.map((v, i) => {
@@ -372,7 +374,9 @@ export default function Display() {
                                     key={v.ISBN}
                                     style={{ width: '400px' }}
                                     role="presentation"
-                                    onClick={() => setInputValue(v.ISBN)}
+                                    onClick={() => {
+                                      setInputValue(v.ISBN)
+                                    }}
                                   >
                                     {v.book_name}
                                   </li>

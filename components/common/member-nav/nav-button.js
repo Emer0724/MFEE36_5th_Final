@@ -6,15 +6,19 @@ import AuthContext from '@/context/AuthContext'
 import { useContext } from 'react'
 
 export default function NavButton({ id, info, url, router1 }) {
-  const [notify, setnotify] = useState('')
-  const { auth } = useContext(AuthContext)
+  // const [notify, setnotify] = useState('')
+  const { auth, notify, setnotify } = useContext(AuthContext)
   const router = useRouter()
-  useEffect(() => {
-    if(localStorage.getItem('auth')){
-      setnotify(JSON.parse(localStorage.getItem('auth')).notify)
-    }
-   
-  }, [])
+  // const [first, setfirst] = useState(false)
+
+  // useEffect(() => {
+  //   setfirst(true)
+  // }, [])
+  // useEffect(() => {
+  //   if (localStorage.getItem('auth')) {
+  //     setnotify(JSON.parse(localStorage.getItem('auth')).notify)
+  //   }
+  // }, [first])
   //預設分頁
   const pageRouter = useRouter()
   const page = pageRouter.pathname.includes(router1)

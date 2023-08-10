@@ -11,6 +11,7 @@ export default function Member_info() {
   const router = useRouter()
   const [auth1, setAuth1] = useState([])
   const [img, setnewimg] = useState([])
+
   useEffect(() => {
     const getauth = () => {
       if (localStorage.getItem('auth')) {

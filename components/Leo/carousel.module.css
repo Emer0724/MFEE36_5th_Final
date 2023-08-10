@@ -5,7 +5,7 @@
    color: #3F7F3A;
 }
 .hidden{
-   width: 100;
+   width: 100%;
    overflow: hidden;
    /* height: 600px; */
 }
