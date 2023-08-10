@@ -76,7 +76,9 @@ export default function Carousel() {
                   backgroundPosition: 'center',
                 }}
                 className={activeSlideIndex === 1 ? css.active : css.no_active}
-              ></div>
+              >
+                .
+              </div>
             </SwiperSlide>
             <SwiperSlide>
               {' '}
