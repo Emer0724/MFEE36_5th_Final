@@ -217,7 +217,7 @@ export default function checkForm() {
     borderRadius:"8px",
     border:"1px solid #52796F",
     background:"#EEEEEE",
-    padding:"5px",
+    padding:"20px",
     fontSize:"20px",
     marginTop:"20px"
   }
@@ -229,13 +229,15 @@ export default function checkForm() {
     marginBottom:"100px",
   }
   const labelstyle = {
-  fontSize:"20px"
+  fontSize:"24px"
   }
   const selectstyle = {
     width:"350px",
     height:"60px",
     borderRadius:"8px",
     border:"1px solid #52796F",
+    padding:"10px 20px",
+    fontSize:"20px",
     marginTop:"20px"
   }
   const selectstyle1 = {
@@ -243,6 +245,8 @@ export default function checkForm() {
     height:"60px",
     borderRadius:"8px",
     border:"1px solid #52796F",
+    padding:"10px 20px",
+    fontSize:"20px",
     marginTop:"20px"
   }
   const buttonStyle2 = {
@@ -292,9 +296,9 @@ export default function checkForm() {
                       <option>信用卡付款</option>
                   </select>
                 </div> 
-                <div>
+                <div >
                 <input type="checkbox" name="same" onChange={handleSameCheckbox} />
-                <label htmlFor="same">同寄件人資訊</label>
+                <label htmlFor="same">同會員資訊</label>
                 </div>
                 <div style={blockstyle1}>
                     <label style={labelstyle1} name={"custname"}>收件人姓名</label>

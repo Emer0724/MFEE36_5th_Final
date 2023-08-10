@@ -11,7 +11,7 @@ export default function Favorite(result) {
   //先創建info、id 以免發生不符合if條件 後續info、id讀不到if 內宣告的情況，以及避免id undefined的狀況
   if (user_info !== null) {
     info = user_info
-    id = info.id
+    id = info.member_id
   }
   console.log(info)
 

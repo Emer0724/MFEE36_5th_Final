@@ -6,6 +6,7 @@ import '@/styles/used.css'
 
 import DefaultLayout from '@/components/layout/default-layout'
 import { AuthContextProvider } from '@/context/AuthContext'
+import { CountContextProvider } from '@/context/countContext'
 
 export default function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -20,7 +21,9 @@ export default function MyApp({ Component, pageProps }) {
 
   return (
     <AuthContextProvider>
-      {getLayout(<Component {...pageProps} />)}
+      <CountContextProvider>
+        {getLayout(<Component {...pageProps} />)}
+      </CountContextProvider>
     </AuthContextProvider>
   )
 }

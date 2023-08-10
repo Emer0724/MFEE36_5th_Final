@@ -9,19 +9,23 @@ import { Pagination } from 'antd'
 export default function WishList() {
   const [data, setData] = useState([])
   const [user_info, setUser_info] = useState(null)
+
   useEffect(() => {
     if (typeof localStorage !== 'undefined') {
       const userInfoFromStorage = JSON.parse(localStorage.getItem('auth'))
       setUser_info(userInfoFromStorage)
     }
   }, [])
-  const { id = null } = user_info || {} //先檢查user_info是否為null
-  // console.log(id)
+  const { id = null } = user_info || {}
+   //先檢查user_info是否為null
+
   useEffect(() => {
     if (id !== null) {
+      console.log(id);
       fetchdata(id)
     }
   }, [id])
+
   const fetchdata = (member_id) => {
     fetch(`${process.env.API_SERVER}/market/wishlist?member_id=${member_id}`)
       .then((res) => res.json())
