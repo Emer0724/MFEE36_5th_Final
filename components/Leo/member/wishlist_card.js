@@ -2,14 +2,16 @@ import React, { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
 import car from '@/components/Leo/market_card.module.css'
 import ca from '@/components/Leo/market_playground.module.css'
-import { Pagination } from 'antd'
+import no_book from '@/assets/used-svg/no_book.svg'
+import Link from 'next/link'
 
 export default function MarketCard(props) {
   // console.log(props)
   const { v } = props //解構
   const { ISBN, member_id } = v
+  const [img, setimg] = useState(true)
 
-  // console.log(v)
+  console.log(v)
   const cardRef = useRef(null) //設定空的CARD給後續作參照用
   const [data, setData] = useState() //渲染資料用
   const [loading, setLoading] = useState(true)
@@ -21,12 +23,6 @@ export default function MarketCard(props) {
   }
   const handleMouseLeave = () => {
     cardRef.current.classList.remove(car.hovered)
-  }
-
-  console.log(data)
-  //detail頁
-  const detail = () => {
-    window.location.href = `/product/${ISBN}`
   }
   //移除收藏的fetch
   const removeWish = () => {
@@ -59,7 +55,7 @@ export default function MarketCard(props) {
         })
     }
   }
-  //if無收藏
+
   useEffect(() => {
     if (data && data.rows && data.rows.length > 0) {
       console.log('全部書籍都被刪除')
@@ -91,9 +87,16 @@ export default function MarketCard(props) {
   const { rows } = data || {}
   const [result] = rows || []
   const { book_name, pic } = result || {}
-  const imageUrl = `/all_img/book_pic/${pic}`
+
   if (!data || !data.rows || data.rows.length === 0) {
     if (!showCard) {
+      // 只在 showCard 為 true 時顯示 "尚無收藏書籍"
+      return (
+        <div>
+          <h1>尚無收藏書籍</h1>
+        </div>
+      )
+    } else {
       return null // 不顯示任何內容
     }
   }
@@ -111,23 +114,28 @@ export default function MarketCard(props) {
           key={ISBN}
         >
           <div className={`${car.card}`}>
-            <div className={`market-card d-flex`}>
+            <div className={`market-card d-flex `}>
               <div className={car.hoverable}>
                 <Image
-                  src={imageUrl}
-                  className={`${car.img}`}
+                  src={
+                    img
+                      ? `/all_img/book_pic/${encodeURIComponent(pic)}`
+                      : no_book
+                  }
+                  className={`bk-img`}
                   alt="..."
                   width={180}
                   height={180}
+                  onError={() => {
+                    setimg(false)
+                  }}
                 />
               </div>
               <div className={`w-100 color-bg-1 h-100 ${car.overlay}`}>
-                <div className={car.contentBox}>
-                  <p className={car.p}>{book_name}</p>
-                </div>
-                <button onClick={detail} className={car.btn}>
-                  詳細頁
-                </button>
+                <p className={car.p}>{book_name}</p>
+                <Link href={`/product/${ISBN}`}>
+                  <button className={car.btn}>看詳細</button>
+                </Link>
                 <button
                   className={car.x}
                   onClick={() => removeWish(ISBN, member_id, data)}

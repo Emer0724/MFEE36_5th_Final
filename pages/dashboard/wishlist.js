@@ -7,64 +7,63 @@ import styles from './wishlist.module.css'
 import { Pagination } from 'antd'
 
 export default function WishList() {
+  const [currentPage, setCurrentPage] = useState(1)
   const [data, setData] = useState([])
   const [user_info, setUser_info] = useState(null)
-  const [currentPage, setCurrentPage] = useState(1)
   const [totalRows, setTotalRows] = useState(0)
-
+  const pageSize = 16
   useEffect(() => {
     if (typeof localStorage !== 'undefined') {
+      // console.log('eddie', typeof localStorage)
       const userInfoFromStorage = JSON.parse(localStorage.getItem('auth'))
       setUser_info(userInfoFromStorage)
     }
   }, [])
   const { member_id = null } = user_info || {} //先檢查user_info是否為null
   console.log(member_id)
+
   useEffect(() => {
     if (member_id !== null) {
       fetchdata(member_id)
     }
   }, [member_id])
 
-  const fetchdata = (member_id, page = 1) => {
-    fetch(
-      `${process.env.API_SERVER}/market/wishlist?member_id=${member_id}&page=${page}`
-    )
+  // fetch
+  const fetchdata = (member_id) => {
+    fetch(`${process.env.API_SERVER}/market/wishlist?member_id=${member_id}`)
       .then((res) => res.json())
       .then((data) => {
-        setData(data.rows)
-        setCurrentPage(page)
-        setTotalRows(data.totalRows)
+        setData(data)
         console.log('後端回傳結果:', data)
-        console.log('連千毅')
-        console.log(member_id)
-        console.log(data.rows)
-        console.log(data.totalRows)
-        console.log(data.totalPage)
       })
       .catch((err) => {
         console.error('無該分類資料', err)
       })
   }
 
+  const [Array] = data
+  useEffect(() => {
+    if (Array !== undefined) {
+      const totalRows = Array.length
+      console.log(totalRows)
+      console.log(Array)
+      setTotalRows(totalRows)
+    }
+  }, [Array])
+
+  //分頁 分配用
+  const startIndex = (currentPage - 1) * pageSize //令資料索引從0~15為第一頁
+  const endIndex = startIndex + pageSize - 1 // 假設第一頁的狀況 startindex為0  pagesize為16 是指到索引值16時停止,不包括16
+  const currentPageData = Array?.slice(startIndex, endIndex + 1) //完成資料切割
+  console.log(currentPageData)
+  const handlePageChange = (page) => {
+    //按下了頁數的按鈕 更新變數page的值
+    setCurrentPage(page)
+  }
+
   const changeresult = (e) => {
     console.log(e)
   }
-  const handlePageChange = (page) => {
-    setCurrentPage(page)
-    fetchdata(member_id) // 根據新的當前頁面重新獲取資料
-  }
-  const result = data
-  console.log(result)
-  console.log(currentPage)
-  console.log(totalRows)
-
-  //宣告一頁大小 以及設定每一頁開頭與最後一位的資料序號
-  const pageSize = 16
-  const startIndex = (currentPage - 1) * pageSize
-  const endIndex = startIndex + pageSize
-  const currentPageData = result?.slice(startIndex, endIndex)
-
   return (
     <>
       <div className={styles.d1}>
@@ -74,13 +73,14 @@ export default function WishList() {
         <MemberNav />
       </div>
       <div className={styles.d3}></div>
+
       <div className={styles.d4}>
         <div
           className={`container ${ca.box}`}
           style={{ display: 'flex', flexWrap: 'wrap' }}
         >
           {/* 使用 rows 資料進行渲染 */}
-          {result && result.length > 0 ? (
+          {currentPageData && currentPageData.length > 0 ? (
             currentPageData.map((v, i) => (
               <Wishcard v={v} result={changeresult} key={i} />
             ))
@@ -93,16 +93,16 @@ export default function WishList() {
       </div>
       <div className={styles.page}>
         <Pagination
-          pageSize={16}
-          defaultCurrent={1}
-          current={currentPage}
-          total={totalRows}
-          onChange={handlePageChange}
+          pageSize={pageSize} //每頁資料數
+          defaultCurrent={1} //預設初始頁碼
+          current={currentPage} //當前頁碼
+          total={totalRows} //總資料數 done
+          onChange={handlePageChange} //變動頁面時的事件
           showSizeChanger={false}
           style={{ fontSize: '24px' }}
-          hideOnSinglePage={false}
-          showLessItems={true}
-          responsive={true}
+          hideOnSinglePage={false} //單頁時是否隱藏?
+          showLessItems={true} //顯示較少
+          responsive={true} //自動寬度調整
         />
       </div>
     </>
