@@ -31,7 +31,6 @@ export default function Member_info() {
   }
   const getimg = (event) => {
     event.preventDefault() // 阻止預設的表單提交行為
-    console.log(event)
 
     const formData = new FormData() // 建立新的 FormData 物件
     formData.append('avatar', inputimgref.current.files[0]) // 將選擇的檔案加入到 FormData 中
@@ -47,8 +46,6 @@ export default function Member_info() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
-        // console.log(data[0].filename)
         setnewimg(data[0].filename)
         const auth_old = JSON.parse(localStorage.getItem('auth'))
         const auth_old_new = JSON.stringify({

@@ -27,8 +27,6 @@ export default function MarketCard(props) {
   //移除收藏的fetch
   const removeWish = () => {
     if (ISBN) {
-      console.log(ISBN)
-      console.log(member_id)
       fetch(`${process.env.API_SERVER}/market/removewish`, {
         method: 'DELETE',
         headers: {
@@ -48,7 +46,6 @@ export default function MarketCard(props) {
           }
 
           setData(newData)
-          console.log(newData)
         })
         .catch((err) => {
           console.error('資料庫錯誤', err)
@@ -58,7 +55,6 @@ export default function MarketCard(props) {
 
   useEffect(() => {
     if (data && data.rows && data.rows.length > 0) {
-      console.log('全部書籍都被刪除')
       setShowCard(false)
     }
   }, [data])
@@ -90,13 +86,6 @@ export default function MarketCard(props) {
 
   if (!data || !data.rows || data.rows.length === 0) {
     if (!showCard) {
-      // 只在 showCard 為 true 時顯示 "尚無收藏書籍"
-      return (
-        <div>
-          <h1>尚無收藏書籍</h1>
-        </div>
-      )
-    } else {
       return null // 不顯示任何內容
     }
   }
@@ -104,7 +93,7 @@ export default function MarketCard(props) {
     <>
       <div
         className={`${ca.c_row} d-flex`}
-        style={{ flex: '21%', padding: '10px' }}
+        style={{ flex: '24%', padding: '10px' }}
       >
         <div
           className={`col ${car.cardWrapper}`}

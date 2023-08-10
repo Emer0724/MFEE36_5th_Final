@@ -6,7 +6,7 @@ import no_book from '@/assets/used-svg/no_book.svg'
 
 export default function MarketCard(data) {
   const [img, setimg] = useState(true)
-  console.log(data)
+  // console.log(data)
   const cardRef = useRef(null)
 
   const handleMouseEnter = () => {
