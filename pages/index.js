@@ -283,7 +283,7 @@ export default function Home() {
         {/* section3 */}
         <div className=" container-fluid py-4 color-bg-6 ">
           <div className="textp-40px color-tx-1 fw-bold text-center my-5">
-            熱門書評
+            其他人在看什麼?
             <div className="my-5">
               <Swiper
                 slidesPerView={slidesPerView_n}
@@ -318,7 +318,7 @@ export default function Home() {
         {/* section4 */}
         <div className=" container-fluid py-5 ">
           <div className="textp-40px color-tx-1 fw-bold text-center mb-5">
-            熱門作品
+            小編推薦
           </div>
           <div className="pb-5">
             <Swiper

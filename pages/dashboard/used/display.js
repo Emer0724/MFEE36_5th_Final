@@ -276,7 +276,7 @@ export default function Display() {
                             搜尋
                           </button>
                         </div>
-                        <div className="text-danger letter-spacing">
+                        <div className="text-danger letter-spacing text-center">
                           {search_error}
                         </div>
                         {bookinput.length > 1 &&
@@ -360,7 +360,7 @@ export default function Display() {
                             搜尋
                           </button>
                         </div>
-                        <div className="text-danger letter-spacing">
+                        <div className="text-danger letter-spacing text-center">
                           {search_error}
                         </div>
                         {bookinput.length >= 1 &&
