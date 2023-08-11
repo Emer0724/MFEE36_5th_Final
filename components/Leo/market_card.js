@@ -1,10 +1,12 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import Image from 'next/image'
 import car from '@/components/Leo/market_card.module.css'
 import Link from 'next/link'
+import no_book from '@/assets/used-svg/no_book.svg'
 
 export default function MarketCard(data) {
-  console.log(data)
+  const [img, setimg] = useState(true)
+  // console.log(data)
   const cardRef = useRef(null)
 
   const handleMouseEnter = () => {
@@ -33,11 +35,18 @@ export default function MarketCard(data) {
             <div className={car.card}>
               <div className={car.hoverable}>
                 <Image
-                  src={imageUrl}
+                  src={
+                    img
+                      ? `/all_img/book_pic/${encodeURIComponent(pic)}`
+                      : no_book
+                  }
                   className={`${car.img}`}
                   alt="..."
                   width={180}
                   height={180}
+                  onError={() => {
+                    setimg(false)
+                  }}
                 />
               </div>
               <div className={` ${car.overlay}`}>

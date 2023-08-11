@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from '@/components/Leo/member/Coupon.module.css'
 
 export default function Coupon({ props }) {
-  console.log(props)
+  // console.log(props)
   const [time, setTime] = useState('')
   useEffect(() => {
     const dt = props.end_time.split('T')

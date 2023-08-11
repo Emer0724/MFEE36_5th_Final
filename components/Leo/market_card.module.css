@@ -16,7 +16,7 @@
     background-color: rgba(255, 255, 255, 0.9);
     display: none ;
     overflow: auto;
-    border: 1px solid pink;
+    border: 1px solid #132811;
   }
   .card:hover .overlay {
     display: block;
@@ -48,7 +48,7 @@
   font-size: 18px;
   position: absolute;
   bottom: 10px;
-  right: 100px;
+  right: 90px;
   border: none;
   box-shadow: 2px 2px 4px #52796F;
   background-color:#84A98C;

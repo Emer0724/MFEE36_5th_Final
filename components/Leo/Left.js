@@ -5,8 +5,10 @@ import Image from 'next/image'
 import styles from '@/components/Leo/Left.module.css'
 import { useState, useEffect, useContext } from 'react'
 import countContext from '@/context/countContext'
+import no_book from '@/assets/used-svg/no_book.svg'
 
 export default function L(props) {
+  const [img, setimg] = useState(true)
   const { getcount, setcount, count } = useContext(countContext)
   const { result, toUsedArea } = props || []
   const data = result.rows[0] || {}
@@ -75,11 +77,14 @@ export default function L(props) {
       <div className={styles.container}>
         <div className={styles.pic_box}>
           <Image
-            src={imageUrl}
+            src={img ? `/all_img/book_pic/${encodeURIComponent(pic)}` : no_book}
             className={`bk-img`}
             alt="..."
             width={400}
             height={400}
+            onError={() => {
+              setimg(false)
+            }}
           />
         </div>
         <div className={styles.favor_set}>
