@@ -37,19 +37,18 @@ export default function complete() {
       })
         .then((r) => r.json())
         .then((result) => {
-          console.log(result)
           setWaternum(result.order_id)
+          getcount().then((data) => setcount(data))
           //取得創建的流水碼
           localStorage.removeItem('formData')
           localStorage.removeItem('pricedata')
           localStorage.removeItem('pricefinal')
-
-          getcount().then((data) => setcount(data))
           //清空localstorage
         })
         .catch((error) => console.error('Fetch Error:', error))
     }
-
+  }, [])
+  useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth)
     }

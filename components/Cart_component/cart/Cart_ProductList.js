@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Trash from '@/assets/Nav_Image/trashcan.svg'
 import styles from '@/components/Cart_component/cart/CartProductlist.module.css'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 export default function CurtProduct({ data, handleDataChange }) {
   const [data1, setData1] = useState(data)
@@ -91,14 +92,15 @@ export default function CurtProduct({ data, handleDataChange }) {
     })
       .then((r) => r.json())
       .then((resultdel) => {
+        console.log(resultdel);
         if (resultdel.message === 'Item deleted from cart.') {
           handleDataChange((prevData) =>
             prevData.filter(
               (item) => item.ISBN !== ISBN || item.status_id !== status_id
             )
           )
-          getcount().then((data) => setcount(data))
         }
+        getcount().then((data) => setcount(data))
       })
       .catch((error) => {
         console.error('錯誤訊息:', error)
@@ -132,15 +134,24 @@ export default function CurtProduct({ data, handleDataChange }) {
             return (
               <tr key={i} className={styles.Prodeucttr}>
                 <td className={styles.ProdeuctBlock}>
-                  <Image
-                    className={styles.imagebook}
-                    src={`/all_img/book_pic/${encodeURIComponent(v.pic)}`}
-                    width={100}
-                    height={100}
-                    alt="icon"
-                  />
+                  <Link href={`./${v.ISBN}`}>
+                    <Image
+                      className={styles.imagebook}
+                      src={`/all_img/book_pic/${encodeURIComponent(v.pic)}`}
+                      width={100}
+                      height={100}
+                      alt="icon"
+                    />
+                  </Link>
                 </td>
-                <td className={styles.ProdeuctBlock}>{truncatedBookName}</td>
+                <td
+                  className={styles.ProdeuctBlock}
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="bottom"
+                  title={v.book_name}
+                >
+                  {truncatedBookName}
+                </td>
                 <td className={styles.ProdeuctBlock}>{v.ISBN}</td>
                 {v.status_id !== null ? (
                   <td className={styles.ProdeuctBlock}>
@@ -155,7 +166,7 @@ export default function CurtProduct({ data, handleDataChange }) {
                 <td>
                   {v.status_id !== null ? (
                     <div className={styles.CountBlock}>
-                      <div className={styles.Countvalue1}>{v.count}</div>
+                      <div className={styles.Countvalue}>{v.count}</div>
                     </div>
                   ) : (
                     <div className={styles.CountBlock}>
@@ -207,12 +218,14 @@ export default function CurtProduct({ data, handleDataChange }) {
           <div className={styles.CProductlist} key={i}>
             <div className={styles.CProductlist1}>
               <div>
-                <Image
-                  src={`/all_img/book_pic/${encodeURIComponent(v.pic)}`}
-                  alt="icon"
-                  width={100}
-                  height={80}
-                />
+                <Link href={`./${v.ISBN}`}>
+                  <Image
+                    src={`/all_img/book_pic/${encodeURIComponent(v.pic)}`}
+                    alt="icon"
+                    width={100}
+                    height={80}
+                  />
+                </Link>
               </div>
               <div className={styles.CProductlist2}>
                 <h6 className={styles.Clisttext}>{truncatedBookName}</h6>
