@@ -108,10 +108,7 @@ export default function BlogForm() {
       setTag('')
       setImage('')
       setContent('')
-
-      setTimeout(() => {
-        window.location.href = 'http://localhost:3000/blog/blog-home-page'
-      }, 2000)
+      window.location.href = 'http://localhost:3000/blog/blog-home-page'
     } catch (error) {
       console.error('發送數據到後端時出錯：', error)
     }

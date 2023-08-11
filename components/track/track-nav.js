@@ -38,7 +38,6 @@ export default function LikeNav() {
     <>
       <div className='d-flex justify-content-between border-bottom border-dark pb-2'>
         <div className='fs-5 fw-bold'><span>追蹤的創作者</span></div>
-        <div className='text-body-tertiary pt-1'><span>已追蹤 {favoriteCount} 位</span></div>
       </div>
     </>
   );

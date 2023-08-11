@@ -90,10 +90,8 @@ export default function BookForm() {
 
       const data = await response.json()
       console.log('從後端收到的響應：', data)
+      window.location.href = 'http://localhost:3000/blog/personal-page/review'
 
-      setTimeout(() => {
-        window.location.href = 'http://localhost:3000/blog/personal-page/review'
-      }, 2000)
     } catch (error) {
       console.error('發送數據到後端時出錯：', error)
     }

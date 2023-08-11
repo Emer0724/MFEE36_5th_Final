@@ -1,6 +1,5 @@
 import LikeContent from './like-content'
 import style from '@/components/book-personal/book-personal.module.css'
-import LikeNav from './like-nav'
 import Link from 'next/link'
 import { useState } from 'react'
 
@@ -61,7 +60,6 @@ export default function LikeContent1() {
           </div>
         </div>
       </div>
-      <LikeNav />
       <LikeContent />
     </div>
   )
