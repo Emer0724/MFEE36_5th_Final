@@ -1,4 +1,4 @@
-import Button6 from '../common/button/button6'
+import { Button6 } from '../common/button/button6'
 import Link from 'next/link'
 import Image from 'next/image'
 import stlye from '@/components/book-review/blogavatar2.module.css'
@@ -19,6 +19,12 @@ export default function TrackContent() {
     }
   }, [])
 
+  const handleDelete = (deletedId) => {
+    // 根据传递过来的被删除的member2_id，更新状态以删除对应的数据
+    const updatedData = data.filter(item => item.member2_id !== deletedId);
+    setData(updatedData);
+  }
+  
   const user = memberData.member_id
 
   useEffect(() => {
@@ -66,7 +72,7 @@ export default function TrackContent() {
               </Link>
             </div>
             <div className="pt-2">
-              <Button6 member2_id={item.member2_id}/>
+              <Button6 member2_id={item.member2_id} onDelete={handleDelete}/>
             </div>
           </div>
         </>

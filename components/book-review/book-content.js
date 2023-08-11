@@ -1,80 +1,82 @@
-import style from '@/components/book-review/book-element.module.css';
-import Link from 'next/link';
-import Avatar2 from './blogavatar2';
-import { AiFillStar } from 'react-icons/ai';
-import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import style from '@/components/book-review/book-element.module.css'
+import Link from 'next/link'
+import Avatar2 from './blogavatar2'
+import { AiFillStar } from 'react-icons/ai'
+import Image from 'next/image'
+import { useState, useEffect } from 'react'
+import nobook1 from '@/assets/used-svg/no_book.svg'
 
 export default function BookContent() {
-  const [bookSort, setBookSort] = useState('desc');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
-  const [bookData, setBookData] = useState([]);
+  const [nobook, setNobook] = useState(true)
+  const [bookSort, setBookSort] = useState('desc')
+  const [currentPage, setCurrentPage] = useState(1)
+  const [hasMore, setHasMore] = useState(true)
+  const [bookData, setBookData] = useState([])
 
-  const limit = 10; // 每頁顯示的書評數量
+  const limit = 10 // 每頁顯示的書評數量
 
   useEffect(() => {
-    fetchData();
-  }, [bookSort, currentPage]);
+    fetchData()
+  }, [bookSort, currentPage])
 
   const fetchData = async () => {
     try {
       const response = await fetch(
         `http://localhost:3055/blog/book/${bookSort}?page=${currentPage}`
-      );
+      )
       if (!response.ok) {
-        throw new Error('沒有資料');
+        throw new Error('沒有資料')
       }
-      const data = await response.json();
+      const data = await response.json()
       if (data.length === 0) {
-        setHasMore(false);
+        setHasMore(false)
       } else {
-        setBookData((prevData) => [...prevData, ...data]);
+        setBookData((prevData) => [...prevData, ...data])
       }
     } catch (error) {
-      console.error('沒有資料', error);
+      console.error('沒有資料', error)
     }
-  };
+  }
 
   const handleSortChange = (sortOption) => {
     setBookSort(sortOption)
     setCurrentPage(1) // 切換排序時重置頁碼
     setBookData([]) // 切換排序時清空書評數據
     setHasMore(true) // 切換排序時重置無限滾動狀態
-  };
+  }
 
   const renderStarRating = (rating) => {
-    const stars = [];
+    const stars = []
     for (let i = 1; i <= 5; i++) {
       if (i <= rating) {
-        stars.push(<AiFillStar key={i} className={style.chenstar} />);
+        stars.push(<AiFillStar key={i} className={style.chenstar} />)
       } else {
-        stars.push(<AiFillStar key={i} className={style.chenstar_empty} />);
+        stars.push(<AiFillStar key={i} className={style.chenstar_empty} />)
       }
     }
     return stars
   }
 
   const formatDateString = (dateString) => {
-    const date = new Date(dateString);
-    return date.toISOString().split('T')[0];
-  };
+    const date = new Date(dateString)
+    return date.toISOString().split('T')[0]
+  }
 
   const handleScroll = () => {
     if (
       window.innerHeight + window.scrollY >= document.body.offsetHeight - 100 &&
       hasMore
     ) {
-      setCurrentPage((prevPage) => prevPage + 1);
+      setCurrentPage((prevPage) => prevPage + 1)
     }
-  };
+  }
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [hasMore]);
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [hasMore])
 
   return (
     <div className="col-xl-7 d-flex flex-column px-xl-5 pb-5">
@@ -113,6 +115,7 @@ export default function BookContent() {
                 width={150}
                 height={200}
                 className={style.blogimg}
+                alt={123}
               />
               <span className={`${style.chendss} pt-3 pb-3`}>
                 {formatDateString(book_review.add_date)}

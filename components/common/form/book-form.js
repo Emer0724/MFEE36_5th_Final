@@ -78,7 +78,7 @@ export default function BookForm() {
 
       // 使用fetch將表單數據發送到後端API
       const response = await fetch(
-        `http://localhost:3055/blog/bookreview/edit/`,
+        `http://localhost:3055/blog/bookreview/upload`,
         {
           method: 'POST',
           headers: {
@@ -95,9 +95,7 @@ export default function BookForm() {
       setScore('')
       setContent('')
       
-      setTimeout(() => {
-        window.location.href = 'http://localhost:3000/blog/blog-home-page'
-      }, 2000)
+      window.location.href = 'http://localhost:3000/blog/blog-home-page'
 
     } catch (error) {
       console.error('發送數據到後端時出錯：', error)

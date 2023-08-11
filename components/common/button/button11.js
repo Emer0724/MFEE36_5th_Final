@@ -1,7 +1,7 @@
 import style from '@/components/common/button/button5.module.css'
 import { useState, useEffect } from 'react'
 
-export default function Button11({ blog_id }) {
+export default function Button11({ blog_id, onDelete }) {
   const [memberData, setMemberData] = useState([])
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function Button11({ blog_id }) {
           Authorization: `Bearer ${localStorage.getItem('auth')}`,
         },
       })
-      window.location.reload()
+      onDelete(blog_id);
     } catch (error) {
       console.error('刪除失敗：', error)
     }
