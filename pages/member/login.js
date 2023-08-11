@@ -9,9 +9,9 @@ import Popup_window from '@/components/used/popup_window'
 
 export default function Login() {
   const router = useRouter()
-  const { returnTo } = router.query;
-  const { auth, setAuth } = useContext(AuthContext)
-  const [success,sersuccess]=useState(false)
+  const { returnTo } = router.query
+  const { auth, setAuth, notify, setnotify } = useContext(AuthContext)
+  const [success, setsuccess] = useState(false)
   const [user, setUser] = useState({
     email: '',
     password: '',
@@ -41,19 +41,19 @@ export default function Login() {
           localStorage.setItem('auth', JSON.stringify(obj))
           // console.log(obj)
           setAuth(obj)
-          sersuccess(true)
-          setTimeout(()=>{
-            sersuccess(false)
-            if(returnTo){
-// console.log(returnTo)
+          setsuccess(true)
+          
+          // setnotify(JSON.parse(localStorage.getItem('aurh')).notify)
+
+          setTimeout(() => {
+            setsuccess(false)
+            if (returnTo) {
+              // console.log(returnTo)
               router.push(returnTo)
-            }else{
+            } else {
               router.push('/')
             }
-            
-          },2000)
-          
-         
+          }, 2000)
         } else {
           alert(data.error || '帳密錯誤')
         }
@@ -178,8 +178,11 @@ export default function Login() {
           </div>
         </div>
       </div>
-      {success?(<Popup_window icon={true} no_botton={true} text={'登入成功'}/>) :''}
-      
+      {success ? (
+        <Popup_window icon={true} no_botton={true} text={'登入成功'} />
+      ) : (
+        ''
+      )}
     </>
   )
 }

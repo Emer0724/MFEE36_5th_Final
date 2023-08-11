@@ -22,9 +22,10 @@ export default function NavBar1() {
   const BellRef = useRef(null)
   const defaultavatarRef = useRef()
   const avatarALLRef = useRef()
-  const { auth, setAuth, logout, setphoto, photo } = useContext(AuthContext)
+  const { auth, setAuth, logout, setphoto, photo,notify } = useContext(AuthContext)
   const { getcount, setcount, count } = useContext(countContext)
   const [newimg, setnewimg] = useState('')
+  const [first, setfirst] = useState(false)
   // const [count, setcount] = useState(0)
 
   const NavctName = ['商城', '二手書', '部落格', '關於我們']
@@ -37,6 +38,9 @@ export default function NavBar1() {
   ]
   // console.log(auth.notify)
 
+  useEffect(() => {
+    setfirst(true)
+  }, [])
   useEffect(() => {
     if (localStorage.getItem('auth')) {
       setIsLoggedIn(true)
@@ -55,7 +59,7 @@ export default function NavBar1() {
         router.push('/member/login')
       }
     }
-  }, [])
+  }, [first])
   // console.log(photo)
   // useEffect(() => {
   //   if
@@ -96,9 +100,10 @@ export default function NavBar1() {
     // Logout logic here
 
     localStorage.removeItem('auth')
-    if (router.asPath.includes('dashboard')) {
-      router.push('/')
-    }
+    logout()
+    // if (router.asPath.includes('dashboard')) {
+    //   router.push('/')
+    // }
     setIsLoggedIn(false) // Set isLoggedIn to false on logout
   }
   const [Dropdown, setDropdown] = useState(false)
@@ -185,7 +190,7 @@ export default function NavBar1() {
           <Badge className={styles.carticon} count={count}></Badge>
           {/* Add a class to separate login button from other icons */}
           <div className={styles.loginWrapper} ref={avatarALLRef}>
-            {isLoggedIn ? (
+            {auth.token ? (
               <>
                 {photo ? (
                   <div
@@ -215,7 +220,7 @@ export default function NavBar1() {
                   />
                 )}
 
-                {JSON.parse(localStorage.getItem('auth')).notify >= 1 ? (
+                {notify >= 1 ? (
                   <div
                     className={styles.notify}
                     onClick={() => isDropdown(Dropdown)}
@@ -253,7 +258,7 @@ export default function NavBar1() {
         </div>
         {/* Render the DropdownMenu component */}
       </div>
-      {searchbaropen && <Searchbar />}
+      {searchbaropen && <Searchbar toggleSearch={toggleSearch} />}
     </div>
   )
 }

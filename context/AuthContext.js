@@ -25,6 +25,9 @@ export const AuthContextProvider = function ({ children }) {
   const logout = () => {
     localStorage.removeItem('auth')
     setAuth(noLoginState)
+    if (router.asPath.includes('dashboard')) {
+      router.push('/')
+    }
   }
 
   useEffect(() => {
@@ -37,6 +40,7 @@ export const AuthContextProvider = function ({ children }) {
       try {
         const obj = JSON.parse(str)
         setAuth(obj)
+        setnotify(obj.notify)
       } catch (ex) {
         console.log(`error:ex`)
       }

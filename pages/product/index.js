@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Playground from '@/components/Leo/market_playground'
 import Aside from '@/components/Leo/market_aside'
 import Bcs from '@/components/Leo/market_breadcrumbs'
-import CarouselComponent from '@/components/Leo/carousel'
+import CarouselComponent from '@/components/Leo/carousel_auto'
 import { Pagination } from 'antd'
 
 export default function Product() {
