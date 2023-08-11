@@ -2,14 +2,14 @@ import React, { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
 import car from '@/components/Leo/market_card.module.css'
 import ca from '@/components/Leo/market_playground.module.css'
-import no_book from '@/assets/used-svg/no_book.svg'
+// import no_book from '@/assets/used-svg/no_book.svg'
 import Link from 'next/link'
 
 export default function MarketCard(props) {
   // console.log(props)
   const { v } = props //解構
   const { ISBN, member_id } = v
-  const [img, setimg] = useState(true)
+  // const [img, setimg] = useState(true)
 
   console.log(v)
   const cardRef = useRef(null) //設定空的CARD給後續作參照用
@@ -89,6 +89,8 @@ export default function MarketCard(props) {
       return null // 不顯示任何內容
     }
   }
+  console.log(pic)
+  const imageURL = `/all_img/book_pic/${pic}`
   return (
     <>
       <div
@@ -106,18 +108,19 @@ export default function MarketCard(props) {
             <div className={`market-card d-flex `}>
               <div className={car.hoverable}>
                 <Image
-                  src={
-                    img
-                      ? `/all_img/book_pic/${encodeURIComponent(pic)}`
-                      : no_book
-                  }
+                  // src={
+                  //   img
+                  //     ? `/all_img/book_pic/${encodeURIComponent(pic)}`
+                  //     : no_book
+                  // }
+                  src={imageURL}
                   className={`bk-img`}
                   alt="..."
                   width={180}
                   height={180}
-                  onError={() => {
-                    setimg(false)
-                  }}
+                  // onError={() => {
+                  //   setimg(false)
+                  // }}
                 />
               </div>
               <div className={`w-100 color-bg-1 h-100 ${car.overlay}`}>

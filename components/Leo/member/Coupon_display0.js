@@ -19,7 +19,7 @@ export default function Coupon_display() {
         })
     }
     couponData()
-    console.log('leo')
+    
   }, [])
   return (
     <>

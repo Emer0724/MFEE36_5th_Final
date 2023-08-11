@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Playground from '@/components/Leo/market_playground'
 import Aside from '@/components/Leo/market_aside'
 import Bcs from '@/components/Leo/market_breadcrumbs'
-import CarouselComponent from '@/components/Leo/carousel_auto'
+import CarouselComponent from '@/components/Leo/carousel'
 import { Pagination } from 'antd'
 
 export default function Product() {
@@ -24,8 +24,19 @@ export default function Product() {
       })
   }
   useEffect(() => {
-    // 在頁面載入時觸發 handleDisplay 函式，設定初始分類 ID，預設為 1
-    handleDisplay(2)
+    console.log('碰碰炸彈')
+    const randomDisplay = () => {
+      fetch(`${process.env.API_SERVER}/market/display_random`) //0811睡前結論 前端沒有發要求給後端   後端postman有正常運作
+        .then((res) => res.json())
+        .then((dataR) => {
+          const { rows } = dataR
+          console.log(`我是可莉玩家:3 ${rows}`)
+          setdata(dataR)
+          setCurrentPage(1)
+          console.log('後端回傳結果:', dataR)
+        })
+    }
+    // handleDisplay(2)
   }, [])
 
   const { rows, totalRows, category_id, label } = data
