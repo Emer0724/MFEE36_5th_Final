@@ -106,9 +106,23 @@ export default function Bcs(props) {
     // 如果都不符合上述條件，可以設定一個預設值
     parent_category = ' '
   }
+
+  //onClick事件
   const backhome = () => {
     window.location.replace('/product')
   }
+  //親分類
+  const parentCategory = () => {
+    window.location.replace('/product')
+    triggerParentCategory(parent_category)
+  }
+  const triggerParentCategory = () => {}
+  //子分類
+  const now = () => {
+    window.location.replace('/product')
+    triggerNowCategory(label)
+  }
+  const triggerNowCategory = (label) => {}
   return (
     <>
       <div className={`${ww.wish}`}>
@@ -118,11 +132,11 @@ export default function Bcs(props) {
         {label !== 'undefined' && label !== undefined && (
           <>
             {label !== '' && <p className={`${ww.p}`}>{'>'}</p>}
-            <button className={`${ww.p} ${ww.button}`} onClick={backhome}>
+            <button className={`${ww.p} ${ww.button}`} onClick={parentCategory}>
               {parent_category}
             </button>
             {label !== '' && <p className={`${ww.p}`}>{'>'}</p>}
-            <button className={`${ww.p} ${ww.button}`} onClick={backhome}>
+            <button className={`${ww.p} ${ww.button}`} onClick={now}>
               {label}
             </button>
           </>

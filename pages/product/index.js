@@ -10,14 +10,13 @@ export default function Product() {
   const [currentPage, setCurrentPage] = useState(1) //更新目前頁數 預設為第一頁
 
   useEffect(() => {
-    console.log('碰碰炸彈')
     const randomDisplay = () => {
       console.log('fetch start')
       fetch(`${process.env.API_SERVER}/market/display_random`) //0811睡前結論 前端沒有發要求給後端   後端postman有正常運作
         .then((res) => res.json())
         .then((dataR) => {
           const { rows } = dataR
-          console.log(`我是可莉玩家:3 ${rows}`)
+          console.log(`:3 ${rows}`)
           setdata(dataR)
           setCurrentPage(1)
           console.log('後端回傳結果:', dataR)
