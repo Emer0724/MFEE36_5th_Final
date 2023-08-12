@@ -132,7 +132,7 @@ const items = [
       getItem('個人成長', '45', null, null, null, '56'),
       getItem('勵志故事散文', '46', null, null, null, '57'),
       getItem('人際關係', '47', null, null, null, '59'),
-      getItem('生活哲學', '48', null, null, null, '61'),
+      // getItem('生活哲學', '48', null, null, null, '61'), //問題點 (label, key, onClick, items, type, category_id)
       getItem('熟齡生活', '49', null, null, null, '62'),
       getItem('生死醫病', '50', null, null, null, '63'),
       getItem('心理學', '51', null, null, null, '64'),
@@ -140,13 +140,6 @@ const items = [
     ],
     '53'
   ),
-  // getItem('其他', 'sub11', ' ', [
-  //   getItem('斗內', '53'),
-  //   getItem('友站連結', 'sub12', null, [
-  //     getItem('博客來', '54'),
-  //     getItem('讀冊', '55'),
-  //   ]),
-  // ]),
 ]
 
 const rootSubmenuKeys = [
@@ -214,5 +207,4 @@ const Market_aside_button = ({ handleDisplay, rows }) => {
     </Menu>
   )
 }
-
 export default Market_aside_button

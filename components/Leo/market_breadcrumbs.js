@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ww from '@/components/Leo/market_breadcrumbs.module.css'
 
 export default function Bcs(props) {
-  let { category_id } = props
-  console.log(category_id)
+  let { category_id, setSelectedCategory } = props
   const [data, setData] = useState({ rows: [] })
   useEffect(() => {
     if (category_id) {
@@ -23,10 +22,6 @@ export default function Bcs(props) {
     category_name = data.rows[0].category_name
   }
   const label = category_name
-  console.log(data)
-  // console.log('我好想睡')
-  console.log(label)
-  // const { category_id, label } = result
   let parent_category = ''
   if (
     category_id === '2' ||
@@ -111,15 +106,21 @@ export default function Bcs(props) {
     // 如果都不符合上述條件，可以設定一個預設值
     parent_category = ' '
   }
+
+  //onClick事件
   const backhome = () => {
     window.location.replace('/product')
   }
-  // console.log('麵包屑')
-  // console.log(label)
-  // console.log(category_id)
-  // console.log(result)
-  // console.log(parent_category)
-  // console.log(typeof label)
+  //親分類
+  const parentCategory = () => {
+    window.location.replace('/product')
+    console.log(parent_category)
+    setSelectedCategory(parent_category)
+  }
+  //子分類
+  const now = () => {
+    window.location.replace('/product')
+  }
   return (
     <>
       <div className={`${ww.wish}`}>
@@ -128,12 +129,12 @@ export default function Bcs(props) {
         </button>
         {label !== 'undefined' && label !== undefined && (
           <>
-            <p className={`${ww.p}`}>{'>'}</p>
-            <button className={`${ww.p} ${ww.button}`} onClick={backhome}>
+            {label !== '' && <p className={`${ww.p}`}>{'>'}</p>}
+            <button className={`${ww.p} ${ww.button}`} onClick={parentCategory}>
               {parent_category}
             </button>
-            <p className={`${ww.p}`}>{'>'}</p>
-            <button className={`${ww.p} ${ww.button}`} onClick={backhome}>
+            {label !== '' && <p className={`${ww.p}`}>{'>'}</p>}
+            <button className={`${ww.p} ${ww.button}`} onClick={now}>
               {label}
             </button>
           </>
