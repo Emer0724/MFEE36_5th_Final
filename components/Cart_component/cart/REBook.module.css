@@ -27,9 +27,13 @@
     align-items: center;
     gap: 20px;
     padding: 5px;
+    text-decoration: none;
 }
 .RebookBook:hover{
     animation: spec 1s ease-in normal forwards;
+}
+.Rebooktext{
+    font-size: 20px;
 }
 @keyframes spec {
     0% { transform:translateY(0px) }

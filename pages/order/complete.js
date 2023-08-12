@@ -4,6 +4,7 @@ import DeepButton from '@/components/common/CBtn/DeepgreenBtn'
 import { useState, useEffect, useContext } from 'react'
 import { useRouter } from 'next/router'
 import countContext from '@/context/countContext'
+import Loading from '@/components/common/loading'
 
 export default function complete() {
   const router = useRouter()
@@ -96,7 +97,14 @@ export default function complete() {
   const btn2 = () => {
     router.push('../product/')
   }
-
+ if(!waternum){
+  return(
+    <>
+     <OrderState />
+     <Loading/>
+    </>
+  )
+ }
   return (
     <>
       <OrderState />

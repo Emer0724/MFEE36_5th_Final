@@ -252,7 +252,7 @@ export default function checkForm() {
     fontSize: windowWidth && windowWidth > 600 ? '20px' : '16px',
     position: windowWidth && windowWidth > 1400 ? 'absolute' : '',
     left: windowWidth && windowWidth > 1400 ? '900px' : '',
-    top: windowWidth && windowWidth > 1400 ? '1850px' : '',
+    top: windowWidth && windowWidth > 1400 ? '1950px' : '',
   }
   const pos1 = {
     textAlign: 'center',
@@ -292,8 +292,8 @@ export default function checkForm() {
               <option>信用卡付款</option>
             </select>
           </div>
-          <div>
-            <input type="checkbox" name="same" onChange={handleSameCheckbox} />
+          <div style={blockstyle}>
+            <input type="checkbox"  name="same" onChange={handleSameCheckbox} />
             <label htmlFor="same">同會員資訊</label>
           </div>
           <div style={blockstyle1}>

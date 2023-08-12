@@ -7,7 +7,6 @@ import DeepButton from '@/components/common/CBtn/DeepgreenBtn'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { confirmAlert } from 'react-confirm-alert'
 
 export default function productcheck() {
   const router = useRouter()
@@ -24,7 +23,6 @@ export default function productcheck() {
   }
   const [data, setData] = useState([])
   const [shippingCost, setshippingCost] = useState(100)
-  const [payment, setpayment] = useState('')
   const [finalprice, setFinalprice] = useState(0)
   console.log(finalprice)
   console.log(data)
@@ -48,7 +46,6 @@ export default function productcheck() {
     const shippingCost = formData.shippingCost
     const paymentmethod = formData.paymentMethod
     setshippingCost(shippingCost)
-    setpayment(paymentmethod)
   }, [])
 
   const PLheader2 = ['產品', '書名', 'ISBN', '價格', '數量', '小計']
@@ -66,32 +63,9 @@ export default function productcheck() {
 
   // })
   const btnhandle = () => {
-    // if(payment==="linepay"){
-    //     confirmAlert({
-    //   title:"確認付款",
-    //   message:"即將前往linepay付款,要繼續嗎?",
-    //   buttons:[
-    //     {
-    //       label:'前往',
-    //       onclick:()=>{
-    //         fetch(`${process.env.API_SERVER}/cart/createorder`,{
-    //           method:"POST",
-    //           body:JSON.stringify({data:data,amount:finalprice}),
-    //           headers:{"Content-Type": "application/json" }
-    //         })
-    //       },
-    //     },{
-    //       label:"取消",
-    //       onclick:()=>{}
-    //     }
-    //   ]
-    //  })
-    if (payment === 'linepay') {
-      router.push('./complete')
-    } else {
       router.push('./checkout')
     }
-  }
+  
 
   return (
     <div style={style1}>
@@ -201,7 +175,7 @@ export default function productcheck() {
       <div style={style3}>
         <DeepButton
           DeepButtoncontent={'下一步，前往付款'}
-          onClick={btnhandle}
+          onClick={()=>{btnhandle()}}
         />
       </div>
     </div>

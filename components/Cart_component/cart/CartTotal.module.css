@@ -93,6 +93,7 @@ content: "$";
     animation: popupAnimation 0.5s;
 }
 
+
 @keyframes popupAnimation {
     0% { transform:translateY(0px) }
     25% { transform:translateY(-30px); }

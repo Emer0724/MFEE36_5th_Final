@@ -5,6 +5,7 @@ import Trash from '@/assets/Nav_Image/trashcan.svg'
 import styles from '@/components/Cart_component/cart/CartProductlist.module.css'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import Loading from '@/components/common/loading'
 
 export default function CurtProduct({ data, handleDataChange }) {
   const [data1, setData1] = useState(data)
@@ -112,8 +113,16 @@ export default function CurtProduct({ data, handleDataChange }) {
     }
     return text
   }
+  
 
   const PLheader = ['產品', '書名', 'ISBN', '價格', '數量', '小計', '刪除']
+  if(!data || data.length === 0){
+    return(
+      <>
+        <Loading/>
+      </>
+    )
+  }{  
   return (
     <>
       <table className={styles.tablecontain}>
@@ -278,5 +287,5 @@ export default function CurtProduct({ data, handleDataChange }) {
         )
       })}
     </>
-  )
+  )}
 }

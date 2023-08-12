@@ -59,7 +59,7 @@ export default function Recommend() {
                     height={200}
                     alt="icon"
                   />
-                  <p>{v.book_name}</p>
+                  <p className={styles.Rebooktext}>{v.book_name}</p>
                 </Link>
               </div>
             )

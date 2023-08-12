@@ -222,9 +222,6 @@ export default function OrderCheckout() {
                   maxLength={2}
                   placeholder="MM"
                   onChange={(e) => {
-                  if (e.target.value.length === 2) {
-                    document.getElementById('date2').focus()
-                  }
                   setDate1(e.target.value)
                 }}
                   onBlur={judgemonth}

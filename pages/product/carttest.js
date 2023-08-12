@@ -5,6 +5,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import PopUp from "@/components/common/popup/popup";
+import Loading from "@/components/common/loading";
 
 export default function Products() {
   const router = useRouter();
@@ -65,6 +66,7 @@ export default function Products() {
       <Head>
         <title>abcd</title>
       </Head>
+     <Loading/>
 
       <div className="container">
         <div className="row">

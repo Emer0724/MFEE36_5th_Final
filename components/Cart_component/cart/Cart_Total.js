@@ -102,8 +102,8 @@ export default function CartTotal({data,totalAmount}) {
             </div>
          </div>
          <div className={styles.CartTotalbtn}>
-             <LightButton lightbtncontent='使用折價卷' onClick={toggleCouponMenu}/>
-             <LightButton lightbtncontent='使用知音幣' onClick={toggleCurrencyMenu}/>
+             <LightButton lightbtncontent='使用折價卷'  onClick={toggleCouponMenu}/>
+             <LightButton lightbtncontent='使用知音幣'  onClick={toggleCurrencyMenu}/>
          </div>
          <div className={styles.btnmeundiv}>
          {showCouponMenu && (
