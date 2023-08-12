@@ -18,7 +18,7 @@ export default function BlogHome({
       style={{ width: '100%', backgroundColor: '#FFF' }}
     >
       <div className={`pt-4 pb-2`}>
-        <Link href="#" className="text-black text-decoration-none text-center">
+        <Link href={`/blog/${blog_sid}`} className="text-black text-decoration-none text-center">
           <h4 className={style.title_limit}>{blog_title}</h4>
         </Link>
       </div>

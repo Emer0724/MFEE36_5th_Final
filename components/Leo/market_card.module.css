@@ -44,7 +44,7 @@
     overflow: hidden;
     animation-name: card-p;
     animation-fill-mode: forwards;
-    animation-delay: 1s;
+    animation-delay: 0.7s;
     animation-duration: 0.3s;
     opacity: 0;
     padding: 5px;

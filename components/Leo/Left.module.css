@@ -1,11 +1,12 @@
 .container{
-    padding:20px 30px;
+    padding:50px 30px;
     height: 100%;
     overflow: hidden;
 }
 .btn_set{
     display:flex;
     justify-content: space-evenly;
+    padding: 20px;
 }
 .content_box{
     display: flex;
@@ -28,7 +29,10 @@
 .bookName{
     word-wrap: break-word;
     font-weight: bold;
-    padding-right: 10px;
+    /* padding-right: 10px; */
+    padding: 20px 20px;
+    width: 80%;
+    text-align: center;
 }
 .content>h5{
     font-size: 24px;

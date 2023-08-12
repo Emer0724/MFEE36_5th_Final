@@ -17,6 +17,8 @@
   flex-direction: column;
   overflow: hidden;
   padding:0px 30px;
+  /* background-color: rgba(250, 235, 215, 0.63); */
+  background: linear-gradient(rgba(250, 235, 215, 0.395),#D4E9E2);
   /* background-color:var(--bgc6) ; */
 }
 .p{

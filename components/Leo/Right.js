@@ -21,7 +21,7 @@ export default function Right({ result, usedAreaRef }) {
       <div className={`${styles.container}`}>
         <div className={`${styles.content}`}>
           <h1 className={styles.title}>內容描述</h1>
-          <pre className={`${styles.p} ${styles.verticalExpand} `}>
+          <pre className={`${styles.p} ${styles.verticalExpand} px-5 `}>
             {description}
           </pre>
         </div>
@@ -29,8 +29,12 @@ export default function Right({ result, usedAreaRef }) {
           <h1 className={`${styles.title} ${styles.used}`} id="usedArea">
             二手書
           </h1>
+          <div className='w-100 py-5 d-flex justify-content-center px-5' >
           <UsedList datas={data} ISBN={ISBN} />
+          </div>
+         
         </div>
+       
       </div>
     </>
   )

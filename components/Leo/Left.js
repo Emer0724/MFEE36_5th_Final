@@ -89,14 +89,17 @@ export default function L(props) {
         </div>
         <div className={styles.favor_set}>
           <div
-            className={{
+            style={{
               display: 'flex',
               justifyContent: 'center',
+              alignItems:'center'
             }}
           >
             <h3 className={styles.bookName}>{book_name}</h3>
+            <Favorite ISBN={ISBN} />
           </div>
         </div>
+        <div>
         <div className={styles.content_box}>
           <div className={styles.content}>
             <h5>ISBN:{ISBN}</h5>
@@ -107,17 +110,21 @@ export default function L(props) {
             <h5>售價:{price}元</h5>
           </div>
         </div>
+    
         <div className={styles.btn_set}>
           <ButtonStyle_l
+          className='mx-5'
             t1={'加入購物車'}
             onClick={() => cart(ISBN, member_id)}
             ISBN={ISBN}
           />
           <ButtonStyle_l t1={'找二手書'} onClick={toUsedArea} />
-          <div className={styles.icon}>
-            <Favorite ISBN={ISBN} />
-          </div>
+          {/* <div className={styles.icon}>
+         
+          </div> */}
         </div>
+        </div>
+        
       </div>
     </>
   )

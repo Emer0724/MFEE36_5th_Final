@@ -47,12 +47,13 @@ export default function ChangebookMessage() {
     } else {
       getData()
     }
-  }, [])
+  }, [router.query])
   // console.log(router.query)
   const getData = async () => {
     const authToken = JSON.parse(localStorage.getItem('auth')).token
 
     const usp = new URLSearchParams(router.query)
+    // console.log(usp.toString())
 
     const getdata1 = await fetch(
       `${process.env.API_SERVER}/used/change/item/?${usp.toString()}`,
@@ -73,7 +74,7 @@ export default function ChangebookMessage() {
     })
     localStorage.setItem('auth', auth_old_new)
     setnotify(getdata2.notify)
-
+// console.log(getdata2)
     setData(getdata2)
     setTimeout(() => {
       setloading(false)

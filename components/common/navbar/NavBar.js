@@ -40,6 +40,7 @@ export default function NavBar1() {
 
   useEffect(() => {
     setfirst(true)
+   
   }, [])
   useEffect(() => {
     if (localStorage.getItem('auth')) {
@@ -127,10 +128,11 @@ export default function NavBar1() {
   // !BellRef.current.contains(event.target) &&
   // !defaultavatarRef.current.contains(event.target)
   useEffect(() => {
+  
     window.addEventListener('click', handleDropdown)
 
     return () => {
-      window.addEventListener('click', handleDropdown)
+      window.removeEventListener('click', handleDropdown)
       // console.log(567)
     }
   }, [Dropdown])
