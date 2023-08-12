@@ -36,7 +36,7 @@ export default function BookHome({
             /> */}
             <Image
               src={
-                img ? `/all_img/book_pic/${encodeURIComponent(pic)}` : no_book
+                img ? `http://localhost:3055/blogimg/${encodeURIComponent(pic)}` : no_book
               }
               width={150}
               height={150}
@@ -93,13 +93,9 @@ export default function BookHome({
                 {book_review}
               </div>
             </div>
-            <div className="d-flex justify-content-center pe-5">
-              <div className=" d-flex justify-content-start   pb-3 ">
-                <Link href={`/product/${ISBN}`}>
-                  <button className="btn btn-secondary border-radius-5px ">
-                    了解更多
-                  </button>
-                </Link>
+            <div className="d-flex justify-content-center">
+              <div className="ms-3 pt-4 d-flex justify-content-start gap-5  pb-3">
+                <Button2 />
               </div>
             </div>
           </div>

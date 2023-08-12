@@ -4,7 +4,6 @@ import Avatar2 from './blogavatar2'
 import { AiFillStar } from 'react-icons/ai'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import nobook1 from '@/assets/used-svg/no_book.svg'
 
 export default function BookContent() {
   const [nobook, setNobook] = useState(true)
