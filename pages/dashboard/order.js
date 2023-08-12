@@ -90,7 +90,8 @@ export default function OrderHistory() {
           </select>
         </div>
         {visioncahnge === '清單模式' ? (
-          <Orderlist />
+          
+          <div className={s.listmode}><Orderlist /></div>
         ) : (
           <div className={s.container}>
             {data.map((v, i) => {
@@ -124,7 +125,7 @@ export default function OrderHistory() {
                           <div className={s.fontman1}>
                             <h5>{v.customer_name}</h5>
                             <h5>{v.customer_phone}</h5>
-                            <h5>{v.total_price}</h5>
+                            <h5>{v.total_price}元</h5>
                             <h5>{time}</h5>
                           </div>
                         </div>

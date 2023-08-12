@@ -21,8 +21,24 @@
     gap: 40px;
 }
 .RebookBook{
-    margin: 30px;
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 5px;
 }
+.RebookBook:hover{
+    animation: spec 1s ease-in normal forwards;
+}
+@keyframes spec {
+    0% { transform:translateY(0px) }
+    25% { transform:translateY(-30px); }
+    50% { transform:translateY(0px); }
+    75% { transform:translateY(-15px); }
+    100% { transform:translateY(0px); }
+}
+
 .Rebookcard{
     display: flex;
     flex-direction: column;
@@ -31,8 +47,14 @@
 
 }
 @media (max-width:400px) {
-    .RebookDiv{
-        display: none;
+    .Rebooklist{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: flex-start;
+        padding-top: 60px;
+        gap: 40px;
     }
     
 }

@@ -50,7 +50,7 @@ export default function CurtProduct({ data, handleDataChange }) {
       const result = await res.json()
       handleDataChange((prevData) =>
         prevData.map((item) =>
-          item.ISBN === ISBN ? { ...item, count: item.count + 1 } : item
+          item.ISBN === ISBN && item.status_id===null ? { ...item, count: item.count + 1 } : item
         )
       )
       getcount().then((data) => setcount(data))
@@ -69,12 +69,12 @@ export default function CurtProduct({ data, handleDataChange }) {
       const resultcut = await res.json()
       if (resultcut.message === '商品已刪除') {
         handleDataChange((prevData) =>
-          prevData.filter((item) => item.ISBN !== ISBN)
+          prevData.filter((item) => item.ISBN !== ISBN || item.status_id !== null)
         )
       } else {
         handleDataChange((prevData) =>
           prevData.map((item) =>
-            item.ISBN === ISBN ? { ...item, count: item.count - 1 } : item
+          item.ISBN === ISBN && item.status_id===null ? { ...item, count: item.count - 1 } : item
           )
         )
       }

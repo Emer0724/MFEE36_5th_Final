@@ -18,8 +18,8 @@ export default function OrderCheckout() {
   const [date1, setDate1] = useState('')
   const [date2, setDate2] = useState('')
   const [cvv, setCvv] = useState('')
-  const [iscardRight, setiscardRight] = useState(true)
 
+  const [iscardRight, setiscardRight] = useState(true)
   const [IsMonthValid, setIsMonthValid] = useState(true)
   const [IsYearValid, setIsYearValid] = useState(true)
   const [isCvvValid, setIsCvvValid] = useState(true)
@@ -46,7 +46,9 @@ export default function OrderCheckout() {
   }
 
   const btnhandle = () => {
-    router.push('./complete')
+    if(iscardRight&&IsMonthValid&&IsYearValid&&isCvvValid){
+      router.push('./complete')
+    }
   }
 
   return (
@@ -201,10 +203,7 @@ export default function OrderCheckout() {
                 id="card4"
                 value={card4}
                 onChange={(e) => {
-                  if (e.target.value.length === 4) {
-                    document.getElementById('date1').focus()
-                  }
-                  setCard4(e.target.value)
+                  setCard4(e.target.value);
                 }}
                 onBlur={judgecard}
                 required
@@ -220,7 +219,6 @@ export default function OrderCheckout() {
                   type="text"
                   className={s.datestyle}
                   value={date1}
-                  id="date1"
                   maxLength={2}
                   placeholder="MM"
                   onChange={(e) => {
@@ -241,9 +239,6 @@ export default function OrderCheckout() {
                   maxLength={2}
                   placeholder="YY"
                   onChange={(e) => {
-                  if (e.target.value.length === 2) {
-                    document.getElementById('cvv').focus()
-                  }
                   setDate2(e.target.value)
                   }}
                   onBlur={judgeyear}
@@ -276,7 +271,7 @@ export default function OrderCheckout() {
         </div>
       </div>
       <div className={s.btnfor1}>
-        <DeepButton DeepButtoncontent={'完成付款'} onClick={btnhandle} />
+        <DeepButton DeepButtoncontent={'完成付款'} onClick={()=>{btnhandle()}} />
       </div>
     </>
   )
