@@ -21,7 +21,7 @@ export default function UnderNavbar() {
             <p>購物車</p>
           </Link>
           <div  className={styles.bookcontain}>
-            <Link href={"/"} className={styles.bookdiv}>
+            <Link href={"/product/"} className={styles.bookdiv}>
               <div><Image src={book} width={30} height={25} alt='icon'/></div>
               <p>商城</p>
             </Link>

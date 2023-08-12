@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 export default function checkForm() {
   const [windowWidth, setWindowWidth] = useState(null)
   const [shippingMethod, setShippingMethod] = useState('宅配到家+100')
-  const [paymentMethod, setPaymentMethod] = useState('linepay')
+  const [paymentMethod, setPaymentMethod] = useState('信用卡付款')
   const [recipientName, setRecipientName] = useState('')
   const [recipientPhone, setRecipientPhone] = useState('')
   const [recipientAddress, setRecipientAddress] = useState('')
@@ -111,7 +111,7 @@ export default function checkForm() {
 
     const initialFormData = {
       shippingMethod: '宅配到家+100',
-      paymentMethod: 'linepay',
+      paymentMethod: '信用卡付款',
       recipientName: '',
       recipientPhone: '',
       selectedCity: '',
@@ -252,7 +252,7 @@ export default function checkForm() {
     fontSize: windowWidth && windowWidth > 600 ? '20px' : '16px',
     position: windowWidth && windowWidth > 1400 ? 'absolute' : '',
     left: windowWidth && windowWidth > 1400 ? '900px' : '',
-    top: windowWidth && windowWidth > 1400 ? '1780px' : '',
+    top: windowWidth && windowWidth > 1400 ? '1850px' : '',
   }
   const pos1 = {
     textAlign: 'center',
@@ -288,8 +288,7 @@ export default function checkForm() {
           </div>
           <div style={blockstyle}>
             <label style={labelstyle}>付款方式</label>
-            <select style={selectstyle} onChange={paymentMethodHandle}>
-              <option>linepay</option>
+            <select style={selectstyle} onChange={paymentMethodHandle} >
               <option>信用卡付款</option>
             </select>
           </div>

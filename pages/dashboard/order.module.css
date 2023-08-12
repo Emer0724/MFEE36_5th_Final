@@ -1,6 +1,9 @@
 .bodyct{
     overflow: hidden;
 }
+.listmode{
+    display: block;
+}
 .selectv{
     margin: 10px;
     border:1px solid #52796F;
@@ -162,5 +165,7 @@
     .show{
         display: none;
     }
-    
+    .listmode{
+        display: none;
+    }
  }

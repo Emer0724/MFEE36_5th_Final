@@ -191,6 +191,11 @@
     .loginWrapper {
         margin-left: 10px;  /* Adjust the margin on smaller screens */
     }
+    .carticon{
+        position: absolute;
+        right:40px;
+        top:20px
+    }
 }
 
 /*

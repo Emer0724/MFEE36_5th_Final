@@ -58,7 +58,16 @@ export default function orderlist() {
       })
     }
 
-    
+    if (data.length < 1) {
+      return (
+        <div className={s.listcol} >
+              <div className={s.listnum}><h3>目前尚無訂單</h3></div>
+                  <div className={s.listdivct}>
+                  <h3>趕緊逛逛吧</h3>
+                  </div>
+          </div>
+      )
+    } 
   return (
     <div className={s.listcontain}>
        <div className={s.listrow}>
