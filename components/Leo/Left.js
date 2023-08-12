@@ -94,7 +94,7 @@ export default function L(props) {
               justifyContent: 'center',
             }}
           >
-            <h3 className={styles.bookName}>書名:{book_name}</h3>
+            <h3 className={styles.bookName}>{book_name}</h3>
           </div>
         </div>
         <div className={styles.content_box}>

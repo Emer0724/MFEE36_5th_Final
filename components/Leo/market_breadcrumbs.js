@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ww from '@/components/Leo/market_breadcrumbs.module.css'
 
 export default function Bcs(props) {
-  let { category_id } = props
+  let { category_id, setSelectedCategory } = props
   const [data, setData] = useState({ rows: [] })
   useEffect(() => {
     if (category_id) {
@@ -114,15 +114,13 @@ export default function Bcs(props) {
   //親分類
   const parentCategory = () => {
     window.location.replace('/product')
-    triggerParentCategory(parent_category)
+    console.log(parent_category)
+    setSelectedCategory(parent_category)
   }
-  const triggerParentCategory = () => {}
   //子分類
   const now = () => {
     window.location.replace('/product')
-    triggerNowCategory(label)
   }
-  const triggerNowCategory = (label) => {}
   return (
     <>
       <div className={`${ww.wish}`}>
