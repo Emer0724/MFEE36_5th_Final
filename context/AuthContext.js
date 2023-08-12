@@ -51,27 +51,31 @@ export const AuthContextProvider = function ({ children }) {
     const storedAuth = localStorage.getItem('auth')
     if (storedAuth) {
       const img = JSON.parse(localStorage.getItem('auth')).mem_avatar
+      const notify = JSON.parse(localStorage.getItem('auth')).notify
       if (img) {
         // console.log(`${process.env.API_SERVER}`)
         // console.log(`${img}`)
 
         setphoto(img)
       }
-    }
-  }, [first])
-
-  useEffect(() => {
-    const storedAuth = localStorage.getItem('auth')
-    if (storedAuth) {
-      const notify = JSON.parse(localStorage.getItem('auth')).notify
-      if (notify) {
-        // console.log(`${process.env.API_SERVER}`)
-        // console.log(`${img}`)
-
+      if(notify){
         setnotify(notify)
       }
     }
   }, [first])
+
+  // useEffect(() => {
+  //   const storedAuth = localStorage.getItem('auth')
+  //   if (storedAuth) {
+  //     const notify = JSON.parse(localStorage.getItem('auth')).notify
+  //     if (notify) {
+  //       // console.log(`${process.env.API_SERVER}`)
+  //       // console.log(`${img}`)
+
+  //       setnotify(notify)
+  //     }
+  //   }
+  // }, [first])
 
   return (
     <AuthContext.Provider

@@ -80,8 +80,8 @@ export default function L(props) {
             src={img ? `/all_img/book_pic/${encodeURIComponent(pic)}` : no_book}
             className={`bk-img`}
             alt="..."
-            width={400}
-            height={400}
+            width={350}
+            height={350}
             onError={() => {
               setimg(false)
             }}
@@ -95,7 +95,7 @@ export default function L(props) {
               alignItems:'center'
             }}
           >
-            <h3 className={styles.bookName}>{book_name}</h3>
+            <h4 className={styles.bookName}>{book_name}</h4>
             <Favorite ISBN={ISBN} />
           </div>
         </div>

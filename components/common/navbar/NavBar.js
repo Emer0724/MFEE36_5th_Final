@@ -22,7 +22,7 @@ export default function NavBar1() {
   const BellRef = useRef(null)
   const defaultavatarRef = useRef()
   const avatarALLRef = useRef()
-  const { auth, setAuth, logout, setphoto, photo,notify } = useContext(AuthContext)
+  const { auth, setAuth, logout, setphoto, photo,notify,setnotify } = useContext(AuthContext)
   const { getcount, setcount, count } = useContext(countContext)
   const [newimg, setnewimg] = useState('')
   const [first, setfirst] = useState(false)
@@ -45,7 +45,7 @@ export default function NavBar1() {
   useEffect(() => {
     if (localStorage.getItem('auth')) {
       setIsLoggedIn(true)
-     
+      setnotify(JSON.parse(localStorage.getItem('auth')).notify)
       setnickname(JSON.parse(localStorage.getItem('auth')).nickname)
       if (JSON.parse(localStorage.getItem('auth')).mem_avatar) {
         setphoto(JSON.parse(localStorage.getItem('auth')).mem_avatar)
