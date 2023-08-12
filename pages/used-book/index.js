@@ -209,7 +209,7 @@ export default function UsedBook() {
                   height={300}
                   className="mb-3"
                 />
-                <div className="d-flex  flex-column justify-content-center ps-5 ">
+                <div className="d-flex  flex-column justify-content-center ps-5 used_used_index_token_pd ">
                   <div className="textp-20px mb-2 ">
                     知音幣雖然不可以吃，但可以買書!
                   </div>

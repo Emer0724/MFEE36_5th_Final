@@ -348,6 +348,9 @@ background-color: #eeeeee;
     align-items: center;
     width: 100%;
   }
+  .used_used_index_token_pd{
+    padding: 0px !important;
+  }
   .used-index-big-text {
     width: 100%;
     line-height: 100px;

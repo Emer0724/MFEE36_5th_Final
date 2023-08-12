@@ -9,31 +9,70 @@
 .overlay {
     padding-top: 12px;
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 190px;
+    height: 100px;
     background-color: rgba(255, 255, 255, 0.9);
     display: none ;
-    overflow: auto;
-    border: 1px solid #132811;
+    /* overflow: auto; */
+    text-align: center;
+    overflow: hidden;
+    /* border: 1px solid #132811; */
   }
   .card:hover .overlay {
+    animation-name: card;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
     display: block;
   }
+
+ 
+
   .overlay::-webkit-scrollbar {
     display: none;
   }
+
 .p{
-    font-size: 20px;
+    font-size: 16px;
     color: #132811;
-    font-weight: bold;
-    letter-spacing:2px;
+    font-weight: 700;
+    letter-spacing:3px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     overflow: hidden;
+    animation-name: card-p;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+    animation-duration: 0.3s;
+    opacity: 0;
+    padding: 5px;
+    
+    /* display: block; */
 }
+
+@keyframes card{
+  from{
+    width: 0%;
+
+  }
+  to{
+    width: 100%;
+    
+  }
+}
+@keyframes card-p{
+  from{
+    opacity: 0%;
+
+  }
+  to{
+    opacity: 1;
+    
+  }
+}
+
 .x{
     font-size: 18px;
     position: absolute;

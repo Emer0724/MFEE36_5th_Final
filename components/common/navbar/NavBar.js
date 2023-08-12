@@ -44,6 +44,7 @@ export default function NavBar1() {
   useEffect(() => {
     if (localStorage.getItem('auth')) {
       setIsLoggedIn(true)
+     
       setnickname(JSON.parse(localStorage.getItem('auth')).nickname)
       if (JSON.parse(localStorage.getItem('auth')).mem_avatar) {
         setphoto(JSON.parse(localStorage.getItem('auth')).mem_avatar)
@@ -130,6 +131,7 @@ export default function NavBar1() {
 
     return () => {
       window.addEventListener('click', handleDropdown)
+      // console.log(567)
     }
   }, [Dropdown])
 
@@ -214,7 +216,8 @@ export default function NavBar1() {
                     height={30}
                     className={styles.Licon}
                     alt="icon"
-                    onClick={() => isDropdown(Dropdown)}
+                    onClick={() =>{ isDropdown(Dropdown)
+                     }}
                     role="presentation"
                     // ref={defaultavatarRef}
                   />

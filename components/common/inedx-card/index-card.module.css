@@ -47,7 +47,7 @@ color: var(--bgc5) ;
     border-bottom-right-radius: 5px;
     background-color: white;
     box-shadow: inset 10px 0px 4px 0px rgba(0, 0, 0, 0.10);
-     border-top: 15px solid rgb(214, 212, 209); 
+     border-top: 20px solid rgb(189, 187, 185); 
     /* border-right: 15px solid rgb(198, 198, 198);  */
 
 }
@@ -126,7 +126,7 @@ color: var(--bgc5) ;
     transform: translate(0px, 0px);
     animation-name: card;
     animation-duration: 1s;
-    animation-delay: 2.5s;
+    animation-delay: 2s;
 }
 
 @keyframes card{

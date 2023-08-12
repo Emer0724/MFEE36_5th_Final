@@ -11,7 +11,7 @@ const DropdownMenu = forwardRef(({ isLoggedIn, gologout, nickname },ref) => {
   const { auth, setAuth, logout, setphoto, photo,notify } = useContext(AuthContext)
   return (
     <div className={styles.dropdownMenu} ref={ref}>
-      {isLoggedIn ? (
+      {auth ? (
         <>
           <p className={styles.menuItem}>Hi, {nickname ? nickname : '文青'}</p>
           <Link href="/dashboard/profile" className={styles.menuItem}>
