@@ -44,6 +44,8 @@ export default function FollowColumnDown() {
               <Image
                 src={followDown.mem_avatar ? followDown.mem_avatar : people}
                 className={`${style.chenheadblogimg}`}
+                width={50}
+                height={50}
                 alt={'img'}
               />
             </Link>
