@@ -118,7 +118,7 @@ export default function LikeContent() {
             <div>
               {like.blog_img ? (
                 <Image
-                  src={`/all_img/img/${like.blog_img}`}
+                  src={`http://localhost:3055/blogimg/${like.blog_img}`}
                   width={450}
                   height={250}
                   className={style.blogimg}
@@ -126,7 +126,7 @@ export default function LikeContent() {
                 />
               ) : (
                 <Image
-                  src="/all_img/img/noimg.jpg"
+                  src="http://localhost:3055/blogimg/noimg.jpg"
                   width={450}
                   height={250}
                   className={style.blogimg}

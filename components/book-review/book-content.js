@@ -122,7 +122,9 @@ export default function BookContent() {
             </div>
             <div className="pt-3">
               <div className="d-flex ps-3">
-                <Avatar2 nickname={book_review.nickname} />
+                <Avatar2 
+                nickname={book_review.nickname}
+                mem_avatar={book_review.mem_avatar} />
               </div>
               <div className="d-flex ps-3 pt-3 fw-bold">
                 <span>{book_review.book_name}</span>
