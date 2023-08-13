@@ -43,11 +43,7 @@ export default function BigCard({ pic, book_name, author, ISBN }) {
 
             <Image
               src={
-                img
-                  ? `${
-                      process.env.API_SERVER
-                    }/all_img/book_pic/${encodeURIComponent(pic)}`
-                  : no_book
+                img ? `/all_img/book_pic/${encodeURIComponent(pic)}` : no_book
               }
               width={150}
               height={150}
