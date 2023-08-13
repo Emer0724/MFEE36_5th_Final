@@ -119,7 +119,7 @@ export default function UsedList({ ISBN }) {
   }
   return (
     <>
-      <table className="table align-middle">
+      <table className={`table align-middle ${styles.color}`}>
         <thead>
           <tr>
             <th className={styles.font}>書況</th>
