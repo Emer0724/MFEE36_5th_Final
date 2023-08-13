@@ -90,7 +90,9 @@ export default function LikeContent() {
                 className="pe-3"
               >
                 <Image
-                  src={like.mem_avatar}
+                  src={`http://localhost:3055/avatar/` + like.mem_avatar}
+                  width={60}
+                  height={60}
                   className={`${style.headblogimg} text-decoration-none`}
                   alt="member_avatar"
                 />

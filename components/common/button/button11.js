@@ -21,7 +21,7 @@ export default function Button11({ blog_id, onDelete }) {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('auth')}`,
+          Authorization: `Bearer ${encodeURIComponent(localStorage.getItem('auth'))}`,
         },
       })
       onDelete(blog_id);

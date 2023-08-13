@@ -3,9 +3,7 @@
     height: 80px;
     border-radius: 50px;
     border: 1px rgb(201, 201, 201) solid;     
-    object-fit: cover;
-    object-position:0px 10px;
-    background-color: #b4b3b3  
+    background-color: #b4b3b3;
 }
 
 .chenpersonal {

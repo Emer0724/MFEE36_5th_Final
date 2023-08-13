@@ -10,7 +10,6 @@ export default function BlogContent() {
   const [blogs, setBlogs] = useState([])
   const [offset, setOffset] = useState(0)
 
-
   const fetchData = async () => {
     try {
       const response = await fetch(
@@ -45,7 +44,9 @@ export default function BlogContent() {
               <span className={`${style.chenfs}`}>{blog.blog_title}</span>
             </Link>
             <div className="d-flex pt-3">
-              <Avatar2 nickname={blog.nickname} />
+              <Avatar2 
+              nickname={blog.nickname}
+              mem_avatar={blog.mem_avatar} />
             </div>
             <div className="pt-3">
               {blog.blog_img ? (

@@ -3,13 +3,14 @@ import Image from 'next/image'
 import people from '@/assets/used-svg/people.svg'
 
 export default function Avatar({ nickname, mem_avatar }) {
+
   return (
     <>
       <div>
         <div key={nickname} className={`${stlye.chenpersonal} d-flex`}>
           <div>
             <Image
-              src={mem_avatar ? mem_avatar : people}
+              src={ mem_avatar ? `http://localhost:3055/avatar/` + mem_avatar : people }
               width={80}
               height={80}
               className={stlye.chenheadimg}
