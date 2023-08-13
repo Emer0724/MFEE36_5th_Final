@@ -58,7 +58,7 @@ export const AuthContextProvider = function ({ children }) {
 
         setphoto(img)
       }
-      if(notify){
+      if (notify) {
         setnotify(notify)
       }
     }

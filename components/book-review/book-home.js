@@ -95,7 +95,12 @@ export default function BookHome({
             </div>
             <div className="d-flex justify-content-center">
               <div className="ms-3 pt-4 d-flex justify-content-start gap-5  pb-3">
-                <Button2 />
+                <Link
+                  className="btn btn-secondary border-radius-5px "
+                  href={`/product/${ISBN}`}
+                >
+                  查看更多
+                </Link>
               </div>
             </div>
           </div>

@@ -22,7 +22,8 @@ export default function NavBar1() {
   const BellRef = useRef(null)
   const defaultavatarRef = useRef()
   const avatarALLRef = useRef()
-  const { auth, setAuth, logout, setphoto, photo,notify,setnotify } = useContext(AuthContext)
+  const { auth, setAuth, logout, setphoto, photo, notify, setnotify } =
+    useContext(AuthContext)
   const { getcount, setcount, count } = useContext(countContext)
   const [newimg, setnewimg] = useState('')
   const [first, setfirst] = useState(false)
@@ -40,7 +41,6 @@ export default function NavBar1() {
 
   useEffect(() => {
     setfirst(true)
-   
   }, [])
   useEffect(() => {
     if (localStorage.getItem('auth')) {
@@ -62,7 +62,7 @@ export default function NavBar1() {
       }
     }
   }, [first])
-  // console.log(photo)
+
   // useEffect(() => {
   //   if
   //   setphoto(photo)
@@ -128,7 +128,6 @@ export default function NavBar1() {
   // !BellRef.current.contains(event.target) &&
   // !defaultavatarRef.current.contains(event.target)
   useEffect(() => {
-  
     window.addEventListener('click', handleDropdown)
 
     return () => {
@@ -218,8 +217,9 @@ export default function NavBar1() {
                     height={30}
                     className={styles.Licon}
                     alt="icon"
-                    onClick={() =>{ isDropdown(Dropdown)
-                     }}
+                    onClick={() => {
+                      isDropdown(Dropdown)
+                    }}
                     role="presentation"
                     // ref={defaultavatarRef}
                   />
