@@ -48,7 +48,7 @@ export default function TrackContent() {
               {item.mem_avatar ? (
                 <Link href="" className="pe-3">
                   <Image
-                    src={item.mem_avatar}
+                    src={`http://localhost:3055/avatar/` + item.mem_avatar}
                     width={60}
                     height={60}
                     className={`${stlye.headblogimg} text-decoration-none`}
