@@ -8,7 +8,7 @@ export function Button6({ member2_id, onDelete }) {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('auth')}`,
+          Authorization: `Bearer ${encodeURIComponent(localStorage.getItem('auth'))}`,
         },
       });
 
