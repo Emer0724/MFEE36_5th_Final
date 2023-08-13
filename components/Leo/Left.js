@@ -12,13 +12,9 @@ export default function L(props) {
   const { getcount, setcount, count } = useContext(countContext)
   const { result, toUsedArea } = props || []
   const data = result.rows[0] || {}
-  const { ISBN, book_name, pic, publish, price, author, category_id } =
-    data || {}
+  const { ISBN, book_name, pic, publish, price, author } = data || {}
   const imageUrl = `/all_img/book_pic/${pic}`
-  // console.log(category_id)
-  // console.log(data)
-  // console.log(result)
-  // console.log(pic)
+
   //登入驗證
   const user_info = JSON.parse(localStorage.getItem('auth'))
   let info = null
@@ -92,7 +88,7 @@ export default function L(props) {
             style={{
               display: 'flex',
               justifyContent: 'center',
-              alignItems:'center'
+              alignItems: 'center',
             }}
           >
             <h4 className={styles.bookName}>{book_name}</h4>
@@ -100,31 +96,29 @@ export default function L(props) {
           </div>
         </div>
         <div>
-        <div className={styles.content_box}>
-          <div className={styles.content}>
-            <h5>ISBN:{ISBN}</h5>
-            <h5>作者: {author}</h5>
+          <div className={styles.content_box}>
+            <div className={styles.content}>
+              <h5>ISBN:{ISBN}</h5>
+              <h5>作者: {author}</h5>
+            </div>
+            <div className={styles.content}>
+              <h5>出版社:{publish} </h5>
+              <h5>售價:{price}元</h5>
+            </div>
           </div>
-          <div className={styles.content}>
-            <h5>出版社:{publish} </h5>
-            <h5>售價:{price}元</h5>
-          </div>
-        </div>
-    
-        <div className={styles.btn_set}>
-          <ButtonStyle_l
-          className='mx-5'
-            t1={'加入購物車'}
-            onClick={() => cart(ISBN, member_id)}
-            ISBN={ISBN}
-          />
-          <ButtonStyle_l t1={'找二手書'} onClick={toUsedArea} />
-          {/* <div className={styles.icon}>
-         
+
+          <div className={styles.btn_set}>
+            <ButtonStyle_l
+              className="mx-5"
+              t1={'加入購物車'}
+              onClick={() => cart(ISBN, member_id)}
+              ISBN={ISBN}
+            />
+            <ButtonStyle_l t1={'找二手書'} onClick={toUsedArea} />
+            {/* <div className={styles.icon}>
           </div> */}
+          </div>
         </div>
-        </div>
-        
       </div>
     </>
   )
