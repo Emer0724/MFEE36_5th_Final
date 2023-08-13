@@ -5,15 +5,18 @@ const nextConfig = {
     domains: [
       'via.placeholder.com',
       'localhost',
-      '6e64-1-160-30-46.ngrok-free.app',
+      'e945-49-159-4-38.ngrok-free.app',
+      'bab4-49-159-4-38.ngrok-free.app',
     ],
     // domains: ['b363-49-159-4-38.ngrok-free.app'],
+    //兩個ngrok 都要
+    
   },
   env: {
     API_SERVER: 'http://localhost:3055',
-    WEB: 'https://646e-1-160-30-46.ngrok-free.app',
+    WEB: 'https://e945-49-159-4-38.ngrok-free.app',
     //3055
-    WEB_IMG: 'https://6e64-1-160-30-46.ngrok-free.app',
+    WEB_IMG: 'https://bab4-49-159-4-38.ngrok-free.app',
     //3000
   },
   // env: {

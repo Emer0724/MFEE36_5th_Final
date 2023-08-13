@@ -119,7 +119,7 @@ export default function Display() {
     // console.log('Debounce2 發 request ----------------')
   }, [inputValue])
 
-  useDebounce(f1, 500)
+  useDebounce(f1, 300)
 
   const getbookinput = async (inputValue) => {
     // console.log(inputValue)

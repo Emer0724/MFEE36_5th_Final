@@ -9,6 +9,7 @@ import Link from 'next/link'
 export default function Login() {
   const router = useRouter()
   const { auth, setAuth } = useContext(AuthContext)
+  const [success, setsuccess] = useState(false)
   const [user, setUser] = useState({
     email: '',
     password: '',
@@ -38,6 +39,7 @@ export default function Login() {
           localStorage.setItem('auth', JSON.stringify(obj))
           // console.log(obj)
           setAuth(obj)
+           setsuccess(true)
           alert('登入成功')
           router.push('/')
         } else {
@@ -153,6 +155,12 @@ export default function Login() {
           </div>
         </div>
       </div>
+
+      {success ? (
+        <Popup_window icon={true} no_botton={true} text={'登入成功'} />
+      ) : (
+        ''
+      )}
     </>
   )
 }
