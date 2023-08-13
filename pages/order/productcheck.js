@@ -7,6 +7,7 @@ import DeepButton from '@/components/common/CBtn/DeepgreenBtn'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 export default function productcheck() {
   const router = useRouter()
@@ -69,6 +70,7 @@ export default function productcheck() {
 
   return (
     <div style={style1}>
+    <Head><title>Book書易-商品確認</title></Head>
       <OrderState />
       <CartTitle titlecontent={'再次確認商品後，前往付款吧'} />
       <table className={styles.tablecontain}>

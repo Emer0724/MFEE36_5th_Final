@@ -5,6 +5,7 @@ import { useState, useEffect, useContext } from 'react'
 import { useRouter } from 'next/router'
 import countContext from '@/context/countContext'
 import Loading from '@/components/common/loading'
+import Head from 'next/head'
 
 export default function complete() {
   const router = useRouter()
@@ -107,6 +108,7 @@ export default function complete() {
  }
   return (
     <>
+    <Head><title>Book書易-訂單完成</title></Head>
       <OrderState />
       <div style={style2}>
         <div style={style3}>

@@ -40,7 +40,9 @@ export default function Favorite(result) {
     }
     checkMark()
   }, [ISBN, id]) //當 ISBN 或 id 發生變化時，useEffect重新運行
+
   //確認是否已登入
+  
   const check = () => {
     const user = localStorage.getItem('auth')
     return user !== null

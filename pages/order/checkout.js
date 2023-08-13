@@ -7,6 +7,7 @@ import s from '@/pages/order/checkout.module.css'
 import logo from '@/assets/used-svg/LOGO_notext.svg'
 import Image from 'next/image'
 import ic from '@/assets/Cart_Image/ic.png'
+import Head from 'next/head'
 
 export default function OrderCheckout() {
   const router = useRouter()
@@ -53,6 +54,7 @@ export default function OrderCheckout() {
 
   return (
     <>
+      <Head><title>Book書易-付款處理</title></Head>
       <OrderState />
       <CartTitle titlecontent={'付款完成後，就大功告成啦'} />
       <div className={s.container}>

@@ -6,6 +6,7 @@ import s from '@/pages/dashboard/order.module.css'
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import logo from '@/assets/used-svg/LOGO_notext.svg'
+import Head from 'next/head'
 
 export default function OrderHistory() {
   const [data, setData] = useState([])
@@ -53,6 +54,7 @@ export default function OrderHistory() {
   if (data.length < 1) {
     return (
       <>
+       <Head><title>Book書易-訂單</title></Head>
         <Member_info />
         <MemberNav />
         <div className={s.container}>
@@ -82,6 +84,7 @@ export default function OrderHistory() {
     return (
       <div className={s.bodyct}>
         <div className={s.show}>
+        <Head><title>Book書易-訂單</title></Head>
           <Member_info />
           <MemberNav />
           <select className={s.selectv}  onChange={handlevision}>
@@ -249,6 +252,7 @@ export default function OrderHistory() {
           </div>
         )}
         <div className={s.rwdcontainer}>
+        <Head><title>Book書易-訂單</title></Head>
           <Member_info />
           <MemberNav />
           <Orderlist />

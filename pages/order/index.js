@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react'
 import styles from '@/pages/order/Orderindex.module.css'
 import loc from '@/data/address.json'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 export default function checkForm() {
   const [windowWidth, setWindowWidth] = useState(null)
@@ -272,6 +273,7 @@ export default function checkForm() {
 
   return (
     <>
+    <Head><title>Book書易-填寫資料</title></Head>
       <OrderState />
       <CartTitle
         className={styles.title}

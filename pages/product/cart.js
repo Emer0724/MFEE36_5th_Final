@@ -6,6 +6,7 @@ import CartTotal from '@/components/Cart_component/cart/Cart_Total'
 import CartRecommend from '@/components/Cart_component/cart/Cart_recommend'
 import CartTitle from '@/components/Cart_component/Cart_title'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 
 export default function Cart() {
@@ -68,7 +69,9 @@ const style2 = {
  width:"100%"
 }
   return (
+
     <div style={style1}>
+    <Head><title>Book書易-購物車</title></Head>
         <OrderIcon />
         { data.length>0
         ?
