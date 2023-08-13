@@ -39,7 +39,7 @@ export default function Isbn() {
   //無資料時的呈現畫面
   if (!data || !data.rows) {
     return (
-      <div>
+      <div style={{ paddingTop: '500px' }}>
         <Loading />
       </div>
     )
@@ -48,23 +48,6 @@ export default function Isbn() {
   // console.log(data)
   // console.log(ISBN)
   const { category_id } = data.rows[0] || {}
-  //loading畫面
-  if (data === null || !data.rows) {
-    const load = {
-      height: '1200px',
-      weight: '1920px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }
-    return (
-      <div style={{ display: 'flex' }}>
-        <div style={load}>
-          <Loading />
-        </div>
-      </div>
-    )
-  }
   return (
     <>
       <Bcs category_id={category_id} />

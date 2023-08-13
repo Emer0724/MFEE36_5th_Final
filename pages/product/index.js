@@ -8,34 +8,43 @@ import { Pagination } from 'antd'
 export default function Product() {
   const [data, setdata] = useState([]) //更新data 預設值為空陣列
   const [currentPage, setCurrentPage] = useState(1)
-  const [first, setfirst] = useState(false) //更新目前頁數 預設為第一頁
-
-  //從bcs取得parent_category
-  const [selectedParentCategory, setSelectedParentCategory] = useState('')
+  const [cateRand, setCateRand] = useState([]) //更新母分類隨機資料
 
   const setSelectedCategory = (parent_category) => {
-    setSelectedParentCategory(parent_category)
+    //0813 已經給了useState 跟randon的if 已成功 現在是這裡fetch還是沒給值
     console.log(parent_category)
+    fetch(
+      `${process.env.API_SERVER}/market/bcs_parent?category_name=${parent_category}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        setCateRand(data)
+        setCurrentPage(1)
+      })
 
     // 1219思路 利用這邊資料去觸發handleDisplay
-    const page = 1
-    handleDisplay(category_id, label, page)
+    // const page = 1
+    // handleDisplay(category_id, label, page)
   }
 
   useEffect(() => {
     const randomDisplay = () => {
-      // console.log('fetch start')
-      fetch(`${process.env.API_SERVER}/market/display_random`) //0811睡前結論 前端沒有發要求給後端   後端postman有正常運作
-        .then((res) => res.json())
-        .then((dataR) => {
-          const { rows } = dataR
-          setdata(dataR)
-          setCurrentPage(1)
-          console.log('後端回傳結果:', dataR)
-        })
+      console.log(cateRand)
+      if (cateRand.length === 0) {
+        fetch(`${process.env.API_SERVER}/market/display_random`)
+          .then((res) => res.json())
+          .then((dataR) => {
+            const { rows } = dataR
+            setdata(dataR)
+            setCurrentPage(1)
+            console.log('後端回傳結果:', dataR)
+          })
+      } else {
+        setdata(cateRand)
+      }
     }
     randomDisplay() //請記得要呼叫
-
   }, [])
 
   const handleDisplay = (category_id, label, page = 1) => {
@@ -61,11 +70,8 @@ export default function Product() {
     setCurrentPage(pageNumber) // 更新目前所在頁數
     handleDisplay(category_id, label, pageNumber) // 調用 handleDisplay 函式，更新商品資料並切換到指定頁數
   }
-  useEffect(() => {
-    setfirst(true)
-  }, [])
-
-  console.log(category_id)
+  console.log(rows)
+  // console.log(category_id)
   // console.log(totalRows)
   return (
     <>

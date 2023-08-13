@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from '@/components/Leo/market_card'
 import ca from './market_playground.module.css'
+import Loading from '../common/loading'
 
 export default function Playground({ rows, currentPage }) {
   const pageSize = 16
@@ -12,6 +13,15 @@ export default function Playground({ rows, currentPage }) {
   // console.log(23510177)
   console.log(rows)
   console.log(currentPageData)
+
+  if (!rows) {
+    return (
+      <div style={{ paddingTop: '500px' }}>
+        <Loading />
+      </div>
+    )
+  }
+
   return (
     <>
       <div
@@ -21,7 +31,7 @@ export default function Playground({ rows, currentPage }) {
         {/* 使用 rows 資料進行渲染 */}
         {currentPageData?.map((rows) => (
           <div
-            key={rows.id}
+            key={rows.ISBN}
             className={` ${ca.c_row} d-flex`}
             style={{ flex: '21%', padding: '10px' }}
           >

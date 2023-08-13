@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import ww from '@/components/Leo/market_breadcrumbs.module.css'
 
-export default function Bcs(props) {
-  let { category_id, setSelectedCategory } = props
+export default function Bcs({ category_id, setSelectedCategory }) {
   const [data, setData] = useState({ rows: [] })
+
   useEffect(() => {
     if (category_id) {
       fetch(`${process.env.API_SERVER}/market/bcs?category_id=${category_id}`)
@@ -114,13 +114,13 @@ export default function Bcs(props) {
   //親分類
   const parentCategory = () => {
     window.location.replace('/product')
-    console.log(parent_category)
     setSelectedCategory(parent_category)
   }
   //子分類
-  const now = () => {
-    window.location.replace('/product')
-  }
+  // const now = () => {
+  //   window.location.replace('/product')
+  //   setSelectedCategory()
+  // }
   return (
     <>
       <div className={`${ww.wish}`}>
@@ -134,7 +134,7 @@ export default function Bcs(props) {
               {parent_category}
             </button>
             {label !== '' && <p className={`${ww.p}`}>{'>'}</p>}
-            <button className={`${ww.p} ${ww.button}`} onClick={now}>
+            <button className={`${ww.p} ${ww.button}`} onClick={backhome}>
               {label}
             </button>
           </>

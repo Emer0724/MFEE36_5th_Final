@@ -14,7 +14,7 @@ function getItem(label, key, onClick, items, type, category_id) {
   }
 }
 
-const items = [
+const menuItems = [
   getItem(
     '文學小說',
     'sub1',
@@ -177,7 +177,7 @@ const Market_aside_button = ({ handleDisplay, rows }) => {
       onOpenChange={onOpenChange}
       className={n.market_aside_button}
     >
-      {items.map((item) => {
+      {menuItems.map((item) => {
         if (item.items) {
           return (
             <Menu.SubMenu key={item.key} title={item.label} icon={item.icon}>
