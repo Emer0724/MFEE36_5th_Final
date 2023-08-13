@@ -72,6 +72,9 @@ export default function WishList() {
       </div>
     )
   }
+
+  // const mediaQuery = window.matchMedia('(max-width: 400px)')
+
   return (
     <>
       <div className={styles.d1}>
@@ -93,9 +96,7 @@ export default function WishList() {
               <Wishcard v={v} result={changeresult} key={i} />
             ))
           ) : (
-            <div>
-              <h1>尚無收藏書籍</h1>
-            </div>
+            <h1 className={styles.nono}>尚無收藏書籍</h1>
           )}
         </div>
       </div>
@@ -108,7 +109,7 @@ export default function WishList() {
           onChange={handlePageChange} //變動頁面時的事件
           showSizeChanger={false}
           style={{ fontSize: '24px' }}
-          hideOnSinglePage={false} //單頁時是否隱藏?
+          hideOnSinglePage={true} //單頁時是否隱藏?
           showLessItems={true} //顯示較少
           responsive={true} //自動寬度調整
         />

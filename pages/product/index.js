@@ -4,14 +4,16 @@ import Aside from '@/components/Leo/market_aside'
 import Bcs from '@/components/Leo/market_breadcrumbs'
 import CarouselComponent from '@/components/Leo/carousel_auto'
 import { Pagination } from 'antd'
+import { useRouter } from 'next/router'
 
 export default function Product() {
   const [data, setdata] = useState([]) //更新data 預設值為空陣列
   const [currentPage, setCurrentPage] = useState(1)
   const [cateRand, setCateRand] = useState([]) //更新母分類隨機資料
+  const router = useRouter()
 
   const setSelectedCategory = (parent_category) => {
-    //0813 已經給了useState 跟randon的if 已成功 現在是這裡fetch還是沒給值
+    //0813 onclick 觸發不到這邊
     console.log(parent_category)
     fetch(
       `${process.env.API_SERVER}/market/bcs_parent?category_name=${parent_category}`
@@ -22,10 +24,8 @@ export default function Product() {
         setCateRand(data)
         setCurrentPage(1)
       })
-
-    // 1219思路 利用這邊資料去觸發handleDisplay
-    // const page = 1
-    // handleDisplay(category_id, label, page)
+    const page = 1
+    handleDisplay(category_id, label, page)
   }
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export default function Product() {
       }
     }
     randomDisplay() //請記得要呼叫
-  }, [])
+  }, [router.query, cateRand])
 
   const handleDisplay = (category_id, label, page = 1) => {
     // console.log(`category_id : ${category_id}`)
@@ -64,7 +64,6 @@ export default function Product() {
         console.error('無該分類資料', err)
       })
   }
-
   const { rows, totalRows, category_id, label } = data
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber) // 更新目前所在頁數

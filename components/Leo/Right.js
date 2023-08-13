@@ -29,12 +29,10 @@ export default function Right({ result, usedAreaRef }) {
           <h1 className={`${styles.title} ${styles.used}`} id="usedArea">
             二手書
           </h1>
-          <div className='w-100 py-5 d-flex justify-content-center px-5' >
-          <UsedList datas={data} ISBN={ISBN} />
+          <div className="w-100 py-5 d-flex justify-content-center px-5">
+            <UsedList datas={data} ISBN={ISBN} />
           </div>
-         
         </div>
-       
       </div>
     </>
   )

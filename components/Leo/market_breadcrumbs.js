@@ -114,6 +114,7 @@ export default function Bcs({ category_id, setSelectedCategory }) {
   //親分類
   const parentCategory = () => {
     window.location.replace('/product')
+    console.log('onclick有觸發')
     setSelectedCategory(parent_category)
   }
   //子分類
