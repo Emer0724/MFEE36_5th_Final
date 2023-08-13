@@ -7,13 +7,11 @@ import Button4 from '../common/button/button4'
 import Button5 from '../common/button/button5'
 import Button7 from '../common/button/button7'
 import { useState, useEffect } from 'react'
-import { BiSolidLike } from 'react-icons/bi'
 import { useRouter } from 'next/router'
 
 export default function ArticleContentElement() {
   const router = useRouter()
   const [article, setArticle] = useState([])
-  const [isLiked, setIsLiked] = useState(false)
 
   useEffect(() => {
     console.log(router.query.blogid)
@@ -26,9 +24,9 @@ export default function ArticleContentElement() {
     }
   }, [router])
 
-  const handleLikeClick = () => {
-    setIsLiked(!isLiked)
-  }
+  
+
+
   const formatDateString = (dateString) => {
     const date = new Date(dateString)
     const year = date.getFullYear()

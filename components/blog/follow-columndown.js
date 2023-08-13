@@ -42,7 +42,7 @@ export default function FollowColumnDown() {
               className={`pe-3 text-decoration-none`}
             >
               <Image
-                src={followDown.mem_avatar ? followDown.mem_avatar : people}
+                src={ followDown.mem_avatar ? `http://localhost:3055/`+ followDown.mem_avatar : people}
                 className={`${style.chenheadblogimg}`}
                 width={50}
                 height={50}
