@@ -47,6 +47,7 @@ export default function ArticleContentElement() {
                   <div className="pb-1">
                     <Avatar3
                       nickname={article.length !== 0 && article[0][0].nickname}
+                      mem_avatar={article.length !== 0 && article[0][0].mem_avatar}
                     />
                   </div>
                   <div className="d-flex align-items-center ps-3">

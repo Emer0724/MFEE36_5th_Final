@@ -35,11 +35,11 @@ export default function ToolBar() {
 
     if (storedMemberData) {
       const parsedMemberData = JSON.parse(storedMemberData);
-      setMemberData(parsedMemberData);
-      console.log(parsedMemberData)
+      setMemberData(parsedMemberData)
     }
   }, [])
-  
+
+
   useEffect(() => {
     const storedIcon = localStorage.getItem('selectedIcon')
     if (storedIcon) {
@@ -60,7 +60,8 @@ export default function ToolBar() {
       <div className={`${style.toolbarContainer} ${style.nav}`}>
         <div className={`${style.stickyLeft} col-2`}>
           <Avatar 
-          nickname={memberData.nickname}/>
+          nickname={memberData.nickname}
+          mem_avatar={memberData.mem_avatar}/>
           <div
             className={`flex-column align-items-center justify-content-center d-flex pt-5 ${
               selectedIcon === 'blog' ? style.selected : ''

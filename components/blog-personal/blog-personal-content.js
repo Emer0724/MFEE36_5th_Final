@@ -56,7 +56,9 @@ export default function BlogPersonalContent() {
           </div>
           <div className="d-flex justify-content-between">
             <div>
-              <Avatar2 nickname={psblog.nickname} />
+              <Avatar2 
+              nickname={psblog.nickname}
+              mem_avatar={psblog.mem_avatar} />
             </div>
           </div>
           <div className="pt-3">

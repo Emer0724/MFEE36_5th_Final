@@ -12,7 +12,7 @@ export default function Avatar3({ nickname, mem_avatar }) {
             key={nickname}
             width={60}
             height={60}
-            src={mem_avatar ? mem_avatar : people}
+            src={mem_avatar ? `http://localhost:3055/avatar/` + mem_avatar : people}
             className={`${stlye.chenheadimg} text-decoration-none`}
           />
         </Link>

@@ -99,7 +99,9 @@ export default function ArticleElement() {
                   <span className={`${style.chenfs}`}>{blog.blog_title}</span>
                 </Link>
                 <div className="d-flex pt-3">
-                  <Avatar2 nickname={blog.nickname} />
+                  <Avatar2 
+                  nickname={blog.nickname}
+                  mem_avatar={blog.mem_avatar} />
                 </div>
                 <div className="pt-3">
                   {blog.blog_img ? (

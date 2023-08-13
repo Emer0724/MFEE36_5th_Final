@@ -116,7 +116,10 @@ export default function BookPersonalContent() {
               </div>
               <div>
                 <div className="d-flex ps-3 pt-2">
-                  <Avatar2 nickname={psbook.nickname}/>
+                  <Avatar2 
+                  nickname={psbook.nickname}
+                  mem_avatar={psbook.mem_avatar}
+                  />
                 </div>
                 <div className="d-flex ps-3 pt-3 fw-bold">
                   <span>{psbook.book_name}</span>
