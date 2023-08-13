@@ -5,6 +5,7 @@ import Wishcard from '@/components/Leo/member/wishlist_card'
 import ca from '@/components/Leo/market_playground.module.css'
 import styles from './wishlist.module.css'
 import { Pagination } from 'antd'
+import Loading from '@/components/common/loading'
 
 export default function WishList() {
   const [currentPage, setCurrentPage] = useState(1)
@@ -63,6 +64,13 @@ export default function WishList() {
 
   const changeresult = (e) => {
     console.log(e)
+  }
+  if (!currentPageData) {
+    return (
+      <div style={{ paddingTop: '500px' }}>
+        <Loading />
+      </div>
+    )
   }
   return (
     <>

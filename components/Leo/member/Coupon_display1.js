@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Coupon from './Coupon_expired'
 import d from './Coupon_display.module.css'
+import Loading from '@/components/common/loading'
 
 export default function Coupon_display() {
   const [datas, setDatas] = useState([])
