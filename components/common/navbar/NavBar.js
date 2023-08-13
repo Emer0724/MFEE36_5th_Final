@@ -189,8 +189,8 @@ export default function NavBar1() {
               className={styles.Licon}
               alt="icon"
             />
-          </Link>
           <Badge className={styles.carticon} count={count}></Badge>
+          </Link>
           {/* Add a class to separate login button from other icons */}
           <div className={styles.loginWrapper} ref={avatarALLRef}>
             {auth.token ? (

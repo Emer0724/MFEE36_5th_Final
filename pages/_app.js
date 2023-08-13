@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import '@/styles/globals.scss'
 import '@/styles/globals.css'
 import '@/styles/used.css'
+import Head from 'next/head'
 // import LeoContextProvider from '@/context/LeoContext'
 
 import DefaultLayout from '@/components/layout/default-layout'
@@ -22,6 +23,7 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <AuthContextProvider>
       <CountContextProvider>
+        <Head><title>Book書易</title></Head>
         {getLayout(<Component {...pageProps} />)}
       </CountContextProvider>
     </AuthContextProvider>

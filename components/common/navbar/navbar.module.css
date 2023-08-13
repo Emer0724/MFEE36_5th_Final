@@ -42,7 +42,7 @@
 }
 .carticon{
     position: absolute;
-    right: 60px;
+    right: 0px;
     top:20px
 }
 
@@ -59,6 +59,7 @@
 .navlink2{
     text-decoration: none;
     margin:auto;
+    position: relative;
 }
 .naviconbtn{
     margin:auto;
@@ -193,7 +194,7 @@
     }
     .carticon{
         position: absolute;
-        right:40px;
+        right:-10px;
         top:20px
     }
 }
