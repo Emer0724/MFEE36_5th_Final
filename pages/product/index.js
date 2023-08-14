@@ -13,7 +13,7 @@ export default function Product() {
   const router = useRouter()
 
   const setSelectedCategory = (parent_category) => {
-    //0813 onclick 觸發不到這邊
+    //0813 onclick 
     console.log(parent_category)
     fetch(
       `${process.env.API_SERVER}/market/bcs_parent?category_name=${parent_category}`
