@@ -9,7 +9,8 @@ export default function UsedList({ ISBN }) {
   const [datas, setDatas] = useState([])
   const [pop, setpop] = useState(false)
   const { getcount, setcount, count } = useContext(countContext)
-
+  const [userId, setUserId] = useState()
+  const [first, setfirst] = useState()
   //登入驗證
   // const user_info = JSON.parse(localStorage.getItem('auth'))
   // let info = null
@@ -36,8 +37,8 @@ export default function UsedList({ ISBN }) {
   //       })
   //   }
   // }, [ISBN])
-
   useEffect(() => {
+    //二手書資料讀取
     if (ISBN) {
       fetch(`${process.env.API_SERVER}/used/usedlist/${ISBN}`)
         .then((res) => res.json())
@@ -66,8 +67,12 @@ export default function UsedList({ ISBN }) {
   }
   const check = () => {
     const user = localStorage.getItem('auth')
+    const info = JSON.parse(localStorage.getItem('auth'))
+    const { member_id } = info
+    setUserId(member_id)
     return user !== null
   }
+  console.log(check)
   // const check = () => {
   //   let user = ''
   //   if (localStorage.getItem('auth')) {
@@ -83,17 +88,19 @@ export default function UsedList({ ISBN }) {
   const cancel = () => {
     setpop(false)
   }
-
+  // console.log(`user_info: ${JSON.parse(localStorage.getItem('auth'))}`)
   const cartUsed = (ISBN, status_id) => {
     const userLogInStatus = check()
-    console.log(userLogInStatus)
-    const member = userLogInStatus.member_id
-    console.log(member)
+    console.log(`有無登入: ${userLogInStatus}`)
+    const info = JSON.parse(localStorage.getItem('auth'))
+    const { member_id } = info
+    console.log(member_id)
+
     if (userLogInStatus) {
       fetch(`${process.env.API_SERVER}/market/addToCartUsed`, {
         method: 'POST',
         body: JSON.stringify({
-          member_id: member,
+          member_id: member_id,
           ISBN: ISBN,
           status_id: status_id,
         }),
