@@ -47,6 +47,7 @@ export default function NavBar1() {
       setIsLoggedIn(true)
       setnotify(JSON.parse(localStorage.getItem('auth')).notify)
       setnickname(JSON.parse(localStorage.getItem('auth')).nickname)
+      getcount().then((data) => setcount(data))
       if (JSON.parse(localStorage.getItem('auth')).mem_avatar) {
         setphoto(JSON.parse(localStorage.getItem('auth')).mem_avatar)
       }
@@ -190,7 +191,7 @@ export default function NavBar1() {
               className={styles.Licon}
               alt="icon"
             />
-          <Badge className={styles.carticon} count={count}></Badge>
+            <Badge className={styles.carticon} count={count}></Badge>
           </Link>
           {/* Add a class to separate login button from other icons */}
           <div className={styles.loginWrapper} ref={avatarALLRef}>

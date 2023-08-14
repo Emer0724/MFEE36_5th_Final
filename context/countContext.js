@@ -42,6 +42,7 @@ export const CountContextProvider = function ({ children }) {
       console.log(member1)
       member = member1
       getcount().then((r) => setcount(r))
+      return
     }
   }, [])
 
