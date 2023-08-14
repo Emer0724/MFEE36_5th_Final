@@ -31,7 +31,7 @@ export default function Searchbar( {toggleSearch}) {
     // console.log('Debounce2 發 request ----------------')
   }, [search])
 
-  useDebounce(f1, 500)
+  useDebounce(f1, 300)
   return (
     <>
       <div className={styles.searchcontain}>

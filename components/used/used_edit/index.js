@@ -109,7 +109,7 @@ export default function UsedEdit({
               <>
                 <BsCheckCircleFill
                   className="  color-tx-2  me-3 "
-                  style={{ width: '60px', height: '60px' }}
+                  style={{ width: '30px', height: '30px' }}
                 />
               </>
             ) : (
