@@ -42,7 +42,7 @@ export default function Login() {
           // console.log(obj)
           setAuth(obj)
           setsuccess(true)
-          
+
           // setnotify(JSON.parse(localStorage.getItem('aurh')).notify)
 
           setTimeout(() => {
