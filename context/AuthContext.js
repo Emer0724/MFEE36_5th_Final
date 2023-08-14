@@ -28,6 +28,7 @@ export const AuthContextProvider = function ({ children }) {
     if (router.asPath.includes('dashboard')) {
       router.push('/')
     }
+    
   }
 
   useEffect(() => {

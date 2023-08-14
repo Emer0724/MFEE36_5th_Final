@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import { first } from 'lodash'
 
 const countContext = createContext({})
 
@@ -27,6 +28,10 @@ export const getcount = () => {
 export const CountContextProvider = function ({ children }) {
   const router = useRouter()
   const [count, setcount] = useState(0)
+  // const [first,setFirst] = useState(false)
+  // useEffect(()=>{
+  // setFirst(true)
+  // },[])
 
   useEffect(() => {
     if (

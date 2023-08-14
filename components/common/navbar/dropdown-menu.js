@@ -6,6 +6,7 @@ import AuthContext from '@/context/AuthContext'
 
 
 
+
 const DropdownMenu = forwardRef(({ isLoggedIn, gologout, nickname },ref) => {
 
   const { auth, setAuth, logout, setphoto, photo,notify } = useContext(AuthContext)
@@ -20,7 +21,7 @@ const DropdownMenu = forwardRef(({ isLoggedIn, gologout, nickname },ref) => {
           <p
             className={styles.menuItem}
             role="presentation"
-            onClick={ gologout}
+            onClick={gologout}
           >
             登出
           </p>
