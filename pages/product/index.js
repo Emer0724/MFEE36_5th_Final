@@ -9,43 +9,21 @@ import { useRouter } from 'next/router'
 export default function Product() {
   const [data, setdata] = useState([]) //更新data 預設值為空陣列
   const [currentPage, setCurrentPage] = useState(1)
-  const [cateRand, setCateRand] = useState([]) //更新母分類隨機資料
   const router = useRouter()
-
-  const setSelectedCategory = (parent_category) => {
-    //0813 onclick 
-    console.log(parent_category)
-    fetch(
-      `${process.env.API_SERVER}/market/bcs_parent?category_name=${parent_category}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
-        setCateRand(data)
-        setCurrentPage(1)
-      })
-    const page = 1
-    handleDisplay(category_id, label, page)
-  }
 
   useEffect(() => {
     const randomDisplay = () => {
-      console.log(cateRand)
-      if (cateRand.length === 0) {
-        fetch(`${process.env.API_SERVER}/market/display_random`)
-          .then((res) => res.json())
-          .then((dataR) => {
-            const { rows } = dataR
-            setdata(dataR)
-            setCurrentPage(1)
-            console.log('後端回傳結果:', dataR)
-          })
-      } else {
-        setdata(cateRand)
-      }
+      fetch(`${process.env.API_SERVER}/market/display_random`)
+        .then((res) => res.json())
+        .then((dataR) => {
+          const { rows } = dataR
+          setdata(dataR)
+          setCurrentPage(1)
+          console.log('後端回傳結果:', dataR)
+        })
     }
     randomDisplay() //請記得要呼叫
-  }, [router.query, cateRand])
+  }, [])
 
   const handleDisplay = (category_id, label, page = 1) => {
     // console.log(`category_id : ${category_id}`)
@@ -75,10 +53,7 @@ export default function Product() {
   return (
     <>
       <CarouselComponent />
-      <Bcs
-        category_id={category_id}
-        setSelectedCategory={setSelectedCategory} //傳遞的 setSelectedCategory 函數
-      />
+      <Bcs category_id={category_id} />
       <div style={{ display: 'flex', marginTop: '0px', width: '100%' }}>
         <Aside handleDisplay={handleDisplay} rows={rows} />
         <div

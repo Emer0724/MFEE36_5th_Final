@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
 import styles from './usedList.module.css'
-import Popup_window from '../popup_window'
 import { useRouter } from 'next/router'
 import countContext from '@/context/countContext'
 
@@ -66,14 +65,18 @@ export default function UsedList({ ISBN }) {
     )
   }
   const check = () => {
-    let user = ''
-    if (localStorage.getItem('auth')) {
-      user = JSON.parse(localStorage.getItem('auth'))
-      return user
-    } else {
-      return user !== null
-    }
+    const user = localStorage.getItem('auth')
+    return user !== null
   }
+  // const check = () => {
+  //   let user = ''
+  //   if (localStorage.getItem('auth')) {
+  //     user = JSON.parse(localStorage.getItem('auth'))
+  //     return user
+  //   } else {
+  //     return (user = '')
+  //   }
+  // }
   const login = () => {
     router.push(`/member/login`)
   }
@@ -148,17 +151,6 @@ export default function UsedList({ ISBN }) {
           })}
         </tbody>
       </table>
-      {pop ? (
-        <Popup_window
-          text={'您尚未登入，請先登入'}
-          botton_text_left={'登入'}
-          botton_text_right={'取消'}
-          botton_left={login()}
-          botton_right={cancel()}
-        />
-      ) : (
-        ''
-      )}
     </>
   )
 }
