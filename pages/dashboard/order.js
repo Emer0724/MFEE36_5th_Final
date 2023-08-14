@@ -54,7 +54,9 @@ export default function OrderHistory() {
   if (data.length < 1) {
     return (
       <>
-       <Head><title>Book書易-訂單</title></Head>
+        <Head>
+          <title>Book書易-訂單</title>
+        </Head>
         <Member_info />
         <MemberNav />
         <div className={s.container}>
@@ -84,17 +86,20 @@ export default function OrderHistory() {
     return (
       <div className={s.bodyct}>
         <div className={s.show}>
-        <Head><title>Book書易-訂單</title></Head>
+          <Head>
+            <title>Book書易-訂單</title>
+          </Head>
           <Member_info />
           <MemberNav />
-          <select className={s.selectv}  onChange={handlevision}>
+          <select className={s.selectv} onChange={handlevision}>
             <option>書本模式</option>
             <option>清單模式</option>
           </select>
         </div>
         {visioncahnge === '清單模式' ? (
-          
-          <div className={s.listmode}><Orderlist /></div>
+          <div className={s.listmode}>
+            <Orderlist />
+          </div>
         ) : (
           <div className={s.container}>
             {data.map((v, i) => {
@@ -196,11 +201,9 @@ export default function OrderHistory() {
                             ) : (
                               <h5 className={s.detailaddress}>訂單地址:</h5>
                             )}
-                            {v.paymethod === 1 ? (
-                              <h5 className={s.detailprice}>付款方式:</h5>
-                            ) : (
-                              <h5 className={s.detailprice}>付款方式:</h5>
-                            )}
+
+                            <h5 className={s.detailprice}>付款方式:</h5>
+
                             {v.shipping == 1 ? (
                               <>
                                 <h5 className={s.detailcount}>物流方式:</h5>
@@ -223,11 +226,9 @@ export default function OrderHistory() {
                                 {v.customer_address}
                               </h5>
                             )}
-                            {v.paymethod === 1 ? (
-                              <h5 className={s.detailprice}>信用卡</h5>
-                            ) : (
-                              <h5 className={s.detailprice}>linepay</h5>
-                            )}
+
+                            <h5 className={s.detailprice}>信用卡</h5>
+
                             {v.shipping == 1 ? (
                               <>
                                 <h5 className={s.detailcount}>宅配</h5>
@@ -252,7 +253,9 @@ export default function OrderHistory() {
           </div>
         )}
         <div className={s.rwdcontainer}>
-        <Head><title>Book書易-訂單</title></Head>
+          <Head>
+            <title>Book書易-訂單</title>
+          </Head>
           <Member_info />
           <MemberNav />
           <Orderlist />
