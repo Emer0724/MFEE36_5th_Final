@@ -106,7 +106,8 @@ export default function NavBar1() {
     // if (router.asPath.includes('dashboard')) {
     //   router.push('/')
     // }
-    setIsLoggedIn(false) // Set isLoggedIn to false on logout
+    setIsLoggedIn(false)
+    setcount('') // Set isLoggedIn to false on logout
   }
   const [Dropdown, setDropdown] = useState(false)
   const isDropdown = (Dropdown) => {
