@@ -19,30 +19,6 @@ export default function Favorite(result) {
   // const member_id = id.toString()
   const [mark, setMark] = useState(false)
 
-  useEffect(() => {
-    const checkMark = () => {
-      fetch(`${process.env.API_SERVER}/market/recommand`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ ISBN: ISBN, member_id: id }),
-      })
-        .then((res) => res.json())
-        .then((datas) => {
-          console.log('後端回傳結果:', datas)
-          // 根據收藏資料來更新按鈕的狀態
-          setMark(datas.rows.length > 0)
-        })
-        .catch((error) => {
-          console.error('請求發送錯誤', error)
-        })
-    }
-    checkMark()
-  }, [ISBN, id]) //當 ISBN 或 id 發生變化時，useEffect重新運行
-
-  //確認是否已登入
-
   const check = () => {
     const user = localStorage.getItem('auth')
     return user !== null
