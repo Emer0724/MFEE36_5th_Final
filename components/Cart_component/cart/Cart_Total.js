@@ -52,7 +52,7 @@ export default function CartTotal({data,totalAmount}) {
    setSelectcouponmid(mid)
    setSelectcoupon(coupon_discount)
    setSelectcouponid(id)
-   setSelectedCouponOption(Math.floor(totalAmount*(1-coupon_discount)));
+   setSelectedCouponOption(Math.ceil(totalAmount*(1-coupon_discount)));
    setShowCouponMenu(false);
    };
 
