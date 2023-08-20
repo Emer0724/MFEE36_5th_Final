@@ -3,17 +3,17 @@ import ButtonStyle_l from '@/components/Leo/Btn_Leo'
 import Favorite from './favorite'
 import Image from 'next/image'
 import styles from '@/components/Leo/Left.module.css'
-import { useState, useEffect, useContext } from 'react'
+import { useState, useContext } from 'react'
 import countContext from '@/context/countContext'
 import no_book from '@/assets/used-svg/no_book.svg'
 
 export default function L(props) {
   const [img, setimg] = useState(true)
-  const { getcount, setcount, count } = useContext(countContext)
+  const { getcount, setcount } = useContext(countContext)
   const { result, toUsedArea } = props || []
   const data = result.rows[0] || {}
   const { ISBN, book_name, pic, publish, price, author } = data || {}
-  const imageUrl = `/all_img/book_pic/${pic}`
+  // const imageUrl = `/all_img/book_pic/${pic}`
 
   //登入驗證
   const user_info = JSON.parse(localStorage.getItem('auth'))
