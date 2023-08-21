@@ -24,7 +24,7 @@ export default function Product() {
     }
     randomDisplay() //請記得要呼叫
   }, [])
-
+  //子分類資料呈現
   const handleDisplay = (category_id, label, page = 1) => {
     // console.log(`category_id : ${category_id}`)
     // console.log(`label : ${label}`)

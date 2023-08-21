@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-// import { AppstoreOutlined } from '@ant-design/icons'
 import { Menu } from 'antd'
 import n from '@/components/Leo/market_aside.module.css'
 
@@ -160,8 +159,9 @@ const rootSubmenuKeys = [
 
 const Market_aside_button = ({ handleDisplay, rows }) => {
   console.log(rows)
-  const [openKeys, setOpenKeys] = useState([])
 
+  //li展開
+  const [openKeys, setOpenKeys] = useState([])
   const onOpenChange = (keys) => {
     const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1)
     if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {

@@ -1,0 +1,28 @@
+.wish{
+width: 100%;
+background-color:#D4E9E2 ;
+/* background: linear-gradient(to right,#D4E9E2,rgba(250, 235, 215, 0.395)); */
+
+font-size: 24px;
+font-weight: bold;
+color: #3F7F3A;
+margin: 0;
+padding-top: 20px;
+padding-bottom: 20px;
+display: flex;
+padding-left: 80px;
+margin-top: 10px;
+
+}
+.p{
+    margin-bottom: 0;
+    margin-right: 20px;
+}
+.button{
+    font-size: 24px;
+    font-weight: bold;
+    color: #3F7F3A;
+    border:none;
+    background-color:transparent; 
+    margin-right: 20px;  
+}
