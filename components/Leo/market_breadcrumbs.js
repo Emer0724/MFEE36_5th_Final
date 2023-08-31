@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import ww from '@/components/Leo/market_breadcrumbs.module.css'
+// import leoContext from '@/context/LeoContext'
 
-export default function Bcs({ category_id }) {
+export default function Bcs({ category_id, parent_category }) {
   const [data, setData] = useState({ rows: [] })
-
+  // const { triggerAsideButtonClick } = useContext(leoContext) //宣告LeoContext中的函式供此檔使用
   useEffect(() => {
     if (category_id) {
       fetch(`${process.env.API_SERVER}/market/bcs?category_id=${category_id}`)
@@ -19,7 +20,6 @@ export default function Bcs({ category_id }) {
   }, [category_id])
 
   let label = ''
-  let parent_category = ''
 
   if (data.rows && data.rows.length > 0) {
     const [result] = data.rows
@@ -29,7 +29,8 @@ export default function Bcs({ category_id }) {
     label = category_name
     parent_category = parent_category_name
   }
-
+  console.log(`bcs: ${parent_category}`)
+  console.log(`bcs: ${category_id}`)
   //onClick事件
   const backhome = () => {
     window.location.replace('/product')
@@ -37,10 +38,12 @@ export default function Bcs({ category_id }) {
   //親分類
   const parentCategory = () => {
     window.location.replace('/product')
+    // triggerAsideButtonClick({ parent_category })
   }
   //子分類
   const now = () => {
     window.location.replace('/product')
+    // triggerAsideButtonClick({ category_id })
   }
   return (
     <>
@@ -55,7 +58,7 @@ export default function Bcs({ category_id }) {
               {parent_category}
             </button>
             {label !== '' && <p className={`${ww.p}`}>{'>'}</p>}
-            <button className={`${ww.p} ${ww.button}`} onClick={backhome}>
+            <button className={`${ww.p} ${ww.button}`} onClick={now}>
               {label}
             </button>
           </>

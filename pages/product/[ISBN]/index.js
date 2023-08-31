@@ -13,7 +13,7 @@ export default function Isbn() {
   const usedAreaRef = useRef()
   //導向二手書區塊
   const toUsedArea = (e) => {
-    e.preventDefault()
+    e.preventDefault() //清空預設動作
 
     const targetElement = document.getElementById('usedArea')
     if (targetElement) {
@@ -45,12 +45,13 @@ export default function Isbn() {
     )
   }
 
-  // console.log(data)
-  // console.log(ISBN)
-  const { category_id } = data.rows[0] || {}
+  console.log(data)
+  console.log(ISBN)
+  const { category_id, parent_category } = data.rows[0] || {}
+  console.log(parent_category)
   return (
     <>
-      <Bcs category_id={category_id} />
+      <Bcs category_id={category_id} parent_category={parent_category} />
       <div className={styles.square}>
         <div className={styles.l_box}>
           <Left result={data} toUsedArea={toUsedArea} />

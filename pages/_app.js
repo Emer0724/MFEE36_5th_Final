@@ -3,8 +3,6 @@ import '@/styles/globals.scss'
 import '@/styles/globals.css'
 import '@/styles/used.css'
 import Head from 'next/head'
-// import LeoContextProvider from '@/context/LeoContext'
-
 import DefaultLayout from '@/components/layout/default-layout'
 import { AuthContextProvider } from '@/context/AuthContext'
 import { CountContextProvider } from '@/context/countContext'
@@ -21,11 +19,15 @@ export default function MyApp({ Component, pageProps }) {
     Component.getLayout || ((page) => <DefaultLayout>{page}</DefaultLayout>)
 
   return (
-    <AuthContextProvider>
-      <CountContextProvider>
-        <Head><title>Book書易</title></Head>
-        {getLayout(<Component {...pageProps} />)}
-      </CountContextProvider>
-    </AuthContextProvider>
+    <>
+      <AuthContextProvider>
+        <CountContextProvider>
+          <Head>
+            <title>Book書易</title>
+          </Head>
+          {getLayout(<Component {...pageProps} />)}
+        </CountContextProvider>
+      </AuthContextProvider>
+    </>
   )
 }

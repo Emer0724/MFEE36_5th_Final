@@ -25,18 +25,12 @@ export default function Playground({ rows, currentPage }) {
   return (
     <>
       <div
-        className={`container ${ca.box}`}
+        className={`${ca.box}`}
         style={{ display: 'flex', flexWrap: 'wrap' }}
       >
         {/* 使用 rows 資料進行渲染 */}
         {currentPageData?.map((rows) => (
-          <div
-            key={rows.ISBN}
-            className={` ${ca.c_row} d-flex`}
-            style={{ flex: '21%', padding: '10px' }}
-          >
-            <Card rows={rows} />
-          </div>
+          <Card rows={rows} key={rows.ISBN} />
         ))}
       </div>
     </>

@@ -14,11 +14,10 @@ export default function Coupon_form() {
   }, [])
   //onclick事件
   const getCoupon = (e) => {
-    event.preventDefault(e)
+    e.preventDefault()
     const code = document.getElementById('couponInput').value
     const { member_id } = info
 
-    console.log('鳥貴族')
     console.log(member_id)
 
     fetch(`${process.env.API_SERVER}/market/getCoupon`, {
@@ -51,22 +50,6 @@ export default function Coupon_form() {
     window.alert('取得優惠券失敗，請確認輸入的優惠券號碼。')
   }
 
-  // {
-  //   success !== undefined && (
-  //     <div>
-  //       {success ? (
-  //         <div className={f.success}>取得優惠券！</div>
-  //       ) : (
-  //         <div className={f.fail}>取得優惠券失敗，請確認輸入的優惠券號碼。</div>
-  //       )}
-  //     </div>
-  //   )
-  // }
-  // {
-  //   error && (
-  //     <div className={f.fail}>取得優惠券失敗，請確認輸入的優惠券號碼。</div>
-  //   )
-  // }
   return (
     <>
       <div>

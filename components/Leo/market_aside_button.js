@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Menu } from 'antd'
 import n from '@/components/Leo/market_aside.module.css'
-
+// import { useLeoContext } from '@/context/LeoContext'
 function getItem(label, key, onClick, items, type, category_id) {
   return {
     key,
@@ -131,7 +131,6 @@ const menuItems = [
       getItem('個人成長', '45', null, null, null, '56'),
       getItem('勵志故事散文', '46', null, null, null, '57'),
       getItem('人際關係', '47', null, null, null, '59'),
-      // getItem('生活哲學', '48', null, null, null, '61'), //問題點 (label, key, onClick, items, type, category_id)
       getItem('熟齡生活', '49', null, null, null, '62'),
       getItem('生死醫病', '50', null, null, null, '63'),
       getItem('心理學', '51', null, null, null, '64'),
@@ -158,8 +157,10 @@ const rootSubmenuKeys = [
 // submenu keys of first level
 
 const Market_aside_button = ({ handleDisplay, rows }) => {
-  console.log(rows)
-
+  // const { asideButtonClick, triggerAsideButtonClick } = useLeoContext() //宣告LeoContext中的函式供此檔使用
+  // if (asideButtonClick && triggerAsideButtonClick) {
+  //   console.log(123)
+  // }
   //li展開
   const [openKeys, setOpenKeys] = useState([])
   const onOpenChange = (keys) => {

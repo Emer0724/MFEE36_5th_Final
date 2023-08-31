@@ -2,14 +2,29 @@ import React, { useState, useEffect } from 'react'
 import Playground from '@/components/Leo/market_playground'
 import Aside from '@/components/Leo/market_aside'
 import Bcs from '@/components/Leo/market_breadcrumbs'
-import CarouselComponent from '@/components/Leo/carousel_auto'
+import CarouselComponent from '@/components/Leo/carousel_new'
 import { Pagination } from 'antd'
 import { useRouter } from 'next/router'
+import Market_aside_button_mini from '@/components/Leo/market_aside_button_mini'
+// import Market_aside_button from '@/components/Leo/market_aside_button'
 
 export default function Product() {
   const [data, setdata] = useState([]) //更新data 預設值為空陣列
   const [currentPage, setCurrentPage] = useState(1)
+  const [viewWidth, setViewWidth] = useState(
+    typeof window !== 'undefined' ? window.innerWidth : 0
+  )
   const router = useRouter()
+
+  useEffect(() => {
+    const handleResize = () => {
+      setViewWidth(typeof window !== 'undefined' ? window.innerWidth : 0)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   useEffect(() => {
     const randomDisplay = () => {
@@ -54,8 +69,13 @@ export default function Product() {
     <>
       <CarouselComponent />
       <Bcs category_id={category_id} />
+      {viewWidth <= 600 && (
+        <Market_aside_button_mini handleDisplay={handleDisplay} rows={rows} />
+      )}
       <div style={{ display: 'flex', marginTop: '0px', width: '100%' }}>
-        <Aside handleDisplay={handleDisplay} rows={rows} />
+        {viewWidth >= 600 && (
+          <Aside handleDisplay={handleDisplay} rows={rows} />
+        )}
         <div
           style={{
             display: 'flex',

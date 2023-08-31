@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form完整攻略</title>
+    <style>
+        body>form {
+            /* border: 1px solid pink; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        legend {
+            font-weight: bold;
+        }
+
+        fieldset {
+            width: 70%;
+            background-color: lightgreen;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+        }
+    </style>
+</head>
+
+<body>
+    <form action="#" method="post" enctype="multipart/form-data">
+        <fieldset>
+            <legend>基本資料</legend>
+            <label for="name">姓名:</label> <!--label的for要與input的id做連結所以要相同-->
+            <input type="text" id="name" class="name" placeholder="請輸入姓名"><!--此處的name是為了讓電腦方便識別種類-->
+            <label for="PWD">密碼:</label>
+            <input type="password" id="PWD" class="PWD">
+            <label for="idnum">身分證字號:</label>
+            <input type="password" id="idnum" name="idnum" maxlength="10" required="required"
+                pattern="[a-z,A-Z]{1}[1-2,8-9{1}[\d]{8}">
+            <!--required 必填選項    pattern輸入格式確認 [可接受範圍]{該範圍作用位數} \d=0-9的意思-->
+            <div>
+                <label for="gender">性別:</label>
+                <input type="radio" name="gender" value="male">男
+                <input type="radio" name="gender" value="female">女 <!--單選選項需每個name都要一致才能單選-->
+                <input type="radio" name="gender" value="other">其他
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>其他資訊</legend>
+            <div>
+                <label for="hobby">興趣:</label>
+                <input type="checkbox" name="hobby" id="hobby" value="music">音樂
+                <input type="checkbox" name="hobby" id="hobby" value="sports">運動 <!--多選選項name也須一致-->
+                <input type="checkbox" name="hobby" id="hobby" value="travel">旅遊
+                <input type="checkbox" name="hobby" id="hobby" value="drama">看劇
+            </div>
+            <label for="location">居住地:</label>
+            <select name="location" id="location">
+                <option value="jp">日本</option>
+                <option value="uk">英國</option>
+                <option value="us">美國</option>
+                <option value="tw" selected>台灣</option> <!--selected某選項設為預設值-->
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>意見回饋&資料提供</legend>
+            <label for="memo">意見回饋:</label>
+            <textarea cols="40" rows="5" id="memo" class="meno" placeholder="請留下寶貴意見"></textarea>
+            <!--placeholder 透明提示字元-->
+            <label class="file1">照片提供:</label>
+            <input type="file" name=file>
+            <textarea name="policy" id="" cols="30" rows="10"
+                readonly>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, possimus aspernatur! Incidunt maiores molestias error, quod modi totam odio. Temporibus doloribus culpa magnam cum explicabo consequatur officia, cumque accusantium, soluta tempore, tempora sed. Necessitatibus laudantium vel quos cum ipsa, maxime porro id animi expedita ut recusandae ullam tenetur quis! Nam.</textarea>
+            <!--readonly唯讀-->
+            <div>
+                <input type="submit" value="確定">
+                <input type="reset" value="清除">
+                <input type="botton" value="測試用" disabled>
+            </div>
+        </fieldset>
+
+
+
+
+
+
+
+
+
+    </form>
+
+</body>
+
+</html>
