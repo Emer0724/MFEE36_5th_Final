@@ -1,10 +1,17 @@
 import React, { useEffect, useState, useContext } from 'react'
 import ww from '@/components/Leo/market_breadcrumbs.module.css'
-// import leoContext from '@/context/LeoContext'
+import { useLeoContext } from '@/context/LeoContext'
 
 export default function Bcs({ category_id, parent_category }) {
   const [data, setData] = useState({ rows: [] })
-  // const { triggerAsideButtonClick } = useContext(leoContext) //宣告LeoContext中的函式供此檔使用
+  console.log(`first:${category_id}`)
+  console.log(`first:${parent_category}`)
+  const {
+    setAsideButtonClick,
+    setParentCategory,
+    setCategoryId,
+    setCategoryName,
+  } = useLeoContext() //宣告LeoContext中的函式供此檔使用
   useEffect(() => {
     if (category_id) {
       fetch(`${process.env.API_SERVER}/market/bcs?category_id=${category_id}`)
@@ -30,20 +37,25 @@ export default function Bcs({ category_id, parent_category }) {
     parent_category = parent_category_name
   }
   console.log(`bcs: ${parent_category}`)
-  console.log(`bcs: ${category_id}`)
+  console.log(`bcs: ${label}`)
   //onClick事件
   const backhome = () => {
     window.location.replace('/product')
   }
   //親分類
-  const parentCategory = () => {
+  const parent = () => {
+    console.log(typeof parent_category)
+    setParentCategory(parent_category)
+    setAsideButtonClick(true)
     window.location.replace('/product')
-    // triggerAsideButtonClick({ parent_category })
   }
   //子分類
   const now = () => {
+    console.log(label, category_id)
+    setCategoryId(category_id)
+    setCategoryName(label)
+    setAsideButtonClick(true)
     window.location.replace('/product')
-    // triggerAsideButtonClick({ category_id })
   }
   return (
     <>
@@ -54,11 +66,21 @@ export default function Bcs({ category_id, parent_category }) {
         {label !== 'undefined' && label !== undefined && (
           <>
             {label !== '' && <p className={`${ww.p}`}>{'>'}</p>}
-            <button className={`${ww.p} ${ww.button}`} onClick={parentCategory}>
+            <button
+              className={`${ww.p} ${ww.button}`}
+              onClick={() => {
+                parent(parent_category)
+              }}
+            >
               {parent_category}
             </button>
             {label !== '' && <p className={`${ww.p}`}>{'>'}</p>}
-            <button className={`${ww.p} ${ww.button}`} onClick={now}>
+            <button
+              className={`${ww.p} ${ww.button}`}
+              onClick={() => {
+                now(label, category_id)
+              }}
+            >
               {label}
             </button>
           </>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Menu } from 'antd'
 import n from '@/components/Leo/market_aside.module.css'
-// import { useLeoContext } from '@/context/LeoContext'
+import { useLeoContext } from '@/context/LeoContext'
 function getItem(label, key, onClick, items, type, category_id) {
   return {
     key,
@@ -141,26 +141,36 @@ const menuItems = [
 ]
 
 const rootSubmenuKeys = [
-  'sub1',
-  'sub2',
-  'sub3',
-  'sub4',
-  'sub5',
-  'sub6',
-  'sub7',
-  'sub8',
-  'sub9',
-  'sub10',
-  'sub11',
+  '文學小說',
+  '自然科普',
+  '飲食',
+  '生活風格',
+  '旅遊',
+  '藝術設計',
+  '電腦資訊',
+  '商業理財',
+  '心理勵志',
+  // 添加其他菜單項目的對應鍵
 ]
+// const lockOn = document.querySelectorAll('[category_id='x')
 
 // submenu keys of first level
 
 const Market_aside_button = ({ handleDisplay, rows }) => {
-  // const { asideButtonClick, triggerAsideButtonClick } = useLeoContext() //宣告LeoContext中的函式供此檔使用
-  // if (asideButtonClick && triggerAsideButtonClick) {
-  //   console.log(123)
-  // }
+  const { asideButtonClick, parentCategory, categoryId, categoryName } =
+    useLeoContext()
+  console.log(`aside:${asideButtonClick}`)
+  console.log(`aside:${parentCategory}`)
+  console.log(`aside:${categoryId}`)
+
+  if (asideButtonClick) {
+    const label = categoryName
+    const category_id = categoryId
+    const keys = parentCategory
+    onOpenChange(keys)
+    handleDisplay(label, category_id)
+  }
+
   //li展開
   const [openKeys, setOpenKeys] = useState([])
   const onOpenChange = (keys) => {
@@ -185,8 +195,8 @@ const Market_aside_button = ({ handleDisplay, rows }) => {
               {item.items.map((subItem) => (
                 <Menu.Item
                   key={subItem.key}
-                  onClick={() =>
-                    handleDisplay(subItem.category_id, subItem.label)
+                  onClick={
+                    () => handleDisplay(subItem.category_id, subItem.label) //抓取該分類資料用函式
                   }
                 >
                   {subItem.label}
@@ -198,7 +208,7 @@ const Market_aside_button = ({ handleDisplay, rows }) => {
           return (
             <Menu.Item
               key={item.key}
-              onClick={() => handleDisplay(item.category_id, item.label)}
+              onClick={() => handleDisplay(item.category_id, item.label)} //抓取該分類資料用函式
             >
               {item.label}
             </Menu.Item>

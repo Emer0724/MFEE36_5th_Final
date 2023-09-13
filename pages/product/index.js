@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import Playground from '@/components/Leo/market_playground'
 import Aside from '@/components/Leo/market_aside'
-import Bcs from '@/components/Leo/market_breadcrumbs'
+import Bcs from '@/components/Leo/market_breadcrumbs_new'
 import CarouselComponent from '@/components/Leo/carousel_new'
 import { Pagination } from 'antd'
 import { useRouter } from 'next/router'
 import Market_aside_button_mini from '@/components/Leo/market_aside_button_mini'
-// import Market_aside_button from '@/components/Leo/market_aside_button'
+import { useLeoContext } from '@/context/LeoContext'
 
 export default function Product() {
+  const { setAsideButtonClick } = useLeoContext()
   const [data, setdata] = useState([]) //更新data 預設值為空陣列
   const [currentPage, setCurrentPage] = useState(1)
   const [viewWidth, setViewWidth] = useState(
@@ -43,6 +44,7 @@ export default function Product() {
   const handleDisplay = (category_id, label, page = 1) => {
     // console.log(`category_id : ${category_id}`)
     // console.log(`label : ${label}`)
+    setAsideButtonClick(false)
     fetch(
       `${process.env.API_SERVER}/market/display?category_id=${category_id}&label=${label}&page=${page}`
     ) //提供分類id、分類名稱、頁數
@@ -67,37 +69,39 @@ export default function Product() {
   // console.log(totalRows)
   return (
     <>
-      <CarouselComponent />
-      <Bcs category_id={category_id} />
-      {viewWidth <= 600 && (
-        <Market_aside_button_mini handleDisplay={handleDisplay} rows={rows} />
-      )}
-      <div style={{ display: 'flex', marginTop: '0px', width: '100%' }}>
-        {viewWidth >= 600 && (
-          <Aside handleDisplay={handleDisplay} rows={rows} />
+      <div style={{ height: '100%' }}>
+        <CarouselComponent />
+        <Bcs category_id={category_id} />
+        {viewWidth <= 600 && (
+          <Market_aside_button_mini handleDisplay={handleDisplay} rows={rows} />
         )}
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            width: '100%',
-            alignItems: 'center',
-          }}
-        >
-          <Playground rows={rows} currentPage={currentPage} />
-          <div style={{ margin: '20px' }}>
-            <Pagination
-              pageSize={16}
-              defaultCurrent={1}
-              current={currentPage}
-              total={totalRows}
-              onChange={handlePageChange}
-              showSizeChanger={false}
-              style={{ fontSize: '24px' }}
-              hideOnSinglePage={true}
-              showLessItems={true}
-              responsive={true}
-            />
+        <div style={{ display: 'flex', marginTop: '0px', width: '100%' }}>
+          {viewWidth >= 600 && (
+            <Aside handleDisplay={handleDisplay} rows={rows} />
+          )}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              width: '100%',
+              alignItems: 'center',
+            }}
+          >
+            <Playground rows={rows} currentPage={currentPage} />
+            <div style={{ margin: '20px' }}>
+              <Pagination
+                pageSize={16}
+                defaultCurrent={1}
+                current={currentPage}
+                total={totalRows}
+                onChange={handlePageChange}
+                showSizeChanger={false}
+                style={{ fontSize: '24px' }}
+                hideOnSinglePage={true}
+                showLessItems={true}
+                responsive={true}
+              />
+            </div>
           </div>
         </div>
       </div>

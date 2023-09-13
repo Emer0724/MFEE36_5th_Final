@@ -12,7 +12,7 @@ export default function MarketCard(props) {
   // const [img, setimg] = useState(true)
 
   console.log(v)
-  const cardRef = useRef(null) //設定空的CARD給後續作參照用
+  const cardRef = useRef(null) //設定空的card給後續作參照用
   const [data, setData] = useState() //渲染資料用
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -46,6 +46,7 @@ export default function MarketCard(props) {
           }
 
           setData(newData)
+          window.location.replace('/dashboard/wishlist')
         })
         .catch((err) => {
           console.error('資料庫錯誤', err)

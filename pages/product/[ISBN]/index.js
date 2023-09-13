@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
-import Bcs from '@/components/Leo/market_breadcrumbs'
+import Bcs from '@/components/Leo/market_breadcrumbs_new'
 import Left from '@/components/Leo/Left'
 import Right from '@/components/Leo/Right'
 import styles from '@/components/Leo/[ISBN].module.css'
@@ -49,6 +49,7 @@ export default function Isbn() {
   console.log(ISBN)
   const { category_id, parent_category } = data.rows[0] || {}
   console.log(parent_category)
+  console.log(category_id)
   return (
     <>
       <Bcs category_id={category_id} parent_category={parent_category} />

@@ -6,6 +6,10 @@ import Head from 'next/head'
 import DefaultLayout from '@/components/layout/default-layout'
 import { AuthContextProvider } from '@/context/AuthContext'
 import { CountContextProvider } from '@/context/countContext'
+import Aside from '@/components/Leo/market_aside_button'
+import Aside_mini from '@/components/Leo/market_aside_button_mini'
+import { LeoContextProvider } from '@/context/LeoContext'
+import Bcs from '@/components/Leo/market_breadcrumbs_new'
 
 export default function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -20,14 +24,16 @@ export default function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <AuthContextProvider>
-        <CountContextProvider>
-          <Head>
-            <title>Book書易</title>
-          </Head>
-          {getLayout(<Component {...pageProps} />)}
-        </CountContextProvider>
-      </AuthContextProvider>
+      <LeoContextProvider>
+        <AuthContextProvider>
+          <CountContextProvider>
+            <Head>
+              <title>Book書易</title>
+            </Head>
+            {getLayout(<Component {...pageProps} />)}
+          </CountContextProvider>
+        </AuthContextProvider>
+      </LeoContextProvider>
     </>
   )
 }

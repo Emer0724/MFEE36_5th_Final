@@ -1,26 +1,38 @@
-// import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 
-// const LeoContext = createContext()
-// //創建context
+const LeoContext = createContext()
+//創建context
 
-// export const LeoContextProvider = ({ children }) => {
-//   //提供context的值
-//   const [parent_category, setParent_category] = useState('')
-//   const [category_id, setCategory_id] = useState('')
-//   const [asideButtonClick, setAsideButtonClick] = useState(false)
+export const LeoContextProvider = ({ children }) => {
+  //提供context的值
+  const [parentCategory, setParentCategory] = useState(' ')
+  const [categoryId, setCategoryId] = useState(' ')
+  const [categoryName, setCategoryName] = useState(' ')
+  const [asideButtonClick, setAsideButtonClick] = useState(false)
 
-//   const triggerAsideButtonClick = (category_id, parent_category) => {
-//     setAsideButtonClick(true)
-//     setCategory_id(category_id)
-//     setParent_category(parent_category)
-//   }
-//   console.log(`context: ${parent_category}`)
-//   console.log(`context: ${category_id}`)
-//   return (
-//     <LeoContext.Provider value={{ asideButtonClick, triggerAsideButtonClick }}>
-//       {children}
-//     </LeoContext.Provider>
-//   )
-// }
+  console.log(` ${parentCategory}`)
+  console.log(` ${categoryId}`)
+  console.log(` ${categoryName}`)
 
-// export default LeoContext
+  return (
+    <LeoContext.Provider
+      value={{
+        asideButtonClick,
+        setAsideButtonClick,
+        parentCategory,
+        setParentCategory,
+        categoryId,
+        setCategoryId,
+        categoryName,
+        setCategoryName,
+      }}
+    >
+      {children}
+    </LeoContext.Provider>
+  )
+}
+
+export const useLeoContext = () => {
+  //自訂hook
+  return useContext(LeoContext)
+}
