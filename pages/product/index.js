@@ -64,7 +64,7 @@ export default function Product() {
     setCurrentPage(pageNumber) // 更新目前所在頁數
     handleDisplay(category_id, label, pageNumber) // 調用 handleDisplay 函式，更新商品資料並切換到指定頁數
   }
-  console.log(rows)
+  // console.log(rows)
   // console.log(category_id)
   // console.log(totalRows)
   return (

@@ -10,9 +10,9 @@ export const LeoContextProvider = ({ children }) => {
   const [categoryName, setCategoryName] = useState(' ')
   const [asideButtonClick, setAsideButtonClick] = useState(false)
 
-  console.log(` ${parentCategory}`)
-  console.log(` ${categoryId}`)
-  console.log(` ${categoryName}`)
+  // console.log(` ${parentCategory}`)
+  // console.log(` ${categoryId}`)
+  // console.log(` ${categoryName}`)
 
   return (
     <LeoContext.Provider

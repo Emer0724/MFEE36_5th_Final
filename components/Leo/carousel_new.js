@@ -6,6 +6,9 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/effect-coverflow'
 import 'swiper/css/pagination'
+// import required modules
+import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules'
+import Image from 'next/image'
 
 import styles from './carousel_new.module.css'
 import pic1 from '@/public/used-img/banner1.jpg'
@@ -14,10 +17,6 @@ import pic3 from '@/public/used-img/banner3.jpg'
 import pic4 from '@/public/used-img/banner4.jpg'
 import pic5 from '@/public/used-img/banner5.jpg'
 import pic6 from '@/public/used-img/banner6.jpg'
-
-// import required modules
-import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules'
-import Image from 'next/image'
 
 //swiper Effect coverflow
 export default function App() {

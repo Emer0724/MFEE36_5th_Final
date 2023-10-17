@@ -9,10 +9,6 @@ export default function Playground({ rows, currentPage }) {
   const endIndex = startIndex + pageSize // 假設第一頁的狀況 startindex為0  pagesize為16 是指到索引值16時停止,不包括16
 
   const currentPageData = rows?.slice(startIndex, endIndex)
-  // console.log(currentPage)
-  // console.log(23510177)
-  console.log(rows)
-  console.log(currentPageData)
 
   if (!rows) {
     return (

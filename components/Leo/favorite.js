@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from '@/components/Leo/favorite.module.css'
 
 export default function Favorite(result) {
@@ -18,6 +18,30 @@ export default function Favorite(result) {
 
   // const member_id = id.toString()
   const [mark, setMark] = useState(false)
+  console.log(mark)
+  useEffect(() => {
+    const checkMark = () => {
+      fetch(`${process.env.API_SERVER}/market/recommand`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ISBN: ISBN, member_id: id }),
+      })
+        .then((res) => res.json())
+        .then((datas) => {
+          console.log('後端回傳結果:', datas)
+          // 根據收藏資料來更新按鈕的狀態
+          setMark(datas.rows.length > 0)
+        })
+        .catch((error) => {
+          console.error('請求發送錯誤', error)
+        })
+    }
+    checkMark()
+  }, [ISBN, id]) //當 ISBN 或 id 發生變化時，useEffect重新運行
+
+  //確認是否已登入
 
   const check = () => {
     const user = localStorage.getItem('auth')
@@ -40,6 +64,7 @@ export default function Favorite(result) {
           .then((datas) => {
             console.log('取消收藏後端回傳結果:', datas)
             setMark(false) // 取消收藏後，將按鈕狀態設為 false
+            window.alert('已取消收藏')
           })
           .catch((error) => {
             console.error('請求發送錯誤', error)
@@ -56,6 +81,7 @@ export default function Favorite(result) {
           .then((datas) => {
             console.log('後端回傳結果:', datas)
             setMark(true)
+            window.alert('已加入收藏')
           })
           .catch((error) => {
             console.error('請求發送錯誤', error)

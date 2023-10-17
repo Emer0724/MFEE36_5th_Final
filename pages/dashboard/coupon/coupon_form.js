@@ -15,10 +15,8 @@ export default function Coupon_form() {
   //onclick事件
   const getCoupon = (e) => {
     e.preventDefault()
-    const code = document.getElementById('couponInput').value
+    let code = document.getElementById('couponInput').value
     const { member_id } = info
-
-    console.log(member_id)
 
     fetch(`${process.env.API_SERVER}/market/getCoupon`, {
       method: 'POST',
@@ -31,6 +29,7 @@ export default function Coupon_form() {
       .then((datas) => {
         console.log('後端回傳結果:', datas)
         setDatas(datas)
+        document.getElementById('couponInput').value = ''
       })
   }
   const { success, error } = datas
@@ -43,11 +42,12 @@ export default function Coupon_form() {
       } else {
         console.log('留在當前頁面')
       }
-    } else {
-      window.alert('取得優惠券失敗，請確認輸入的優惠券號碼。')
     }
-  } else if (error) {
-    window.alert('取得優惠券失敗，請確認輸入的優惠券號碼。')
+  } else if (error == '該優惠券已經新增過') {
+    window.alert('取得優惠券失敗，該優惠券已經新增過。')
+    console.log(typeof error)
+  } else if (error == '找不到符合的優惠券') {
+    window.alert('取得優惠券失敗，請重新確認優惠碼。')
   }
 
   return (

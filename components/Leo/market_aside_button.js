@@ -139,19 +139,30 @@ const menuItems = [
     '53'
   ),
 ]
-
 const rootSubmenuKeys = [
-  '文學小說',
-  '自然科普',
-  '飲食',
-  '生活風格',
-  '旅遊',
-  '藝術設計',
-  '電腦資訊',
-  '商業理財',
-  '心理勵志',
+  'sub1',
+  'sub2',
+  'sub3',
+  'sub4',
+  'sub5',
+  'sub6',
+  'sub7',
+  'sub8',
+  'sub9',
   // 添加其他菜單項目的對應鍵
 ]
+// const rootSubmenuKeys = [
+//   '文學小說',
+//   '自然科普',
+//   '飲食',
+//   '生活風格',
+//   '旅遊',
+//   '藝術設計',
+//   '電腦資訊',
+//   '商業理財',
+//   '心理勵志',
+//   // 添加其他菜單項目的對應鍵
+// ]
 // const lockOn = document.querySelectorAll('[category_id='x')
 
 // submenu keys of first level
@@ -159,9 +170,9 @@ const rootSubmenuKeys = [
 const Market_aside_button = ({ handleDisplay, rows }) => {
   const { asideButtonClick, parentCategory, categoryId, categoryName } =
     useLeoContext()
-  console.log(`aside:${asideButtonClick}`)
-  console.log(`aside:${parentCategory}`)
-  console.log(`aside:${categoryId}`)
+  // console.log(`aside:${asideButtonClick}`)
+  // console.log(`aside:${parentCategory}`)
+  // console.log(`aside:${categoryId}`)
 
   if (asideButtonClick) {
     const label = categoryName

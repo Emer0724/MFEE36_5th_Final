@@ -1,11 +1,9 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import ww from '@/components/Leo/market_breadcrumbs.module.css'
 import { useLeoContext } from '@/context/LeoContext'
 
 export default function Bcs({ category_id, parent_category }) {
   const [data, setData] = useState({ rows: [] })
-  console.log(`first:${category_id}`)
-  console.log(`first:${parent_category}`)
   const {
     setAsideButtonClick,
     setParentCategory,
@@ -30,14 +28,10 @@ export default function Bcs({ category_id, parent_category }) {
 
   if (data.rows && data.rows.length > 0) {
     const [result] = data.rows
-    // console.log(result)
     const { parent_category_name, category_name } = result
-    // console.log(parent_category_name)
     label = category_name
     parent_category = parent_category_name
   }
-  console.log(`bcs: ${parent_category}`)
-  console.log(`bcs: ${label}`)
   //onClick事件
   const backhome = () => {
     window.location.replace('/product')
