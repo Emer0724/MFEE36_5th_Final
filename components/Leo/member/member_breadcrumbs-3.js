@@ -29,7 +29,7 @@ export default function MemberBreadcrumbs_3() {
               : c.unselected
           } `}
         >
-          <p>已使用</p>
+          <p>已過期</p>
         </Link>
       </div>
       <div className={`${c.crumbs_border} `}>

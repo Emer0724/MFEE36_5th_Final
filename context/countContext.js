@@ -17,7 +17,7 @@ export const getcount = () => {
   })
     .then((r) => r.json())
     .then((result) => {
-      console.log(result)
+      // console.log(result)
       const counter = result.map((v) => v.count)
       const totalcount = counter.reduce((v, c) => v + c, 0)
       return totalcount
@@ -39,7 +39,7 @@ export const CountContextProvider = function ({ children }) {
       JSON.parse(localStorage.getItem('auth')).member_id
     ) {
       const member1 = JSON.parse(localStorage.getItem('auth')).member_id
-      console.log(member1)
+      // console.log(member1)
       member = member1
       getcount().then((r) => setcount(r))
       return

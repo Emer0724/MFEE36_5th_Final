@@ -18,7 +18,7 @@ export default function Favorite(result) {
 
   // const member_id = id.toString()
   const [mark, setMark] = useState(false)
-
+  console.log(mark)
   useEffect(() => {
     const checkMark = () => {
       fetch(`${process.env.API_SERVER}/market/recommand`, {
@@ -64,6 +64,7 @@ export default function Favorite(result) {
           .then((datas) => {
             console.log('取消收藏後端回傳結果:', datas)
             setMark(false) // 取消收藏後，將按鈕狀態設為 false
+            window.alert('已取消收藏')
           })
           .catch((error) => {
             console.error('請求發送錯誤', error)
@@ -80,6 +81,7 @@ export default function Favorite(result) {
           .then((datas) => {
             console.log('後端回傳結果:', datas)
             setMark(true)
+            window.alert('已加入收藏')
           })
           .catch((error) => {
             console.error('請求發送錯誤', error)

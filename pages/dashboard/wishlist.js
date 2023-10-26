@@ -87,13 +87,18 @@ export default function WishList() {
 
       <div className={styles.d4}>
         <div
-          className={`container ${ca.box}`}
+          className={`${ca.box}`}
           style={{ display: 'flex', flexWrap: 'wrap' }}
         >
           {/* 使用 rows 資料進行渲染 */}
           {currentPageData && currentPageData.length > 0 ? (
             currentPageData.map((v, i) => (
-              <Wishcard v={v} result={changeresult} key={i} />
+              <Wishcard
+                v={v}
+                result={changeresult}
+                key={i}
+                className={ca.card}
+              />
             ))
           ) : (
             <h1 className={styles.nono}>尚無收藏書籍</h1>

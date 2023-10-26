@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-// import { AppstoreOutlined } from '@ant-design/icons'
 import { Menu } from 'antd'
 import n from '@/components/Leo/market_aside.module.css'
-
+import { useLeoContext } from '@/context/LeoContext'
 function getItem(label, key, onClick, items, type, category_id) {
   return {
     key,
@@ -132,7 +131,6 @@ const menuItems = [
       getItem('個人成長', '45', null, null, null, '56'),
       getItem('勵志故事散文', '46', null, null, null, '57'),
       getItem('人際關係', '47', null, null, null, '59'),
-      // getItem('生活哲學', '48', null, null, null, '61'), //問題點 (label, key, onClick, items, type, category_id)
       getItem('熟齡生活', '49', null, null, null, '62'),
       getItem('生死醫病', '50', null, null, null, '63'),
       getItem('心理學', '51', null, null, null, '64'),
@@ -141,7 +139,6 @@ const menuItems = [
     '53'
   ),
 ]
-
 const rootSubmenuKeys = [
   'sub1',
   'sub2',
@@ -152,16 +149,41 @@ const rootSubmenuKeys = [
   'sub7',
   'sub8',
   'sub9',
-  'sub10',
-  'sub11',
+  // 添加其他菜單項目的對應鍵
 ]
+// const rootSubmenuKeys = [
+//   '文學小說',
+//   '自然科普',
+//   '飲食',
+//   '生活風格',
+//   '旅遊',
+//   '藝術設計',
+//   '電腦資訊',
+//   '商業理財',
+//   '心理勵志',
+//   // 添加其他菜單項目的對應鍵
+// ]
+// const lockOn = document.querySelectorAll('[category_id='x')
 
 // submenu keys of first level
 
 const Market_aside_button = ({ handleDisplay, rows }) => {
-  console.log(rows)
-  const [openKeys, setOpenKeys] = useState([])
+  const { asideButtonClick, parentCategory, categoryId, categoryName } =
+    useLeoContext()
+  // console.log(`aside:${asideButtonClick}`)
+  // console.log(`aside:${parentCategory}`)
+  // console.log(`aside:${categoryId}`)
 
+  if (asideButtonClick) {
+    const label = categoryName
+    const category_id = categoryId
+    const keys = parentCategory
+    onOpenChange(keys)
+    handleDisplay(label, category_id)
+  }
+
+  //li展開
+  const [openKeys, setOpenKeys] = useState([])
   const onOpenChange = (keys) => {
     const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1)
     if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
@@ -184,8 +206,8 @@ const Market_aside_button = ({ handleDisplay, rows }) => {
               {item.items.map((subItem) => (
                 <Menu.Item
                   key={subItem.key}
-                  onClick={() =>
-                    handleDisplay(subItem.category_id, subItem.label)
+                  onClick={
+                    () => handleDisplay(subItem.category_id, subItem.label) //抓取該分類資料用函式
                   }
                 >
                   {subItem.label}
@@ -197,7 +219,7 @@ const Market_aside_button = ({ handleDisplay, rows }) => {
           return (
             <Menu.Item
               key={item.key}
-              onClick={() => handleDisplay(item.category_id, item.label)}
+              onClick={() => handleDisplay(item.category_id, item.label)} //抓取該分類資料用函式
             >
               {item.label}
             </Menu.Item>
