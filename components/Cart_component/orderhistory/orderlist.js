@@ -3,7 +3,7 @@ import s from '@/components/Cart_component/orderhistory/orderlist.module.css'
 import Orderdetail from './orderdetail'
 import Orderman from './orderman'
 
-export default function orderlist() {
+export default function Orderlist() {
   const [openedDetailIndex, setOpenedDetailIndex] = useState(null)
   const [openedOrderIndex, setOpenedOrderIndex] = useState(null)
   const [data, setData] = useState([])
@@ -124,7 +124,7 @@ export default function orderlist() {
                     </div>
                   </div>
                 </div>
-                <div
+                <button
                   className={s.orderbtn}
                   onClick={() => {
                     handleSelectOrder(v.order_id)
@@ -132,8 +132,8 @@ export default function orderlist() {
                   }}
                 >
                   <h4>商品細節</h4>
-                </div>
-                <div
+                </button>
+                <button
                   className={s.orderbtn}
                   onClick={() => {
                     handleSelectOrder(v.order_id)
@@ -141,7 +141,7 @@ export default function orderlist() {
                   }}
                 >
                   <h4>寄件資料</h4>
-                </div>
+                </button>
               </div>
               <div className={s.detaillocation}>
                 {openedDetailIndex === i && <Orderdetail data1={data1} />}

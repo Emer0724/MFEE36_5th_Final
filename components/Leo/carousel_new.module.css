@@ -9,7 +9,7 @@
   background-position: center;
   background-size: cover;
   width: 300px;
-  height: 300px;
+  height: 100%; /* 展示前修改 300px > 100%    100% > 300px*/
 }
 
 .swiper-slide img {
@@ -27,3 +27,4 @@
     width: auto;
     height: auto;
 }
+

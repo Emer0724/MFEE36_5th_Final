@@ -4,9 +4,10 @@ import Aside from '@/components/Leo/market_aside'
 import Bcs from '@/components/Leo/market_breadcrumbs_new'
 import CarouselComponent from '@/components/Leo/carousel_new'
 import { Pagination } from 'antd'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import Market_aside_button_mini from '@/components/Leo/market_aside_button_mini'
 import { useLeoContext } from '@/context/LeoContext'
+import styles from './product.module.css'
 
 export default function Product() {
   const { setAsideButtonClick } = useLeoContext()
@@ -15,7 +16,7 @@ export default function Product() {
   const [viewWidth, setViewWidth] = useState(
     typeof window !== 'undefined' ? window.innerWidth : 0
   )
-  const router = useRouter()
+  // const router = useRouter()
 
   useEffect(() => {
     const handleResize = () => {
@@ -32,7 +33,7 @@ export default function Product() {
       fetch(`${process.env.API_SERVER}/market/display_random`)
         .then((res) => res.json())
         .then((dataR) => {
-          const { rows } = dataR
+          // const { rows } = dataR
           setdata(dataR)
           setCurrentPage(1)
           console.log('後端回傳結果:', dataR)
@@ -70,7 +71,12 @@ export default function Product() {
   return (
     <>
       <div style={{ height: '100%' }}>
-        <CarouselComponent />
+        <div
+          className="outer-container"
+          style={{ overflowY: 'scorll', height: '400px' }}
+        >
+          <CarouselComponent />
+        </div>
         <Bcs category_id={category_id} />
         {viewWidth <= 600 && (
           <Market_aside_button_mini handleDisplay={handleDisplay} rows={rows} />
